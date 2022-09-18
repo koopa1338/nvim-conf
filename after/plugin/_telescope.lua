@@ -99,7 +99,7 @@ L("telescope", function(telescope)
   telescope.load_extension "notify"
   telescope.load_extension "ui-select"
 
-  L("urlview", function(urlview)
+  L("urlview", function()
     telescope.load_extension "urlview"
   end)
 

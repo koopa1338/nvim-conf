@@ -23,7 +23,7 @@ L("wilder", function(wilder)
         border = 'FloatBorder',
         accent = wilder.make_hl('WilderAccent', 'Pmenu',
           { { a = true }, { a = true },
-            { foreground = string.format("#%06x", vim.api.nvim_get_hl_by_name("Special", true).foreground),
+            { foreground = Get_theme_hl("Special").fg,
               bold = true } }),
       },
       left = { ' ', wilder.popupmenu_devicons() },

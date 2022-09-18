@@ -12,9 +12,6 @@ Map = function(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts_or_defaults)
 end
 
-UnMap = function(mode, lhs, opts)
-  vim.keymap.del(mode, lhs, opts)
-end
 Contains = function(tab, val)
   for _, value in ipairs(tab) do
     if value == val then
@@ -27,6 +24,7 @@ end
 
 P = function(arg)
   print(vim.inspect(arg))
+
   return arg
 end
 
@@ -39,18 +37,26 @@ L = function(module, callback)
       return require(module)
     end
   end
+
   return nil
 end
 
-if not L "plenary" then
-  return
+R = function()
+  vim.notify("Dependency plenary is missing.",
+    vim.log.levels.WARN,
+    { title = "Missing Dependency" })
 end
 
-local reloader = require "plenary.reload"
-R = function(name)
-  reloader.reload_module(name)
-  return require(name)
-end
+L("plenary.reload", function(reloader)
+  R = function(name)
+    reloader.reload_module(name)
+    vim.notify("Reloaded module " .. name .. ".",
+      vim.log.levels.INFO,
+      { title = "Success" })
+
+    return require(name)
+  end
+end)
 
 Get_theme_hl = function(name)
   local hl_group = {}

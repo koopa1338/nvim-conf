@@ -5,7 +5,7 @@ L("urlview", function(urlview)
       urlview.search("file", { filepath = input })
     end)
   end, { silent = true })
-  Map("n", "<leader>uj", ":UrlView jira <CR>", { silent = true })
+  Map("n", "<leader>uj", ":UrlView jira<CR>", { silent = true })
   Map("n", "<leader>up", ":UrlView packer<CR>", { silent = true })
 
   L("which-key", function(wk)

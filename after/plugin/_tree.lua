@@ -22,7 +22,7 @@ L("nvim-tree", function(tree)
     },
     disable_netrw = true,
     open_on_setup = false,
-    ignore_ft_on_setup = { "startify" },
+    ignore_ft_on_setup = { "alpha" },
     open_on_tab = false,
     hijack_cursor = false,
     update_cwd = true,
