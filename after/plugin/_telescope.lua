@@ -101,26 +101,6 @@ L("telescope", function(telescope)
 
   L("urlview", function(urlview)
     telescope.load_extension "urlview"
-    Map("n", "<leader>uu", ":UrlView<CR>", { silent = true })
-    Map("n", "<leader>uf", function()
-      vim.ui.input({ prompt = "File path: " }, function(input)
-        urlview.search("file", { filepath = input })
-      end)
-    end, { silent = true })
-    Map("n", "<leader>uj", ":UrlView jira <CR>", { silent = true })
-    Map("n", "<leader>up", ":UrlView packer<CR>", { silent = true })
-
-    L("which-key", function(wk)
-      wk.register({
-        u = {
-          name = "+urlview",
-          f = { "File" },
-          j = { "Jira" },
-          p = { "Packer" },
-          u = { "Buffer" },
-        },
-      }, { prefix = "<leader>" })
-    end)
   end)
 
   Map("n", "<leader>fg", ":Telescope git_files<CR>", { silent = true })
@@ -150,12 +130,12 @@ L("telescope", function(telescope)
   L("which-key", function(wk)
     wk.register({
       b = {
-        b = { "Show Buffers" },
+        b = { "Show open Buffers" },
       },
       f = {
         name = "+finder",
         ["*"] = { "Grep String" },
-        b = { "Fuzzy Find Current Buffer" },
+        b = { "Fuzzy Find current Buffer" },
         e = { "Find Treesitter Symbols" },
         f = { "Find Files" },
         g = { "Find Git Files" },
@@ -168,7 +148,7 @@ L("telescope", function(telescope)
         F = { "Find Files (Hidden + Ignored)" },
       },
       ["<leader>"] = {
-        name = "+finder",
+        name = "+more",
         l = { "Show Location List" },
         n = { "Show Notifications" },
         q = { "Show Quickfix" },

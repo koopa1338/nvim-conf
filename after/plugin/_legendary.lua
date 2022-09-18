@@ -11,11 +11,11 @@ L("legendary", function(legendary)
     wk.register({
       s = {
         name = "+search",
-        a = { "Autocmds" },
-        c = { "Commands" },
-        f = { "Functions" },
-        k = { "Keymaps" },
-        s = { "All" },
+        a = { "Search Autocmds" },
+        c = { "Search Commands" },
+        f = { "Search Functions" },
+        k = { "Search Keymaps" },
+        s = { "Search All" },
       },
     }, { prefix = "<leader>" })
   end)

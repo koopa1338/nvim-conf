@@ -17,8 +17,8 @@ L("true-zen", function(zen)
 
   L("which-key", function(wk)
     wk.register({
-      z = { "Focus Time" },
-      Z = { "Focus Time++" },
+      z = { "Maximize current Window" },
+      Z = { "Focus Time" },
     }, { prefix = "<leader>" })
   end)
 end)
