@@ -71,7 +71,7 @@ L("telescope", function(telescope)
       },
       current_buffer_fuzzy_find = {
         previewer = false,
-      }
+      },
     },
     extensions = {
       ["ui-select"] = {
