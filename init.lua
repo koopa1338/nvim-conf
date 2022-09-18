@@ -121,7 +121,7 @@ g.tex_flavor = "latex"
 
 -- luasnip
 g.snippets = "luasnip"
-g.border_type = "rounded"
+g.border_type = "rounded" -- rounded, single, double
 
 if fn.has "windows" then
   o.fillchars = "vert:┃,eob:￭,diff:☷"
