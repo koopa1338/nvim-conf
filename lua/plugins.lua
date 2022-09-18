@@ -10,9 +10,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- TODO:
--- rest-nvim for .http files (lazily loaded)
 -- heirline, alternatively galaxyline
--- urlview.nvim
 require("packer").startup {
   function(use)
     -- Packer
