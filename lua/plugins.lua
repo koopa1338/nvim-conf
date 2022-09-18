@@ -113,6 +113,7 @@ require("packer").startup {
     use "kyazdani42/nvim-tree.lua"
     use "rcarriga/nvim-notify"
     use "stevearc/dressing.nvim"
+    use "petertriho/nvim-scrollbar"
 
     -- version control
     use "junegunn/gv.vim"
