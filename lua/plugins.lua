@@ -32,6 +32,7 @@ require("packer").startup {
         "nvim-treesitter/nvim-treesitter",
       },
     }
+    use "folke/todo-comments.nvim"
     -- Zen modes
     use "Pocco81/TrueZen.nvim"
 
