@@ -145,6 +145,9 @@ require("packer").startup {
       },
     }
 
+    -- utils
+    use "jghauser/mkdir.nvim"
+
     -- custom plugins
     L("plugins_custom", function(plugins_custom)
       for _, v in pairs(plugins_custom) do
