@@ -15,7 +15,6 @@ end
 UnMap = function(mode, lhs, opts)
   vim.keymap.del(mode, lhs, opts)
 end
-
 Contains = function(tab, val)
   for _, value in ipairs(tab) do
     if value == val then

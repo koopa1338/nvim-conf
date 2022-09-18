@@ -8,5 +8,5 @@ g.diagnostic_insert_delay = 1
 Map("n", "<leader>D", ":Trouble<CR>", { silent = true })
 
 vim.diagnostic.config {
-  float = { border = "rounded" },
+  float = { border = g.border_type },
 }

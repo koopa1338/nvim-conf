@@ -6,7 +6,7 @@ L("dressing", function(dressing)
       insert_only = false,
       anchor = "SW",
       relative = "cursor",
-      border = "rounded",
+      border = vim.g.border_type,
       prefer_width = 50,
       min_width = 25,
       winblend = 0,

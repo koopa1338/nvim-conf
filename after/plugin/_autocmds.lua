@@ -136,7 +136,7 @@ api.nvim_create_autocmd({ "BufRead" }, {
     if not crates then
       return
     end
-    crates.setup { popup = { border = "rounded" } }
+    crates.setup { popup = { border = vim.g.border_type } }
     crates.reload()
     local opts = { silent = true, remap = false, buffer = true }
     Map("n", "<leader>cr", crates.reload, opts)

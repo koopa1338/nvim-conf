@@ -1,7 +1,7 @@
 L("mason", function(mason)
   mason.setup {
     ui = {
-      border = "rounded",
+      border = vim.g.border_type,
       icons = {
         package_installed = "",
         package_pending = "➤",

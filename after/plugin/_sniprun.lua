@@ -56,7 +56,7 @@ L("sniprun", function(sniprun)
     inline_messages = 0, --# inline_message (0/1) is a one-line way to display messages
     --# to workaround sniprun not being able to display anything
 
-    borders = "rounded", --# display borders around floating windows
+    borders = vim.g.border_type, --# display borders around floating windows
     --# possible values are 'none', 'single', 'double', or 'shadow'
     live_mode_toggle = "off", --# live mode toggle, see Usage - Running for more info
   }

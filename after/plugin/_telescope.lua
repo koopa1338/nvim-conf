@@ -1,3 +1,14 @@
+local border_chars = function(border_type)
+  local border_chars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
+  if border_type == "single" then
+    border_chars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+  end
+  if border_type == "double" then
+    border_chars = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" }
+  end
+  return border_chars
+end
+
 L("telescope", function(telescope)
   local actions = require "telescope.actions"
   local previewers = require "telescope.previewers"
@@ -8,6 +19,7 @@ L("telescope", function(telescope)
       grep_previewer = previewers.vim_buffer_vimgrep.new,
       qflist_previewer = previewers.vim_buffer_qflist.new,
       layout_strategy = "flex",
+      borderchars = border_chars(vim.g.border_type),
       layout_config = {
         prompt_position = "top",
         horizontal = {
@@ -74,7 +86,7 @@ L("telescope", function(telescope)
           j = { "Jira" },
           p = { "Packer" },
           u = { "Buffer" },
-        }
+        },
       }, { prefix = "<leader>" })
     end)
   end)

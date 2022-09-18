@@ -53,7 +53,7 @@ L("gitsigns", function(gitsigns)
       internal = true, -- If luajit is present
     },
     preview_config = {
-      border = "rounded",
+      border = vim.g.border_type,
     },
   }
 

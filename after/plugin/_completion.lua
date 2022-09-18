@@ -60,7 +60,7 @@ cmp.setup {
   },
   window = {
     completion = {
-      border = "rounded",
+      border = vim.g.border_type,
       col_offset = -3,
       side_padding = 0,
     },

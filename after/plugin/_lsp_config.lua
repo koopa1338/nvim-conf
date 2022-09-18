@@ -5,6 +5,7 @@ end
 
 local log_lvl = vim.log.levels
 local unsupported_title = "LSP Provider not supported"
+local bt = vim.g.border_type
 
 local notify_unsupported_lsp = function(message)
   vim.notify(message, log_lvl.INFO, { title = unsupported_title })
@@ -65,7 +66,7 @@ local custom_attach = function(client)
 
   if capabilities.signatureHelpProvider then
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = "rounded",
+      border = bt,
     })
     Map("n", "<leader>ls", vim.lsp.buf.signature_help, opts)
   else
@@ -85,7 +86,7 @@ local custom_attach = function(client)
 
   if capabilities.hoverProvider then
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = "rounded",
+      border = bt,
     })
     Map("n", "K", vim.lsp.buf.hover, opts)
   else
@@ -290,4 +291,4 @@ for server, config in pairs(servers) do
   nvim_lsp[server].setup(config)
 end
 
-L("lspconfig.ui.windows").default_options.border = "rounded"
+L("lspconfig.ui.windows").default_options.border = bt
