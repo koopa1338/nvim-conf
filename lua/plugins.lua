@@ -147,6 +147,8 @@ require("packer").startup {
 
     -- utils
     use "jghauser/mkdir.nvim"
+    use "gelguy/wilder.nvim"
+    use "romgrk/fzy-lua-native"
 
     -- custom plugins
     L("plugins_custom", function(plugins_custom)
