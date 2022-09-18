@@ -1,6 +1,4 @@
 L("nvim-tree", function(tree)
-  Map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { silent = true })
-
   local tree_cb = require("nvim-tree.config").nvim_tree_callback
   tree.setup {
     renderer = {
@@ -71,4 +69,12 @@ L("nvim-tree", function(tree)
       },
     },
   }
+
+  Map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { silent = true })
+
+  L("which-key", function(wk)
+    wk.register({
+      ["<C-n>"] = { "Toggle NvimTree" },
+    }, { prefix = "<leader>" })
+  end)
 end)

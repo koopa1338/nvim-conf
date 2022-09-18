@@ -1,7 +1,24 @@
 local g, cmd, sign_get = vim.g, vim.cmd, vim.fn.sign_getdefined
 
+L("which-key", function(wk)
+  wk.register({
+    g = {
+      name = "+git",
+    },
+  }, { prefix = "<leader>" })
+end)
+
 Map("n", "<Leader>gf", ":diffget //2<CR>", { silent = true })
 Map("n", "<Leader>gj", ":diffget //3<CR>", { silent = true })
+
+L("which-key", function(wk)
+  wk.register({
+    g = {
+      f = { "Diffget take Left" },
+      j = { "Diffget take Right" },
+    },
+  }, { prefix = "<leader>" })
+end)
 
 L("gitsigns", function(gitsigns)
   -- git signs
@@ -48,6 +65,19 @@ L("gitsigns", function(gitsigns)
   Map("n", "<leader>g-", gitsigns.undo_stage_hunk, { silent = true })
   Map("n", "<leader>g+", gitsigns.stage_hunk, { silent = true })
   Map("n", "<leader>gu", gitsigns.reset_hunk, { silent = true })
+
+  L("which-key", function(wk)
+    wk.register({
+      g = {
+        b = { "Toggle Current Line Blame" },
+        d = { "Preview Hunk" },
+        u = { "Reset Hunk" },
+        B = { "Toggle Line Blame" },
+        ["+"] = { "Stage Hunk" },
+        ["-"] = { "Undo Stage Hunk" },
+      },
+    }, { prefix = "<leader>" })
+  end)
 end)
 
 cmd [[
@@ -175,6 +205,14 @@ L("diffview", function(diffview)
   }
 
   Map("n", "<Leader>gD", ":DiffviewOpen<CR>", { silent = true })
+
+  L("which-key", function(wk)
+    wk.register({
+      g = {
+        D = { "Show Diff View" },
+      },
+    }, { prefix = "<leader>" })
+  end)
 end)
 
 L("neogit", function(neogit)
@@ -237,4 +275,12 @@ L("neogit", function(neogit)
   }
 
   Map("n", "<Leader>gs", ":Neogit<CR>", { silent = true })
+
+  L("which-key", function(wk)
+    wk.register({
+      g = {
+        s = { "Neogit" },
+      },
+    }, { prefix = "<leader>" })
+  end)
 end)

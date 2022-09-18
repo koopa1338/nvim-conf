@@ -11,4 +11,14 @@ L("true-zen", function(zen)
       },
     },
   }
+
+  Map("n", "<Leader>z", ":TZFocus<CR>", { silent = true })
+  Map("n", "<Leader>Z", ":TZAtaraxis<CR>", { silent = true })
+
+  L("which-key", function(wk)
+    wk.register({
+      z = { "Focus Time" },
+      Z = { "Focus Time++" },
+    }, { prefix = "<leader>" })
+  end)
 end)
