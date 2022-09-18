@@ -1,2 +1,3 @@
 undodir/*
 lua/packer_compiled.lua
+lua/plugins_custom.lua

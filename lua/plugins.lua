@@ -144,6 +144,14 @@ require("packer").startup {
       },
     }
 
+    -- custom plugins
+    L("plugins_custom", function(plugins_custom)
+      for _, v in pairs(plugins_custom) do
+        use(v)
+      end
+    end)
+
+
     if is_bootstrap then
       local packer = require "packer"
       packer.sync()
