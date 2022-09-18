@@ -1,6 +1,6 @@
 require "utils"
 L "impatient"
-require "signs"
+L "signs"
 
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
