@@ -151,7 +151,6 @@ require("packer").startup {
       end
     end)
 
-
     if is_bootstrap then
       local packer = require "packer"
       packer.sync()

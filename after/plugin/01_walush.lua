@@ -756,8 +756,6 @@ end)
 
 lush(walush)
 
-L"nvim-ts-rainbow"
+L "nvim-ts-rainbow"
 -- return to use theme colors or hi groups for other plugins
 return walush
-
-
