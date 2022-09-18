@@ -183,8 +183,12 @@ api.nvim_create_autocmd("BufWritePost", {
 })
 
 -- plugins with only default configurations or configs that has to be done before configure other plugins
-require("nvim-autopairs").setup {}
-require("luatab").setup {}
+L("nvim-autopairs", function(auto_pairs)
+  auto_pairs.setup {}
+end)
+L("luatab", function(luatab)
+  luatab.setup {}
+end)
 
 L("notify", function(notify)
   notify.setup { stages = "slide" }
