@@ -45,6 +45,7 @@ require("packer").startup {
         "Verbose", -- view verbose output in preview window.
       },
     }
+    use "nacro90/numb.nvim"
 
     -- searching and file browsing
     use "nvim-lua/popup.nvim"
