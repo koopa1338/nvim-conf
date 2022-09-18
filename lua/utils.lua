@@ -51,3 +51,25 @@ R = function(name)
   reloader.reload_module(name)
   return require(name)
 end
+
+Get_theme_hl = function(name)
+  local hl_group = {}
+  L("lush", function(lush)
+    L("after.plugin.01_walush", function(walush)
+      local tmp = walush[name]
+      if tmp then
+        for _, key in pairs { "fg", "bg" } do
+          local value = tmp[key]
+          if value ~= nil and value ~= "NONE" then
+            hl_group[key] = lush.hsl(value.h, value.s, value.l).hex
+          else
+            hl_group[key] = value
+          end
+        end
+        hl_group["gui"] = tmp["gui"]
+      end
+    end)
+  end)
+
+  return hl_group
+end

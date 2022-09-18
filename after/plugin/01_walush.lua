@@ -1,3 +1,5 @@
+local walush = nil
+
 local function get_xresources_color(color_name)
   local command = io.popen("xrdb -query | grep " .. color_name .. " -m 1 | cut -f 2")
   local color = nil
@@ -39,7 +41,7 @@ L("lush", function(lush)
   end
   xres.none = "NONE"
 
-  local walush = lush(function()
+  walush = lush(function()
     return {
 
       -- git
@@ -753,6 +755,7 @@ L("lush", function(lush)
 
   lush(walush)
 
-  -- return to use theme colors or hi groups for other plugins
   return walush
 end)
+
+return walush
