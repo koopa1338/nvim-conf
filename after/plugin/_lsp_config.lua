@@ -3,26 +3,6 @@ if not nvim_lsp then
   return
 end
 
-local path = nvim_lsp.util.path
-local fn, bo, env = vim.fn, vim.bo, vim.env
-
-local function get_python_path()
-  -- Use activated virtualenv.
-  if env.VIRTUAL_ENV then
-    return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
-  end
-
-  -- Find and use virtualenv from pipenv in workspace directory.
-  -- local match = vim.fn.glob(path.join(workspace, 'Pipfile'))
-  -- if match ~= '' then
-  --   local venv = vim.fn.trim(vim.fn.system('PIPENV_PIPFILE=' .. match .. ' pipenv --venv'))
-  --   return path.join(venv, 'bin', 'python')
-  -- end
-
-  -- Fallback to system Python.
-  return fn.exepath "python3" or fn.exepath "python" or "python"
-end
-
 local log_lvl = vim.log.levels
 local unsupported_title = "LSP Provider not supported"
 
@@ -33,7 +13,7 @@ end
 -- lsp config
 local opts = { silent = true }
 local custom_attach = function(client)
-  bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+  vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
   local capabilities = client.server_capabilities
 
   if capabilities.declarationProvider then
