@@ -41,6 +41,38 @@ L("telescope", function(telescope)
       scroll_strategy = "cycle",
       prompt_prefix = "🔎  ",
     },
+    pickers = {
+      fd = {
+        theme = "ivy",
+      },
+      git_files = {
+        theme = "ivy",
+      },
+      marks = {
+        theme = "ivy",
+      },
+      buffers = {
+        theme = "ivy",
+      },
+      registers = {
+        theme = "ivy",
+      },
+      quickfix = {
+        layout_strategy = "vertical",
+      },
+      loclist = {
+        layout_strategy = "vertical",
+      },
+      notify = {
+        layout_strategy = "vertical",
+      },
+      man_pages = {
+        layout_strategy = "vertical",
+      },
+      current_buffer_fuzzy_find = {
+        previewer = false,
+      }
+    },
     extensions = {
       ["ui-select"] = {
         require("telescope.themes").get_cursor {},
@@ -91,26 +123,26 @@ L("telescope", function(telescope)
     end)
   end)
 
-  Map("n", "<leader>fg", ":Telescope git_files theme=get_ivy<CR>", { silent = true })
-  Map("n", "<leader>ff", ":Telescope fd theme=get_ivy hidden=true<CR>", { silent = true })
-  Map("n", "<leader>FF", ":Telescope fd theme=get_ivy hidden=true no_ignore=true<CR>", { silent = true })
+  Map("n", "<leader>fg", ":Telescope git_files<CR>", { silent = true })
+  Map("n", "<leader>ff", ":Telescope fd hidden=true<CR>", { silent = true })
+  Map("n", "<leader>FF", ":Telescope fd hidden=true no_ignore=true<CR>", { silent = true })
   Map("n", "<leader>fr", ":Telescope live_grep<CR>", { silent = true })
   Map({ "v", "n" }, "<leader>f*", ":Telescope grep_string<CR>", { silent = true })
-  Map("n", "<leader>fR", ":Telescope registers theme=get_ivy<CR>", { silent = true })
-  Map("n", "<leader>bb", ":Telescope buffers theme=get_ivy<CR>", { silent = true })
-  Map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find previewer=false<CR>", { silent = true })
+  Map("n", "<leader>fR", ":Telescope registers<CR>", { silent = true })
+  Map("n", "<leader>bb", ":Telescope buffers<CR>", { silent = true })
+  Map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>", { silent = true })
   Map("n", "<leader>fe", ":Telescope treesitter<CR>", { silent = true })
-  Map("n", "<leader>fm", ":Telescope marks theme=get_ivy<CR>", { silent = true })
+  Map("n", "<leader>fm", ":Telescope marks<CR>", { silent = true })
 
   -- lsp bindings
   Map("n", "<leader>ltd", ":Telescope diagnostics bufnr=0<CR>", { silent = true })
   Map("n", "<leader>ltD", ":Telescope diagnostics<CR>", { silent = true })
 
-  Map("n", "<leader><leader>q", ":Telescope quickfix layout_strategy=vertical<CR>", { silent = true })
-  Map("n", "<leader><leader>l", ":Telescope loclist layout_strategy=vertical<CR>", { silent = true })
-  Map("n", "<leader><leader>n", ":Telescope notify layout_strategy=vertical<CR>", { silent = true })
+  Map("n", "<leader><leader>q", ":Telescope quickfix<CR>", { silent = true })
+  Map("n", "<leader><leader>l", ":Telescope loclist<CR>", { silent = true })
+  Map("n", "<leader><leader>n", ":Telescope notify<CR>", { silent = true })
 
-  Map("n", "<leader><leader>M", ":Telescope man_pages layout_strategy=vertical<CR>", { silent = true })
+  Map("n", "<leader><leader>M", ":Telescope man_pages<CR>", { silent = true })
   Map("n", "<leader><leader>K", ":Telescope keymaps<CR>", { silent = true })
   Map("n", "<leader><leader>H", ":Telescope help_tags<CR>", { silent = true })
   Map("n", "<leader><leader>T", ":Telescope resume<CR>", { silent = true })
