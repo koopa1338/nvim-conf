@@ -65,6 +65,18 @@ L("telescope", function(telescope)
     end, { silent = true })
     Map("n", "<leader>uj", ":UrlView jira <CR>", { silent = true })
     Map("n", "<leader>up", ":UrlView packer<CR>", { silent = true })
+
+    L("which-key", function(wk)
+      wk.register({
+        u = {
+          name = "+urlview",
+          f = { "File" },
+          j = { "Jira" },
+          p = { "Packer" },
+          u = { "Buffer" },
+        }
+      }, { prefix = "<leader>" })
+    end)
   end)
 
   Map("n", "<leader>fg", ":Telescope git_files theme=get_ivy<CR>", { silent = true })
@@ -90,8 +102,49 @@ L("telescope", function(telescope)
   Map("n", "<leader><leader>K", ":Telescope keymaps<CR>", { silent = true })
   Map("n", "<leader><leader>H", ":Telescope help_tags<CR>", { silent = true })
   Map("n", "<leader><leader>T", ":Telescope resume<CR>", { silent = true })
+
+  L("which-key", function(wk)
+    wk.register({
+      b = {
+        b = { "Show Buffers" },
+      },
+      f = {
+        name = "+finder",
+        ["*"] = { "Grep String" },
+        b = { "Fuzzy Find Current Buffer" },
+        e = { "Find Treesitter Symbols" },
+        f = { "Find Files" },
+        g = { "Find Git Files" },
+        m = { "Find Marks" },
+        r = { "Find Live Grep" },
+        R = { "Find Registers" },
+      },
+      F = {
+        name = "+finder",
+        F = { "Find Files (Hidden + Ignored)" },
+      },
+      ["<leader>"] = {
+        name = "+finder",
+        l = { "Show Location List" },
+        n = { "Show Notifications" },
+        q = { "Show Quickfix" },
+        H = { "Show Help Tags" },
+        K = { "Show Keymaps" },
+        M = { "Show Man Pages" },
+        T = { "Resume Last Finder" },
+      },
+    }, { prefix = "<leader>" })
+  end)
 end)
 
 L("notify", function(notify)
   Map("n", "<leader><leader>N", notify.dismiss, { silent = true })
+
+  L("which-key", function(wk)
+    wk.register({
+      ["<leader>"] = {
+        N = { "Dismiss Notification" },
+      },
+    }, { prefix = "<leader>" })
+  end)
 end)

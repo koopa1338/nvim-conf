@@ -44,4 +44,11 @@ L("nvim-treesitter.configs", function(config)
       },
     },
   }
+
+  L("which-key", function(wk)
+    wk.register({
+      p = { "Swap Previous Parameter" },
+      P = { "Swap Next Parameter" },
+    }, { prefix = "<leader>" })
+  end)
 end)

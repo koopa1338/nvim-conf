@@ -30,9 +30,6 @@ Map("n", "<leader><C-k>", ":wincmd K<CR>", { silent = true })
 Map("n", "<leader><C-h>", ":wincmd H<CR>", { silent = true })
 Map("n", "<leader><C-l>", ":wincmd L<CR>", { silent = true })
 
-Map("n", "<Leader>z", ":TZFocus<CR>", { silent = true })
-Map("n", "<Leader>Z", ":TZAtaraxis<CR>", { silent = true })
-
 Map("n", "<C-s>", ":w<CR>", { remap = false })
 Map("i", "<C-s>", "<Esc>:w<CR>", { remap = false })
 Map("t", "<Esc><Esc>", "<C-\\><C-n>", {})
@@ -65,3 +62,44 @@ Map("n", "gY", '"+y$', { remap = false })
 Map("n", "Y", "y$", { remap = false })
 
 Map("n", "<leader><leader>m", ":Messages<CR>", { silent = true })
+
+L("which-key", function(wk)
+  wk.register({
+    b = {
+      name = "+buffers",
+      d = { "Delete Current Buffer" },
+      D = { "Delete All Buffers" },
+      w = { "Wipeout Current Buffer" },
+      W = { "Wipeout All Buffers" },
+    },
+    g = {
+      m = { "Messenger" },
+    },
+    w = {
+      name = "+windows",
+      q = { "Close Window" },
+      t = { "Close Tab" },
+      o = { "Close All Other Windows" },
+      n = {
+        name = "+new",
+        x = { "Horizontal" },
+        v = { "Vertical" },
+      },
+      s = {
+        name = "+split",
+        x = { "Horizontal" },
+        v = { "Vertical" },
+      },
+    },
+    B = {
+      name = "+buffers",
+      D = { "Delete All Other Buffers" },
+      W = { "Wipe All Other Buffers" },
+    },
+    ["<C-S>"] = { "Save File" },
+    ["<C-H>"] = { "Move Window Left" },
+    ["<C-J>"] = { "Move Window Down" },
+    ["<C-K>"] = { "Move Window Up" },
+    ["<C-L>"] = { "Move Window Right" },
+  }, { prefix = "<leader>" })
+end)

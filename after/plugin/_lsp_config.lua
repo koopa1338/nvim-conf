@@ -175,6 +175,39 @@ local custom_attach = function(client)
   end, opts)
 end
 
+L("which-key", function(wk)
+  wk.register({
+    l = {
+      name = "+language",
+      c = {
+        name = "+code",
+        a = { "Code Action" },
+        i = { "Incoming Calls" },
+        o = { "Outgoing Calls" },
+      },
+      d = { "Jump to Definition" },
+      f = { "Format" },
+      j = { "Next Diagnostic" },
+      k = { "Previous Diagnostic" },
+      l = { "Line Diagnostics" },
+      r = { "Rename" },
+      s = { "Show Signature Help" },
+      t = {
+        name = "+finder",
+        d = { "Show Diagnostics (Current Buffer)" },
+        i = { "Implementations" },
+        r = { "References" },
+        s = { "Document Symbols" },
+        D = { "Implementations" },
+        S = { "Show Diagnostics" },
+      },
+      D = { "Jump to Declaration" },
+      T = { "Jump to Type Definition" },
+    },
+    K = { "Show Documentation" },
+  }, { prefix = "<leader>" })
+end)
+
 -- Make runtime files discoverable to the server
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")

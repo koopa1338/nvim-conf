@@ -14,13 +14,13 @@ L("todo-comments", function(todo_comments)
       wk.register({
         t = {
           name = "+todo",
-          f = { "Show Fix" },
-          h = { "Show Hack" },
-          n = { "Show Note" },
-          p = { "Show Perf" },
-          t = { "Show All " },
-          w = { "Show Warning" },
-          T = { "Show Todo" },
+          f = { "Show Fix Comments" },
+          h = { "Show Hack Comments" },
+          n = { "Show Note Comments" },
+          p = { "Show Perf Comments" },
+          t = { "Show All Comments" },
+          w = { "Show Warning Comments" },
+          T = { "Show Todo Comments" },
         },
       }, { prefix = "<leader>" })
     end)
