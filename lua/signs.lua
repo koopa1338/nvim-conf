@@ -4,7 +4,7 @@ local sign_define = vim.fn.sign_define
 sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
 sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
 sign_define("DiagnosticSignInfo", { text = "כֿ", texthl = "DiagnosticSignInfo" })
-sign_define("DiagnosticSignHint", { text = "➤", texthl = "DiagnosticSignHint" })
+sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- dap debugger
 sign_define("DapBreakpoint", { text = "◉", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
@@ -18,11 +18,11 @@ sign_define(
 )
 sign_define(
   "GitSignsLineColTopdelete",
-  { hl = "GitSignsDelete", text = "🢓", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" }
+  { hl = "GitSignsDelete", text = "寮", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" }
 )
 sign_define(
   "GitSignsLineColDelete",
-  { hl = "GitSignsDelete", text = "🢑", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" }
+  { hl = "GitSignsDelete", text = "僚", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" }
 )
 sign_define(
   "GitSignsLineColChange",
@@ -30,5 +30,5 @@ sign_define(
 )
 sign_define(
   "GitSignsLineColChangedelete",
-  { hl = "GitSignsChange", text = "ﳺ", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" }
+  { hl = "GitSignsChange", text = "易", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" }
 )
