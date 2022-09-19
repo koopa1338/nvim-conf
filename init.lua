@@ -34,11 +34,7 @@ g.mapleader = " "
 g.mousehide = true
 og.termguicolors = true
 
-o.timeout = false
--- if we use whichkey then we need the timeout
-L("which-key", function()
-  o.timeout = true
-end)
+o.timeout = true
 o.ttimeout = false
 o.backspace = { "indent", "eol", "start" }
 o.showmatch = true
@@ -126,3 +122,5 @@ g.border_type = "rounded" -- rounded, single, double
 if fn.has "windows" then
   o.fillchars = "vert:┃,eob:￭,diff:☷"
 end
+
+L("settings_custom")
