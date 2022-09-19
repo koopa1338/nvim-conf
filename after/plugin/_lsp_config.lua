@@ -3,8 +3,8 @@ L("lspconfig", function(nvim_lsp)
   local unsupported_title = "LSP Provider not supported"
   local bt = vim.g.border_type
 
-  local notify_unsupported_lsp = function(message)
-    vim.notify(message, log_lvl.INFO, { title = unsupported_title })
+  local notify_unsupported_lsp = function(message, title)
+    vim.notify(message, log_lvl.INFO, { title = title or unsupported_title })
   end
 
   -- lsp config
@@ -32,7 +32,6 @@ L("lspconfig", function(nvim_lsp)
     if capabilities.typeDefinitionProvider then
       Map("n", "<leader>lT", vim.lsp.buf.type_definition, opts)
     else
-      notify_unsupported_lsp "LSP does not support jump to defenition"
       Map("n", "<leader>lT", function()
         notify_unsupported_lsp "LSP does not support show document type defenition"
       end, opts)
