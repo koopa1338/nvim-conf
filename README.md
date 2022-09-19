@@ -25,9 +25,8 @@ installs all plugins. After that restart neovim and you should be good to go.
 
 #### Language servers
 
-For now the language servers are configured in `after/plugin/_lspconfig.lua`.
-This is a big *TODO* on my list to make this as convenient as possible to setup
-and automatically pickup installed language servers. To install a Language
-server use the `:Mason` command for the interface or install shorthand with
-`:MasonInstall <language server name>`.
+To install a Language server use the `:Mason` command for the interface or
+install shorthand with `:MasonInstall <language server name>`. If you want
+custom options or didn't install the server via mason you have to add it to
+`lsp_custom.lua` (see `lsp_custom.lua.example`)
 

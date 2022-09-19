@@ -17,11 +17,11 @@ L("trouble", function(trouble)
     wk.register({
       D = {
         name = "+Diagnostics",
-        b = { "Show document diagnostics"},
-        d = { "Show workspace diagnostics"},
-        l = { "Show location list (Trouble)"},
-        q = { "Show quickfix (Trouble)"},
-        r = { "Refresh diagnostic window"},
+        b = { "Show document diagnostics" },
+        d = { "Show workspace diagnostics" },
+        l = { "Show location list (Trouble)" },
+        q = { "Show quickfix (Trouble)" },
+        r = { "Refresh diagnostic window" },
       },
     }, { prefix = "<leader>" })
   end)

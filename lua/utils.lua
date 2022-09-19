@@ -42,17 +42,13 @@ L = function(module, callback)
 end
 
 R = function()
-  vim.notify("Dependency plenary is missing.",
-    vim.log.levels.WARN,
-    { title = "Missing Dependency" })
+  vim.notify("Dependency plenary is missing.", vim.log.levels.WARN, { title = "Missing Dependency" })
 end
 
 L("plenary.reload", function(reloader)
   R = function(name)
     reloader.reload_module(name)
-    vim.notify("Reloaded module " .. name .. ".",
-      vim.log.levels.INFO,
-      { title = "Success" })
+    vim.notify("Reloaded module " .. name .. ".", vim.log.levels.INFO, { title = "Success" })
 
     return require(name)
   end

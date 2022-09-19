@@ -123,4 +123,4 @@ if fn.has "windows" then
   o.fillchars = "vert:┃,eob:￭,diff:☷"
 end
 
-L("settings_custom")
+L "settings_custom"
