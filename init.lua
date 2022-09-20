@@ -4,8 +4,7 @@ L "signs"
 
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
-local bootstrap = L "plugins"
-if bootstrap then
+if L "bootstrap" then
   return
 end
 
@@ -17,10 +16,12 @@ L "packer_compiled"
 
 local g, cmd, fn, o, og = vim.g, vim.cmd, vim.fn, vim.opt, vim.opt_global
 
--- only use filetype.lua, see https://neovim.io/news/2022/04 section filetype
 if vim.version().minor >= 8 then
+  -- only use filetype.lua, see https://neovim.io/news/2022/04 section filetype
   g.do_filetype_lua = true
   g.did_load_filetypes = false
+
+  o.winbar = "%=%m %f"
 end
 
 -- encoding
@@ -56,9 +57,6 @@ o.path = o.path + "**"
 o.undodir = fn.expand "~/.config/nvim/undodir"
 o.undofile = true
 o.inccommand = "split"
-if vim.version().minor >= 8 then
-  o.winbar = "%=%m %f"
-end
 
 -- More natural splitting
 o.splitbelow = true
@@ -121,7 +119,9 @@ g.tex_flavor = "latex"
 
 -- luasnip
 g.snippets = "luasnip"
-g.border_type = "rounded" -- rounded, single, double
+
+-- global border_type
+g.border_type = "rounded" -- supported: rounded, single, double
 
 if fn.has "windows" then
   o.fillchars = "vert:┃,eob:￭,diff:☷"
