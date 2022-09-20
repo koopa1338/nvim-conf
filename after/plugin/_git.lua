@@ -1,4 +1,4 @@
-local g, cmd, sign_get = vim.g, vim.cmd, vim.fn.sign_getdefined
+local cmd, sign_get = vim.cmd, vim.fn.sign_getdefined
 
 L("which-key", function(wk)
   wk.register({
