@@ -4,7 +4,7 @@ L "signs"
 
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
-if L "bootstrap" then
+if L "plugins" then
   return
 end
 

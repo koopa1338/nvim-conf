@@ -16,7 +16,7 @@ L("nvim-treesitter.configs", function(config)
       highlight_definitions = { enable = true },
       highlight_current_scope = { enable = true },
     },
-    autotag = {
+    autotags = {
       enable = true,
     },
     textobjects = {

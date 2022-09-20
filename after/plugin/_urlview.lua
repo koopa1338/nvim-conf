@@ -1,4 +1,8 @@
 L("urlview", function(urlview)
+  urlview.setup {
+    default_action = "system",
+  }
+
   Map("n", "<leader>uu", ":UrlView<CR>", { silent = true })
   Map("n", "<leader>uf", function()
     vim.ui.input({ prompt = "File path: " }, function(input)
