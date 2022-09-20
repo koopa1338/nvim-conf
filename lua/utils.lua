@@ -57,7 +57,7 @@ end)
 Get_theme_hl = function(name)
   local hl_group = {}
   L("lush", function(lush)
-    L("after.plugin.01_walush", function(walush)
+    L("walush", function(walush)
       local tmp = walush[name]
       if tmp then
         for _, key in pairs { "fg", "bg" } do

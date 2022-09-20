@@ -9,6 +9,10 @@ if bootstrap then
   return
 end
 
+-- set colorscheme
+L "walush"
+
+-- load optimized packer compiled lua
 L "packer_compiled"
 
 local g, cmd, fn, o, og = vim.g, vim.cmd, vim.fn, vim.opt, vim.opt_global
