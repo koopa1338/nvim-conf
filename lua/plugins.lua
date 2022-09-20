@@ -187,24 +187,4 @@ api.nvim_create_autocmd("BufWritePost", {
   command = "source <afile> | PackerCompile",
 })
 
--- plugins with only default configurations or configs that has to be done before configure other plugins
-L("nvim-autopairs", function(auto_pairs)
-  auto_pairs.setup {}
-end)
-L("luatab", function(luatab)
-  luatab.setup {}
-end)
-
-L("notify", function(notify)
-  notify.setup {
-    stages = "slide",
-    on_open = function(win)
-      if vim.api.nvim_win_is_valid(win) then
-        vim.api.nvim_win_set_config(win, { border = vim.g.border_type })
-      end
-    end,
-  }
-  vim.notify = notify
-end)
-
 return is_bootstrap
