@@ -75,3 +75,7 @@ Get_theme_hl = function(name)
 
   return hl_group
 end
+
+Get_sign_def = function(name)
+  return vim.fn.sign_getdefined(name)[1]
+end

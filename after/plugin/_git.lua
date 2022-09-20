@@ -1,4 +1,4 @@
-local cmd, sign_get = vim.cmd, vim.fn.sign_getdefined
+local cmd = vim.cmd
 
 L("which-key", function(wk)
   wk.register({
@@ -24,11 +24,11 @@ L("gitsigns", function(gitsigns)
   -- git signs
   gitsigns.setup {
     signs = {
-      add = sign_get("GitSignsLineColAdd")[1],
-      change = sign_get("GitSignsLineColChange")[1],
-      delete = sign_get("GitSignsLineColDelete")[1],
-      topdelete = sign_get("GitSignsLineColTopdelete")[1],
-      changedelete = sign_get("GitSignsLineColChangedelete")[1],
+      add = Get_sign_def("GitSignsLineColAdd"),
+      change = Get_sign_def("GitSignsLineColChange"),
+      delete = Get_sign_def("GitSignsLineColDelete"),
+      topdelete = Get_sign_def("GitSignsLineColTopdelete"),
+      changedelete = Get_sign_def("GitSignsLineColChangedelete"),
     },
     numhl = true,
     linehl = false,

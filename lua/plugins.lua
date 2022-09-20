@@ -8,9 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
   vim.cmd [[ packadd packer.nvim ]]
 end
-
--- TODO:
--- heirline, alternatively galaxyline
+-- TODO: heirline, alternatively galaxyline
 require("packer").startup {
   function(use)
     -- Packer
@@ -169,9 +167,20 @@ require("packer").startup {
     end)
 
     if is_bootstrap then
-      local packer = require "packer"
-      packer.sync()
-      packer.compile()
+      L("packer", function(packer)
+        packer.sync()
+        vim.notify_once(
+          "==================================\n"
+          .. "    Plugins are being installed\n"
+          .. "    Wait until Packer completes,\n"
+          .. "       then restart nvim.\n"
+          .. "==================================\n"
+          .. "\n"
+          .. ">> For language support please install\n"
+          .. ">> grammers via the TSInstall command\n"
+          .. ">> on next startup\n",
+          vim.log.levels.WARN)
+      end)
     end
   end,
   config = {
@@ -179,16 +188,6 @@ require("packer").startup {
     compile_path = fn.stdpath "config" .. "/lua/packer_compiled.lua",
   },
 }
-
--- You'll need to restart nvim, and then it will work.
-if is_bootstrap then
-  print "=================================="
-  print "    Plugins are being installed"
-  print "    Wait until Packer completes,"
-  print "       then restart nvim"
-  print "=================================="
-  return true
-end
 
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer = vim.api.nvim_create_augroup("Packer", { clear = true })
