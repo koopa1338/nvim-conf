@@ -184,10 +184,11 @@ L("lspconfig", function(nvim_lsp)
       },
     })
 
-    local servers = lsp_utils.servers()
-    for server, config in pairs(servers) do
+    local mason = L "mason-registry"
+    local cmp_lsp = L "cmp_lsp"
+    for server, config in pairs(lsp_utils.servers(mason)) do
       config.on_attach = custom_attach
-      config.capabilities = lsp_utils.get_lsp_capabilities()
+      config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
       nvim_lsp[server].setup(config)
     end
 

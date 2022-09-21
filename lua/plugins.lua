@@ -172,15 +172,16 @@ require("packer").startup {
         packer.compile()
         vim.notify_once(
           "==================================\n"
-          .. "    Plugins are being installed\n"
-          .. "    Wait until Packer completes,\n"
-          .. "       then restart nvim.\n"
-          .. "==================================\n"
-          .. "\n"
-          .. ">> For language support please install\n"
-          .. ">> grammers via the TSInstall command\n"
-          .. ">> on next startup\n",
-          vim.log.levels.WARN)
+            .. "    Plugins are being installed\n"
+            .. "    Wait until Packer completes,\n"
+            .. "       then restart nvim.\n"
+            .. "==================================\n"
+            .. "\n"
+            .. ">> For language support please install\n"
+            .. ">> grammers via the TSInstall command\n"
+            .. ">> on next startup\n",
+          vim.log.levels.WARN
+        )
       end)
     end
   end,
@@ -189,6 +190,12 @@ require("packer").startup {
     compile_path = fn.stdpath "config" .. "/lua/packer_compiled.lua",
   },
 }
+
+-- adding plugin folder to package path so we can require from it
+local plugin_path = fn.stdpath "config" .. "/plugin/"
+if not package.path:find(plugin_path) then
+  package.path = plugin_path .. "?.lua;" .. package.path
+end
 
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer = vim.api.nvim_create_augroup("Packer", { clear = true })

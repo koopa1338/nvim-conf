@@ -1,12 +1,12 @@
 local M = {}
 
 local proto = vim.lsp.protocol
-M.get_lsp_capabilities = function()
+M.get_lsp_capabilities = function(cmp_lsp)
   local capabilities = proto.make_client_capabilities()
   -- nvim-cmp supports additional completion capabilities
-  L("cmp_nvim_lsp", function(cmp_lsp)
+  if cmp_lsp then
     capabilities = cmp_lsp.update_capabilities(proto.make_client_capabilities())
-  end)
+  end
 
   return capabilities
 end
@@ -17,7 +17,7 @@ M.notify_unsupported_lsp = function(message, title)
   vim.notify(message, log_lvl.INFO, { title = title or unsupported_title })
 end
 
-M.servers = function()
+M.servers = function(mason)
   local server_configs = {}
   L("lsp_custom", function(custom)
     for lsp, config in pairs(custom) do
@@ -25,7 +25,7 @@ M.servers = function()
     end
   end)
 
-  L("mason-registry", function(mason)
+  if mason then
     for _, v in pairs(mason.get_installed_packages()) do
       if Contains(v.spec.categories, "LSP") then
         if v.name then
@@ -37,7 +37,7 @@ M.servers = function()
         end
       end
     end
-  end)
+  end
 
   return server_configs
 end

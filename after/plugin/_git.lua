@@ -24,11 +24,11 @@ L("gitsigns", function(gitsigns)
   -- git signs
   gitsigns.setup {
     signs = {
-      add = Get_sign_def("GitSignsLineColAdd"),
-      change = Get_sign_def("GitSignsLineColChange"),
-      delete = Get_sign_def("GitSignsLineColDelete"),
-      topdelete = Get_sign_def("GitSignsLineColTopdelete"),
-      changedelete = Get_sign_def("GitSignsLineColChangedelete"),
+      add = Get_sign_def "GitSignsLineColAdd",
+      change = Get_sign_def "GitSignsLineColChange",
+      delete = Get_sign_def "GitSignsLineColDelete",
+      topdelete = Get_sign_def "GitSignsLineColTopdelete",
+      changedelete = Get_sign_def "GitSignsLineColChangedelete",
     },
     numhl = true,
     linehl = false,
