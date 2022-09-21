@@ -18,7 +18,7 @@ L("alpha", function(alpha)
   dashboard.section.buttons.val = {
     dashboard.button("e", "  New file", "<cmd>enew<CR>"),
     dashboard.button("1", "ﮮ  Update Plugins", "<cmd>PackerSync<CR>"),
-    dashboard.button("2", "ﮮ  Update Treesitter", "<cmd>TSUpdateSync<CR>"),
+    dashboard.button("2", "ﮮ  Update Treesitter", "<cmd>TSUpdate<CR>"),
     dashboard.button("3", "ﯟ  Mason", "<cmd>Mason<CR>"),
     dashboard.button("4", "✙  Check", "<cmd>checkhealth<CR>"),
     dashboard.button("q", "  Quit NVIM", ":qa<CR>"),

@@ -168,7 +168,8 @@ require("packer").startup {
 
     if is_bootstrap then
       L("packer", function(packer)
-        packer.sync()
+        packer.install()
+        packer.compile()
         vim.notify_once(
           "==================================\n"
           .. "    Plugins are being installed\n"
