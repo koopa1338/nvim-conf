@@ -77,5 +77,9 @@ Get_theme_hl = function(name)
 end
 
 Get_sign_def = function(name)
-  return vim.fn.sign_getdefined(name)[1]
+  local result = vim.fn.sign_getdefined(name)
+  if #result > 0 then
+    return result[1]
+  end
+  return {}
 end
