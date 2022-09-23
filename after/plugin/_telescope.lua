@@ -63,9 +63,6 @@ L("telescope", function(telescope)
       man_pages = {
         layout_strategy = "vertical",
       },
-      current_buffer_fuzzy_find = {
-        previewer = false,
-      },
     },
     extensions = {
       ["ui-select"] = {
