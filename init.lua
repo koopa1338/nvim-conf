@@ -43,7 +43,7 @@ o.timeout = true
 o.ttimeout = false
 o.backspace = { "indent", "eol", "start" }
 o.showmatch = true
-o.whichwrap = "b,s,h,l,<,>,<,>"
+o.whichwrap:append "b,s,h,l,<,>,<,>"
 o.scrolljump = 10
 o.scrolloff = 5
 o.mouse = "a"
@@ -53,7 +53,7 @@ o.cmdheight = 2
 o.hidden = true
 o.confirm = true
 o.signcolumn = "yes"
-o.path = o.path + "**"
+o.path:append "**"
 o.undodir = fn.expand "~/.config/nvim/undodir"
 o.undofile = true
 o.inccommand = "split"
@@ -84,9 +84,9 @@ o.wildmenu = true
 o.wildmode = { "longest:full", "full" }
 o.wildoptions = "pum"
 o.completeopt = { "menuone", "noinsert", "noselect" }
-o.cpoptions = o.cpoptions + "n"
+o.cpoptions:append "n"
 o.infercase = false
-o.shortmess = o.shortmess + "c"
+o.shortmess:append "c"
 
 -- formatting
 o.wrap = true
