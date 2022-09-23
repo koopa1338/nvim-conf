@@ -1,5 +1,6 @@
 lua/packer_compiled.lua
 lua/plugins_custom.lua
 lua/settings_custom.lua
-lua/lsp_custom.lua
+plugin/lsp_custom.lua
+plugin/dap_custom.lua
 undodir/*

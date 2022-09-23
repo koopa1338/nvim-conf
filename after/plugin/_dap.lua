@@ -80,26 +80,8 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   vim.opt.ls = 2
 end
 
-dap.adapters.lldb = {
-  type = "executable",
-  command = "lldb-vscode", -- adjust as needed, must be absolute path
-  name = "lldb",
-}
 
-dap.configurations.rust = {
-  {
-    name = "Launch",
-    type = "lldb",
-    request = "launch",
-    program = function()
-      return vim.fn.input {
-        prompt = "Target: ",
-        default = vim.fn.getcwd() .. "/target/",
-        completion = "file_in_path",
-      }
-    end,
-    cwd = "${workspaceFolder}",
-    stopOnEntry = false,
-    args = {},
-  },
-}
+L("dap_custom", function(du)
+  dap.adapters = du.adapters
+  dap.configurations = du.configurations
+end)

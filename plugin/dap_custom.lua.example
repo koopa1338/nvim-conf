@@ -1,0 +1,35 @@
+local M = {}
+
+M.adapters = {
+  lldb = {
+    type = "executable",
+    command = "lldb-vscode",
+    name = "lldb",
+  },
+}
+
+M.configurations = {
+  rust = {
+    {
+      name = "Launch",
+      type = "lldb",
+      request = "launch",
+      program = function()
+        return coroutine.create(function(dap_run_co)
+          vim.ui.input({
+            prompt = "Target: ",
+            default = vim.fn.getcwd() .. "/target/"
+            completion = "file",
+          }, function(input)
+            coroutine.resume(dap_run_co, input)
+          end)
+        end)
+      end,
+      cwd = "${workspaceFolder}",
+      stopOnEntry = false,
+      args = {},
+    },
+  },
+}
+
+return M
