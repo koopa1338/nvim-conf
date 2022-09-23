@@ -42,12 +42,6 @@ L("telescope", function(telescope)
       prompt_prefix = "🔎  ",
     },
     pickers = {
-      fd = {
-        theme = "ivy",
-      },
-      git_files = {
-        theme = "ivy",
-      },
       marks = {
         theme = "ivy",
       },
