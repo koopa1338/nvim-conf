@@ -15,7 +15,7 @@ L("trouble", function(trouble)
 
   L("which-key", function(wk)
     wk.register({
-      D = {
+      d = {
         name = "+Diagnostics",
         b = { "Show document diagnostics" },
         d = { "Show workspace diagnostics" },
