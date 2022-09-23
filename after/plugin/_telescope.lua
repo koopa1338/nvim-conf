@@ -65,8 +65,15 @@ L("telescope", function(telescope)
       },
     },
     extensions = {
-      ["ui-select"] = {
+      ["ui-input"] = {
         require("telescope.themes").get_cursor {},
+      },
+      ["ui-select"] = {
+        require("telescope.themes").get_dropdown {
+          layout_config = {
+            height = 0.5,
+          },
+        }
 
         -- pseudo code / specification for writing custom displays, like the one
         -- for "codeactions"
