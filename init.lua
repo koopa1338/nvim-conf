@@ -52,7 +52,7 @@ o.updatetime = 100
 o.cmdheight = 2
 o.hidden = true
 o.confirm = true
-o.signcolumn = "yes"
+o.signcolumn = "auto:3"
 o.path:append "**"
 o.undodir = fn.expand "~/.config/nvim/undodir"
 o.undofile = true

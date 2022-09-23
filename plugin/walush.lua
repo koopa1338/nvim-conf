@@ -92,7 +92,7 @@ L("lush", function(lush)
       StatusLine { fg = xres.color15, bg = xres.color8, gui = "bold" },
       StatusLineNC { fg = xres.color15, bg = xres.color8 },
       Comment { fg = xres.color4, bg = xres.color0 },
-      SignColumn { fg = xres.color12, bg = xres.color8 },
+      SignColumn { fg = xres.color12, bg = xres.none },
       VertSplit { fg = xres.color0, bg = xres.color8, gui = "reverse" },
       Title { fg = xres.fg.lighten(25), bg = xres.bg },
       WildMenu { fg = xres.color0, bg = xres.color11 },
