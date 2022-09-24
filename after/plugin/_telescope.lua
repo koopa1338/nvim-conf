@@ -73,7 +73,7 @@ L("telescope", function(telescope)
           layout_config = {
             height = 0.5,
           },
-        }
+        },
 
         -- pseudo code / specification for writing custom displays, like the one
         -- for "codeactions"

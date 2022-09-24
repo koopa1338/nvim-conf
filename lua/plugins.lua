@@ -170,18 +170,17 @@ require("packer").startup {
       L("packer", function(packer)
         packer.install()
         packer.compile()
-        vim.notify_once(
-          "==================================\n"
-            .. "    Plugins are being installed\n"
-            .. "    Wait until Packer completes,\n"
-            .. "       then restart nvim.\n"
-            .. "==================================\n"
-            .. "\n"
-            .. ">> For language support please install\n"
-            .. ">> grammers via the TSInstall command\n"
-            .. ">> on next startup\n",
-          vim.log.levels.WARN
-        )
+        vim.api.nvim_echo({
+          { "==================================\n", "Special" },
+          { "    Plugins are being installed   \n", "Special" },
+          { "    Wait until Packer completes,  \n", "Special" },
+          { "       then restart nvim.         \n", "Special" },
+          { "==================================\n\n", "Special" },
+
+          { ">> For language support please install << \n", "Normal" },
+          { ">> grammers via the TSInstall command  << \n", "Normal" },
+          { ">> on next startup                     << \n", "Normal" },
+        }, false, {})
       end)
     end
   end,
