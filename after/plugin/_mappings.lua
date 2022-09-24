@@ -68,7 +68,7 @@ L("which-key", function(wk)
   wk.register({
     b = {
       name = "+buffers",
-      o = { "Open Previous Buffer" },
+      p = { "Open Previous Buffer" },
       d = { "Delete current Buffer" },
       D = { "Delete all other Buffers" },
       w = { "Wipeout current Buffer" },
