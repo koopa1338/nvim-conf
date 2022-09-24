@@ -2,6 +2,7 @@ Map("n", "<Esc>", ":nohl<CR>", { silent = true, remap = false })
 Map("n", "<C-c>", "<Esc>", { silent = true, remap = false })
 
 -- buffers
+Map("n", "<leader>bp", ":b#<CR>", { silent = true, remap = false })
 Map("n", "<leader>bd", ":bdelete<CR>", { silent = true, remap = false })
 Map("n", "<leader>bD", ":%bdelete<CR>", { silent = true, remap = false })
 Map("n", "<leader>BD", ":.+,$bdelete<CR>", { silent = true, remap = false })
@@ -67,6 +68,7 @@ L("which-key", function(wk)
   wk.register({
     b = {
       name = "+buffers",
+      o = { "Open Previous Buffer" },
       d = { "Delete current Buffer" },
       D = { "Delete all other Buffers" },
       w = { "Wipeout current Buffer" },
