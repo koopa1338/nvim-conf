@@ -30,7 +30,7 @@ Map("n", "<leader>Dt", function()
 end, { silent = true })
 
 Map("n", "<leader>Do", dap.step_over, { silent = true })
-Map("n", "<leader>Dg", dap.goto_, { silent = true })
+Map("n", "<leader>Dg", dap.run_to_cursor, { silent = true })
 
 Map("n", "<leader>Dl", dap.step_into, { silent = true })
 Map("n", "<leader>Dh", dap.step_out, { silent = true })
@@ -65,9 +65,6 @@ L("which-key", function(wk)
   }, { prefix = "<leader>" })
 end)
 
--- TODO: setup configurations for debug options
--- dap.configuration.rust = {}
-
 -- setting up debugger ui
 dapui.setup {
   layouts = {
@@ -79,6 +76,9 @@ dapui.setup {
       size = 50,
       position = "left",
     },
+  },
+  floating = {
+    border = vim.g.border_type,
   },
 }
 
@@ -96,7 +96,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   vim.opt.ls = 2
 end
 
-
+-- load debugger adapters and configurations
 L("dap_custom", function(du)
   dap.adapters = du.adapters
   dap.configurations = du.configurations
