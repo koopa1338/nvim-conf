@@ -60,8 +60,8 @@ L("which-key", function(wk)
       j = { "Debug Step Down" },
       r = { "Toggle Debug REPL" },
       D = { "Disconnect Debugger" },
-      ["<M-d"] = { "Continue Debugger" },
     },
+    ["<M-d>"] = { "Continue Debugger" },
   }, { prefix = "<leader>" })
 end)
 
