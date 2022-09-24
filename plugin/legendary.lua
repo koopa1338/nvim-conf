@@ -1,4 +1,5 @@
 L("legendary", function(legendary)
+  -- this has to run before any which-key register events.
   legendary.setup()
 
   Map("n", "<leader>sa", ":Legendary autocmds<CR>", { silent = true })
