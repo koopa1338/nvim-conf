@@ -12,6 +12,42 @@ end
 L("telescope", function(telescope)
   local actions = require "telescope.actions"
   local previewers = require "telescope.previewers"
+  local builtin = require "telescope.builtin"
+  local themes = require "telescope.themes"
+
+  local grep_selection = function()
+    local start_table = vim.fn.getpos(".")
+    local end_table = vim.fn.getpos("v")
+    local selection = {
+      start_pos = {
+        row = end_table[2] - 1,
+        col = end_table[3] - 1,
+      },
+      end_pos = {
+        row = start_table[2] - 1,
+        col = start_table[3],
+      },
+    }
+    if selection.start_pos.row ~= selection.end_pos.row then
+      vim.notify(
+        "Only single line selection are supported for live grep.",
+        vim.log.levels.ERROR,
+        { title = "Invalid selection" }
+      )
+      return
+    end
+
+    local text = vim.api.nvim_buf_get_text(
+      0,
+      selection.start_pos.row,
+      selection.start_pos.col,
+      selection.end_pos.row,
+      selection.end_pos.col,
+      {}
+    )
+
+    builtin.grep_string({ search = text[1] })
+  end
 
   telescope.setup {
     defaults = {
@@ -66,10 +102,10 @@ L("telescope", function(telescope)
     },
     extensions = {
       ["ui-input"] = {
-        require("telescope.themes").get_cursor {},
+        themes.get_cursor {},
       },
       ["ui-select"] = {
-        require("telescope.themes").get_dropdown {
+        themes.get_dropdown {
           layout_config = {
             height = 0.5,
           },
@@ -105,7 +141,8 @@ L("telescope", function(telescope)
   Map("n", "<leader>ff", ":Telescope fd hidden=true<CR>", { silent = true })
   Map("n", "<leader>FF", ":Telescope fd hidden=true no_ignore=true<CR>", { silent = true })
   Map("n", "<leader>fr", ":Telescope live_grep<CR>", { silent = true })
-  Map({ "v", "n" }, "<leader>f*", ":Telescope grep_string<CR>", { silent = true })
+  Map("n", "<leader>f*", ":Telescope grep_string<CR>", { silent = true })
+  Map("v", "<leader>f*", grep_selection, { silent = true })
   Map("n", "<leader>fR", ":Telescope registers<CR>", { silent = true })
   Map("n", "<leader>bb", ":Telescope buffers<CR>", { silent = true })
   Map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>", { silent = true })
