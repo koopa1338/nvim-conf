@@ -157,3 +157,5 @@ api.nvim_create_autocmd({ "BufRead" }, {
     Map("n", "<leader>cD", crates.open_documentation, opts)
   end,
 })
+
+L"aucmds_custom"

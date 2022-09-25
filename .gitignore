@@ -3,4 +3,5 @@ lua/plugins_custom.lua
 lua/settings_custom.lua
 plugin/lsp_custom.lua
 plugin/dap_custom.lua
+plugin/aucmds_custom.lua
 undodir/*
