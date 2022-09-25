@@ -29,8 +29,8 @@ L("nvim-treesitter.configs", function(config)
           ["if"] = "@function.inner",
           ["ac"] = "@class.outer",
           ["ic"] = "@class.inner",
-          ["ab"] = "@block.outer",
-          ["ib"] = "@block.inner",
+          ["as"] = "@block.outer",
+          ["is"] = "@block.inner",
         },
       },
       swap = {
