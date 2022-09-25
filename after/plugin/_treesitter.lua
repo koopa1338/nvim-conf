@@ -20,26 +20,35 @@ L("nvim-treesitter.configs", function(config)
       enable = true,
     },
     textobjects = {
+      lsp_interop = {
+        enable = true,
+        border = vim.g.border_type,
+        peek_definition_code = {
+          ["<leader>pf"] = "@function.outer",
+          ["<leader>pc"] = "@class.outer",
+          ["<leader>ps"] = "@block.outer",
+        },
+      }, 'none',
       select = {
         enable = true,
         lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
         keymaps = {
           -- You can use the capture groups defined in textobjects.scm
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
-          ["as"] = "@block.outer",
-          ["is"] = "@block.inner",
+          ["af"] = { query = "@function.outer", desc = "Around function" },
+          ["if"] = { query = "@function.inner", desc = "Inside function" },
+          ["ac"] = { query = "@class.outer", desc = "Around class" },
+          ["ic"] = { query = "@class.inner", desc = "Inside class" },
+          ["as"] = { query = "@block.outer", desc = "Around scope" },
+          ["is"] = { query = "@block.inner", desc = "Inside scope" },
         },
       },
       swap = {
         enable = true,
         swap_next = {
-          ["<leader>p"] = "@parameter.inner",
+          ["<M-s>"] = "@parameter.inner",
         },
         swap_previous = {
-          ["<leader>P"] = "@parameter.inner",
+          ["<leader><M-s>"] = "@parameter.inner",
         },
       },
     },
@@ -47,8 +56,16 @@ L("nvim-treesitter.configs", function(config)
 
   L("which-key", function(wk)
     wk.register({
-      p = { "Swap Previous Parameter" },
-      P = { "Swap Next Parameter" },
-    }, { prefix = "<leader>" })
+      ["<leader>"] = {
+        p = {
+          name = "+peek",
+          f = { "Peek outer function" },
+          c = { "Peek outer class" },
+          s = { "Peek outer scope" },
+        },
+        ["<M-s>"] = { "Swap with next parameter" },
+      },
+      ["<M-s>"] = { "Swap with previous parameter" },
+    })
   end)
 end)
