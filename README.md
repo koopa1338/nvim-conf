@@ -30,3 +30,14 @@ install shorthand with `:MasonInstall <language server name>`. If you want
 custom options or didn't install the server via mason you have to add it to
 `lsp_custom.lua` (see `lsp_custom.lua.example`)
 
+### Custom settings
+
+there are some files that are sourced for custom options (example files are provided):
+- in `lua/`
+    - `plugins_custom.lua` for additional custom plugins you want to use
+    - `settings_custom.lua` for any options you want to add or overwrite from the `init.lua`
+
+- in `plugin/`
+    - `lsp_custom.lua` configuration of language server you want to customize or language servers you haven't install with `Mason`
+    - `dap_custom.lua` for debug adapters and configurations the `dap` plugin is using
+    - `aucmds_custom.lua` add any additional autocommands you like in here.

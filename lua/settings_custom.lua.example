@@ -1,0 +1,5 @@
+local o = vim.opt
+
+-- disables whichkey, we can still use legendary to find mappings
+o.timeout = false
+
