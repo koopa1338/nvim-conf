@@ -52,7 +52,10 @@ require("packer").startup {
       requires = { "nvim-treesitter/nvim-treesitter" },
       after = "nvim-treesitter",
     }
-    use "nvim-lua/telescope.nvim"
+    use {
+      "nvim-lua/telescope.nvim",
+      branch = "0.1.x",
+    }
     use {
       "nvim-telescope/telescope-fzf-native.nvim",
       run = "make",
