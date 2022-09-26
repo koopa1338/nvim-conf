@@ -158,4 +158,4 @@ api.nvim_create_autocmd({ "BufRead" }, {
   end,
 })
 
-L"aucmds_custom"
+L "aucmds_custom"

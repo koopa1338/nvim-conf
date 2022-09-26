@@ -28,7 +28,8 @@ L("nvim-treesitter.configs", function(config)
           ["<leader>pc"] = "@class.outer",
           ["<leader>ps"] = "@block.outer",
         },
-      }, 'none',
+      },
+      "none",
       select = {
         enable = true,
         lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
@@ -55,7 +56,7 @@ L("nvim-treesitter.configs", function(config)
   }
 
   L("which-key", function(wk)
-    wk.register({
+    wk.register {
       ["<leader>"] = {
         p = {
           name = "+peek",
@@ -66,6 +67,6 @@ L("nvim-treesitter.configs", function(config)
         ["<M-s>"] = { "Swap with next parameter" },
       },
       ["<M-s>"] = { "Swap with previous parameter" },
-    })
+    }
   end)
 end)

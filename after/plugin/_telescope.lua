@@ -16,8 +16,8 @@ L("telescope", function(telescope)
   local themes = require "telescope.themes"
 
   local grep_selection = function()
-    local start_table = vim.fn.getpos(".")
-    local end_table = vim.fn.getpos("v")
+    local start_table = vim.fn.getpos "."
+    local end_table = vim.fn.getpos "v"
     local selection = {
       start_pos = {
         row = end_table[2] - 1,
@@ -46,7 +46,7 @@ L("telescope", function(telescope)
       {}
     )
 
-    builtin.grep_string({ search = text[1] })
+    builtin.grep_string { search = text[1] }
   end
 
   telescope.setup {
