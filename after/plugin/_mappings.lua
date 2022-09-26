@@ -43,6 +43,8 @@ Map({ "n", "v" }, "L", "$", {})
 
 Map("n", "<M-o>", ":cn<CR>", {})
 Map("n", "<M-i>", ":cp<CR>", {})
+Map("n", "<C-M-o>", ":lne<CR>", {})
+Map("n", "<C-M-i>", ":lp<CR>", {})
 
 -- Reselect visual block after indent
 Map("v", "<", "<gv", {})
