@@ -28,6 +28,7 @@ L("telescope", function(telescope)
         col = start_table[3],
       },
     }
+
     if selection.start_pos.row ~= selection.end_pos.row then
       vim.notify(
         "Only single line selection are supported for live grep.",
@@ -37,16 +38,21 @@ L("telescope", function(telescope)
       return
     end
 
-    local text = vim.api.nvim_buf_get_text(
-      0,
-      selection.start_pos.row,
-      selection.start_pos.col,
-      selection.end_pos.row,
-      selection.end_pos.col,
-      {}
-    )
+    local start = selection[1]
+    local last = selection[2]
+    if selection.start_pos.col > selection.end_pos.col then
+      start = selection[2]
+      last = selection[1]
+    end
 
-    builtin.grep_string { search = text[1] }
+    local search = vim.api.nvim_buf_get_text(0, start.row, start.col, last.row, last.col, {})
+
+    if search then
+      builtin.grep_string { search = search[1] }
+      return
+    end
+
+    vim.notify("Search didn't had any result.", vim.log.levels.ERROR, { title = "Invalid selection" })
   end
 
   telescope.setup {
