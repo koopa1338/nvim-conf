@@ -16,7 +16,7 @@ L("dressing", function(dressing)
       end,
     },
     select = {
-      enabled = false,
+      enabled = true,
     },
   }
 end)

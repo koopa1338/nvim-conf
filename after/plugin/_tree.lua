@@ -20,6 +20,7 @@ L("nvim-tree", function(tree)
         },
       },
     },
+    select_prompts = true,
     disable_netrw = true,
     open_on_setup = false,
     ignore_ft_on_setup = { "alpha" },
