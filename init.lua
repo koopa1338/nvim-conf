@@ -124,7 +124,7 @@ g.snippets = "luasnip"
 g.border_type = "rounded" -- supported: rounded, single, double
 
 if fn.has "windows" then
-  o.fillchars = "vert:┃,eob:￭,diff:☷"
+  o.fillchars = "vert:┃,eob:￭,diff:╱"
 end
 
 L "settings_custom"
