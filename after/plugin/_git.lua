@@ -124,8 +124,7 @@ L("diffview", function(diffview)
         disable_defaults = false, -- Disable the default key bindings
         -- The `view` bindings are active in the diff buffers, only when the current
         -- tabpage is a Diffview.
-        panel = {
-        },
+        panel = {},
         view = {
           ["<tab>"] = actions.select_next_entry, -- Open the diff for the next file
           ["<s-tab>"] = actions.select_prev_entry, -- Open the diff for the previous file

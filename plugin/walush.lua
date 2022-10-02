@@ -48,7 +48,7 @@ L("lush", function(lush)
       DiffAdd { fg = xres.None, bg = hsl "#002800" }, -- DiffAdd    xxx ctermfg=0 ctermbg=4 guibg=DarkBlue
       DiffDelete { fg = xres.None, bg = hsl "#3f0001" }, -- DiffDelete xxx ctermfg=0 ctermbg=6 gui=bold guifg=Blue guibg=DarkCyan
       DiffChange { fg = xres.None, bg = DiffDelete.bg.ro(50).darken(10) }, -- DiffChange xxx ctermfg=0 ctermbg=5 guibg=DarkMagenta
-      DiffText { fg = xres.None, bg = DiffChange.bg.lighten(10)}, -- DiffText   xxx cterm=bold ctermfg=0 ctermbg=9 gui=bold guibg=Red
+      DiffText { fg = xres.None, bg = DiffChange.bg.lighten(10) }, -- DiffText   xxx cterm=bold ctermfg=0 ctermbg=9 gui=bold guibg=Red
 
       -- Diagnostics
       DiagnosticError { fg = DiffDelete.bg.lighten(35) }, -- DiagnosticError            xxx ctermfg=1 guifg=Red
