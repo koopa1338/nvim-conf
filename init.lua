@@ -81,7 +81,7 @@ o.smartcase = true
 
 -- wildmenu
 o.wildmenu = true
-o.wildmode = { "longest:full", "full" }
+o.wildmode = { longest = "full", "full" }
 o.wildoptions = "pum"
 o.completeopt = { "menuone", "noinsert", "noselect" }
 o.cpoptions:append "n"
@@ -99,10 +99,10 @@ o.joinspaces = false
 o.splitright = true
 o.splitbelow = true
 o.laststatus = 2
-o.comments = "sl:/*,mb:*,elx:*/"
+o.comments = { sl = "/*", mb = "*", elx = "*/" }
 o.linebreak = true
 o.breakindent = true
-o.breakindentopt = "shift:2"
+o.breakindentopt = { shift = "2" }
 
 -- Plugin settings
 
@@ -124,7 +124,7 @@ g.snippets = "luasnip"
 g.border_type = "rounded" -- supported: rounded, single, double
 
 if fn.has "windows" then
-  o.fillchars = "vert:┃,eob:￭,diff:╱"
+  o.fillchars = { vert = "┃", eob = "￭", diff = "╱" }
 end
 
 L "settings_custom"
