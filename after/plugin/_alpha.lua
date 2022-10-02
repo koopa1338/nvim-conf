@@ -21,7 +21,7 @@ L("alpha", function(alpha)
     dashboard.button("2", "ﮮ  Update Treesitter", "<cmd>TSUpdate<CR>"),
     dashboard.button("3", "ﯟ  Mason", "<cmd>Mason<CR>"),
     dashboard.button("4", "✙  Check", "<cmd>checkhealth<CR>"),
-    dashboard.button("q", "  Quit NVIM", ":qa<CR>"),
+    dashboard.button("q", "  Quit NVIM", "<cmd>qa<CR>"),
   }
 
   alpha.setup(dashboard.opts)

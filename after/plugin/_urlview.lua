@@ -3,14 +3,14 @@ L("urlview", function(urlview)
     default_action = "system",
   }
 
-  Map("n", "<leader>uu", ":UrlView<CR>", { silent = true })
+  Map("n", "<leader>uu", "<cmd>UrlView<CR>", { silent = true })
   Map("n", "<leader>uf", function()
     vim.ui.input({ prompt = "File path: " }, function(input)
       urlview.search("file", { filepath = input })
     end)
   end, { silent = true })
-  Map("n", "<leader>uj", ":UrlView jira<CR>", { silent = true })
-  Map("n", "<leader>up", ":UrlView packer<CR>", { silent = true })
+  Map("n", "<leader>uj", "<cmd>UrlView jira<CR>", { silent = true })
+  Map("n", "<leader>up", "<cmd>UrlView packer<CR>", { silent = true })
 
   L("which-key", function(wk)
     wk.register({

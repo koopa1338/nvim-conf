@@ -93,7 +93,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.documentSymbolProvider then
-        Map("n", "<leader>lts", ":Telescope lsp_document_symbols<CR>", { silent = true })
+        Map("n", "<leader>lts", "<cmd>Telescope lsp_document_symbols<CR>", { silent = true })
       else
         Map("n", "<leader>lts", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support showing document symbols"
@@ -101,7 +101,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.workspaceSymbolProvider then
-        Map("n", "<leader>ltS", ":Telescope lsp_workspace_symbols<CR>", { silent = true })
+        Map("n", "<leader>ltS", "<cmd>Telescope lsp_workspace_symbols<CR>", { silent = true })
       else
         Map("n", "<leader>ltS", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support showing workspace symbols"
@@ -109,7 +109,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.referencesProvider then
-        Map("n", "<leader>ltr", ":Telescope lsp_references<CR>", { silent = true })
+        Map("n", "<leader>ltr", "<cmd>Telescope lsp_references<CR>", { silent = true })
       else
         Map("n", "<leader>ltr", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support showing references"
@@ -117,7 +117,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.implementationProvider then
-        Map("n", "<leader>lti", ":Telescope lsp_implementations<CR>", { silent = true })
+        Map("n", "<leader>lti", "<cmd>Telescope lsp_implementations<CR>", { silent = true })
       else
         Map("n", "<leader>lti", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support showing implementations"

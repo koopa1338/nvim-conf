@@ -7,11 +7,11 @@ L("trouble", function(trouble)
     height = 15,
   }
 
-  Map("n", "<leader>dd", ":Trouble<CR>", { silent = true })
-  Map("n", "<leader>db", ":Trouble document_diagnostics<CR>", { silent = true })
-  Map("n", "<leader>dq", ":Trouble quickfix<CR>", { silent = true })
-  Map("n", "<leader>dl", ":Trouble loclist<CR>", { silent = true })
-  Map("n", "<leader>dr", ":TroubleRefresh<CR>", { silent = true })
+  Map("n", "<leader>dd", "<cmd>Trouble<CR>", { silent = true })
+  Map("n", "<leader>db", "<cmd>Trouble document_diagnostics<CR>", { silent = true })
+  Map("n", "<leader>dq", "<cmd>Trouble quickfix<CR>", { silent = true })
+  Map("n", "<leader>dl", "<cmd>Trouble loclist<CR>", { silent = true })
+  Map("n", "<leader>dr", "<cmd>TroubleRefresh<CR>", { silent = true })
 
   L("which-key", function(wk)
     wk.register({
