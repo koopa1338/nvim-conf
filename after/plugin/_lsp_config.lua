@@ -61,8 +61,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.codeActionProvider then
-        Map("n", "<leader>lca", vim.lsp.buf.code_action, opts)
-        Map("v", "<leader>lca", vim.lsp.buf.range_code_action, opts)
+        Map({ "n", "v" }, "<leader>lca", vim.lsp.buf.code_action, opts)
       else
         Map({ "n", "v" }, "<leader>lca", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support code actions"
