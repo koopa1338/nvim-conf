@@ -35,13 +35,7 @@ require("packer").startup {
 
     -- movement and search
     use "markonm/traces.vim"
-    use {
-      "tpope/vim-scriptease",
-      cmd = {
-        "Messages", --view messages in quickfix list
-        "Verbose", -- view verbose output in preview window.
-      },
-    }
+    use "AckslD/messages.nvim"
     use "nacro90/numb.nvim"
 
     -- searching and file browsing
