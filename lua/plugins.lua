@@ -155,6 +155,7 @@ require("packer").startup {
     use "jghauser/mkdir.nvim"
     use "gelguy/wilder.nvim"
     use "romgrk/fzy-lua-native"
+    use "uga-rosa/ccc.nvim" -- color picker
 
     -- custom plugins
     L("plugins_custom", function(plugins_custom)
