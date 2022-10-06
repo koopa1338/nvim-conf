@@ -1,6 +1,7 @@
 L("urlview", function(urlview)
   urlview.setup {
     default_action = "system",
+    picker = "telescope",
   }
 
   Map("n", "<leader>uu", "<cmd>UrlView<CR>", { silent = true })

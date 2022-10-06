@@ -140,10 +140,6 @@ L("telescope", function(telescope)
   telescope.load_extension "notify"
   telescope.load_extension "ui-select"
 
-  L("urlview", function()
-    telescope.load_extension "urlview"
-  end)
-
   Map("n", "<leader>fg", "<cmd>Telescope git_files<CR>", { silent = true })
   Map("n", "<leader>ff", "<cmd>Telescope fd hidden=true<CR>", { silent = true })
   Map("n", "<leader>FF", "<cmd>Telescope fd hidden=true no_ignore=true<CR>", { silent = true })
