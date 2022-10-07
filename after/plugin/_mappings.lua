@@ -9,6 +9,9 @@ Map("n", "<leader>BD", "<cmd>.+,$bdelete<CR>", { silent = true, remap = false })
 Map("n", "<leader>bw", "<cmd>bwipeout<CR>", { silent = true, remap = false })
 Map("n", "<leader>bW", "<cmd>%bwipeout<CR>", { silent = true, remap = false })
 Map("n", "<leader>BW", "<cmd>.+,$bwipeout<CR>", { silent = true, remap = false })
+Map("n", "<leader>bmm", "<cmd>bmodified<CR>", { silent = true, remap = false })
+Map("n", "<leader>bmx", "<cmd>sbmodified<CR>", { silent = true, remap = false })
+Map("n", "<leader>bmv", "<cmd>vertical sbmodified<CR>", { silent = true, remap = false })
 
 -- windows
 Map("n", "<leader>wo", "<cmd>only<CR>", { silent = true, remap = false })
