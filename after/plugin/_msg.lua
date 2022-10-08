@@ -1,7 +1,4 @@
 L("messages", function(msg)
-  -- TODO:
-  -- * set custom filetype to map q to close
-  -- * set buffer readonly
   msg.setup {
     prepare_buffer = function(opts)
       local buf = vim.api.nvim_create_buf(false, true)
@@ -23,6 +20,10 @@ L("messages", function(msg)
         border = vim.g.border_type,
         zindex = 1,
       }
+    end,
+    post_open_float = function(_)
+      local buf = vim.api.nvim_get_current_buf()
+      vim.api.nvim_buf_set_option(buf, "modifiable", false)
     end,
   }
 
