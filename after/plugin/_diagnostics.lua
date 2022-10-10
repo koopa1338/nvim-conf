@@ -8,7 +8,7 @@ vim.diagnostic.config {
   severity_sort = true,
 }
 
-local ns = vim.api.nvim_create_namespace('severe-diagnostics')
+local ns = vim.api.nvim_create_namespace "severe-diagnostics"
 local orig_signs_handler = vim.diagnostic.handlers.signs
 
 local filter_diagnostics = function(diagnostics)
@@ -20,7 +20,7 @@ local filter_diagnostics = function(diagnostics)
   local tmp = {}
   for _, cur in pairs(diagnostics) do
     if cur and cur.severity then
-        tmp[cur.severity] = cur
+      tmp[cur.severity] = cur
     end
   end
   P(tmp)
