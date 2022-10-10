@@ -3,7 +3,6 @@ L("Comment", function(comment)
     mappings = {
       basic = true,
       extra = true,
-      extended = true,
     },
   }
 end)
