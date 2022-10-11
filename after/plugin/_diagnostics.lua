@@ -23,7 +23,6 @@ local filter_diagnostics = function(diagnostics)
       tmp[cur.severity] = cur
     end
   end
-  P(tmp)
 
   -- return list of diagnostics
   return vim.tbl_values(tmp)
