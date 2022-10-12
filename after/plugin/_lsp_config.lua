@@ -1,10 +1,10 @@
 L("lspconfig", function(nvim_lsp)
   L("lsp_utils", function(lsp_utils)
     -- lsp config
-    local opts = { silent = true }
-    local custom_attach = function(client)
-      vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+    local custom_attach = function(client, bufnr)
+      local opts = { remap = false, silent = true, buffer = bufnr }
       local capabilities = client.server_capabilities
+      vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
       if capabilities.declarationProvider then
         Map("n", "<leader>lD", vim.lsp.buf.declaration, opts)
