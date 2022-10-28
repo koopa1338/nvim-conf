@@ -13,8 +13,8 @@ end
 vim.opt.guifont = "Inconsolata Nerd Font Mono:h14"
 
 local xres = {
-  fg = get_xresources_color "foreground" or "#c5c8c6",
-  bg = get_xresources_color "background" or "#1d1f21",
+  fg = get_xresources_color "foreground" or "#5f819d",
+  bg = get_xresources_color "background" or "#282a2e",
   color0 = get_xresources_color "color0" or "#282a2e",
   color1 = get_xresources_color "color1" or "#a54242",
   color2 = get_xresources_color "color2" or "#8c9440",
