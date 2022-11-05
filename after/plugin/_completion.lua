@@ -64,7 +64,10 @@ cmp.setup {
       col_offset = -3,
       side_padding = 0,
     },
-    documentation = cmp.config.window.bordered(),
+    documentation = {
+      border = vim.g.border_type,
+      max_width = 200,
+    },
   },
   experimental = {
     native_menu = false,
