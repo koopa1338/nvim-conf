@@ -127,7 +127,7 @@ L("lush", function(lush)
       Constant { fg = xres.color11, bg = xres.bg },
       String { Constant },
       Character { Constant },
-      Visual { fg = xres.color0, bg = xres.color14 },
+      Visual { fg = xres.None, bg = xres.color0.lighten(10) },
       Function { fg = xres.color15, bg = xres.bg },
       Special { fg = xres.color9 },
       Tag { Special },
