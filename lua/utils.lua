@@ -63,7 +63,7 @@ Get_theme_hl = function(name)
         for _, key in pairs { "fg", "bg" } do
           local value = tmp[key]
           if value ~= nil and value ~= "NONE" then
-            hl_group[key] = lush.hsl(value.h, value.s, value.l).hex
+            hl_group[key] = tostring(value)
           else
             hl_group[key] = value
           end
