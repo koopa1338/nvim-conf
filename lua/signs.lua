@@ -32,3 +32,7 @@ sign_define(
   "GitSignsLineColChangedelete",
   { hl = "GitSignsChange", text = "易", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" }
 )
+sign_define(
+  "GitSignsLineColUntracked",
+  { hl = "GitSignsAdd", text = "✸", numhl = "GitSignsAddNr", linehl = "GitSignsNrAddLn" }
+)

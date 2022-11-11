@@ -15,6 +15,7 @@ L("gitsigns", function(gitsigns)
       delete = Get_sign_def "GitSignsLineColDelete",
       topdelete = Get_sign_def "GitSignsLineColTopdelete",
       changedelete = Get_sign_def "GitSignsLineColChangedelete",
+      untracked = Get_sign_def "GitSignsLineColUntracked",
     },
     numhl = true,
     linehl = false,
