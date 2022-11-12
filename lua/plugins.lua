@@ -97,7 +97,7 @@ require("packer").startup {
         "onsails/lspkind-nvim",
       },
     }
-    use "L3MON4D3/LuaSnip"
+    use { "L3MON4D3/LuaSnip", after = "nvim-cmp" }
     use "rafamadriz/friendly-snippets"
     use { "michaelb/sniprun", run = "bash install.sh" }
 
