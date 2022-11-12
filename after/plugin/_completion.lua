@@ -127,7 +127,7 @@ cmp.setup {
     -- toggle choices of choice nodes
     ["<C-e>"] = cmp.mapping(function(fallback)
       if luasnip.choice_active() then
-        luasnip.change_choice(1)
+        luasnip.select_choice()
       else
         fallback()
       end
