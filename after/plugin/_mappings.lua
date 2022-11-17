@@ -73,6 +73,9 @@ Map("n", "<leader><leader>m", "<cmd>Messages<CR>", { silent = true })
 -- <C-H> is <C-BS>, see: https://vi.stackexchange.com/questions/16139/s-bs-and-c-bs-mappings-not-working
 Map("i", "<C-H>", "<C-W>", {})
 
+Map("n", "<F1>", "<nop>", { remap = false, silent = true })
+Map({ "i", "" }, "<F1>", "<Esc>", { remap = false, silent = true })
+
 L("which-key", function(wk)
   wk.register({
     b = {
