@@ -140,30 +140,30 @@ L("telescope", function(telescope)
   telescope.load_extension "notify"
   telescope.load_extension "ui-select"
 
-  Map("n", "<leader>fg", "<cmd>Telescope git_files<CR>", { silent = true })
-  Map("n", "<leader>ff", "<cmd>Telescope fd hidden=true<CR>", { silent = true })
-  Map("n", "<leader>FF", "<cmd>Telescope fd hidden=true no_ignore=true<CR>", { silent = true })
-  Map("n", "<leader>fr", "<cmd>Telescope live_grep<CR>", { silent = true })
-  Map("n", "<leader>f*", "<cmd>Telescope grep_string<CR>", { silent = true })
-  Map("v", "<leader>f*", grep_selection, { silent = true })
-  Map("n", "<leader>fR", "<cmd>Telescope registers<CR>", { silent = true })
-  Map("n", "<leader>bb", "<cmd>Telescope buffers<CR>", { silent = true })
-  Map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { silent = true })
-  Map("n", "<leader>fe", "<cmd>Telescope treesitter<CR>", { silent = true })
-  Map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { silent = true })
+  Map("n", "<leader>fg", "<cmd>Telescope git_files<CR>", { silent = true, desc = "Find Git Files" })
+  Map("n", "<leader>ff", "<cmd>Telescope fd hidden=true<CR>", { silent = true, desc = "Find Files" })
+  Map("n", "<leader>FF", "<cmd>Telescope fd hidden=true no_ignore=true<CR>", { silent = true, desc = "Find Files (Hidden + Ignored)" })
+  Map("n", "<leader>fr", "<cmd>Telescope live_grep<CR>", { silent = true, desc = "Find Live Grep" })
+  Map("n", "<leader>f*", "<cmd>Telescope grep_string<CR>", { silent = true, desc = "Grep String" })
+  Map("v", "<leader>f*", grep_selection, { silent = true, desc = "Grep String (preselection)" })
+  Map("n", "<leader>fR", "<cmd>Telescope registers<CR>", { silent = true, desc = "Find Registers" })
+  Map("n", "<leader>bb", "<cmd>Telescope buffers<CR>", { silent = true, desc = "Show open Buffers" })
+  Map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { silent = true, desc = "Fuzzy Find current Buffer" })
+  Map("n", "<leader>fe", "<cmd>Telescope treesitter<CR>", { silent = true, desc = "Find Treesitter Symbols" })
+  Map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { silent = true, desc = "Find Marks" })
 
   -- lsp bindings
-  Map("n", "<leader>ltd", "<cmd>Telescope diagnostics bufnr=0<CR>", { silent = true })
-  Map("n", "<leader>ltD", "<cmd>Telescope diagnostics<CR>", { silent = true })
+  Map("n", "<leader>ltd", "<cmd>Telescope diagnostics bufnr=0<CR>", { silent = true, desc = "Show Local diagnostics" })
+  Map("n", "<leader>ltD", "<cmd>Telescope diagnostics<CR>", { silent = true, desc = "Show Global Diagnostics" })
 
-  Map("n", "<leader><leader>q", "<cmd>Telescope quickfix<CR>", { silent = true })
-  Map("n", "<leader><leader>l", "<cmd>Telescope loclist<CR>", { silent = true })
-  Map("n", "<leader><leader>n", "<cmd>Telescope notify<CR>", { silent = true })
+  Map("n", "<leader><leader>q", "<cmd>Telescope quickfix<CR>", { silent = true, desc = "Show Quickfix" })
+  Map("n", "<leader><leader>l", "<cmd>Telescope loclist<CR>", { silent = true, desc = "Show Location List" })
+  Map("n", "<leader><leader>n", "<cmd>Telescope notify<CR>", { silent = true, desc = "Show Notifications" })
 
-  Map("n", "<leader><leader>M", "<cmd>Telescope man_pages<CR>", { silent = true })
-  Map("n", "<leader><leader>K", "<cmd>Telescope keymaps<CR>", { silent = true })
-  Map("n", "<leader><leader>H", "<cmd>Telescope help_tags<CR>", { silent = true })
-  Map("n", "<leader><leader>T", "<cmd>Telescope resume<CR>", { silent = true })
+  Map("n", "<leader><leader>M", "<cmd>Telescope man_pages<CR>", { silent = true, desc = "Show Man Pages" })
+  Map("n", "<leader><leader>K", "<cmd>Telescope keymaps<CR>", { silent = true, desc = "Show Keymaps" })
+  Map("n", "<leader><leader>H", "<cmd>Telescope help_tags<CR>", { silent = true, desc = "Show Help Tags" })
+  Map("n", "<leader><leader>T", "<cmd>Telescope resume<CR>", { silent = true, desc = "Resume Last Finder" })
 
   L("which-key", function(wk)
     wk.register({
@@ -200,7 +200,7 @@ L("telescope", function(telescope)
 end)
 
 L("notify", function(notify)
-  Map("n", "<leader><leader>N", notify.dismiss, { silent = true })
+  Map("n", "<leader><leader>N", notify.dismiss, { silent = true, desc = "Dismiss Notification" })
 
   L("which-key", function(wk)
     wk.register({

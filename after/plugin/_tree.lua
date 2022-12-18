@@ -71,7 +71,7 @@ L("nvim-tree", function(tree)
     },
   }
 
-  Map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { silent = true })
+  Map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle NvimTree" })
 
   L("which-key", function(wk)
     wk.register({

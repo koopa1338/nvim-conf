@@ -4,6 +4,8 @@ Map = function(mode, lhs, rhs, opts)
     remap = opts.remap or false,
     silent = opts.silent or false,
     expr = opts.expr or false,
+    buffer = opts.buffer or false,
+    desc = opts.desc,
   }
   if opts.buffer then
     opts_or_defaults["buffer"] = opts.buffer

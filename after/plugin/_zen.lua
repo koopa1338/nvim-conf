@@ -12,8 +12,8 @@ L("true-zen", function(zen)
     },
   }
 
-  Map("n", "<Leader>z", "<cmd>TZFocus<CR>", { silent = true })
-  Map("n", "<Leader>Z", "<cmd>TZAtaraxis<CR>", { silent = true })
+  Map("n", "<Leader>z", "<cmd>TZFocus<CR>", { silent = true, desc = "Maximize current Window" })
+  Map("n", "<Leader>Z", "<cmd>TZAtaraxis<CR>", { silent = true, desc = "Focus Time" })
 
   L("which-key", function(wk)
     wk.register({

@@ -2,12 +2,12 @@ L("lspconfig", function(nvim_lsp)
   L("lsp_utils", function(lsp_utils)
     -- lsp config
     local custom_attach = function(client, bufnr)
-      local opts = { remap = false, silent = true, buffer = bufnr }
+      local opts = { silent = true, buffer = bufnr }
       local capabilities = client.server_capabilities
       vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
       if capabilities.declarationProvider then
-        Map("n", "<leader>lD", vim.lsp.buf.declaration, opts)
+        Map("n", "<leader>lD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Show Declaration"})
       else
         Map("n", "<leader>lD", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support jump to declaration"
@@ -15,7 +15,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.definitionProvider then
-        Map("n", "<leader>ld", vim.lsp.buf.definition, opts)
+        Map("n", "<leader>ld", vim.lsp.buf.definition, { silent = true, buffer = bufnr, desc = "Jump to Definition" })
       else
         Map("n", "<leader>ld", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support jump to defenition"
@@ -23,7 +23,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.typeDefinitionProvider then
-        Map("n", "<leader>lT", vim.lsp.buf.type_definition, opts)
+        Map("n", "<leader>lT", vim.lsp.buf.type_definition, { silent = true, buffer = bufnr, desc = "Show Type Definition" })
       else
         Map("n", "<leader>lT", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support show document type defenition"
@@ -31,7 +31,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.renameProvider then
-        Map("n", "<leader>lr", vim.lsp.buf.rename, opts)
+        Map("n", "<leader>lr", vim.lsp.buf.rename, { silent = true, buffer = bufnr, desc = "Rename under Cursor" })
       else
         Map("n", "<leader>lr", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support show rename"
@@ -45,7 +45,7 @@ L("lspconfig", function(nvim_lsp)
           else
             vim.lsp.buf.formatting()
           end
-        end, opts)
+        end, { silent = true, buffer = bufnr, desc = "Format File"})
       else
         Map("n", "<leader>lf", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support show formatting"
@@ -53,7 +53,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.signatureHelpProvider then
-        Map("n", "<leader>ls", vim.lsp.buf.signature_help, opts)
+        Map("n", "<leader>ls", vim.lsp.buf.signature_help, { silent = true, buffer = bufnr, desc = "Show Signature Help" })
       else
         Map("n", "<leader>ls", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support signature help"
@@ -61,7 +61,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.codeActionProvider then
-        Map({ "n", "v" }, "<leader>lca", vim.lsp.buf.code_action, opts)
+        Map({ "n", "v" }, "<leader>lca", vim.lsp.buf.code_action, { silent = true, buffer = bufnr, desc = "Select Code Actions" })
       else
         Map({ "n", "v" }, "<leader>lca", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support code actions"
@@ -69,7 +69,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.hoverProvider then
-        Map("n", "K", vim.lsp.buf.hover, opts)
+        Map("n", "K", vim.lsp.buf.hover, { silent = true, buffer = bufnr, desc = "Show Documentation" })
       else
         Map("n", "K", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support hover information"
@@ -92,7 +92,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.documentSymbolProvider then
-        Map("n", "<leader>lts", "<cmd>Telescope lsp_document_symbols<CR>", { silent = true })
+        Map("n", "<leader>lts", "<cmd>Telescope lsp_document_symbols<CR>", { silent = true, buffer = bufnr, desc = "Show Document Symbols" })
       else
         Map("n", "<leader>lts", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support showing document symbols"
@@ -100,7 +100,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.workspaceSymbolProvider then
-        Map("n", "<leader>ltS", "<cmd>Telescope lsp_workspace_symbols<CR>", { silent = true })
+        Map("n", "<leader>ltS", "<cmd>Telescope lsp_workspace_symbols<CR>", { silent = true, desc = "Show Workspace Symbols" })
       else
         Map("n", "<leader>ltS", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support showing workspace symbols"
@@ -108,7 +108,7 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.referencesProvider then
-        Map("n", "<leader>ltr", "<cmd>Telescope lsp_references<CR>", { silent = true })
+        Map("n", "<leader>ltr", "<cmd>Telescope lsp_references<CR>", { silent = true, desc = "Show References" })
       else
         Map("n", "<leader>ltr", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support showing references"
@@ -116,25 +116,25 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.implementationProvider then
-        Map("n", "<leader>lti", "<cmd>Telescope lsp_implementations<CR>", { silent = true })
+        Map("n", "<leader>lti", "<cmd>Telescope lsp_implementations<CR>", { silent = true, desc = "Show Implementations" })
       else
         Map("n", "<leader>lti", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support showing implementations"
         end, { silent = true })
       end
 
-      Map("n", "<leader>lci", vim.lsp.buf.incoming_calls, opts)
-      Map("n", "<leader>lco", vim.lsp.buf.outgoing_calls, opts)
+      Map("n", "<leader>lci", vim.lsp.buf.incoming_calls, { silent = true, buffer = bufnr, desc = "Show Incoming Calls (quickfix)" })
+      Map("n", "<leader>lco", vim.lsp.buf.outgoing_calls, { silent = true, buffer = bufnr, desc = "Show Outgoing Calls (quickfix)" })
       local float_opts = { scope = "l", source = "if_many" }
       Map("n", "<leader>ll", function()
         vim.diagnostic.open_float(float_opts)
-      end, opts)
+      end, { silent = true, buffer = bufnr, desc = "Line Diagnostics" })
       Map("n", "<leader>lj", function()
         vim.diagnostic.goto_next { float = float_opts }
-      end, opts)
+      end, { silent = true, buffer = bufnr, desc = "Jump to Next Diagnostic" })
       Map("n", "<leader>lk", function()
         vim.diagnostic.goto_prev { float = float_opts }
-      end, opts)
+      end, { silent = true, buffer = bufnr, desc = "Jump to Previous Diagnostic" })
     end
 
     L("which-key", function(wk)

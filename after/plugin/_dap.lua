@@ -4,42 +4,42 @@ if not dap or not dapui then
   return
 end
 
-Map("n", "<leader>Db", dap.toggle_breakpoint, { silent = true })
+Map("n", "<leader>Db", dap.toggle_breakpoint, { silent = true, desc = "Toggle Debug Breakpoint" })
 Map("n", "<leader>DB", function()
   dapui.float_element("breakpoints", { enter = true })
-end, { silent = true })
+end, { silent = true, desc = "Show Debug Breakpoints" })
 Map("n", "<leader>Dc", function()
   vim.ui.input({ prompt = "Breakpoint condition: " }, function(input)
     dap.set_breakpoint(input)
   end)
-end, { silent = true })
+end, { silent = true, desc = "Set Debug Breakpoint Condition" })
 Map("n", "<leader>Dm", function()
   vim.ui.input({ prompt = "Log Point message: " }, function(input)
     dap.set_breakpoint(nil, nil, input)
   end)
-end, { silent = true })
+end, { silent = true, desc = "Set Debug Log Point Message" })
 
-Map("n", "<M-d>", dap.continue, { silent = true })
-Map("n", "<leader>Dp", dap.pause, { silent = true })
+Map("n", "<M-d>", dap.continue, { silent = true, desc = "Continue Debugger" })
+Map("n", "<leader>Dp", dap.pause, { silent = true, desc = "Pause Debugger" })
 
 Map("n", "<leader>Ds", function()
   dapui.float_element("stacks", { enter = true })
-end, { silent = true })
+end, { silent = true, desc = "Show Debug Stacks" })
 Map("n", "<leader>Dt", function()
   dapui.float_element("console", { enter = true })
-end, { silent = true })
+end, { silent = true, desc = "Show Debug Console" })
 
-Map("n", "<leader>Do", dap.step_over, { silent = true })
-Map("n", "<leader>Dg", dap.run_to_cursor, { silent = true })
+Map("n", "<leader>Do", dap.step_over, { silent = true, desc = "Debug Step Over" })
+Map("n", "<leader>Dg", dap.run_to_cursor, { silent = true, desc = "Debug GoTo" })
 
-Map("n", "<leader>Dl", dap.step_into, { silent = true })
-Map("n", "<leader>Dh", dap.step_out, { silent = true })
+Map("n", "<leader>Dl", dap.step_into, { silent = true, desc = "Debug Step Into" })
+Map("n", "<leader>Dh", dap.step_out, { silent = true, desc = "Debug Step Out" })
 
-Map("n", "<leader>Dk", dap.up, { silent = true })
-Map("n", "<leader>Dj", dap.down, { silent = true })
+Map("n", "<leader>Dk", dap.up, { silent = true, desc = "Debug Step Up" })
+Map("n", "<leader>Dj", dap.down, { silent = true, desc = "Debug Step Down" })
 
-Map("n", "<leader>Dr", dap.repl.toggle, { silent = true })
-Map("n", "<leader>DD", dap.disconnect, { silent = true })
+Map("n", "<leader>Dr", dap.repl.toggle, { silent = true, desc = "Toggle Debug REPL" })
+Map("n", "<leader>DD", dap.disconnect, { silent = true, desc = "Disconnect Debugger" })
 
 L("which-key", function(wk)
   wk.register({

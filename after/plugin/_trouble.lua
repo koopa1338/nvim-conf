@@ -7,11 +7,11 @@ L("trouble", function(trouble)
     height = 15,
   }
 
-  Map("n", "<leader>dd", "<cmd>Trouble<CR>", { silent = true })
-  Map("n", "<leader>db", "<cmd>Trouble document_diagnostics<CR>", { silent = true })
-  Map("n", "<leader>dq", "<cmd>Trouble quickfix<CR>", { silent = true })
-  Map("n", "<leader>dl", "<cmd>Trouble loclist<CR>", { silent = true })
-  Map("n", "<leader>dr", "<cmd>TroubleRefresh<CR>", { silent = true })
+  Map("n", "<leader>dd", "<cmd>Trouble<CR>", { silent = true, desc = "Show document diagnostics" })
+  Map("n", "<leader>db", "<cmd>Trouble document_diagnostics<CR>", { silent = true, desc = "Show workspace diagnostics" })
+  Map("n", "<leader>dq", "<cmd>Trouble quickfix<CR>", { silent = true, desc = "Show quickfix (Trouble)" })
+  Map("n", "<leader>dl", "<cmd>Trouble loclist<CR>", { silent = true, desc = "Show location list (Trouble)" })
+  Map("n", "<leader>dr", "<cmd>TroubleRefresh<CR>", { silent = true, desc = "Refresh diagnostic window" })
 
   L("which-key", function(wk)
     wk.register({

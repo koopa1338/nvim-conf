@@ -5,10 +5,4 @@ L("which-key", function(wk)
       registers = false,
     },
   }
-
-  wk.register({
-    ["<leader>"] = {
-      m = { "Show Messages In Quickfix" },
-    },
-  }, { prefix = "<leader>" })
 end)
