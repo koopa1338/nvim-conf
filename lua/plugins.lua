@@ -63,6 +63,8 @@ require("packer").startup {
       requires = { "kyazdani42/nvim-web-devicons" },
     }
 
+    use "dimfred/resize-mode.nvim"
+
     -- text objects and motions
     use "wellle/targets.vim"
     use "windwp/nvim-autopairs"
