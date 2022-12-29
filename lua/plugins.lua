@@ -56,6 +56,7 @@ require("packer").startup {
       cond = fn.executable "make" == 1,
     }
     use { "nvim-telescope/telescope-ui-select.nvim" }
+    use "LukasPietzschmann/telescope-tabs"
 
     use {
       "goolord/alpha-nvim",

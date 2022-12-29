@@ -139,6 +139,10 @@ L("telescope", function(telescope)
   telescope.load_extension "fzf"
   telescope.load_extension "notify"
   telescope.load_extension "ui-select"
+  L("telescope-tabs", function(tt)
+    tt.setup()
+    Map("n", "<leader>ft", tt.list_tabs , { silent = true, desc = "Find Tabs" })
+  end)
 
   Map("n", "<leader>fg", "<cmd>Telescope git_files<CR>", { silent = true, desc = "Find Git Files" })
   Map("n", "<leader>ff", "<cmd>Telescope fd hidden=true<CR>", { silent = true, desc = "Find Files" })
