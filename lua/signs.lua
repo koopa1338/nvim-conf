@@ -7,9 +7,9 @@ sign_define("DiagnosticSignInfo", { text = "כֿ", texthl = "DiagnosticSignInfo" 
 sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- dap debugger
-sign_define("DapBreakpoint", { text = "◉", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
-sign_define("DapBreakpointCondition", { text = "◍", texthl = "DiagnosticSignWarn", linehl = "", numhl = "" })
-sign_define("DapLogPoint", { text = "○", texthl = "", linehl = "DiagnosticSignInfo", numhl = "" })
+sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+sign_define("DapBreakpointCondition", { text = "", texthl = "DiagnosticSignWarn", linehl = "", numhl = "" })
+sign_define("DapLogPoint", { text = "", texthl = "", linehl = "DiagnosticSignInfo", numhl = "" })
 
 -- git
 sign_define(
@@ -18,21 +18,21 @@ sign_define(
 )
 sign_define(
   "GitSignsLineColTopdelete",
-  { hl = "GitSignsDelete", text = "寮", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" }
+  { hl = "GitSignsDelete", text = "", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" }
 )
 sign_define(
   "GitSignsLineColDelete",
-  { hl = "GitSignsDelete", text = "僚", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" }
+  { hl = "GitSignsDelete", text = "", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" }
 )
 sign_define(
   "GitSignsLineColChange",
-  { hl = "GitSignsChange", text = "勒", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" }
+  { hl = "GitSignsChange", text = "", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" }
 )
 sign_define(
   "GitSignsLineColChangedelete",
-  { hl = "GitSignsChange", text = "易", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" }
+  { hl = "GitSignsChange", text = "", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" }
 )
 sign_define(
   "GitSignsLineColUntracked",
-  { hl = "GitSignsAdd", text = "✸", numhl = "GitSignsAddNr", linehl = "GitSignsNrAddLn" }
+  { hl = "GitSignsAdd", text = "", numhl = "GitSignsAddNr", linehl = "GitSignsNrAddLn" }
 )

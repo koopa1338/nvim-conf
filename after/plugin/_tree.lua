@@ -14,8 +14,8 @@ L("nvim-tree", function(tree)
           git = {
             unstaged = "ﳺ",
             staged = "",
-            unmerged = "🗲",
-            untracked = "✸",
+            unmerged = "",
+            untracked = "",
           },
         },
       },
@@ -30,10 +30,10 @@ L("nvim-tree", function(tree)
     diagnostics = {
       enable = true,
       icons = {
-        error = "",
-        warning = "",
-        info = "כֿ",
-        hint = "➤",
+        error = Get_sign_def("DiagnosticSignError").text,
+        warning = Get_sign_def("DiagnosticSignWarn").text,
+        info = Get_sign_def("DiagnosticSignInfo").text,
+        hint = Get_sign_def("DiagnosticSignHint").text,
       },
     },
     update_focused_file = {
