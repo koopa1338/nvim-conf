@@ -53,6 +53,11 @@ api.nvim_create_autocmd({ "VimResized" }, {
   command = "wincmd =",
 })
 
+-- workaround for alacritty bug
+api.nvim_create_autocmd({ "VimEnter" }, {
+  command = "wincmd +",
+})
+
 api.nvim_create_autocmd({ "TextYankPost" }, {
   pattern = "*",
   callback = function()
