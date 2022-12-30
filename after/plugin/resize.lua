@@ -1,5 +1,5 @@
 L("resize-mode", function(rs)
-  rs.setup({
+  rs.setup {
     horizontal_amount = 5,
     vertical_amount = 5,
     quit_key = "<ESC>",
@@ -14,7 +14,7 @@ L("resize-mode", function(rs)
       "<M-k>", -- decrease to the top
       "<M-l>", -- decrease to the right
     },
-  })
+  }
 
-  Map("n", "<leader><leader>R", rs.start , { silent = true, desc = "Resize Mode" })
+  Map("n", "<leader><leader>R", rs.start, { silent = true, desc = "Resize Mode" })
 end)

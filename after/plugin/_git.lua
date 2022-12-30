@@ -115,7 +115,7 @@ L("diffview", function(diffview)
               no_merges = false, -- List no merge commits
               reverse = false, -- List commits in reverse order
             },
-          }
+          },
         },
       },
       default_args = { -- Default args prepended to the arg-list for the listed commands

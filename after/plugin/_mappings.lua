@@ -85,7 +85,7 @@ L("which-key", function(wk)
         m = {},
         x = {},
         v = {},
-      }
+      },
     },
     g = {
       m = { "Messenger" },

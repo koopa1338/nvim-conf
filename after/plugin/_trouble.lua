@@ -8,7 +8,12 @@ L("trouble", function(trouble)
   }
 
   Map("n", "<leader>dd", "<cmd>Trouble<CR>", { silent = true, desc = "Show document diagnostics" })
-  Map("n", "<leader>db", "<cmd>Trouble document_diagnostics<CR>", { silent = true, desc = "Show workspace diagnostics" })
+  Map(
+    "n",
+    "<leader>db",
+    "<cmd>Trouble document_diagnostics<CR>",
+    { silent = true, desc = "Show workspace diagnostics" }
+  )
   Map("n", "<leader>dq", "<cmd>Trouble quickfix<CR>", { silent = true, desc = "Show quickfix (Trouble)" })
   Map("n", "<leader>dl", "<cmd>Trouble loclist<CR>", { silent = true, desc = "Show location list (Trouble)" })
   Map("n", "<leader>dr", "<cmd>TroubleRefresh<CR>", { silent = true, desc = "Refresh diagnostic window" })

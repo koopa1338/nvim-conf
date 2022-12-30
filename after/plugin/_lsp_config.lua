@@ -7,7 +7,7 @@ L("lspconfig", function(nvim_lsp)
       vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
       if capabilities.declarationProvider then
-        Map("n", "<leader>lD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Show Declaration"})
+        Map("n", "<leader>lD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Show Declaration" })
       else
         Map("n", "<leader>lD", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support jump to declaration"
@@ -23,7 +23,12 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.typeDefinitionProvider then
-        Map("n", "<leader>lT", vim.lsp.buf.type_definition, { silent = true, buffer = bufnr, desc = "Show Type Definition" })
+        Map(
+          "n",
+          "<leader>lT",
+          vim.lsp.buf.type_definition,
+          { silent = true, buffer = bufnr, desc = "Show Type Definition" }
+        )
       else
         Map("n", "<leader>lT", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support show document type defenition"
@@ -45,7 +50,7 @@ L("lspconfig", function(nvim_lsp)
           else
             vim.lsp.buf.formatting()
           end
-        end, { silent = true, buffer = bufnr, desc = "Format File"})
+        end, { silent = true, buffer = bufnr, desc = "Format File" })
       else
         Map("n", "<leader>lf", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support show formatting"
@@ -53,7 +58,12 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.signatureHelpProvider then
-        Map("n", "<leader>ls", vim.lsp.buf.signature_help, { silent = true, buffer = bufnr, desc = "Show Signature Help" })
+        Map(
+          "n",
+          "<leader>ls",
+          vim.lsp.buf.signature_help,
+          { silent = true, buffer = bufnr, desc = "Show Signature Help" }
+        )
       else
         Map("n", "<leader>ls", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support signature help"
@@ -61,7 +71,12 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.codeActionProvider then
-        Map({ "n", "v" }, "<leader>lca", vim.lsp.buf.code_action, { silent = true, buffer = bufnr, desc = "Select Code Actions" })
+        Map(
+          { "n", "v" },
+          "<leader>lca",
+          vim.lsp.buf.code_action,
+          { silent = true, buffer = bufnr, desc = "Select Code Actions" }
+        )
       else
         Map({ "n", "v" }, "<leader>lca", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support code actions"
@@ -92,7 +107,12 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.documentSymbolProvider then
-        Map("n", "<leader>lts", "<cmd>Telescope lsp_document_symbols<CR>", { silent = true, buffer = bufnr, desc = "Show Document Symbols" })
+        Map(
+          "n",
+          "<leader>lts",
+          "<cmd>Telescope lsp_document_symbols<CR>",
+          { silent = true, buffer = bufnr, desc = "Show Document Symbols" }
+        )
       else
         Map("n", "<leader>lts", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support showing document symbols"
@@ -100,7 +120,12 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.workspaceSymbolProvider then
-        Map("n", "<leader>ltS", "<cmd>Telescope lsp_workspace_symbols<CR>", { silent = true, desc = "Show Workspace Symbols" })
+        Map(
+          "n",
+          "<leader>ltS",
+          "<cmd>Telescope lsp_workspace_symbols<CR>",
+          { silent = true, desc = "Show Workspace Symbols" }
+        )
       else
         Map("n", "<leader>ltS", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support showing workspace symbols"
@@ -116,15 +141,30 @@ L("lspconfig", function(nvim_lsp)
       end
 
       if capabilities.implementationProvider then
-        Map("n", "<leader>lti", "<cmd>Telescope lsp_implementations<CR>", { silent = true, desc = "Show Implementations" })
+        Map(
+          "n",
+          "<leader>lti",
+          "<cmd>Telescope lsp_implementations<CR>",
+          { silent = true, desc = "Show Implementations" }
+        )
       else
         Map("n", "<leader>lti", function()
           lsp_utils.notify_unsupported_lsp "LSP does not support showing implementations"
         end, { silent = true })
       end
 
-      Map("n", "<leader>lci", vim.lsp.buf.incoming_calls, { silent = true, buffer = bufnr, desc = "Show Incoming Calls (quickfix)" })
-      Map("n", "<leader>lco", vim.lsp.buf.outgoing_calls, { silent = true, buffer = bufnr, desc = "Show Outgoing Calls (quickfix)" })
+      Map(
+        "n",
+        "<leader>lci",
+        vim.lsp.buf.incoming_calls,
+        { silent = true, buffer = bufnr, desc = "Show Incoming Calls (quickfix)" }
+      )
+      Map(
+        "n",
+        "<leader>lco",
+        vim.lsp.buf.outgoing_calls,
+        { silent = true, buffer = bufnr, desc = "Show Outgoing Calls (quickfix)" }
+      )
       local float_opts = { scope = "l", source = "if_many" }
       Map("n", "<leader>ll", function()
         vim.diagnostic.open_float(float_opts)

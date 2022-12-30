@@ -29,7 +29,7 @@ L("luasnip", function(ls)
         text { "", "" },
         text { "", "\t" },
         insert(0),
-        text { "", "}" }
+        text { "", "}" },
       }),
     },
     python = {

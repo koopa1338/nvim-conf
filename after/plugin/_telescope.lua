@@ -141,18 +141,28 @@ L("telescope", function(telescope)
   telescope.load_extension "ui-select"
   L("telescope-tabs", function(tt)
     tt.setup()
-    Map("n", "<leader>ft", tt.list_tabs , { silent = true, desc = "Find Tabs" })
+    Map("n", "<leader>ft", tt.list_tabs, { silent = true, desc = "Find Tabs" })
   end)
 
   Map("n", "<leader>fg", "<cmd>Telescope git_files<CR>", { silent = true, desc = "Find Git Files" })
   Map("n", "<leader>ff", "<cmd>Telescope fd hidden=true<CR>", { silent = true, desc = "Find Files" })
-  Map("n", "<leader>FF", "<cmd>Telescope fd hidden=true no_ignore=true<CR>", { silent = true, desc = "Find Files (Hidden + Ignored)" })
+  Map(
+    "n",
+    "<leader>FF",
+    "<cmd>Telescope fd hidden=true no_ignore=true<CR>",
+    { silent = true, desc = "Find Files (Hidden + Ignored)" }
+  )
   Map("n", "<leader>fr", "<cmd>Telescope live_grep<CR>", { silent = true, desc = "Find Live Grep" })
   Map("n", "<leader>f*", "<cmd>Telescope grep_string<CR>", { silent = true, desc = "Grep String" })
   Map("v", "<leader>f*", grep_selection, { silent = true, desc = "Grep String (preselection)" })
   Map("n", "<leader>fR", "<cmd>Telescope registers<CR>", { silent = true, desc = "Find Registers" })
   Map("n", "<leader>bb", "<cmd>Telescope buffers<CR>", { silent = true, desc = "Show open Buffers" })
-  Map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { silent = true, desc = "Fuzzy Find current Buffer" })
+  Map(
+    "n",
+    "<leader>fb",
+    "<cmd>Telescope current_buffer_fuzzy_find<CR>",
+    { silent = true, desc = "Fuzzy Find current Buffer" }
+  )
   Map("n", "<leader>fe", "<cmd>Telescope treesitter<CR>", { silent = true, desc = "Find Treesitter Symbols" })
   Map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { silent = true, desc = "Find Marks" })
 

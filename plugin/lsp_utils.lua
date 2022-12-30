@@ -133,7 +133,6 @@ local lsp_map = {
   ["zls"] = "zls",
 }
 
-
 local proto = vim.lsp.protocol
 M.get_lsp_capabilities = function(cmp_lsp)
   local capabilities = proto.make_client_capabilities()
@@ -175,7 +174,6 @@ M.servers = function(mason)
 
   return server_configs
 end
-
 
 local invert = function(tbl)
   local result = {}
