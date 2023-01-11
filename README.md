@@ -6,10 +6,10 @@ This repo contains my neovim config used as a submodule in my dotfiles.
 
 ### Prerequsites
 
-For this config to work you need at least the latest neovim stable release
-installed, for full features use the nightly version. The easiest way if you
-already have installed the rust toolchain is to install a neovim version
-manager called (bob)[https://github.com/MordechaiHadad/bob] otherwise download
+For this config to work you need at least neovim 0.8 release
+installed, for full features use the current stable version. The easiest way if
+you already have installed the rust toolchain is to install a neovim version
+manager called [bob](https://github.com/MordechaiHadad/bob) otherwise download
 a release from the repo or install it through your package manager.
 
 the wilder plugin is using python and requires the neovim packages installed
