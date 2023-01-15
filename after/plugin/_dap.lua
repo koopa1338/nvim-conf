@@ -40,6 +40,7 @@ Map("n", "<leader>Dj", dap.down, { silent = true, desc = "Debug Step Down" })
 
 Map("n", "<leader>Dr", dap.repl.toggle, { silent = true, desc = "Toggle Debug REPL" })
 Map("n", "<leader>DD", dap.disconnect, { silent = true, desc = "Disconnect Debugger" })
+Map("n", "<M-t>", "<cmd>DapTerminate<cr>", { silent = true, desc = "Close Debugger" })
 
 L("which-key", function(wk)
   wk.register({
@@ -62,6 +63,7 @@ L("which-key", function(wk)
       D = { "Disconnect Debugger" },
     },
     ["<M-d>"] = { "Continue Debugger" },
+    ["<M-S-d>"] = { "Terminate Debugger" },
   }, { prefix = "<leader>" })
 end)
 
@@ -76,6 +78,13 @@ dapui.setup {
       size = 50,
       position = "left",
     },
+    {
+      elements = {
+        "repl",
+      },
+      size = 0.2,
+      position = "bottom",
+    },
   },
   floating = {
     border = vim.g.border_type,
@@ -85,15 +94,12 @@ dapui.setup {
 -- open dapui when start debugging
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
-  vim.opt.ls = 3
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
   dapui.close()
-  vim.opt.ls = 2
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
-  vim.opt.ls = 2
 end
 
 -- load debugger adapters and configurations
