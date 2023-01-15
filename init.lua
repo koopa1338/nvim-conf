@@ -1,20 +1,22 @@
+-- globals
+local g, cmd, fn, o, og = vim.g, vim.cmd, vim.fn, vim.opt, vim.opt_global
+g.mousehide = true
+og.termguicolors = true
+g.mapleader = " "
+-- global border_type
+g.border_type = "rounded" -- supported: rounded, single, double
+
 require "utils"
 L "impatient"
 L "signs"
-
--- When we are bootstrapping a configuration, it doesn't
--- make sense to execute the rest of the init.lua.
-if L "plugins" then
-  return
-end
+L ("lazy_init")
+L("lazy", function(lazy)
+  local opts = L "lazy_opts" or {}
+  lazy.setup("plugins", opts)
+end)
 
 -- set colorscheme
 L "walush"
-
--- load optimized packer compiled lua
-L "packer_compiled"
-
-local g, cmd, fn, o, og = vim.g, vim.cmd, vim.fn, vim.opt, vim.opt_global
 
 if vim.version().minor >= 8 then
   -- only use filetype.lua, see https://neovim.io/news/2022/04 section filetype
@@ -34,10 +36,6 @@ cmd [[
     syntax enable
 ]]
 
--- globals
-g.mapleader = " "
-g.mousehide = true
-og.termguicolors = true
 
 o.timeout = true
 o.ttimeout = false
@@ -120,8 +118,6 @@ g.tex_flavor = "latex"
 -- luasnip
 g.snippets = "luasnip"
 
--- global border_type
-g.border_type = "rounded" -- supported: rounded, single, double
 
 if fn.has "windows" then
   o.fillchars = { vert = "┃", eob = "￭", diff = "╱" }
