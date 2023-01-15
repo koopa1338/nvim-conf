@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-local plugin_path = fn.stdpath "config" .. "/plugin/"
+local plugin_path = vim.fn.stdpath "config" .. "/plugin/"
 if not package.path:find(plugin_path) then
   package.path = plugin_path .. "?.lua;" .. package.path
 end
