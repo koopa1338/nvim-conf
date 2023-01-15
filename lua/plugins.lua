@@ -1,208 +1,153 @@
-local fn, api = vim.fn, vim.api
+local plugins = {
+  { "lewis6991/impatient.nvim" },
+  { "folke/which-key.nvim" },
+  { "mrjones2014/legendary.nvim" },
 
--- Install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-local is_bootstrap = false
-if fn.empty(fn.glob(install_path)) > 0 then
-  is_bootstrap = true
-  fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-  vim.cmd [[ packadd packer.nvim ]]
-end
--- TODO: heirline, alternatively galaxyline
-require("packer").startup {
-  function(use)
-    -- Packer
-    use "wbthomason/packer.nvim"
-    use "lewis6991/impatient.nvim"
-    use "folke/which-key.nvim"
-    use "mrjones2014/legendary.nvim"
+  { "axieax/urlview.nvim" },
 
-    use "axieax/urlview.nvim"
-
-    -- editing
-    use "kylechui/nvim-surround"
-    use "numToStr/Comment.nvim"
-    use {
-      "haringsrob/nvim_context_vt",
-      requires = {
-        "nvim-treesitter/nvim-treesitter",
-      },
-      after = "nvim-treesitter",
-    }
-    use "folke/todo-comments.nvim"
-    -- Zen modes
-    use "Pocco81/TrueZen.nvim"
-
-    -- movement and search
-    use "markonm/traces.vim"
-    use "AckslD/messages.nvim"
-    use "nacro90/numb.nvim"
-
-    -- searching and file browsing
-    use "nvim-lua/popup.nvim"
-    use "nvim-treesitter/nvim-treesitter"
-    use {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      requires = { "nvim-treesitter/nvim-treesitter" },
-      after = "nvim-treesitter",
-    }
-    use {
-      "nvim-lua/telescope.nvim",
-      branch = "0.1.x",
-    }
-    use {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      run = "make",
-      cond = fn.executable "make" == 1,
-    }
-    use { "nvim-telescope/telescope-ui-select.nvim" }
-    use "LukasPietzschmann/telescope-tabs"
-
-    use {
-      "goolord/alpha-nvim",
-      requires = { "kyazdani42/nvim-web-devicons" },
-    }
-
-    use "dimfred/resize-mode.nvim"
-
-    -- text objects and motions
-    use "wellle/targets.vim"
-    use "windwp/nvim-autopairs"
-    use {
-      "windwp/nvim-ts-autotag",
-      requires = {
-        "nvim-treesitter/nvim-treesitter",
-      },
-      after = "nvim-treesitter",
-    }
-    use "godlygeek/tabular"
-
-    -- syntax and languages
-    use { "lervag/vimtex", ft = { "tex" } }
-    use {
-      "saecki/crates.nvim",
-      event = "BufRead Cargo.toml",
-      requires = { "nvim-lua/plenary.nvim" },
-    }
-    use "neovim/nvim-lspconfig"
-    use "williamboman/mason.nvim"
-    use {
-      "folke/trouble.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
-    }
-    use {
-      "hrsh7th/nvim-cmp",
-      requires = {
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-nvim-lsp",
-        "saadparwaiz1/cmp_luasnip",
-        "onsails/lspkind-nvim",
-      },
-    }
-    use { "L3MON4D3/LuaSnip", after = "nvim-cmp" }
-    use "rafamadriz/friendly-snippets"
-    use { "michaelb/sniprun", run = "bash install.sh" }
-
-    -- theme
-    use "rktjmp/lush.nvim"
-    use {
-      "tjdevries/express_line.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim",
-      },
-    }
-    -- use {
-    --   'glepnir/galaxyline.nvim',
-    --   requires = { "kyazdani42/nvim-web-devicons", opt = true }
-    -- }
-    use "alvarosevilla95/luatab.nvim"
-    use "kyazdani42/nvim-web-devicons"
-    use "kyazdani42/nvim-tree.lua"
-    use "rcarriga/nvim-notify"
-    use "stevearc/dressing.nvim"
-    use "petertriho/nvim-scrollbar"
-
-    -- version control
-    use "junegunn/gv.vim"
-    use {
-      "lewis6991/gitsigns.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim",
-      },
-    }
-    use {
-      "TimUntersberger/neogit",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "sindrets/diffview.nvim",
-      },
-    }
-
-    -- debugger
-    use {
-      "rcarriga/nvim-dap-ui",
-      requires = {
-        "mfussenegger/nvim-dap",
-      },
-    }
-
-    use {
-      "kristijanhusak/vim-dadbod-ui",
-      requires = {
-        "tpope/vim-dadbod",
-      },
-    }
-
-    -- utils
-    use "jghauser/mkdir.nvim"
-    use "gelguy/wilder.nvim"
-    use "romgrk/fzy-lua-native"
-    use "uga-rosa/ccc.nvim" -- color picker
-
-    -- custom plugins
-    L("plugins_custom", function(plugins_custom)
-      for _, v in pairs(plugins_custom) do
-        use(v)
-      end
-    end)
-
-    if is_bootstrap then
-      L("packer", function(packer)
-        packer.install()
-        packer.compile()
-        vim.api.nvim_echo({
-          { "==================================\n", "Special" },
-          { "    Plugins are being installed   \n", "Special" },
-          { "    Wait until Packer completes,  \n", "Special" },
-          { "       then restart nvim.         \n", "Special" },
-          { "==================================\n\n", "Special" },
-
-          { ">> For language support please install << \n", "Normal" },
-          { ">> grammers via the TSInstall command  << \n", "Normal" },
-          { ">> on next startup                     << \n", "Normal" },
-        }, false, {})
-      end)
-    end
-  end,
-  config = {
-    -- Move to lua dir so impatient.nvim can cache it
-    compile_path = fn.stdpath "config" .. "/lua/packer_compiled.lua",
+  -- editing
+  { "kylechui/nvim-surround" },
+  { "numToStr/Comment.nvim" },
+  { "numToStr/Comment.nvim" },
+  { "nvim-treesitter/nvim-treesitter" },
+  {
+    "haringsrob/nvim_context_vt",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
   },
+  { "folke/todo-comments.nvim" },
+  -- Zen modes
+  { "Pocco81/TrueZen.nvim" },
+
+  -- movement and search
+  { "markonm/traces.vim" },
+  { "AckslD/messages.nvim" },
+  { "nacro90/numb.nvim" },
+
+  -- searching and file browsing
+  { "nvim-lua/popup.nvim" },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+  {
+    "nvim-lua/telescope.nvim",
+    branch = "0.1.x",
+  },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+    cond = vim.fn.executable "make" == 1,
+  },
+  { "nvim-telescope/telescope-ui-select.nvim" },
+  { "LukasPietzschmann/telescope-tabs" },
+
+  {
+    "goolord/alpha-nvim",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+  },
+
+  { "dimfred/resize-mode.nvim" },
+
+  -- text objects and motions
+  { "wellle/targets.vim" },
+  { "windwp/nvim-autopairs" },
+  {
+    "windwp/nvim-ts-autotag",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
+  { "godlygeek/tabular" },
+
+  -- syntax and languages
+  { "lervag/vimtex", ft = { "tex" } },
+  {
+    "saecki/crates.nvim",
+    event = "BufRead Cargo.toml",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  { "neovim/nvim-lspconfig" },
+  { "williamboman/mason.nvim" },
+  {
+    "folke/trouble.nvim",
+    dependencies = "kyazdani42/nvim-web-devicons",
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lsp",
+      "saadparwaiz1/cmp_luasnip",
+      "onsails/lspkind-nvim",
+    },
+  },
+  { "L3MON4D3/LuaSnip", dependencies = { "nvim-cmp" } },
+  { "rafamadriz/friendly-snippets" },
+  { "michaelb/sniprun", build = "bash install.sh" },
+
+  -- theme
+  { "rktjmp/lush.nvim" },
+  {
+    "tjdevries/express_line.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  -- use {
+  --   'glepnir/galaxyline.nvim',
+  --   requires = { "kyazdani42/nvim-web-devicons", opt = true }
+  -- }
+  { "alvarosevilla95/luatab.nvim" },
+  { "kyazdani42/nvim-web-devicons" },
+  { "kyazdani42/nvim-tree.lua" },
+  { "rcarriga/nvim-notify" },
+  { "stevearc/dressing.nvim" },
+  { "petertriho/nvim-scrollbar" },
+
+  -- version control
+  { "junegunn/gv.vim" },
+  {
+    "lewis6991/gitsigns.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  {
+    "TimUntersberger/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+    },
+  },
+
+  -- debugger
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
+  },
+
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = {
+      "tpope/vim-dadbod",
+    },
+  },
+
+  -- utils
+  { "jghauser/mkdir.nvim" },
+  { "gelguy/wilder.nvim" },
+  { "romgrk/fzy-lua-native" },
+  { "uga-rosa/ccc.nvim" }, -- color picker
 }
 
--- adding plugin folder to package path so we can require from it
-local plugin_path = fn.stdpath "config" .. "/plugin/"
-if not package.path:find(plugin_path) then
-  package.path = plugin_path .. "?.lua;" .. package.path
+local custom_plugins = L "plugins_custom"
+for _, v in pairs(custom_plugins) do
+  table.insert(plugins, v)
 end
 
--- Automatically source and re-compile packer whenever you save this init.lua
-local packer = vim.api.nvim_create_augroup("Packer", { clear = true })
-api.nvim_create_autocmd("BufWritePost", {
-  group = packer,
-  pattern = fn.expand "$MYVIMRC",
-  command = "source <afile> | PackerCompile",
-})
-
-return is_bootstrap
+return plugins
