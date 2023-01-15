@@ -1,3 +1,5 @@
+require "utils"
+L "impatient"
 -- globals
 local g, cmd, fn, o, og = vim.g, vim.cmd, vim.fn, vim.opt, vim.opt_global
 g.mousehide = true
@@ -6,8 +8,6 @@ g.mapleader = " "
 -- global border_type
 g.border_type = "rounded" -- supported: rounded, single, double
 
-require "utils"
-L "impatient"
 L "signs"
 L ("lazy_init")
 L("lazy", function(lazy)
