@@ -1,5 +1,4 @@
 local plugins = {
-  { "lewis6991/impatient.nvim" },
   { "folke/which-key.nvim" },
   { "mrjones2014/legendary.nvim" },
 

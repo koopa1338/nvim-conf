@@ -1,5 +1,3 @@
-require "utils"
-L "impatient"
 -- globals
 local g, cmd, fn, o, og = vim.g, vim.cmd, vim.fn, vim.opt, vim.opt_global
 g.mousehide = true
@@ -8,8 +6,9 @@ g.mapleader = " "
 -- global border_type
 g.border_type = "rounded" -- supported: rounded, single, double
 
+require "utils"
 L "signs"
-L ("lazy_init")
+L "lazy_init"
 L("lazy", function(lazy)
   local opts = L "lazy_opts" or {}
   lazy.setup("plugins", opts)
@@ -35,7 +34,6 @@ cmd [[
     filetype plugin indent on
     syntax enable
 ]]
-
 
 o.timeout = true
 o.ttimeout = false
@@ -117,7 +115,6 @@ g.tex_flavor = "latex"
 
 -- luasnip
 g.snippets = "luasnip"
-
 
 if fn.has "windows" then
   o.fillchars = { vert = "┃", eob = "￭", diff = "╱" }
