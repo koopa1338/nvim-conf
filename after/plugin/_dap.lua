@@ -19,7 +19,15 @@ Map("n", "<leader>Dm", function()
   end)
 end, { silent = true, desc = "Set Debug Log Point Message" })
 
-Map("n", "<M-d>", dap.continue, { silent = true, desc = "Continue Debugger" })
+Map("n", "<leader>DQ", dap.clear_breakpoints, { silent = true, desc = "Clear All Breakpoints" })
+
+Map("n", "<M-d>", function()
+  if dap.session() then
+    dap.terminate()
+  else
+    dap.continue()
+  end
+end, { silent = true, desc = "Start/Terminate Debugger Session" })
 Map("n", "<leader>Dp", dap.pause, { silent = true, desc = "Pause Debugger" })
 
 Map("n", "<leader>Ds", function()
@@ -40,7 +48,6 @@ Map("n", "<leader>Dj", dap.down, { silent = true, desc = "Debug Step Down" })
 
 Map("n", "<leader>Dr", dap.repl.toggle, { silent = true, desc = "Toggle Debug REPL" })
 Map("n", "<leader>DD", dap.disconnect, { silent = true, desc = "Disconnect Debugger" })
-Map("n", "<M-t>", "<cmd>DapTerminate<cr>", { silent = true, desc = "Close Debugger" })
 
 L("which-key", function(wk)
   wk.register({
@@ -61,9 +68,9 @@ L("which-key", function(wk)
       j = { "Debug Step Down" },
       r = { "Toggle Debug REPL" },
       D = { "Disconnect Debugger" },
+      Q = { "Clear All Breakpoints"},
     },
-    ["<M-d>"] = { "Continue Debugger" },
-    ["<M-S-d>"] = { "Terminate Debugger" },
+    ["<M-d>"] = { "Start/Terminate Debugger Session" },
   }, { prefix = "<leader>" })
 end)
 
