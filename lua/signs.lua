@@ -3,8 +3,8 @@ local sign_define = vim.fn.sign_define
 -- diagnostic
 sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
 sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
-sign_define("DiagnosticSignInfo", { text = "כֿ", texthl = "DiagnosticSignInfo" })
-sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
+sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- dap debugger
 sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
