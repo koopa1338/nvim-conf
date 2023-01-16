@@ -7,25 +7,21 @@ L("trouble", function(trouble)
     height = 15,
   }
 
-  Map("n", "<leader>dd", "<cmd>Trouble<CR>", { silent = true, desc = "Show document diagnostics" })
+  Map("n", "<leader>Tt", "<cmd>Trouble<CR>", { silent = true, desc = "Show document diagnostics" })
   Map(
     "n",
-    "<leader>db",
+    "<leader>TT",
     "<cmd>Trouble document_diagnostics<CR>",
     { silent = true, desc = "Show workspace diagnostics" }
   )
-  Map("n", "<leader>dq", "<cmd>Trouble quickfix<CR>", { silent = true, desc = "Show quickfix (Trouble)" })
-  Map("n", "<leader>dl", "<cmd>Trouble loclist<CR>", { silent = true, desc = "Show location list (Trouble)" })
-  Map("n", "<leader>dr", "<cmd>TroubleRefresh<CR>", { silent = true, desc = "Refresh diagnostic window" })
+  Map("n", "<leader>Tr", "<cmd>TroubleRefresh<CR>", { silent = true, desc = "Refresh diagnostic window" })
 
   L("which-key", function(wk)
     wk.register({
-      d = {
+      T = {
         name = "+Diagnostics",
-        b = { "Show document diagnostics" },
-        d = { "Show workspace diagnostics" },
-        l = { "Show location list (Trouble)" },
-        q = { "Show quickfix (Trouble)" },
+        t = { "Show document diagnostics" },
+        T = { "Show workspace diagnostics" },
         r = { "Refresh diagnostic window" },
       },
     }, { prefix = "<leader>" })
