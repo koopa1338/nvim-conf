@@ -82,7 +82,7 @@ L("telescope", function(telescope)
       selection_strategy = "reset",
       sorting_strategy = "descending",
       scroll_strategy = "cycle",
-      prompt_prefix = "🔎  ",
+      prompt_prefix = " ",
     },
     pickers = {
       marks = {
