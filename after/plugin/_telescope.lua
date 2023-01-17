@@ -38,11 +38,12 @@ L("telescope", function(telescope)
       return
     end
 
-    local start = selection[1]
-    local last = selection[2]
+    local start = selection["start_pos"]
+    local last = selection["end_pos"]
     if selection.start_pos.col > selection.end_pos.col then
-      start = selection[2]
-      last = selection[1]
+      local tmp = start
+      start = last
+      last = tmp
     end
 
     local search = vim.api.nvim_buf_get_text(0, start.row, start.col, last.row, last.col, {})
