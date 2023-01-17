@@ -76,7 +76,7 @@ L("telescope", function(telescope)
           ["<C-j>"] = actions.move_selection_next,
           ["<C-k>"] = actions.move_selection_previous,
           ["<M-q>"] = actions.smart_send_to_qflist,
-          ["<C-M-q>"] = actions.smart_send_to_loclist,
+          ["<S-M-q>"] = actions.smart_send_to_loclist,
         },
       },
       selection_strategy = "reset",
