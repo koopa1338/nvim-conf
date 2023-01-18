@@ -2,6 +2,10 @@
 
 This repo contains my neovim config used as a submodule in my dotfiles.
 
+![file finder](./assets/screen1.png)
+![lsp installer](./assets/screen2.png)
+![auto completion](./assets/screen3.png)
+
 ## Setup
 
 ### Prerequsites
