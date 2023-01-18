@@ -39,6 +39,7 @@ o.timeout = true
 o.ttimeout = false
 o.backspace = { "indent", "eol", "start" }
 o.showmatch = true
+o.showmode = false
 o.whichwrap:append "b,s,h,l,<,>,<,>"
 o.scrolljump = 10
 o.scrolloff = 5
