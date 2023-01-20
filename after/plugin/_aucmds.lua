@@ -1,4 +1,4 @@
-local api, bo, wo = vim.api, vim.bo, vim.wo
+local api, bo, wo, o = vim.api, vim.bo, vim.wo, vim.opt
 
 local blacklist = {
   "DiffviewFiles",
@@ -179,6 +179,19 @@ api.nvim_create_autocmd({ "BufRead" }, {
 
     Map("n", "<leader>cR", crates.open_repository, { silent = true, buffer = true, desc = "Open repository" })
     Map("n", "<leader>cD", crates.open_documentation, { silent = true, buffer = true, desc = "Open documentation" })
+  end,
+})
+
+local staline = api.nvim_create_augroup("Staline", { clear = true })
+api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave" }, {
+  group = staline,
+  callback = function()
+    local ft = bo.filetype
+    if Contains({"alpha", "NvimTree", "mason"}, ft) then
+      o.laststatus = 3
+    else
+      o.laststatus = 2
+    end
   end,
 })
 
