@@ -179,6 +179,7 @@ L("lush", function(lush)
       Ignore { fg = xres.color0.lighten(15) }, -- Ignore               xxx ctermfg=0 guifg=bg
       User1 { fg = xres.color15, bg = xres.color6 }, -- User1                xxx ctermfg=15 ctermbg=6
       User2 { fg = xres.color15, bg = xres.color8 }, -- User2                xxx ctermfg=15 ctermbg=8
+      SatusLineSeperator { fg = xres.color8, bg = xres.None },
       StatusLineTerm { fg = xres.color0 }, -- StatusLineTerm       xxx ctermfg=0
       StatusLineTermNC { fg = xres.color15, bg = xres.color8 }, -- StatusLineTermNC     xxx ctermfg=15 ctermbg=8
       YCMWarningSection { fg = xres.color0, bg = xres.color4 }, -- YCMWarningSection    xxx ctermfg=0 ctermbg=4

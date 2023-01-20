@@ -89,16 +89,8 @@ local plugins = {
 
   -- theme
   { "rktjmp/lush.nvim" },
-  {
-    "tjdevries/express_line.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
-  -- use {
-  --   'glepnir/galaxyline.nvim',
-  --   requires = { "kyazdani42/nvim-web-devicons", opt = true }
-  -- }
+
+  { "tamton-aquib/staline.nvim", lazy = false },
   { "alvarosevilla95/luatab.nvim" },
   { "kyazdani42/nvim-web-devicons" },
   { "kyazdani42/nvim-tree.lua" },

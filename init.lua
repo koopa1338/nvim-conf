@@ -21,8 +21,6 @@ if vim.version().minor >= 8 then
   -- only use filetype.lua, see https://neovim.io/news/2022/04 section filetype
   g.do_filetype_lua = true
   g.did_load_filetypes = false
-
-  o.winbar = "%=%m %f"
 end
 
 -- encoding
