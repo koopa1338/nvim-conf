@@ -137,8 +137,10 @@ local plugins = {
 }
 
 local custom_plugins = L "plugins_custom"
-for _, v in pairs(custom_plugins) do
-  table.insert(plugins, v)
+if custom_plugins then
+  for _, v in pairs(custom_plugins) do
+    table.insert(plugins, v)
+  end
 end
 
 return plugins
