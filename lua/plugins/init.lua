@@ -58,9 +58,10 @@ return {
     event = "BufRead Cargo.toml",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-  { "neovim/nvim-lspconfig" },
+  { "neovim/nvim-lspconfig", lazy = true },
   {
     "jose-elias-alvarez/null-ls.nvim",
+    lazy = true,
     dependencies = { "nvim-lua/plenary.nvim" },
   },
   { "williamboman/mason.nvim" },
