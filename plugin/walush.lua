@@ -357,47 +357,6 @@ L("lush", function(lush)
       NvimInvalidSpacing { ErrorMsg }, -- NvimInvalidSpacing                     xxx links to ErrorMsg
       NvimDoubleQuotedUnknownEscape { NvimInvalidValue }, -- NvimDoubleQuotedUnknownEscape          xxx links to NvimInvalidValue
 
-      ElCommand { Constant }, -- ElCommand                       xxx links to Constant
-      ElCommandCV { StatusLine }, -- ElCommandCV                     xxx links to StatusLine
-      ElCommandEx { StatusLine }, -- ElCommandEx                     xxx links to StatusLine
-      ElConfirm { StatusLine }, -- ElConfirm                       xxx links to StatusLine
-      ElInsertCompletion { StatusLine }, -- ElInsertCompletion              xxx links to StatusLine
-      ElInsert { MsgSeparator }, -- ElInsert                        xxx links to MsgSeparator
-      ElMore { StatusLine }, -- ElMore                          xxx links to StatusLine
-      ElNormal { Function }, -- ElNormal                        xxx links to Function
-      ElNormalOperatorPending { StatusLine }, -- ElNormalOperatorPending         xxx links to StatusLine
-      ElPrompt { StatusLine }, -- ElPrompt                        xxx links to StatusLine
-      ElReplace { StatusLine }, -- ElReplace                       xxx links to StatusLine
-      ElSBlock { StatusLine }, -- ElSBlock                        xxx links to StatusLine
-      ElSelect { StatusLine }, -- ElSelect                        xxx links to StatusLine
-      ElShell { StatusLine }, -- ElShell                         xxx links to StatusLine
-      ElSLine { StatusLine }, -- ElSLine                         xxx links to StatusLine
-      ElTerm { StatusLine }, -- ElTerm                          xxx links to StatusLine
-      ElVirtualReplace { StatusLine }, -- ElVirtualReplace                xxx links to StatusLine
-      ElVisualBlock { StatusLine }, -- ElVisualBlock                   xxx links to StatusLine
-      ElVisualLine { StatusLine }, -- ElVisualLine                    xxx links to StatusLine
-      ElVisual { StatusLine }, -- ElVisual                        xxx links to StatusLine
-      ElCommandInactive { ElCommand }, -- ElCommandInactive               xxx links to ElCommand
-      ElCommandCVInactive { ElCommandCV }, -- ElCommandCVInactive             xxx links to ElCommandCV
-      ElCommandExInactive { ElCommandEx }, -- ElCommandExInactive             xxx links to ElCommandEx
-      ElConfirmInactive { ElConfirm }, -- ElConfirmInactive               xxx links to ElConfirm
-      ElInsertCompletionInactive { ElInsertCompletion }, -- ElInsertCompletionInactive      xxx links to ElInsertCompletion
-      ElInsertInactive { ElInsert }, -- ElInsertInactive                xxx links to ElInsert
-      ElMoreInactive { ElMore }, -- ElMoreInactive                  xxx links to ElMore
-      ElNormalInactive { ElNormal }, -- ElNormalInactive                xxx links to ElNormal
-      ElNormalOperatorPendingInactive { ElNormalOperatorPending }, -- ElNormalOperatorPendingInactive xxx links to ElNormalOperatorPending
-      ElPromptInactive { ElPrompt }, -- ElPromptInactive                xxx links to ElPrompt
-      ElReplaceInactive { ElReplace }, -- ElReplaceInactive               xxx links to ElReplace
-      ElSBlockInactive { ElSBlock }, -- ElSBlockInactive                xxx links to ElSBlock
-      ElSelectInactive { ElSelect }, -- ElSelectInactive                xxx links to ElSelect
-      ElShellInactive { ElShell }, -- ElShellInactive                 xxx links to ElShell
-      ElSLineInactive { ElSLine }, -- ElSLineInactive                 xxx links to ElSLine
-      ElTermInactive { ElTerm }, -- ElTermInactive                  xxx links to ElTerm
-      ElVirtualReplaceInactive { ElVirtualReplace }, -- ElVirtualReplaceInactive        xxx links to ElVirtualReplace
-      ElVisualBlockInactive { ElVisualBlock }, -- ElVisualBlockInactive           xxx links to ElVisualBlock
-      ElVisualLineInactive { ElVisualLine }, -- ElVisualLineInactive            xxx links to ElVisualLine
-      ElVisualInactive { ElVisual }, -- ElVisualInactive                xxx links to ElVisual
-
       -- Dap UI
       -- DapUIScope                  xxx guifg=#00F1F5
       -- DapUIType                   xxx guifg=#D484FF
@@ -679,9 +638,9 @@ L("lush", function(lush)
       DevIconTs { fg = hsl "#519aba" }, -- DevIconTs                  xxx guifg=#519aba
       DevIconTsx { fg = hsl "#519aba" }, -- DevIconTsx                 xxx guifg=#519aba
 
-      TabLine { ElNormal }, -- TabLine              xxx ctermfg=15 ctermbg=8 gui=underline guibg=DarkGrey
-      TabLineSel { ElInsert }, -- TabLineSel           xxx ctermfg=0 ctermbg=14 gui=bold
-      TabLineFill { ElNormal }, -- TabLineFill          xxx ctermfg=15 ctermbg=8 gui=reverse
+      TabLine { fg = xres.None, bg = xres.bg.lighten(2) }, -- TabLine              xxx ctermfg=15 ctermbg=8 gui=underline guibg=DarkGrey
+      TabLineSel { StatusLine }, -- TabLineSel           xxx ctermfg=0 ctermbg=14 gui=bold
+      TabLineFill { TabLine }, -- TabLineFill          xxx ctermfg=15 ctermbg=8 gui=reverse
 
       NotifyERRORBorder { fg = hsl "#8A1F1F" },
       NotifyWARNBorder { fg = hsl "#79491D" },
