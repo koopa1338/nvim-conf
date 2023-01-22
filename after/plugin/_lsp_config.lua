@@ -223,6 +223,15 @@ L("lspconfig", function(nvim_lsp)
       },
     })
 
+    local mason = L "mason-registry"
+    local cmp_lsp = L "cmp_lsp"
+    for server, config in pairs(lsp_utils.servers(mason)) do
+      config.on_attach = custom_attach
+      config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
+      nvim_lsp[server].setup(config)
+    end
+    L("lspconfig.ui.windows").default_options.border = bt
+
     L("null-ls", function(null_ls)
       L("lsp_sources_custom", function(lsp_sources)
         null_ls.setup({
@@ -232,14 +241,5 @@ L("lspconfig", function(nvim_lsp)
         })
       end)
     end)
-
-    local mason = L "mason-registry"
-    local cmp_lsp = L "cmp_lsp"
-    for server, config in pairs(lsp_utils.servers(mason)) do
-      config.on_attach = custom_attach
-      config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
-      nvim_lsp[server].setup(config)
-    end
-    L("lspconfig.ui.windows").default_options.border = bt
   end)
 end)
