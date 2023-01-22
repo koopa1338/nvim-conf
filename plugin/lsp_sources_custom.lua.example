@@ -1,0 +1,11 @@
+local M = {}
+
+M.get_null_ls_sources = function(null_ls)
+  return {
+    -- add your custom null_ls sources here
+    null_ls.builtins.formatting.black,
+    null_ls.builtins.hover.printenv,
+  }
+end
+
+return M

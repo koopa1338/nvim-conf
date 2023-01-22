@@ -46,7 +46,7 @@ L("lspconfig", function(nvim_lsp)
       if capabilities.documentFormattingProvider then
         Map("n", "<leader>lf", function()
           if vim.version().minor >= 8 then
-            vim.lsp.buf.format { async = true }
+            vim.lsp.buf.format() -- { async = true }
           else
             vim.lsp.buf.formatting()
           end
@@ -223,6 +223,15 @@ L("lspconfig", function(nvim_lsp)
       },
     })
 
+    L("null-ls", function(null_ls)
+      L("lsp_sources_custom", function(lsp_sources)
+        null_ls.setup({
+          sources = lsp_sources.get_null_ls_sources(null_ls),
+          on_attach = custom_attach
+        })
+      end)
+    end)
+
     local mason = L "mason-registry"
     local cmp_lsp = L "cmp_lsp"
     for server, config in pairs(lsp_utils.servers(mason)) do
@@ -230,7 +239,6 @@ L("lspconfig", function(nvim_lsp)
       config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
       nvim_lsp[server].setup(config)
     end
-
     L("lspconfig.ui.windows").default_options.border = bt
   end)
 end)

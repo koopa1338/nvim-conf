@@ -68,6 +68,10 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
   },
   { "neovim/nvim-lspconfig" },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
   { "williamboman/mason.nvim" },
   {
     "folke/trouble.nvim",
