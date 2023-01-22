@@ -77,7 +77,16 @@ cmp.setup {
     ["<C-c>"] = cmp.mapping.close(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<M-s>"] = cmp.mapping.complete {
+      config = {
+        sources = {
+          { name = "luasnip" },
+        },
+      },
+    },
+    ["<C-k>"] = cmp.mapping.complete {
+      reason = cmp.ContextReason.Auto,
+    },
     ["<cr>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Insert,
       select = false,

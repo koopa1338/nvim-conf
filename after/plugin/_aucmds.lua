@@ -187,7 +187,7 @@ api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave" }, {
   group = staline,
   callback = function()
     local ft = bo.filetype
-    if Contains({"alpha", "NvimTree", "mason"}, ft) then
+    if Contains({ "alpha", "NvimTree", "mason" }, ft) then
       o.laststatus = 3
     else
       o.laststatus = 2
