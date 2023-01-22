@@ -230,15 +230,17 @@ L("lspconfig", function(nvim_lsp)
       config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
       nvim_lsp[server].setup(config)
     end
+
     L("lspconfig.ui.windows").default_options.border = bt
 
     L("null-ls", function(null_ls)
       L("lsp_sources_custom", function(lsp_sources)
-        null_ls.setup({
+        lsp_sources.ls = null_ls
+        null_ls.setup {
           border = bt,
-          sources = lsp_sources.get_null_ls_sources(null_ls),
-          on_attach = custom_attach
-        })
+          sources = lsp_sources.get_null_ls_sources(),
+          on_attach = custom_attach,
+        }
       end)
     end)
   end)
