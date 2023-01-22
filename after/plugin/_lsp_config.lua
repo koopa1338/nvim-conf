@@ -226,6 +226,7 @@ L("lspconfig", function(nvim_lsp)
     L("null-ls", function(null_ls)
       L("lsp_sources_custom", function(lsp_sources)
         null_ls.setup({
+          border = bt,
           sources = lsp_sources.get_null_ls_sources(null_ls),
           on_attach = custom_attach
         })
