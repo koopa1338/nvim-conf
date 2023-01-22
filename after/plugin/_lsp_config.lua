@@ -234,7 +234,7 @@ L("lspconfig", function(nvim_lsp)
     L("lspconfig.ui.windows").default_options.border = bt
 
     L("null-ls", function(null_ls)
-      L("lsp_sources_custom", function(lsp_sources)
+      L("lsp_sources", function(lsp_sources)
         lsp_sources.ls = null_ls
         null_ls.setup {
           border = bt,
