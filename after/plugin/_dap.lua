@@ -68,7 +68,7 @@ L("which-key", function(wk)
       j = { "Debug Step Down" },
       r = { "Toggle Debug REPL" },
       D = { "Disconnect Debugger" },
-      Q = { "Clear All Breakpoints"},
+      Q = { "Clear All Breakpoints" },
     },
     ["<M-d>"] = { "Start/Terminate Debugger Session" },
   }, { prefix = "<leader>" })

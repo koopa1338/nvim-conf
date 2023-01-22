@@ -1,6 +1,6 @@
-L('staline', function(sl)
+L("staline", function(sl)
   local git = function()
-    return vim.b.gitsigns_status or ''
+    return vim.b.gitsigns_status or ""
   end
 
   local encoding = function()
@@ -35,7 +35,6 @@ L('staline', function(sl)
       end
     end
     return { "StatusLine", diag }
-
   end
 
   local has_diag = function()
@@ -59,27 +58,36 @@ L('staline', function(sl)
   sl.setup {
     sections = {
       left = {
-        '-mode',
-        '-branch',
-        '- ',
+        "-mode",
+        "-branch",
+        "- ",
         { "StalineFill", git },
-        '- ',
-        'left_sep_double', ' ',
+        "- ",
+        "left_sep_double",
+        " ",
       },
-      mid   = {
-        { "SatusLineSeperator", 'right_sep' },
-        { "StatusLine", ' ' },
-        { "StatusLine", 'file_name' },
-        { "StatusLine", ' ' },
-        { "SatusLineSeperator", 'left_sep' },
+      mid = {
+        { "SatusLineSeperator", "right_sep" },
+        { "StatusLine", " " },
+        { "StatusLine", "file_name" },
+        { "StatusLine", " " },
+        { "SatusLineSeperator", "left_sep" },
       },
       right = {
-        'right_sep_double', '- ',
-        '-lsp_name', '- ', '', ' ',
+        "right_sep_double",
+        "- ",
+        "-lsp_name",
+        "- ",
+        "",
+        " ",
         diag_pre,
         lsp_diag,
-        diag_suf, ' ',
-        encoding, " ", "right_sep", '-line_column'
+        diag_suf,
+        " ",
+        encoding,
+        " ",
+        "right_sep",
+        "-line_column",
       },
     },
     defaults = {
