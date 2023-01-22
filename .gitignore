@@ -1,4 +1,4 @@
-lua/plugins_custom.lua
+lua/plugins/custom.lua
 lua/settings_custom.lua
 plugin/lsp_custom.lua
 plugin/dap_custom.lua

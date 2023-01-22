@@ -1,4 +1,4 @@
-local plugins = {
+return {
   { "folke/which-key.nvim" },
   { "mrjones2014/legendary.nvim" },
 
@@ -8,12 +8,14 @@ local plugins = {
   { "kylechui/nvim-surround" },
   { "numToStr/Comment.nvim" },
   { "numToStr/Comment.nvim" },
-  { "nvim-treesitter/nvim-treesitter" },
-  {
-    "haringsrob/nvim_context_vt",
+  { "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "haringsrob/nvim_context_vt",
+      "nvim-lua/popup.nvim",
+      "windwp/nvim-ts-autotag",
+
+    }
   },
   { "folke/todo-comments.nvim" },
   -- Zen modes
@@ -25,11 +27,6 @@ local plugins = {
   { "nacro90/numb.nvim" },
 
   -- searching and file browsing
-  { "nvim-lua/popup.nvim" },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-  },
   {
     "nvim-lua/telescope.nvim",
     branch = "0.1.x",
@@ -52,12 +49,6 @@ local plugins = {
   -- text objects and motions
   { "wellle/targets.vim" },
   { "windwp/nvim-autopairs" },
-  {
-    "windwp/nvim-ts-autotag",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
   { "godlygeek/tabular" },
 
   -- syntax and languages
@@ -139,12 +130,3 @@ local plugins = {
   { "romgrk/fzy-lua-native" },
   { "uga-rosa/ccc.nvim" }, -- color picker
 }
-
-local custom_plugins = L "plugins_custom"
-if custom_plugins then
-  for _, v in pairs(custom_plugins) do
-    table.insert(plugins, v)
-  end
-end
-
-return plugins
