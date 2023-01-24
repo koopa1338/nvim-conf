@@ -1,41 +1,108 @@
 local sign_define = vim.fn.sign_define
+local M = {}
 
--- diagnostic
-sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
-sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
-sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
-sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+M.signs = {
+  DiagnosticSignError = {
+    icon = "",
+    texthl = "DiagnosticSignError",
+  },
+  DiagnosticSignWarn = {
+    icon = "",
+    texthl = "DiagnosticSignWarn",
+  },
+  DiagnosticSignInfo = {
+    icon = "",
+    texthl = "DiagnosticSignInfo",
+  },
+  DiagnosticSignHint = {
+    icon = "",
+    texthl = "DiagnosticSignHint",
+  },
+  DapBreakpoint = {
+    icon = "",
+    texthl = "DiagnosticSignError",
+  },
+  DapBreakpointCondition = {
+    icon = "",
+    texthl = "DiagnosticSignWarn",
+  },
+  DapLogPoint = {
+    icon = "",
+    texthl = "DiagnosticSignInfo",
+  },
+  GitSignsLineColAdd = {
+    hl = "GitSingsAdd",
+    icon = "",
+    numhl = "GitSignsAddNr",
+    linehl = "GitSignsNrAddLn",
+  },
+  GitSignsLineColTopdelete = {
+    hl = "GitSignsDelete",
+    icon = "",
+    numhl = "GitSignsDeleteNr",
+    linehl = "GitSignsDeleteLn",
+  },
+  GitSignsLineColDelete = {
+    hl = "GitSignsDelete",
+    icon = "",
+    numhl = "GitSignsDeleteNr",
+    linehl = "GitSignsDeleteLn",
+  },
+  GitSignsLineColChange = {
+    hl = "GitSignsChange",
+    icon = "",
+    numhl = "GitSignsChangeNr",
+    linehl = "GitSignsChangeLn",
+  },
+  GitSignsLineColChangedelete = {
+    hl = "GitSignsChange",
+    icon = "",
+    numhl = "GitSignsChangeNr",
+    linehl = "GitSignsChangeLn",
+  },
+  GitSignsLineColUntracked = {
+    hl = "GitSingsAdd",
+    icon = "",
+    numhl = "GitSignsAddNr",
+    linehl = "GitSignsNrAddLn",
+  },
+  GitSignsLineColUnmerged = {
+    hl = "GitSingsChange",
+    icon = "",
+    numhl = "GitSignsChangeNr",
+    linehl = "GitSignsChangeLn",
+  },
+  GitSignsLineColUnstaged = {
+    hl = "GitSingsAdd",
+    icon = "ﳺ",
+    numhl = "GitSignsAddNr",
+    linehl = "GitSignsNrAddLn",
+  },
+  Search = {
+    icon = "",
+    texthl = "Normal",
+  },
+}
 
--- dap debugger
-sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
-sign_define("DapBreakpointCondition", { text = "", texthl = "DiagnosticSignWarn", linehl = "", numhl = "" })
-sign_define("DapLogPoint", { text = "", texthl = "", linehl = "DiagnosticSignInfo", numhl = "" })
+M.setup = function()
+  for name, sign in pairs(M.signs) do
+    local opts = {
+      text = sign.icon or "",
+      hl = sign.hl or nil,
+      texthl = sign.texthl or nil,
+      numhl = sign.numhl or nil,
+      linehl = sign.linehl or nil,
+    }
+    sign_define(name, opts)
+  end
+end
 
--- git
-sign_define(
-  "GitSignsLineColAdd",
-  { hl = "GitSignsAdd", text = "", numhl = "GitSignsAddNr", linehl = "GitSignsNrAddLn" }
-)
-sign_define(
-  "GitSignsLineColTopdelete",
-  { hl = "GitSignsDelete", text = "", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" }
-)
-sign_define(
-  "GitSignsLineColDelete",
-  { hl = "GitSignsDelete", text = "", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" }
-)
-sign_define(
-  "GitSignsLineColChange",
-  { hl = "GitSignsChange", text = "", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" }
-)
-sign_define(
-  "GitSignsLineColChangedelete",
-  { hl = "GitSignsChange", text = "", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" }
-)
-sign_define(
-  "GitSignsLineColUntracked",
-  { hl = "GitSignsAdd", text = "", numhl = "GitSignsAddNr", linehl = "GitSignsNrAddLn" }
-)
+Get_sign_def = function(name)
+  local result = vim.fn.sign_getdefined(name)
+  if #result > 0 then
+    return result[1]
+  end
+  return {}
+end
 
-
-sign_define("Search", { text = "", texthl = "Normal" })
+return M

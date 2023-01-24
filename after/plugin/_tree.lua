@@ -1,4 +1,7 @@
 L("nvim-tree", function(tree)
+
+  local signs = L("signs").signs
+
   local tree_cb = require("nvim-tree.config").nvim_tree_callback
   tree.setup {
     renderer = {
@@ -12,10 +15,10 @@ L("nvim-tree", function(tree)
         },
         glyphs = {
           git = {
-            unstaged = "ﳺ",
-            staged = "",
-            unmerged = "",
-            untracked = "",
+            unstaged = signs.GitSignsLineColUnstaged.icon,
+            staged = signs.GitSignsLineColAdd.icon,
+            unmerged = signs.GitSignsLineColUnmerged.icon,
+            untracked = signs.GitSignsLineColUntracked.icon,
           },
         },
       },
@@ -30,10 +33,10 @@ L("nvim-tree", function(tree)
     diagnostics = {
       enable = true,
       icons = {
-        error = Get_sign_def("DiagnosticSignError").text,
-        warning = Get_sign_def("DiagnosticSignWarn").text,
-        info = Get_sign_def("DiagnosticSignInfo").text,
-        hint = Get_sign_def("DiagnosticSignHint").text,
+        error = signs.DiagnosticSignError.icon,
+        warning = signs.DiagnosticSignWarn.icon,
+        info = signs.DiagnosticSignInfo.icon,
+        hint = signs.DiagnosticSignHint.icon,
       },
     },
     update_focused_file = {

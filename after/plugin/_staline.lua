@@ -27,7 +27,7 @@ L("staline", function(sl)
       if diagnostic ~= nil then
         if diagnostic > 0 then
           local sign_name = "DiagnosticSign" .. s
-          local sign = Get_sign_def(sign_name).text
+          local sign = Get_sign_def(sign_name).icon
           if sign ~= nil then
             diag = diag .. sign .. diagnostic .. " "
           end

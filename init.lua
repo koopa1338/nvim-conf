@@ -7,7 +7,9 @@ g.mapleader = " "
 g.border_type = "rounded" -- supported: rounded, single, double
 
 require "utils"
-L "signs"
+L("signs", function(signs)
+  signs.setup()
+end)
 L "lazy_init"
 L("lazy", function(lazy)
   local opts = L "lazy_opts" or {}

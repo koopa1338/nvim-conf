@@ -55,33 +55,3 @@ L("plenary.reload", function(reloader)
     return require(name)
   end
 end)
-
-Get_theme_hl = function(name)
-  local hl_group = {}
-  L("lush", function(lush)
-    L("walush", function(walush)
-      local tmp = walush[name]
-      if tmp then
-        for _, key in pairs { "fg", "bg" } do
-          local value = tmp[key]
-          if value ~= nil and value ~= "NONE" then
-            hl_group[key] = tostring(value)
-          else
-            hl_group[key] = value
-          end
-        end
-        hl_group["gui"] = tmp["gui"]
-      end
-    end)
-  end)
-
-  return hl_group
-end
-
-Get_sign_def = function(name)
-  local result = vim.fn.sign_getdefined(name)
-  if #result > 0 then
-    return result[1]
-  end
-  return {}
-end
