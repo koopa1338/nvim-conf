@@ -36,3 +36,6 @@ sign_define(
   "GitSignsLineColUntracked",
   { hl = "GitSignsAdd", text = "", numhl = "GitSignsAddNr", linehl = "GitSignsNrAddLn" }
 )
+
+
+sign_define("Search", { text = "", texthl = "Normal" })

@@ -143,7 +143,7 @@ L("lush", function(lush)
       Method {},
       Boolean { Statement },
       FloatBorder { Pmenu },
-      FloatTitle { Normal },
+      FloatTitle { fg = xres.color0, bg = xres.color15, gui = "bold" },
       SpecialChar { fg = xres.color12, bg = xres.color8 },
       SpecialComment { fg = xres.color11, bg = xres.color8 },
       FoldColumn { fg = xres.color14, bg = xres.bg },
@@ -450,9 +450,9 @@ L("lush", function(lush)
       TelescopeResultsField { Function }, -- TelescopeResultsField           xxx links to Function
       TelescopeResultsFunction { Function }, -- TelescopeResultsFunction        xxx links to Function
       TelescopeResultsMethod { Method }, -- TelescopeResultsMethod          xxx links to Method
-      TelescopeResultsTitle { fg = xres.bg, bg = xres.color9, gui = "bold" },
-      TelescopePromptTitle { fg = xres.bg, bg = xres.color9.ro(60), gui = "bold" },
-      TelescopePreviewTitle { fg = xres.bg, bg = xres.color9.ro(120), gui = "bold" },
+      TelescopeResultsTitle { FloatTitle },
+      TelescopePromptTitle { FloatTitle },
+      TelescopePreviewTitle { FloatTitle },
 
       -- Devicons
       DevIconDiff { fg = hsl "#41535b" }, -- DevIconDiff                xxx guifg=#41535b
