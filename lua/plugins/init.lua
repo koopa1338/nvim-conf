@@ -8,14 +8,14 @@ return {
   { "kylechui/nvim-surround" },
   { "numToStr/Comment.nvim" },
   { "numToStr/Comment.nvim" },
-  { "nvim-treesitter/nvim-treesitter",
+  {
+    "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "haringsrob/nvim_context_vt",
       "nvim-lua/popup.nvim",
       "windwp/nvim-ts-autotag",
-
-    }
+    },
   },
   { "folke/todo-comments.nvim" },
   -- Zen modes

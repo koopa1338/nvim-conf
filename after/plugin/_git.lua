@@ -67,6 +67,8 @@ L("gitsigns", function(gitsigns)
   end)
 end)
 
+local signs = L("signs").signs
+
 L("diffview", function(diffview)
   L("diffview.actions", function(actions)
     diffview.setup {
@@ -74,12 +76,12 @@ L("diffview", function(diffview)
       enhanced_diff_hl = true, -- See ':h diffview-config-enhanced_diff_hl'
       use_icons = true, -- Requires nvim-web-devicons
       icons = { -- Only applies when use_icons is true.
-        folder_closed = "",
-        folder_open = "",
+        folder_closed = signs.FolderClosed.icon,
+        folder_open = signs.FolderOpen.icon,
       },
       signs = {
-        fold_closed = "",
-        fold_open = "",
+        fold_closed = signs.FoldClosed.icon,
+        fold_open = signs.FoldOpen.icon,
       },
       file_panel = {
         win_config = {
@@ -220,8 +222,8 @@ L("neogit", function(neogit)
     -- customize displayed signs
     signs = {
       -- { CLOSED, OPENED }
-      section = { "", "" },
-      item = { "", "" },
+      section = { signs.FoldClosed.icon, signs.FoldOpen.icon },
+      item = { signs.FoldClosed.icon, signs.FoldOpen.icon },
       hunk = { "", "" },
     },
     integrations = {

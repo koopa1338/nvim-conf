@@ -1,5 +1,4 @@
 L("nvim-tree", function(tree)
-
   local signs = L("signs").signs
 
   local tree_cb = require("nvim-tree.config").nvim_tree_callback

@@ -82,6 +82,18 @@ M.signs = {
     icon = "",
     texthl = "Normal",
   },
+  FolderClosed = {
+    icon = "",
+  },
+  FolderOpen = {
+    icon = "",
+  },
+  FoldClosed = {
+    icon = "",
+  },
+  FoldOpen = {
+    icon = "",
+  },
 }
 
 M.setup = function()
