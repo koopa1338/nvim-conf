@@ -1,4 +1,9 @@
-local M = { "L3MON4D3/LuaSnip", dependencies = { "nvim-cmp" } }
+local M = {
+  "L3MON4D3/LuaSnip",
+  dependencies = {
+    "hrsh7th/nvim-cmp",
+  },
+}
 
 M.config = function()
   L("luasnip", function(ls)

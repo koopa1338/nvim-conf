@@ -31,6 +31,12 @@ return {
   { "godlygeek/tabular", event = "VeryLazy" },
 
   -- syntax and languages
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+  },
   { "lervag/vimtex", ft = { "tex" } },
   {
     "saecki/crates.nvim",
