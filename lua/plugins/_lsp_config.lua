@@ -1,5 +1,15 @@
-L("lspconfig", function(nvim_lsp)
-  L("lsp_utils", function(lsp_utils)
+local M = {
+  "neovim/nvim-lspconfig",
+  dependencies = {
+    "jose-elias-alvarez/null-ls.nvim",
+    "nvim-lua/plenary.nvim",
+  },
+  lazy = true,
+}
+
+M.config = function()
+  L("lspconfig", function(nvim_lsp)
+    local lsp_utils = L "lsp_utils"
     -- lsp config
     local custom_attach = function(client, bufnr)
       local opts = { silent = true, buffer = bufnr }
@@ -233,15 +243,16 @@ L("lspconfig", function(nvim_lsp)
 
     L("lspconfig.ui.windows").default_options.border = bt
 
-    L("null-ls", function(null_ls)
-      L("lsp_sources", function(lsp_sources)
-        lsp_sources.ls = null_ls
-        null_ls.setup {
-          border = bt,
-          sources = lsp_sources.get_null_ls_sources(),
-          on_attach = custom_attach,
-        }
-      end)
+    local null_ls = L "null-ls"
+    L("lsp_sources", function(lsp_sources)
+      lsp_sources.ls = null_ls
+      null_ls.setup {
+        border = bt,
+        sources = lsp_sources.get_null_ls_sources(),
+        on_attach = custom_attach,
+      }
     end)
   end)
-end)
+end
+
+return M

@@ -1,55 +1,34 @@
 return {
-  { "folke/which-key.nvim" },
-  { "mrjones2014/legendary.nvim" },
-
-  { "axieax/urlview.nvim" },
-
-  -- editing
-  { "kylechui/nvim-surround" },
-  { "numToStr/Comment.nvim" },
-  { "numToStr/Comment.nvim" },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "haringsrob/nvim_context_vt",
-      "nvim-lua/popup.nvim",
-      "windwp/nvim-ts-autotag",
-    },
-  },
-  { "folke/todo-comments.nvim" },
-  -- Zen modes
-  { "Pocco81/TrueZen.nvim" },
+  { "mrjones2014/legendary.nvim", event = "VeryLazy" },
 
   -- movement and search
   { "markonm/traces.vim" },
-  { "AckslD/messages.nvim" },
-  { "nacro90/numb.nvim" },
-
-  -- searching and file browsing
   {
-    "nvim-lua/telescope.nvim",
-    branch = "0.1.x",
+    "nacro90/numb.nvim",
+    config = function()
+      L("numb", function(numb)
+        numb.setup()
+      end)
+    end,
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
     cond = vim.fn.executable "make" == 1,
+    dependencies = {
+      "nvim-lua/telescope.nvim",
+    },
   },
-  { "nvim-telescope/telescope-ui-select.nvim" },
-  { "LukasPietzschmann/telescope-tabs" },
-
-  {
-    "goolord/alpha-nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
-  },
-
-  { "dimfred/resize-mode.nvim" },
 
   -- text objects and motions
-  { "wellle/targets.vim" },
-  { "windwp/nvim-autopairs" },
-  { "godlygeek/tabular" },
+  { "wellle/targets.vim", event = "VeryLazy" },
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      L("nvim-autopairs").setup()
+    end,
+  },
+  { "godlygeek/tabular", event = "VeryLazy" },
 
   -- syntax and languages
   { "lervag/vimtex", ft = { "tex" } },
@@ -58,41 +37,26 @@ return {
     event = "BufRead Cargo.toml",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-  { "neovim/nvim-lspconfig", lazy = true },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    lazy = true,
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  { "williamboman/mason.nvim" },
-  {
-    "folke/trouble.nvim",
-    dependencies = "kyazdani42/nvim-web-devicons",
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-nvim-lsp",
-      "saadparwaiz1/cmp_luasnip",
-      "onsails/lspkind-nvim",
-    },
-  },
-  { "L3MON4D3/LuaSnip", dependencies = { "nvim-cmp" } },
-  { "rafamadriz/friendly-snippets" },
-  { "michaelb/sniprun", build = "bash install.sh" },
 
   -- theme
   { "rktjmp/lush.nvim" },
-
-  { "tamton-aquib/staline.nvim", lazy = false },
-  { "alvarosevilla95/luatab.nvim" },
+  {
+    "alvarosevilla95/luatab.nvim",
+    config = function()
+      L("luatab", function(luatab)
+        luatab.setup {}
+      end)
+    end,
+  },
   { "kyazdani42/nvim-web-devicons" },
-  { "kyazdani42/nvim-tree.lua" },
-  { "rcarriga/nvim-notify" },
-  { "stevearc/dressing.nvim" },
-  { "petertriho/nvim-scrollbar" },
+  {
+    "petertriho/nvim-scrollbar",
+    config = function()
+      L("scrollbar", function(scrollbar)
+        scrollbar.setup()
+      end)
+    end,
+  },
 
   -- version control
   { "junegunn/gv.vim" },
@@ -104,30 +68,23 @@ return {
   },
   {
     "TimUntersberger/neogit",
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
     },
   },
-
-  -- debugger
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-    },
-  },
-
   {
     "kristijanhusak/vim-dadbod-ui",
+    event = "VeryLazy",
     dependencies = {
       "tpope/vim-dadbod",
     },
   },
 
   -- utils
-  { "jghauser/mkdir.nvim" },
-  { "gelguy/wilder.nvim" },
-  { "romgrk/fzy-lua-native" },
-  { "uga-rosa/ccc.nvim" }, -- color picker
+  { "jghauser/mkdir.nvim", event = "VeryLazy" },
+  { "gelguy/wilder.nvim", event = "VeryLazy" },
+  { "romgrk/fzy-lua-native", event = "VeryLazy" },
+  { "uga-rosa/ccc.nvim", event = "VeryLazy" }, -- color picker
 }

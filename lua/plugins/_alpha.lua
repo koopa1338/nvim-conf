@@ -1,5 +1,11 @@
-L("alpha", function(alpha)
-  local dashboard = require "alpha.themes.dashboard"
+local M = {
+  "goolord/alpha-nvim",
+  dependencies = { "kyazdani42/nvim-web-devicons" },
+}
+
+M.config = function()
+  local alpha = L "alpha"
+  local dashboard = L "alpha.themes.dashboard"
 
   -- Set header
   dashboard.section.header.val = {
@@ -25,4 +31,6 @@ L("alpha", function(alpha)
   }
 
   alpha.setup(dashboard.opts)
-end)
+end
+
+return M
