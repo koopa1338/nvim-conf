@@ -2,7 +2,9 @@ local M = {
   "L3MON4D3/LuaSnip",
   dependencies = {
     "hrsh7th/nvim-cmp",
+    "rafamadriz/friendly-snippets",
   },
+  event = "VeryLazy",
 }
 
 M.config = function()
