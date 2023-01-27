@@ -1,8 +1,11 @@
 local M = {
   "L3MON4D3/LuaSnip",
   dependencies = {
-    "hrsh7th/nvim-cmp",
     "rafamadriz/friendly-snippets",
+    config = function()
+      -- get friendly-snippets to work with LuaSnip
+      L("luasnip.loaders.from_vscode").lazy_load()
+    end,
   },
   event = "VeryLazy",
 }
@@ -13,9 +16,6 @@ M.config = function()
       history = true,
       updateevents = "TextChanged,TextChangedI",
     }
-
-    -- get friendly-snippets to work with LuaSnip
-    L("luasnip.loaders.from_vscode").lazy_load()
 
     -- some shorthands...
     local snip = ls.snippet
