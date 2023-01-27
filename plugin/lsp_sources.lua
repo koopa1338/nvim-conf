@@ -11,7 +11,6 @@ M.get_null_ls_sources = function()
   if M.ls then
     L("lsp_sources_custom", function(sources_custom)
       for k, v in pairs(sources_custom.get_custom_sources(M.ls)) do
-        local src = nil
         if v.custom then
           local cond = v.config.condition
           if v.external_cmd and cond ~= nil then
@@ -19,10 +18,10 @@ M.get_null_ls_sources = function()
           end
           M.ls.register(v.config)
         else
-          src = M.ls.builtins[v.type][k]
-        end
-
-        if src then
+          local src = M.ls.builtins[v.type][k]
+          if v.with then
+            src = src.with(v.with)
+          end
           if v.external_cmd then
             if cmd_available(k) then
               table.insert(sources, src)
