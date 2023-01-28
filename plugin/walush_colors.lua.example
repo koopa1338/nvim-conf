@@ -1,3 +1,4 @@
+-- define your color scheme here or create a template with wpgtk
 return {
   fg = "foreground",
   bg = "background",
