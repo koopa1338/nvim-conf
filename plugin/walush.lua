@@ -105,8 +105,6 @@ L("lush", function(lush)
       NvimNumberPrefix { Type },
       NvimOptionSigil { Type },
       Normal { fg = xres.color15, bg = xres.color0 },
-      NvimTreePopup { Normal },
-      NvimTreeNormal { Normal },
       DapUIFrameName { Normal },
       DapUIValue { Normal },
       DapUIVariable { Normal },
@@ -375,9 +373,11 @@ L("lush", function(lush)
       -- NvimTreeGitRenamed xxx guifg=Purple
       -- NvimTreeOpenedFile xxx gui=bold guifg=Green
       -- NvimTreeGitStaged xxx guifg=Green
-      -- NvimTreeWindowPicker xxx gui=bold guifg=#ededed guibg=#4493c8
       -- NvimTreeFileRenamed xxx links to NvimTreeGitRenamed
       -- NvimTreeFileStaged xxx links to NvimTreeGitStaged
+      NvimTreeWindowPicker { FloatTitle }, -- xxx gui=bold guifg=#ededed guibg=#4493c8
+      NvimTreePopup { Normal },
+      NvimTreeNormal { Normal },
       NvimTreeSpecialFile { fg = xres.color10, gui = "bold,underline" }, -- NvimTreeSpecialFile               xxx gui=bold,underline guifg=10
       NvimTreeGitDeleted { diffOldFile }, -- NvimTreeGitDeleted                xxx guifg=13
       NvimTreeGitNew { diffNewFile }, -- NvimTreeGitNew                    xxx guifg=10
