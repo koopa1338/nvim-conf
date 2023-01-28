@@ -7,7 +7,7 @@ local M = {
     "saadparwaiz1/cmp_luasnip",
     "onsails/lspkind-nvim",
   },
-  event = "VeryLazy"
+  event = "VeryLazy",
 }
 
 M.config = function()
@@ -59,7 +59,7 @@ M.config = function()
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        local kind = lspkind.cmp_format { symbol_map = cmp_kinds } (entry, vim_item)
+        local kind = lspkind.cmp_format { symbol_map = cmp_kinds }(entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = false })
         kind.kind = " " .. strings[1] .. " "
         kind.menu = "    (" .. strings[2] .. ")"

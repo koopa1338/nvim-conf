@@ -5,4 +5,15 @@ return {
   diff = {
     cmd = "diffview.nvim",
   },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tohtml",
+        "tutor",
+      },
+    },
+  },
 }

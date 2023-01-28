@@ -1,4 +1,4 @@
-local M = { "haringsrob/nvim_context_vt" }
+local M = { "haringsrob/nvim_context_vt", event = "VeryLazy" }
 
 M.config = function()
   L("nvim_context_vt", function(context)

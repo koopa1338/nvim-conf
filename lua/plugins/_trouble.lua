@@ -1,6 +1,7 @@
 local M = {
   "folke/trouble.nvim",
   dependencies = "kyazdani42/nvim-web-devicons",
+  cmd = { "Trouble", "TroubleRefresh" },
 }
 
 M.config = function()

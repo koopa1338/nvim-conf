@@ -4,7 +4,7 @@ local M = {
     "jose-elias-alvarez/null-ls.nvim",
     "nvim-lua/plenary.nvim",
   },
-  event = "VeryLazy"
+  event = "VeryLazy",
 }
 
 M.config = function()
@@ -24,7 +24,7 @@ M.config = function()
       },
     })
 
-    local custom_attach = L("plugins.lsp.attach")
+    local custom_attach = L "plugins.lsp.attach"
     local mason = L "mason-registry"
     local cmp_lsp = L "cmp_lsp"
     for server, config in pairs(lsp_utils.servers(mason)) do
@@ -69,9 +69,7 @@ M.config = function()
         K = { "Show Documentation" },
       }, { prefix = "<leader>" })
     end)
-
   end)
 end
 
 return M
-

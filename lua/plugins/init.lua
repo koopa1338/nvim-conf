@@ -2,23 +2,7 @@ return {
   { "mrjones2014/legendary.nvim", event = "VeryLazy" },
 
   -- movement and search
-  { "markonm/traces.vim" },
-  {
-    "nacro90/numb.nvim",
-    config = function()
-      L("numb", function(numb)
-        numb.setup()
-      end)
-    end,
-  },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = "make",
-    cond = vim.fn.executable "make" == 1,
-    dependencies = {
-      "nvim-lua/telescope.nvim",
-    },
-  },
+  { "markonm/traces.vim", event = "VeryLazy" },
 
   -- text objects and motions
   { "wellle/targets.vim", event = "VeryLazy" },
@@ -58,22 +42,7 @@ return {
     end,
   },
 
-  -- version control
-  { "junegunn/gv.vim" },
-  {
-    "lewis6991/gitsigns.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
-  {
-    "TimUntersberger/neogit",
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-    },
-  },
+  -- { "junegunn/gv.vim" },
   {
     "kristijanhusak/vim-dadbod-ui",
     event = "VeryLazy",

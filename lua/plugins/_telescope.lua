@@ -1,11 +1,18 @@
 local M = {
   "nvim-lua/telescope.nvim",
   branch = "0.1.x",
+  -- event = "VeryLazy",
   dependencies = {
     "nvim-telescope/telescope-ui-select.nvim",
     "LukasPietzschmann/telescope-tabs",
     "rcarriga/nvim-notify",
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      cond = vim.fn.executable "make" == 1,
+    },
   },
+  cmd = "Telescope",
 }
 
 local border_chars = function(border_type)

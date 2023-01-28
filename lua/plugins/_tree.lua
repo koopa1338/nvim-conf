@@ -1,4 +1,4 @@
-local M = { "kyazdani42/nvim-tree.lua" }
+local M = { "kyazdani42/nvim-tree.lua", event = "VeryLazy" }
 
 M.config = function()
   L("nvim-tree", function(tree)
