@@ -135,7 +135,7 @@ L("lush", function(lush)
       Method {},
       Boolean { Statement },
       FloatBorder { Pmenu },
-      FloatTitle { fg = xres.color0, bg = xres.color15, gui = "bold" },
+      FloatTitle { fg = xres.color0, bg = xres.fg, gui = "bold" },
       SpecialChar { fg = xres.color12, bg = xres.color8 },
       SpecialComment { fg = xres.color11, bg = xres.color8 },
       FoldColumn { fg = xres.color14, bg = xres.bg },
