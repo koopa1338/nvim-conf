@@ -68,7 +68,7 @@ L("lush", function(lush)
       -- General
       SpecialKey { fg = xres.color13, bg = xres.color0 },
       TermCursor { gui = "reverse" },
-      NonText { fg = xres.color12, bg = xres.bg },
+      NonText { fg = xres.bg.lighten(20), bg = xres.None },
       EndOfBuffer { NonText },
       Directory { fg = xres.color11, bg = xres.bg },
       ErrorMsg { fg = xres.color0, bg = xres.color9 },
@@ -212,7 +212,7 @@ L("lush", function(lush)
       GitSignsAddNr { fg = GitSignsAdd.fg }, -- GitSignsAddNr            xxx links to GitSignsAdd
       GitSignsChange { fg = GitSignsAdd.fg.ro(300).lighten(10) }, -- GitSignsAdd              xxx links to DiffAdd
       GitSignsChangeNr { fg = GitSignsChange.fg }, -- GitSignsAddNr            xxx links to GitSignsAdd
-      GitSignsCurrentLineBlame { fg = NonText.fg.lighten(15) }, -- GitSignsCurrentLineBlame xxx links to NonText
+      GitSignsCurrentLineBlame { fg = NonText.fg.lighten(10) }, -- GitSignsCurrentLineBlame xxx links to NonText
 
       -- Nvim groups
       NvimString { String },
@@ -705,6 +705,8 @@ L("lush", function(lush)
       CmpItemKindVariable { fg = "#FFFFFF", bg = DevIconSml.fg, gui = "bold" },
       CmpItemKindConstant { fg = "#FFFFFF", bg = DevIconSml.fg, gui = "bold" },
       CmpItemKindTypeParameter { fg = "#FFFFFF", bg = DevIconSml.fg, gui = "bold" },
+
+      ContextVt { NonText },
     }
   end)
 
