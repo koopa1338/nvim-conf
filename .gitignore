@@ -4,5 +4,6 @@ plugin/lsp_custom.lua
 plugin/dap_custom.lua
 plugin/aucmds_custom.lua
 plugin/lsp_sources_custom.lua
+plugin/walush_colors.lua
 undodir/*
 lazy-lock.json

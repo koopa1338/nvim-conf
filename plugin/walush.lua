@@ -1,37 +1,29 @@
 local walush = nil
 
-local function get_xresources_color(color_name)
-  local command = io.popen("xrdb -query | grep " .. color_name .. " -m 1 | cut -f 2")
-  local color = nil
-  if command then
-    color = command:read "*l"
-  end
-  return color
-end
-
 -- set font for gui mode
 vim.opt.guifont = "Inconsolata Nerd Font Mono:h14"
 
-local xres = {
-  fg = get_xresources_color "foreground" or "#5f819d",
-  bg = get_xresources_color "background" or "#282a2e",
-  color0 = get_xresources_color "color0" or "#282a2e",
-  color1 = get_xresources_color "color1" or "#a54242",
-  color2 = get_xresources_color "color2" or "#8c9440",
-  color3 = get_xresources_color "color3" or "#de935f",
-  color4 = get_xresources_color "color4" or "#5f819d",
-  color5 = get_xresources_color "color5" or "#85678f",
-  color6 = get_xresources_color "color6" or "#5e8d87",
-  color7 = get_xresources_color "color7" or "#707880",
-  color8 = get_xresources_color "color8" or "#373b41",
-  color9 = get_xresources_color "color9" or "#cc6666",
-  color10 = get_xresources_color "color10" or "#b5bd68",
-  color11 = get_xresources_color "color11" or "#f0c674",
-  color12 = get_xresources_color "color12" or "#81a2be",
-  color13 = get_xresources_color "color13" or "#b294bb",
-  color14 = get_xresources_color "color14" or "#8abeb7",
-  color15 = get_xresources_color "color15" or "#c5c8c6",
-}
+local xres = L "walush_colors"
+  or {
+    fg = "#5f819d",
+    bg = "#282a2e",
+    color0 = "#282a2e",
+    color1 = "#a54242",
+    color2 = "#8c9440",
+    color3 = "#de935f",
+    color4 = "#5f819d",
+    color5 = "#85678f",
+    color6 = "#5e8d87",
+    color7 = "#707880",
+    color8 = "#373b41",
+    color9 = "#cc6666",
+    color10 = "#b5bd68",
+    color11 = "#f0c674",
+    color12 = "#81a2be",
+    color13 = "#b294bb",
+    color14 = "#8abeb7",
+    color15 = "#c5c8c6",
+  }
 
 L("lush", function(lush)
   local hsl = lush.hsl
