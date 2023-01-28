@@ -117,6 +117,9 @@ g.tex_flavor = "latex"
 -- luasnip
 g.snippets = "luasnip"
 
+-- whichkey
+g.whichkey = true
+
 if fn.has "windows" then
   o.fillchars = { vert = "┃", eob = "￭", diff = "╱" }
 end

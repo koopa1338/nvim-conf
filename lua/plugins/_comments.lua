@@ -1,4 +1,4 @@
-local M = { "numToStr/Comment.nvim" }
+local M = { "numToStr/Comment.nvim", event = "VeryLazy" }
 
 M.config = function()
   L("Comment", function(comment)

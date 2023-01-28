@@ -31,6 +31,7 @@ return {
         luatab.setup {}
       end)
     end,
+    event = "VeryLazy",
   },
   { "kyazdani42/nvim-web-devicons" },
   {

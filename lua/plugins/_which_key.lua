@@ -1,4 +1,4 @@
-local M = { "folke/which-key.nvim", event = "VeryLazy" }
+local M = { "folke/which-key.nvim", event = "VeryLazy", cond = vim.g.whichkey }
 
 M.config = function()
   L("which-key", function(wk)
