@@ -4,6 +4,27 @@ local M = {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
+    {
+      -- only needed if you want to use the commands with "_with_window_picker" suffix
+      "s1n7ax/nvim-window-picker",
+      config = function()
+        require("window-picker").setup {
+          autoselect_one = true,
+          include_current = false,
+          filter_rules = {
+            -- filter using buffer options
+            bo = {
+              -- if the file type is one of following, the window will be ignored
+              filetype = { "neo-tree", "neo-tree-popup", "notify", "mason" },
+
+              -- if the buffer type is one of following, the window will be ignored
+              buftype = { "terminal", "quickfix" },
+            },
+          },
+          other_win_hl_color = L("user.colors").fg,
+        }
+      end,
+    },
   },
 }
 
@@ -11,19 +32,12 @@ M.config = function()
   L("neo-tree", function(tree)
     local signs = L("signs").signs
     tree.setup {
-      close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
-      popup_border_style = "rounded",
+      close_if_last_window = true,
+      popup_border_style = vim.g.border_type,
       enable_git_status = true,
       enable_diagnostics = true,
-      sort_case_insensitive = false, -- used when sorting files and directories in the tree
-      sort_function = nil, -- use a custom function for sorting files and directories in the tree
-      -- sort_function = function (a,b)
-      --       if a.type == b.type then
-      --           return a.path > b.path
-      --       else
-      --           return a.type > b.type
-      --       end
-      --   end , -- this sorts files and directories descendantly
+      sort_case_insensitive = false,
+      sort_function = nil,
       default_component_configs = {
         container = {
           enable_character_fade = true,
@@ -32,14 +46,14 @@ M.config = function()
           indent_size = 2,
           padding = 1, -- extra padding on left hand side
           -- indent guides
-          with_markers = true,
+          with_markers = false,
           indent_marker = "│",
           last_indent_marker = "└",
           highlight = "NeoTreeIndentMarker",
           -- expander config, needed for nesting files
           with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
-          expander_collapsed = "",
-          expander_expanded = "",
+          expander_collapsed = signs.FoldClosed.icon,
+          expander_expanded = signs.FoldOpen.icon,
           expander_highlight = "NeoTreeExpander",
         },
         icon = {
@@ -48,11 +62,11 @@ M.config = function()
           folder_empty = "ﰊ",
           -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
           -- then these will never be used.
-          default = "*",
+          default = "",
           highlight = "NeoTreeFileIcon",
         },
         modified = {
-          symbol = "[+]",
+          symbol = "",
           highlight = "NeoTreeModified",
         },
         name = {
@@ -90,18 +104,18 @@ M.config = function()
           },
           ["<2-LeftMouse>"] = "open",
           ["<cr>"] = "open",
-          ["o"] = "open",
+          -- ["o"] = "open",
           ["<esc>"] = "revert_preview",
           ["P"] = { "toggle_preview", config = { use_float = true } },
           ["l"] = "focus_preview",
           ["S"] = "open_split",
           ["s"] = "open_vsplit",
-          -- ["S"] = "split_with_window_picker",
-          -- ["s"] = "vsplit_with_window_picker",
+          ["<C-x>"] = "split_with_window_picker",
+          ["<C-v>"] = "vsplit_with_window_picker",
           ["t"] = "open_tabnew",
           -- ["<cr>"] = "open_drop",
           -- ["t"] = "open_tab_drop",
-          ["w"] = "open_with_window_picker",
+          ["o"] = "open_with_window_picker",
           --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
           ["C"] = "close_node",
           ["z"] = "close_all_nodes",
@@ -143,7 +157,8 @@ M.config = function()
           hide_gitignored = true,
           hide_hidden = true, -- only works on Windows for hidden files/directories
           hide_by_name = {
-            --"node_modules"
+            "node_modules",
+            ".cache",
           },
           hide_by_pattern = { -- uses glob style patterns
             --"*.meta",
@@ -160,7 +175,7 @@ M.config = function()
             --".null-ls_*",
           },
         },
-        follow_current_file = false, -- This will find and focus the file in the active buffer every
+        follow_current_file = true, -- This will find and focus the file in the active buffer every
         -- time the current file is changed while the tree is open.
         group_empty_dirs = false, -- when true, empty folders will be grouped together
         hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
@@ -284,7 +299,7 @@ M.config = function()
     --   },
     -- }
 
-    Map("n", "<C-n>", "<cmd>NeoTree<CR>", { silent = true, desc = "Toggle NvimTree" })
+    Map("n", "<C-n>", "<cmd>NeoTreeRevealToggle<CR>", { silent = true, desc = "Toggle Neo Tree" })
 
     L("which-key", function(wk)
       wk.register({
