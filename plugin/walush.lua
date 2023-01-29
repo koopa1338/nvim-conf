@@ -707,6 +707,8 @@ L("lush", function(lush)
       CmpItemKindTypeParameter { fg = "#FFFFFF", bg = DevIconSml.fg, gui = "bold" },
 
       ContextVt { NonText },
+
+      NeoTreeFloatTitle { FloatTitle },
     }
   end)
 
