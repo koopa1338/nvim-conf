@@ -78,6 +78,18 @@ M.signs = {
     numhl = "GitSignsAddNr",
     linehl = "GitSignsNrAddLn",
   },
+  GitSignsIgnored = {
+    icon = "",
+  },
+  GitSignsStaged = {
+    icon = "",
+  },
+  GitSignsConflict = {
+    icon = "",
+  },
+  GitSignsRename = {
+    icon = "",
+  },
   Search = {
     icon = "",
     texthl = "Normal",
@@ -88,11 +100,22 @@ M.signs = {
   FolderOpen = {
     icon = "",
   },
+  FolderEmpty = {
+    icon = "",
+  },
   FoldClosed = {
     icon = "",
   },
   FoldOpen = {
     icon = "",
+  },
+  File = {
+    icon = "",
+    hl = "NeoTreeFileIcon",
+  },
+  Modified = {
+    icon = "",
+    hl = "NeoTreeModified",
   },
 }
 
