@@ -3,7 +3,7 @@ local walush = nil
 -- set font for gui mode
 vim.opt.guifont = "Inconsolata Nerd Font Mono:h14"
 
-local xres = L "walush_colors"
+local xres = L "user.colors"
   or {
     bg = "#0c0b1e",
     fg = "#d4ddff",

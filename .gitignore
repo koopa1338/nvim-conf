@@ -1,9 +1,10 @@
 lua/plugins/custom.lua
-lua/settings_custom.lua
-plugin/lsp_custom.lua
-plugin/dap_custom.lua
-plugin/aucmds_custom.lua
-plugin/lsp_sources_custom.lua
-plugin/walush_colors.lua
+lua/user/aucmds.lua
+lua/user/colors.lua
+lua/user/dap.lua
+lua/user/lsp.lua
+lua/user/lsp_sources.lua
+lua/user/mappings.lua
+lua/user/settings.lua
 undodir/*
 lazy-lock.json

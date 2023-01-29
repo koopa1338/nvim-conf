@@ -32,16 +32,22 @@ installs all plugins. After that restart neovim and you should be good to go.
 To install a Language server use the `:Mason` command for the interface or
 install shorthand with `:MasonInstall <language server name>`. If you want
 custom options or didn't install the server via mason you have to add it to
-`lsp_custom.lua` (see `lsp_custom.lua.example`)
+`lsp.lua` (see `lsp.lua.example`)
 
 ### Custom settings
 
-there are some files that are sourced for custom options (example files are provided):
-- in `lua/`
-    - `plugins_custom.lua` for additional custom plugins you want to use
-    - `settings_custom.lua` for any options you want to add or overwrite from the `init.lua`
+all custom settings can be added to the according files in `lua/user/`. Example
+files can be found in the same directory
 
-- in `plugin/`
-    - `lsp_custom.lua` configuration of language server you want to customize or language servers you haven't install with `Mason`
-    - `dap_custom.lua` for debug adapters and configurations the `dap` plugin is using
-    - `aucmds_custom.lua` add any additional autocommands you like in here.
+- in `lua/plugins`
+    - `user.lua` for additional custom plugins you want to use
+
+- in `lua/user`
+    - `aucmds.lua` add any additional autocommands you like in here.
+    - `dap.lua` for debug adapters and configurations the `dap` plugin is using
+    - `colors.lua` add your color pallette for the theme or use wpgtk to template this file.
+    - `lsp.lua` configuration of language server you want to customize or
+      language servers you haven't install with `Mason`
+    - `lsp_sources.lua` additional sources for null-ls
+    - `mappings.lua` extend/override keymappings
+    - `settings` extend/override vim settingshere

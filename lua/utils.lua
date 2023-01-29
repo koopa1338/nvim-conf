@@ -1,4 +1,13 @@
 -- Key mapping
+-- @mode: string | table<string>
+-- @lhs: string
+-- @rhs: string | lua function
+-- @opts: table
+--  remap: bool
+--  silent: bool
+--  expr: bool
+--  buffer: bool
+--  desc: string
 Map = function(mode, lhs, rhs, opts)
   local opts_or_defaults = {
     remap = opts.remap or false,

@@ -195,4 +195,4 @@ api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave" }, {
   end,
 })
 
-L "aucmds_custom"
+L "user.aucmds"

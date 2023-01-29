@@ -45,7 +45,7 @@ M.config = function()
   end
 
   -- load debugger adapters and configurations
-  L("dap_custom", function(du)
+  L("user.dap", function(du)
     dap.adapters = du.adapters
     dap.configurations = du.configurations
   end)

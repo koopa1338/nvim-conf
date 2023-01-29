@@ -118,3 +118,5 @@ L("which-key", function(wk)
     ["<C-L>"] = { "Move Window Right" },
   }, { prefix = "<leader>" })
 end)
+
+L "user.mappings"

@@ -158,7 +158,7 @@ end
 
 M.servers = function(mason)
   local server_configs = {}
-  L("lsp_custom", function(custom)
+  L("user.lsp", function(custom)
     for lsp, config in pairs(custom) do
       server_configs[lsp] = config or {}
     end

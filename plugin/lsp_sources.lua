@@ -9,7 +9,7 @@ end
 M.get_null_ls_sources = function()
   local sources = {}
   if M.ls then
-    L("lsp_sources_custom", function(sources_custom)
+    L("user.lsp_sources", function(sources_custom)
       for k, v in pairs(sources_custom.get_custom_sources(M.ls)) do
         if v.custom then
           local cond = v.config.condition
