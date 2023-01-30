@@ -1,6 +1,11 @@
-return function(client, bufnr)
+local M = {}
+
+M.lsp_utils = nil
+
+M.on_attach = function(client, bufnr)
   local opts = { silent = true, buffer = bufnr }
   local capabilities = client.server_capabilities
+  local lsp_utils = M.lsp_utils
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   if capabilities.declarationProvider then
@@ -163,3 +168,5 @@ return function(client, bufnr)
     vim.diagnostic.goto_prev { float = float_opts }
   end, { silent = true, buffer = bufnr, desc = "Jump to Previous Diagnostic" })
 end
+
+return M

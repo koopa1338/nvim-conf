@@ -24,18 +24,19 @@ M.config = function()
       },
     })
 
-    local custom_attach = L "plugins.lsp.attach"
+    local helper = L "plugins.lsp.helper"
+    helper.lsp_utils = lsp_utils
     local mason = L "mason-registry"
     local cmp_lsp = L "cmp_lsp"
     for server, config in pairs(lsp_utils.servers(mason)) do
-      config.on_attach = custom_attach
+      config.on_attach = helper.on_attach
       config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
       nvim_lsp[server].setup(config)
     end
 
     L("lspconfig.ui.windows").default_options.border = bt
 
-    L("plugins.lsp.nullls").setup(custom_attach)
+    L("plugins.lsp.nullls").setup()
 
     L("which-key", function(wk)
       wk.register({
