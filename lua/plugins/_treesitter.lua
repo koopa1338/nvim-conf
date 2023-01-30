@@ -6,6 +6,9 @@ local M = {
     "nvim-lua/popup.nvim",
     "windwp/nvim-ts-autotag",
   },
+  build = function()
+    vim.cmd "TSInstall all"
+  end,
 }
 
 M.config = function()
