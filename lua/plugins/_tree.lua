@@ -30,6 +30,7 @@ M.config = function()
     tree.setup {
       close_if_last_window = true,
       popup_border_style = vim.g.border_type,
+      use_popups_for_input = false,
       enable_git_status = true,
       enable_diagnostics = true,
       sort_case_insensitive = false,
