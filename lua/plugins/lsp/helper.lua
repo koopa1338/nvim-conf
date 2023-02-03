@@ -2,149 +2,133 @@ local M = {}
 
 M.lsp_utils = nil
 
-M.on_attach = function(client, bufnr)
-  local opts = { silent = true, buffer = bufnr }
-  local capabilities = client.server_capabilities
-  local lsp_utils = M.lsp_utils
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-  if capabilities.declarationProvider then
-    Map("n", "<leader>lD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Show Declaration" })
-  else
-    Map("n", "<leader>lD", function()
-      lsp_utils.notify_unsupported_lsp "LSP does not support jump to declaration"
-    end, opts)
-  end
-
-  if capabilities.definitionProvider then
-    Map("n", "<leader>ld", vim.lsp.buf.definition, { silent = true, buffer = bufnr, desc = "Jump to Definition" })
-  else
-    Map("n", "<leader>ld", function()
-      lsp_utils.notify_unsupported_lsp "LSP does not support jump to defenition"
-    end, opts)
-  end
-
-  if capabilities.typeDefinitionProvider then
-    Map(
-      "n",
-      "<leader>lT",
-      vim.lsp.buf.type_definition,
-      { silent = true, buffer = bufnr, desc = "Show Type Definition" }
-    )
-  else
-    Map("n", "<leader>lT", function()
-      lsp_utils.notify_unsupported_lsp "LSP does not support show document type defenition"
-    end, opts)
-  end
-
-  if capabilities.renameProvider then
-    Map("n", "<leader>lr", vim.lsp.buf.rename, { silent = true, buffer = bufnr, desc = "Rename under Cursor" })
-  else
-    Map("n", "<leader>lr", function()
-      lsp_utils.notify_unsupported_lsp "LSP does not support show rename"
-    end, opts)
-  end
-
-  if capabilities.documentFormattingProvider then
-    Map("n", "<leader>lf", function()
+local provider_mapping = {
+  declarationProvider = {
+    mode = "n",
+    keys = "<leader>lD",
+    callback = vim.lsp.buf.declaration,
+    desc = "Show Declaration",
+    error = "LSP does not support jump to declaration",
+    buffer = true,
+  },
+  definitionProvider = {
+    mode = "n",
+    keys = "<leader>ld",
+    callback = vim.lsp.buf.definition,
+    desc = "Jump to Definition",
+    error = "LSP does not support jump to defenition",
+    buffer = true,
+  },
+  typeDefinitionProvider = {
+    mode = "n",
+    keys = "<leader>lT",
+    callback = vim.lsp.buf.type_definition,
+    desc = "Show Type Definition",
+    error = "LSP does not support show document type definition",
+    buffer = true,
+  },
+  renameProvider = {
+    mode = "n",
+    keys = "<leader>lr",
+    callback = vim.lsp.buf.rename,
+    desc = "Rename under Cursor",
+    error = "LSP does not support show rename",
+    buffer = true,
+  },
+  documentFormattingProvider = {
+    mode = "n",
+    keys = "<leader>lf",
+    callback = function()
       if vim.version().minor >= 8 then
         vim.lsp.buf.format() -- { async = true }
       else
         vim.lsp.buf.formatting()
       end
-    end, { silent = true, buffer = bufnr, desc = "Format File" })
-  else
-    Map("n", "<leader>lf", function()
-      lsp_utils.notify_unsupported_lsp "LSP does not support show formatting"
-    end, opts)
-  end
+    end,
+    desc = "Format File",
+    error = "LSP does not support show formatting",
+    buffer = true,
+  },
+  signatureHelpProvider = {
+    mode = "n",
+    keys = "<leader>ls",
+    callback = vim.lsp.buf.signature_help,
+    desc = "Show Signature Help",
+    error = "LSP does not support signature help",
+    buffer = true,
+  },
+  codeActionProvider = {
+    mode = {"n", "v"},
+    keys = "<leader>lca",
+    callback = vim.lsp.buf.code_action,
+    desc = "Select Code Actions",
+    error = "LSP does not support code actions",
+    buffer = true,
+  },
+  hoverProvider = {
+    mode = "n",
+    keys = "K",
+    callback = vim.lsp.buf.hover,
+    desc = "Show Hover Information",
+    error = "LSP does not support hover information",
+    buffer = true,
+  },
+  documentSymbolProvider = {
+    mode = "n",
+    keys = "<leader>lts",
+    callback = "<cmd>Telescope lsp_document_symbols<CR>",
+    desc = "Show Document Symbols",
+    error = "LSP does not support showing document symbols",
+    buffer = false,
+  },
+  workspaceSymbolProvider = {
+    mode = "n",
+    keys = "<leader>ltS",
+    callback = "<cmd>Telescope lsp_workspace_symbols<CR>",
+    desc = "Show Workspace Symbols",
+    error = "LSP does not support showing workspace symbols",
+    buffer = false,
+  },
+  referencesProvider = {
+    mode = "n",
+    keys = "<leader>ltr",
+    callback = "<cmd>Telescope lsp_references<CR>",
+    desc = "Show References",
+    error = "LSP does not support showing references",
+    buffer = false,
+  },
+  implementationProvider = {
+    mode = "n",
+    keys = "<leader>lti",
+    callback = "<cmd>Telescope lsp_implementations<CR>",
+    desc = "Show Implementations",
+    error = "LSP does not support showing implementations",
+    buffer = false,
+  },
+}
 
-  if capabilities.signatureHelpProvider then
-    Map("n", "<leader>ls", vim.lsp.buf.signature_help, { silent = true, buffer = bufnr, desc = "Show Signature Help" })
-  else
-    Map("n", "<leader>ls", function()
-      lsp_utils.notify_unsupported_lsp "LSP does not support signature help"
-    end, opts)
+local map_providers = function(capabilities, bufnr)
+  local lsp_utils = M.lsp_utils
+  for provider, prov_opts in pairs(provider_mapping) do
+    local opts = { silent = true, desc = prov_opts.desc}
+    if prov_opts.buffer then
+      opts.buffer = bufnr
+    end
+    if capabilities[provider] then
+      Map(prov_opts.mode, prov_opts.keys, prov_opts.callback, opts)
+    else
+      Map(prov_opts.mode, prov_opts.keys, function()
+        lsp_utils.notify_unsupported_lsp(prov_opts.error)
+      end, opts)
+    end
   end
+end
 
-  if capabilities.codeActionProvider then
-    Map(
-      { "n", "v" },
-      "<leader>lca",
-      vim.lsp.buf.code_action,
-      { silent = true, buffer = bufnr, desc = "Select Code Actions" }
-    )
-  else
-    Map({ "n", "v" }, "<leader>lca", function()
-      lsp_utils.notify_unsupported_lsp "LSP does not support code actions"
-    end, opts)
-  end
+M.on_attach = function(client, bufnr)
+  local capabilities = client.server_capabilities
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-  if capabilities.hoverProvider then
-    Map("n", "K", vim.lsp.buf.hover, { silent = true, buffer = bufnr, desc = "Show Documentation" })
-  else
-    Map("n", "K", function()
-      lsp_utils.notify_unsupported_lsp "LSP does not support hover information"
-    end, opts)
-  end
-
-  -- Set autocommands conditional on server_capabilities
-  if capabilities.documentHighlightProvider then
-    local lsp_highlight_au = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-    vim.api.nvim_create_autocmd({ "CursorHold" }, {
-      group = lsp_highlight_au,
-      buffer = 0,
-      callback = vim.lsp.buf.document_highlight,
-    })
-    vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-      group = lsp_highlight_au,
-      buffer = 0,
-      callback = vim.lsp.buf.clear_references,
-    })
-  end
-
-  if capabilities.documentSymbolProvider then
-    Map(
-      "n",
-      "<leader>lts",
-      "<cmd>Telescope lsp_document_symbols<CR>",
-      { silent = true, buffer = bufnr, desc = "Show Document Symbols" }
-    )
-  else
-    Map("n", "<leader>lts", function()
-      lsp_utils.notify_unsupported_lsp "LSP does not support showing document symbols"
-    end, { silent = true })
-  end
-
-  if capabilities.workspaceSymbolProvider then
-    Map(
-      "n",
-      "<leader>ltS",
-      "<cmd>Telescope lsp_workspace_symbols<CR>",
-      { silent = true, desc = "Show Workspace Symbols" }
-    )
-  else
-    Map("n", "<leader>ltS", function()
-      lsp_utils.notify_unsupported_lsp "LSP does not support showing workspace symbols"
-    end, { silent = true })
-  end
-
-  if capabilities.referencesProvider then
-    Map("n", "<leader>ltr", "<cmd>Telescope lsp_references<CR>", { silent = true, desc = "Show References" })
-  else
-    Map("n", "<leader>ltr", function()
-      lsp_utils.notify_unsupported_lsp "LSP does not support showing references"
-    end, { silent = true })
-  end
-
-  if capabilities.implementationProvider then
-    Map("n", "<leader>lti", "<cmd>Telescope lsp_implementations<CR>", { silent = true, desc = "Show Implementations" })
-  else
-    Map("n", "<leader>lti", function()
-      lsp_utils.notify_unsupported_lsp "LSP does not support showing implementations"
-    end, { silent = true })
-  end
-
+  map_providers(capabilities, bufnr)
   Map(
     "n",
     "<leader>lci",
