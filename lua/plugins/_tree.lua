@@ -1,3 +1,8 @@
+local fg = nil
+L("user.colors", function(colors)
+  fg = colors.fg
+end)
+
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v2.x",
@@ -17,7 +22,7 @@ local M = {
             },
           },
           -- TODO: PR for makeing highlightgroups work
-          other_win_hl_color = L("user.colors").fg,
+          other_win_hl_color = fg or "#cccccc",
         }
       end,
     },
