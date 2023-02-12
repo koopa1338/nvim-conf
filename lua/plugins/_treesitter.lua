@@ -7,7 +7,7 @@ local M = {
     "windwp/nvim-ts-autotag",
   },
   build = function()
-    vim.cmd "TSInstall all"
+    vim.cmd "TSInstallSync lua rust html css scss json typescript c cpp cmake diff dockerfile python toml make markdown"
   end,
 }
 
