@@ -1,4 +1,4 @@
-lua/plugins/custom.lua
+lua/plugins/user.lua
 lua/user/aucmds.lua
 lua/user/colors.lua
 lua/user/dap.lua
