@@ -58,7 +58,7 @@ local provider_mapping = {
     buffer = true,
   },
   codeActionProvider = {
-    mode = {"n", "v"},
+    mode = { "n", "v" },
     keys = "<leader>lca",
     callback = vim.lsp.buf.code_action,
     desc = "Select Code Actions",
@@ -110,7 +110,7 @@ local provider_mapping = {
 local map_providers = function(capabilities, bufnr)
   local lsp_utils = M.lsp_utils
   for provider, prov_opts in pairs(provider_mapping) do
-    local opts = { silent = true, desc = prov_opts.desc}
+    local opts = { silent = true, desc = prov_opts.desc }
     if prov_opts.buffer then
       opts.buffer = bufnr
     end
