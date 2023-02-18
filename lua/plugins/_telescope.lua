@@ -90,6 +90,21 @@ M.config = function()
             preview_height = 0.5,
           },
         },
+        file_ignore_patterns = {
+          ".git/",
+          "node_modules/",
+          ".cache",
+          "%.o",
+          "%.a",
+          "%.out",
+          "%.pdf",
+          "%.mkv",
+          "%.mp4",
+          "%.zip",
+          "%.jpg",
+          "%.png",
+          "%.bmp",
+        },
         mappings = {
           i = {
             ["<C-j>"] = actions.move_selection_next,
