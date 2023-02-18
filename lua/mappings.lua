@@ -68,6 +68,8 @@ Map("n", "<leader><leader>m", "<cmd>Messages<CR>", { silent = true, desc = "Mess
 -- editing
 -- <C-H> is <C-BS>, see: https://vi.stackexchange.com/questions/16139/s-bs-and-c-bs-mappings-not-working
 Map("i", "<C-H>", "<C-W>", {})
+Map("n", "go", "o<Esc>", {})
+Map("n", "gO", "O<Esc>", {})
 
 Map({ "n", "v", "i" }, "<F1>", "<nop>", { silent = true })
 
