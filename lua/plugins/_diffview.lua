@@ -4,6 +4,11 @@ local M = {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
+  keys = {
+    { "<leader>gD", ":DiffviewOpen<CR>", desc = "Show Diff View" },
+    { "<leader>gH", ":DiffviewFileHistory<CR>", desc = "Show Diff History" },
+    { "<leader>gQ", ":DiffviewClose<CR>", desc = "Close Diffview" },
+  },
 }
 
 M.config = function()
@@ -14,7 +19,8 @@ M.config = function()
     diff_binaries = false, -- Show diffs for binaries
     enhanced_diff_hl = true, -- See ':h diffview-config-enhanced_diff_hl'
     use_icons = true, -- Requires nvim-web-devicons
-    icons = { -- Only applies when use_icons is true.
+    icons = {
+      -- Only applies when use_icons is true.
       folder_closed = signs.FolderClosed.icon,
       folder_open = signs.FolderOpen.icon,
     },
@@ -28,7 +34,8 @@ M.config = function()
         width = 40,
       },
       listing_style = "tree", -- One of 'list' or 'tree'
-      tree_options = { -- Only applies when listing_style is 'tree'
+      tree_options = {
+        -- Only applies when listing_style is 'tree'
         flatten_dirs = true, -- Flatten dirs that only contain one single dir
         folder_statuses = "only_folded", -- One of 'never', 'only_folded' or 'always'.
       },
@@ -59,7 +66,8 @@ M.config = function()
         },
       },
     },
-    default_args = { -- Default args prepended to the arg-list for the listed commands
+    default_args = {
+      -- Default args prepended to the arg-list for the listed commands
       DiffviewOpen = {},
       DiffviewFileHistory = {},
     },
@@ -126,10 +134,6 @@ M.config = function()
       },
     },
   }
-
-  Map("n", "<Leader>gD", ":DiffviewOpen<CR>", { silent = true })
-  Map("n", "<Leader>gH", ":DiffviewFileHistory<CR>", { silent = true })
-  Map("n", "<Leader>gQ", ":DiffviewClose<CR>", { silent = true })
 
   L("which-key", function(wk)
     wk.register({
