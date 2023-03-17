@@ -40,11 +40,6 @@ Map({ "n", "v" }, "k", "gk", {})
 Map({ "n", "v" }, "H", "^", {})
 Map({ "n", "v" }, "L", "$", {})
 
-Map("n", "<M-o>", ":cn<CR>", { desc = "Next Quickfix Item" })
-Map("n", "<M-i>", ":cp<CR>", { desc = "Previous Quickfix Item" })
-Map("n", "<S-M-o>", ":lne<CR>", { desc = "Next Location Item" })
-Map("n", "<S-M-i>", ":lp<CR>", { desc = "Previous Location Item" })
-
 -- Reselect visual block after indent
 Map("v", "<", "<gv", { desc = "Increase Indent Visual Block" })
 Map("v", ">", ">gv", { desc = "Decrease Indent Visual Block" })
