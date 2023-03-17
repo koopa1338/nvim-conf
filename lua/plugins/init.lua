@@ -21,6 +21,13 @@ return {
     event = "BufRead Cargo.toml",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    ft = { "markdown" },
+  },
 
   -- theme
   { "rktjmp/lush.nvim" },
