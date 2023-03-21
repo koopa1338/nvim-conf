@@ -15,9 +15,9 @@ Map("n", "<leader>bmv", "<cmd>vertical sbmodified<CR>", { silent = true, desc = 
 
 -- windows
 Map("n", "<leader>wo", "<cmd>only<CR>", { silent = true, desc = "Close all other Windows" })
-Map("n", "<leader>wsx", "<cmd>split<CR>", { silent = true, desc = "Horizontal Split" })
+Map("n", "<leader>wsh", "<cmd>split<CR>", { silent = true, desc = "Horizontal Split" })
 Map("n", "<leader>wsv", "<cmd>vsplit<CR>", { silent = true, desc = "Vertical Split" })
-Map("n", "<leader>wnx", "<cmd>new<CR>", { silent = true, desc = "New Horizontal Window" })
+Map("n", "<leader>wnh", "<cmd>new<CR>", { silent = true, desc = "New Horizontal Window" })
 Map("n", "<leader>wnv", "<cmd>vnew<CR>", { silent = true, desc = "New Vertical Window" })
 Map("n", "<leader>wq", "<cmd>close<CR>", { silent = true, desc = "Close current Window" })
 Map("n", "<leader>wt", "<cmd>tabclose<CR>", { silent = true, desc = "Close current Tab" })
