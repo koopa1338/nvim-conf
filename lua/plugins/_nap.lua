@@ -1,21 +1,29 @@
 local M = {
   "liangxianzhe/nap.nvim",
+  config = true,
 }
 
-M.config = function()
-  L("nap", function(nap)
-    nap.setup {
-      next_prefix = "<M-n>",
-      prev_prefix = "<M-p>",
-      next_repeat = "<M-i>",
-      prev_repeat = "<M-o>",
-    }
-    nap.nap("g", function()
-      require("gitsigns").next_hunk { preview = true }
-    end, function()
-      require("gitsigns").prev_hunk { preview = true }
-    end, "Next diff", "Previous diff")
-  end)
-end
+M.opts = {
+  next_prefix = "<M-n>",
+  prev_prefix = "<M-p>",
+  next_repeat = "<M-i>",
+  prev_repeat = "<M-o>",
+  operator = {
+    ["g"] = {
+      next = {
+        command = function()
+          require("gitsigns").next_hunk { preview = true }
+        end,
+        desc = "Next diff",
+      },
+      prev = {
+        command = function()
+          require("gitsigns").prev_hunk { preview = true }
+        end,
+        desc = "Prev diff",
+      },
+    },
+  },
+}
 
 return M

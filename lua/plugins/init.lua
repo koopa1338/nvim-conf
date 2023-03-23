@@ -8,9 +8,7 @@ return {
   { "wellle/targets.vim", event = "VeryLazy" },
   {
     "windwp/nvim-autopairs",
-    config = function()
-      L("nvim-autopairs").setup()
-    end,
+    config = true,
   },
   { "godlygeek/tabular", event = "VeryLazy" },
 
@@ -33,11 +31,7 @@ return {
   { "rktjmp/lush.nvim" },
   {
     "alvarosevilla95/luatab.nvim",
-    config = function()
-      L("luatab", function(luatab)
-        luatab.setup {}
-      end)
-    end,
+    config = true,
     event = "VeryLazy",
   },
   { "kyazdani42/nvim-web-devicons" },
