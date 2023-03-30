@@ -2,6 +2,21 @@ local M = {}
 
 M.lsp_utils = nil
 
+M.supported = {
+  declarationProvider = false,
+  definitionProvider = false,
+  typeDefinitionProvider = false,
+  renameProvider = false,
+  documentFormattingProvider = false,
+  signatureHelpProvider = false,
+  codeActionProvider = false,
+  hoverProvider = false,
+  documentSymbolProvider = false,
+  workspaceSymbolProvider = false,
+  referencesProvider = false,
+  implementationProvider = false,
+}
+
 local provider_mapping = {
   declarationProvider = {
     mode = "n",
@@ -46,7 +61,7 @@ local provider_mapping = {
       end
     end,
     desc = "Format File",
-    error = "LSP does not support show formatting",
+    error = "LSP does not support formatting",
     buffer = true,
   },
   signatureHelpProvider = {
@@ -116,10 +131,18 @@ local map_providers = function(capabilities, bufnr)
     end
     if capabilities[provider] then
       Map(prov_opts.mode, prov_opts.keys, prov_opts.callback, opts)
-    else
-      Map(prov_opts.mode, prov_opts.keys, function()
-        lsp_utils.notify_unsupported_lsp(prov_opts.error)
-      end, opts)
+      M.supported[provider] = true
+    end
+  end
+end
+
+local map_unsupported = function()
+  for provider, supported in pairs(M.supported) do
+    if not supported then
+      local prov = provider_mapping[provider]
+      Map(prov.mode, prov.keys, function()
+        M.lsp_utils.notify_unsupported_lsp(error)
+      end, { silent = true, desc = prov.desc })
     end
   end
 end
@@ -129,6 +152,7 @@ M.on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   map_providers(capabilities, bufnr)
+  map_unsupported()
   Map(
     "n",
     "<leader>lci",
