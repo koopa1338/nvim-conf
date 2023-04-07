@@ -123,7 +123,6 @@ local provider_mapping = {
 }
 
 local map_providers = function(capabilities, bufnr)
-  local lsp_utils = M.lsp_utils
   for provider, prov_opts in pairs(provider_mapping) do
     local opts = { silent = true, desc = prov_opts.desc }
     if prov_opts.buffer then
@@ -141,7 +140,7 @@ local map_unsupported = function()
     if not supported then
       local prov = provider_mapping[provider]
       Map(prov.mode, prov.keys, function()
-        M.lsp_utils.notify_unsupported_lsp(error)
+        M.lsp_utils.notify_unsupported_lsp(prov.error, prov.desc)
       end, { silent = true, desc = prov.desc })
     end
   end
