@@ -58,11 +58,11 @@ M.config = function()
         icon = {
           folder_closed = signs.FolderClosed.icon,
           folder_open = signs.FolderOpen.icon,
-          folder_empty = signs.FolderEmpty,
+          folder_empty = signs.FolderEmpty.icon,
           -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
           -- then these will never be used.
           default = signs.File.icon,
-          highlight = signs.File.modified,
+          highlight = signs.File.hl,
         },
         modified = {
           symbol = signs.Modified.icon,
