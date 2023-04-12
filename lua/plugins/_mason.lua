@@ -1,8 +1,15 @@
 local M = {
   "williamboman/mason.nvim",
+  dependencies = {
+    "williamboman/mason-lspconfig",
+  },
   event = "VeryLazy",
-  config = true,
 }
+
+M.config = function()
+  L("mason").setup {}
+  L("mason-lspconfig").setup {}
+end
 
 M.opts = {
   ui = {

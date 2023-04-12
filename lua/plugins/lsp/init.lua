@@ -26,9 +26,8 @@ M.config = function()
 
     local helper = L "plugins.lsp.helper"
     helper.lsp_utils = lsp_utils
-    local mason = L "mason-registry"
     local cmp_lsp = L "cmp_lsp"
-    for server, config in pairs(lsp_utils.servers(mason)) do
+    for server, config in pairs(lsp_utils.servers()) do
       config.on_attach = helper.on_attach
       config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
       nvim_lsp[server].setup(config)
