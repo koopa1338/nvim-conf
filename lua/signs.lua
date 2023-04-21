@@ -30,6 +30,9 @@ M.signs = {
     icon = "",
     texthl = "DiagnosticSignInfo",
   },
+  DapCurrentFrame = {
+    icon = "",
+  },
   GitSignsLineColAdd = {
     hl = "GitSingsAdd",
     icon = "",

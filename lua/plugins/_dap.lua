@@ -9,6 +9,7 @@ local M = {
 M.config = function()
   local dap = L "dap"
   local dapui = L "dapui"
+  local signs = L("signs").signs
   -- setting up debugger ui
   dapui.setup {
     layouts = {
@@ -31,6 +32,11 @@ M.config = function()
     floating = {
       border = vim.g.border_type,
     },
+    icons = {
+      expanded = signs.FoldOpen.icon,
+      collapsed = signs.FoldClosed.icon,
+      current_frame = signs.DapCurrentFrame.icon,
+    }
   }
 
   -- open dapui when start debugging
