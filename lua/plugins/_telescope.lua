@@ -12,7 +12,7 @@ local M = {
       cond = vim.fn.executable "make" == 1,
     },
   },
-  cmd = "Telescope",
+  event = "VeryLazy",
 }
 
 local border_chars = function(border_type)
