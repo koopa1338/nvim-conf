@@ -7,19 +7,17 @@ local M = {
 }
 
 M.config = function()
-  L("mason").setup {}
+  L("mason").setup {
+    ui = {
+      border = vim.g.border_type,
+      icons = {
+        package_installed = "",
+        package_pending = "➤",
+        package_uninstalled = "",
+      },
+    },
+  }
   L("mason-lspconfig").setup {}
 end
-
-M.opts = {
-  ui = {
-    border = vim.g.border_type,
-    icons = {
-      package_installed = "",
-      package_pending = "➤",
-      package_uninstalled = "",
-    },
-  },
-}
 
 return M
