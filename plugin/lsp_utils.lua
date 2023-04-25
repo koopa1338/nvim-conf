@@ -2,6 +2,15 @@ local proto, log_lvl = vim.lsp.protocol, vim.lsp.levels
 local unsupported_title = "LSP Provider not supported"
 local M = {}
 
+M.get_runtime_path = function()
+  local runtime_path = vim.split(package.path, ";")
+  table.insert(runtime_path, "lua/?.lua")
+  table.insert(runtime_path, "lua/?/init.lua")
+  table.insert(runtime_path, "plugin/?.lua")
+  table.insert(runtime_path, "plugin/?/init.lua")
+  return runtime_path
+end
+
 M.get_lsp_capabilities = function(cmp_lsp)
   local capabilities = proto.make_client_capabilities()
   -- nvim-cmp supports additional completion capabilities
@@ -16,15 +25,12 @@ local notify_unsupported_lsp = function(message, title)
   vim.notify(message, log_lvl.INFO, { title = title or unsupported_title })
 end
 
-M.servers = function()
-  local server_configs = {}
-  L("user.lsp", function(custom)
-    for lsp, config in pairs(custom) do
-      server_configs[lsp] = config or {}
-    end
+M.servers = function(nvim_lsp)
+  local servers = {}
+  L("user_settings", function(settings)
+    settings.lsp_servers(nvim_lsp)
   end)
-
-  return server_configs
+  return servers
 end
 
 M.supported = {

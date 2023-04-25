@@ -3,27 +3,7 @@ local walush = nil
 -- set font for gui mode
 vim.opt.guifont = "Inconsolata Nerd Font Mono:h14"
 
-local xres = L "user.colors"
-  or {
-    bg = "#0c0b1e",
-    fg = "#d4ddff",
-    color0 = "#0c0b1e",
-    color1 = "#AE3F45",
-    color2 = "#384773",
-    color3 = "#E6AF61",
-    color4 = "#184E93",
-    color5 = "#A15359",
-    color6 = "#245A9B",
-    color7 = "#9ea5c0",
-    color8 = "#1a1743",
-    color9 = "#f1424b",
-    color10 = "#3d56a0",
-    color11 = "#ffe768",
-    color12 = "#1364ca",
-    color13 = "#e15c66",
-    color14 = "#2273d6",
-    color15 = "#d4ddff",
-  }
+local xres = Colors_or_default()
 
 L("lush", function(lush)
   local hsl = lush.hsl
@@ -660,44 +640,34 @@ L("lush", function(lush)
       CratesNvimPopupLoading { fg = xres.fg.lighten(25), bg = Pmenu.bg },
       CratesNvimVersion { fg = DiagnosticSignInfo.fg, bg = xres.bg },
       CratesNvimPopupVersion { fg = DiagnosticSignInfo.fg, bg = Pmenu.bg },
-
       CratesNvimPreRelease { fg = DiagnosticSignWarn.fg, bg = xres.bg },
       CratesNvimPopupPreRelease { fg = DiagnosticSignWarn.fg, bg = Pmenu.bg },
-
       CratesNvimYanked { fg = DiagnosticSignError.fg, bg = xres.bg },
       CratesNvimPopupYanked { fg = DiagnosticSignError.fg, bg = Pmenu.bg },
-
       CratesNvimNoMatch { fg = DiagnosticSignWarn.fg, bg = xres.bg.lighten(15) },
       CratesNvimUpgrade { fg = GitSignsAdd.fg, bg = xres.bg.lighten(15) },
       CratesNvimError { fg = DiagnosticSignError.fg, bg = xres.bg.lighten(15) },
 
       -- cmp completion
       CmpItemMenu { fg = Title.fg, bg = xres.none, gui = "italic" },
-
       CmpItemKindClass { fg = "#FFFFFF", bg = DevIconGulpfile.fg, gui = "bold" },
       CmpItemKindStruct { fg = "#FFFFFF", bg = DevIconGulpfile.fg, gui = "bold" },
       CmpItemKindEnum { fg = "#FFFFFF", bg = DevIconGulpfile.fg, gui = "bold" },
       CmpItemKindEnumMember { fg = "#FFFFFF", bg = DevIconGulpfile.fg, gui = "bold" },
       CmpItemKindInterface { fg = "#FFFFFF", bg = DevIconGulpfile.fg, gui = "bold" },
       CmpItemKindModule { fg = "#FFFFFF", bg = DevIconGulpfile.fg, gui = "bold" },
-
       CmpItemKindText { fg = "#FFFFFF", bg = DevIconDefault.fg, gui = "bold" },
       CmpItemKindColor { fg = "#FFFFFF", bg = DevIconDefault.fg, gui = "bold" },
-
       CmpItemKindEvent { fg = "#FFFFFF", bg = DevIconLess.fg, gui = "bold" },
       CmpItemKindFile { fg = "#FFFFFF", bg = DevIconLess.fg, gui = "bold" },
       CmpItemKindFolder { fg = "#FFFFFF", bg = DevIconLess.fg, gui = "bold" },
-
       CmpItemKindKeyword { fg = "#FFFFFF", bg = DevIconDoc.fg, gui = "bold" },
       CmpItemKindMethod { fg = "#FFFFFF", bg = DevIconDoc.fg, gui = "bold" },
       CmpItemKindConstructor { fg = "#FFFFFF", bg = DevIconDoc.fg, gui = "bold" },
       CmpItemKindFunction { fg = "#FFFFFF", bg = DevIconDoc.fg, gui = "bold" },
-
       CmpItemKindOperator { fg = "#FFFFFF", bg = DevIconFssScript.fg, gui = "bold" },
       CmpItemKindReference { fg = "#FFFFFF", bg = DevIconFssScript.fg, gui = "bold" },
-
       CmpItemKindSnippet { fg = "#FFFFFF", bg = SpecialKey.fg, gui = "bold" },
-
       CmpItemKindField { fg = "#FFFFFF", bg = DevIconSml.fg, gui = "bold" },
       CmpItemKindProperty { fg = "#FFFFFF", bg = DevIconSml.fg, gui = "bold" },
       CmpItemKindUnit { fg = "#FFFFFF", bg = DevIconSml.fg, gui = "bold" },

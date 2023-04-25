@@ -124,5 +124,9 @@ if fn.has "windows" then
   o.fillchars = { vert = "┃", eob = "￭", diff = "╱" }
 end
 
-L "user.settings"
 L "mappings"
+L("user_settings", function(settings)
+  settings.setup()
+end)
+-- cache that can be used by plugins to save global state
+g.plugin_cache = {}

@@ -1,7 +1,4 @@
-local fg = nil
-L("user.colors", function(colors)
-  fg = colors.fg
-end)
+local fg = Colors_or_default().fg
 
 local M = {
   "nvim-neo-tree/neo-tree.nvim",

@@ -51,9 +51,9 @@ M.config = function()
   end
 
   -- load debugger adapters and configurations
-  L("user.dap", function(du)
-    dap.adapters = du.adapters
-    dap.configurations = du.configurations
+  L("user_settings", function(settings)
+    dap.adapters = settings.dap.adapters
+    dap.configurations = settings.dap.configurations
   end)
 
   Map("n", "<leader>Db", dap.toggle_breakpoint, { silent = true, desc = "Toggle Debug Breakpoint" })

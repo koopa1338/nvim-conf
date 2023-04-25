@@ -1,10 +1,4 @@
-lua/plugins/user.lua
-lua/user/aucmds.lua
-lua/user/colors.lua
-lua/user/dap.lua
-lua/user/lsp.lua
-lua/user/lsp_sources.lua
-lua/user/mappings.lua
-lua/user/settings.lua
+lua/colors.lua
+plugin/user_settings.lua
 undodir/*
 lazy-lock.json

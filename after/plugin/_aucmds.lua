@@ -195,4 +195,6 @@ api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave" }, {
   end,
 })
 
-L "user.aucmds"
+L("user_settings", function(settings)
+  settings.autocommands()
+end)

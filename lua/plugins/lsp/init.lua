@@ -25,7 +25,7 @@ M.config = function()
     })
 
     local cmp_lsp = L "cmp_lsp"
-    for server, config in pairs(lsp_utils.servers()) do
+    for server, config in pairs(lsp_utils.servers(nvim_lsp)) do
       config.on_attach = lsp_utils.on_attach
       config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
       nvim_lsp[server].setup(config)

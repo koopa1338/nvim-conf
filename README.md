@@ -17,7 +17,7 @@ manager called [bob](https://github.com/MordechaiHadad/bob) otherwise download
 a release from the repo or install it through your package manager.
 
 the wilder plugin is using python and requires the neovim packages installed
-with pip to work. *NOTE* Install these before you startup neovim for the first
+with pip to work. _NOTE_ Install these before you startup neovim for the first
 time otherwise the plugin will not pickup these packages and you have to
 manually reinstall wilder.
 
@@ -36,18 +36,6 @@ custom options or didn't install the server via mason you have to add it to
 
 ### Custom settings
 
-all custom settings can be added to the according files in `lua/user/`. Example
-files can be found in the same directory
-
-- in `lua/plugins`
-    - `user.lua` for additional custom plugins you want to use
-
-- in `lua/user`
-    - `aucmds.lua` add any additional autocommands you like in here.
-    - `dap.lua` for debug adapters and configurations the `dap` plugin is using
-    - `colors.lua` add your color pallette for the theme or use wpgtk to template this file.
-    - `lsp.lua` configuration of language server you want to customize or
-      language servers you haven't install with `Mason`
-    - `lsp_sources.lua` additional sources for null-ls
-    - `mappings.lua` extend/override keymappings
-    - `settings` extend/override vim settingshere
+For custom settings see `plugin/user_settings.lua.example`.
+Color settings can be done via `lua/colors.lua`,
+if not present colors fallback to a default theme

@@ -1,0 +1,206 @@
+local o, g = vim.opt, vim.g
+local M = {}
+
+M.plugins = {}
+
+--  █████╗ ██╗   ██╗████████╗ ██████╗  ██████╗ ██████╗ ███╗   ███╗███╗   ███╗ █████╗ ███╗   ██╗██████╗ ███████╗
+-- ██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗██╔════╝██╔═══██╗████╗ ████║████╗ ████║██╔══██╗████╗  ██║██╔══██╗██╔════╝
+-- ███████║██║   ██║   ██║   ██║   ██║██║     ██║   ██║██╔████╔██║██╔████╔██║███████║██╔██╗ ██║██║  ██║███████╗
+-- ██╔══██║██║   ██║   ██║   ██║   ██║██║     ██║   ██║██║╚██╔╝██║██║╚██╔╝██║██╔══██║██║╚██╗██║██║  ██║╚════██║
+-- ██║  ██║╚██████╔╝   ██║   ╚██████╔╝╚██████╗╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║██████╔╝███████║
+-- ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝  ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚══════╝
+M.autocommands = function() end
+
+-- ██╗      █████╗ ███╗   ██╗ ██████╗ ██╗   ██╗ █████╗  ██████╗ ███████╗    ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗
+-- ██║     ██╔══██╗████╗  ██║██╔════╝ ██║   ██║██╔══██╗██╔════╝ ██╔════╝    ██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
+-- ██║     ███████║██╔██╗ ██║██║  ███╗██║   ██║███████║██║  ███╗█████╗      ███████╗█████╗  ██████╔╝██║   ██║█████╗  ██████╔╝
+-- ██║     ██╔══██║██║╚██╗██║██║   ██║██║   ██║██╔══██║██║   ██║██╔══╝      ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══╝  ██╔══██╗
+-- ███████╗██║  ██║██║ ╚████║╚██████╔╝╚██████╔╝██║  ██║╚██████╔╝███████╗    ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
+-- ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝    ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
+M.lsp_servers = function(nvim_lsp)
+  return {
+    clangd = {
+      filetypes = { "c", "cc", "cpp", "objc", "objcpp", "h", "hh", "hpp" },
+      root_dir = nvim_lsp.util.find_git_root or nvim_lsp.util.root_pattern "compile_commands.json",
+    },
+    gopls = {
+      cmd = { "gopls", "serve" },
+      settings = {
+        gopls = {
+          analyses = {
+            unusedparams = true,
+          },
+          staticcheck = true,
+        },
+      },
+    },
+    html = {
+      cmd = { "vscode-html-language-server", "--stdio" },
+      root_dir = nvim_lsp.util.find_git_root or nvim_lsp.util.root_pattern "index.html",
+    },
+    jdtls = {
+      filetypes = { "java" },
+      cmd = { "jdtls" },
+      root_dir = nvim_lsp.util.find_git_root
+        or nvim_lsp.util.root_pattern("mvnw", "gradlew", "pom.xml", "build.gradle"),
+    },
+    metals = {},
+    ocamlls = {
+      root_dir = nvim_lsp.util.find_git_root or nvim_lsp.util.root_pattern(".merlin", "package.json"),
+    },
+    rust_analyzer = {
+      root_dir = nvim_lsp.util.find_git_root or nvim_lsp.util.root_pattern("Cargo.toml", "rust-project.json"),
+      settings = {
+        procMacro = {
+          attributes = {
+            enabled = true,
+          },
+          enabled = true,
+        },
+      },
+    },
+    lua_ls = {
+      cmd = { "lua-language-server" },
+      settings = {
+        Lua = {
+          runtime = {
+            version = "LuaJIT",
+            path = L("lsp_utils").get_runtime_path(),
+          },
+          completion = {
+            keywordSnippet = "Disable",
+            showWord = "Disable",
+          },
+          diagnostics = {
+            enable = true,
+            globals = { "vim" },
+          },
+          workspace = {
+            library = { vim.api.nvim_get_runtime_file("", true) },
+          },
+        },
+      },
+    },
+    tsserver = {
+      cmd = { "typescript-language-server", "--stdio" },
+      root_dir = nvim_lsp.util.find_git_root or nvim_lsp.util.find_node_modules_root,
+    },
+  }
+end
+
+-- ██╗     ███████╗██████╗     ███████╗ ██████╗ ██╗   ██╗██████╗  ██████╗███████╗███████╗
+-- ██║     ██╔════╝██╔══██╗    ██╔════╝██╔═══██╗██║   ██║██╔══██╗██╔════╝██╔════╝██╔════╝
+-- ██║     ███████╗██████╔╝    ███████╗██║   ██║██║   ██║██████╔╝██║     █████╗  ███████╗
+-- ██║     ╚════██║██╔═══╝     ╚════██║██║   ██║██║   ██║██╔══██╗██║     ██╔══╝  ╚════██║
+-- ███████╗███████║██║         ███████║╚██████╔╝╚██████╔╝██║  ██║╚██████╗███████╗███████║
+-- ╚══════╝╚══════╝╚═╝         ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚══════╝╚══════╝
+M.lsp_sources = function(null_ls)
+  local sources = {}
+  if null_ls then
+    sources = {
+      black = {
+        custom = false,
+        type = "formatting",
+        external_cmd = "black",
+        with = {
+          cwd = vim.fn.getcwd,
+        },
+      },
+      printenv = {
+        custom = false,
+        type = "hover",
+      },
+    }
+  end
+
+  return sources
+end
+
+-- ██████╗  █████╗ ██████╗     ██████╗ ███████╗██████╗ ██╗   ██╗ ██████╗  ██████╗ ███████╗██████╗
+-- ██╔══██╗██╔══██╗██╔══██╗    ██╔══██╗██╔════╝██╔══██╗██║   ██║██╔════╝ ██╔════╝ ██╔════╝██╔══██╗
+-- ██║  ██║███████║██████╔╝    ██║  ██║█████╗  ██████╔╝██║   ██║██║  ███╗██║  ███╗█████╗  ██████╔╝
+-- ██║  ██║██╔══██║██╔═══╝     ██║  ██║██╔══╝  ██╔══██╗██║   ██║██║   ██║██║   ██║██╔══╝  ██╔══██╗
+-- ██████╔╝██║  ██║██║         ██████╔╝███████╗██████╔╝╚██████╔╝╚██████╔╝╚██████╔╝███████╗██║  ██║
+-- ╚═════╝ ╚═╝  ╚═╝╚═╝         ╚═════╝ ╚══════╝╚═════╝  ╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝
+M.dap = {
+  adapters = {
+    lldb = {
+      type = "executable",
+      command = "lldb-vscode",
+      name = "lldb",
+    },
+  },
+  configurations = {
+    rust = {
+      {
+        name = "Launch",
+        type = "lldb",
+        request = "launch",
+        program = function()
+          return coroutine.create(function(dap_run_co)
+            -- TODO: load all binary paths into selection
+            if not vim.g.plugin_cache.rust then
+              vim.g.plugin_cache.rust = {}
+            end
+            local path = g.plugin_cache.rust.target or vim.fn.getcwd() .. "/target/"
+            vim.ui.input({
+              prompt = "Target: ",
+              default = path,
+              completion = "file",
+            }, function(input)
+              g.plugin_cache.rust.target = input
+              coroutine.resume(dap_run_co, input)
+            end)
+          end)
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        args = {},
+      },
+      -- TODO: make attaching to process possible
+      -- {
+      --   name = "Attach to process",
+      --   type = 'lldb', -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+      --   request = 'attach',
+      --   pid = require('dap.utils').pick_process,
+      --   args = {},
+      -- },
+    },
+  },
+}
+
+-- ███████╗███████╗████████╗██╗   ██╗██████╗ 
+-- ██╔════╝██╔════╝╚══██╔══╝██║   ██║██╔══██╗
+-- ███████╗█████╗     ██║   ██║   ██║██████╔╝
+-- ╚════██║██╔══╝     ██║   ██║   ██║██╔═══╝ 
+-- ███████║███████╗   ██║   ╚██████╔╝██║     
+-- ╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝     
+M.setup = function()
+  -- settings
+  g.whichkey = false
+  o.timeout = g.whichkey or false
+  g.loaded_node_provider = 0
+  g.loaded_perl_provider = 0
+  g.loaded_ruby_provider = 0
+  g.firenvim_config = {
+    localSettings = {
+      globalSettings = {
+        alt = "all",
+      },
+      [".*"] = {
+        cmdline = "neovim",
+        content = "text",
+        priority = 0,
+        selector = "textarea",
+        takeover = "never",
+      },
+    },
+  }
+
+  o.list = true
+  o.listchars = { trail = "", tab = " " }
+
+  -- mappings
+end
+
+return M
