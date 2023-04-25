@@ -12,9 +12,9 @@ local M = {
 
 M.config = function()
   L("luasnip", function(ls)
-    ls.config.set_config {
+    ls.config.setup {
       history = true,
-      updateevents = "TextChanged,TextChangedI",
+      delete_check_events = "TextChanged",
     }
 
     -- some shorthands...
