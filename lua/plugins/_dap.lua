@@ -36,7 +36,7 @@ M.config = function()
       expanded = signs.FoldOpen.icon,
       collapsed = signs.FoldClosed.icon,
       current_frame = signs.DapCurrentFrame.icon,
-    }
+    },
   }
 
   -- open dapui when start debugging

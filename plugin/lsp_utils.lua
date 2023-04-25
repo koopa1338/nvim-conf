@@ -28,7 +28,7 @@ end
 M.servers = function(nvim_lsp)
   local servers = {}
   L("user_settings", function(settings)
-    settings.lsp_servers(nvim_lsp)
+    servers = settings.lsp_servers(nvim_lsp)
   end)
   return servers
 end

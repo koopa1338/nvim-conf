@@ -9,7 +9,6 @@ local M = {
 
 M.config = function()
   L("lspconfig", function(nvim_lsp)
-    local lsp_utils = L "lsp_utils"
     local bt = vim.g.border_type
     -- lsp config
     -- overwrite handlers of language server globally
@@ -24,12 +23,15 @@ M.config = function()
       },
     })
 
-    local cmp_lsp = L "cmp_lsp"
-    for server, config in pairs(lsp_utils.servers(nvim_lsp)) do
-      config.on_attach = lsp_utils.on_attach
-      config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
-      nvim_lsp[server].setup(config)
-    end
+    L("lsp_utils", function(lsp_utils)
+      for server, config in pairs(lsp_utils.servers(nvim_lsp)) do
+        config.on_attach = lsp_utils.on_attach
+        L("cmp_lsp", function(cmp_lsp)
+          config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
+        end)
+        nvim_lsp[server].setup(config)
+      end
+    end)
 
     L("lspconfig.ui.windows").default_options.border = bt
 
