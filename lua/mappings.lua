@@ -68,6 +68,15 @@ Map("n", "gO", "O<Esc>", {})
 
 Map({ "n", "v", "i" }, "<F1>", "<nop>", { silent = true })
 
+-- settings
+Map("n", "<leader>sl", function()
+  if vim.o.conceallevel > 0 then
+    vim.o.conceallevel = 0
+  else
+    vim.o.conceallevel = 2
+  end
+end, { silent = true })
+
 L("which-key", function(wk)
   wk.register({
     b = {
@@ -107,6 +116,10 @@ L("which-key", function(wk)
       name = "+buffers",
       D = { "Delete all other Buffers" },
       W = { "Wipe all other Buffers" },
+    },
+    s = {
+      name = "+settings",
+      l = { "Toggle ligatures (conceallevel)" },
     },
     ["<C-S>"] = { "Save File" },
     ["<C-H>"] = { "Move Window Left" },
