@@ -175,10 +175,10 @@ M.config = function()
     Map("n", "<M-C-n>", "<cmd>NeoTreeFloatToggle<CR>", { silent = true, desc = "Toggle Neo Tree Floating Mode" })
 
     L("which-key", function(wk)
-      wk.register({
+      wk.register {
         ["<C-n>"] = { "Toggle NvimTree" },
         ["<M-C-n>"] = { "Toggle NvimTree Floating Mode" },
-      }, { prefix = "<leader>" })
+      }
     end)
   end)
 end

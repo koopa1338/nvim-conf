@@ -78,53 +78,55 @@ Map("n", "<leader>sl", function()
 end, { silent = true })
 
 L("which-key", function(wk)
-  wk.register({
-    b = {
-      name = "+buffers",
-      p = { "Open Previous Buffer" },
-      d = { "Delete current Buffer" },
-      D = { "Delete all other Buffers" },
-      w = { "Wipeout current Buffer" },
-      W = { "Wipeout all other Buffers" },
-      m = {
-        name = "+modified",
-        m = {},
-        x = {},
-        v = {},
+  wk.register {
+    ["<leader>"] = {
+      b = {
+        name = "+buffers",
+        p = { "Open Previous Buffer" },
+        d = { "Delete current Buffer" },
+        D = { "Delete all other Buffers" },
+        w = { "Wipeout current Buffer" },
+        W = { "Wipeout all other Buffers" },
+        m = {
+          name = "+modified",
+          m = {},
+          x = {},
+          v = {},
+        },
       },
-    },
-    g = {
-      m = { "Messenger" },
-    },
-    w = {
-      name = "+windows",
-      q = { "Close current Window" },
-      t = { "Close current Tab" },
-      o = { "Close all other Windows" },
-      n = {
-        name = "+new",
-        x = { "New Horizontal Window" },
-        v = { "New Vertical Window" },
+      g = {
+        m = { "Messenger" },
+      },
+      w = {
+        name = "+windows",
+        q = { "Close current Window" },
+        t = { "Close current Tab" },
+        o = { "Close all other Windows" },
+        n = {
+          name = "+new",
+          x = { "New Horizontal Window" },
+          v = { "New Vertical Window" },
+        },
+        s = {
+          name = "+split",
+          x = { "Horizontal Split" },
+          v = { "Vertical Split" },
+        },
+      },
+      B = {
+        name = "+buffers",
+        D = { "Delete all other Buffers" },
+        W = { "Wipe all other Buffers" },
       },
       s = {
-        name = "+split",
-        x = { "Horizontal Split" },
-        v = { "Vertical Split" },
+        name = "+settings",
+        l = { "Toggle ligatures (conceallevel)" },
       },
-    },
-    B = {
-      name = "+buffers",
-      D = { "Delete all other Buffers" },
-      W = { "Wipe all other Buffers" },
-    },
-    s = {
-      name = "+settings",
-      l = { "Toggle ligatures (conceallevel)" },
     },
     ["<C-S>"] = { "Save File" },
     ["<C-H>"] = { "Move Window Left" },
     ["<C-J>"] = { "Move Window Down" },
     ["<C-K>"] = { "Move Window Up" },
     ["<C-L>"] = { "Move Window Right" },
-  }, { prefix = "<leader>" })
+  }
 end)

@@ -102,28 +102,30 @@ M.config = function()
   Map("n", "<leader>DD", dap.disconnect, { silent = true, desc = "Disconnect Debugger" })
 
   L("which-key", function(wk)
-    wk.register({
-      D = {
-        name = "+Debug",
-        b = { "Toggle Debug Breakpoint" },
-        B = { "Show Debug Breakpoints" },
-        c = { "Set Debug Breakpoint Condition" },
-        m = { "Set Debug Log Point Message" },
-        p = { "Pause Debugger" },
-        s = { "Show Debug Stacks" },
-        t = { "Show Debug Console" },
-        o = { "Debug Step Over" },
-        g = { "Debug GoTo" },
-        l = { "Debug Step Into" },
-        h = { "Debug Step Out" },
-        k = { "Debug Step Up" },
-        j = { "Debug Step Down" },
-        r = { "Toggle Debug REPL" },
-        D = { "Disconnect Debugger" },
-        Q = { "Clear All Breakpoints" },
+    wk.register {
+      ["<leader>"] = {
+        D = {
+          name = "+Debug",
+          b = { "Toggle Debug Breakpoint" },
+          B = { "Show Debug Breakpoints" },
+          c = { "Set Debug Breakpoint Condition" },
+          m = { "Set Debug Log Point Message" },
+          p = { "Pause Debugger" },
+          s = { "Show Debug Stacks" },
+          t = { "Show Debug Console" },
+          o = { "Debug Step Over" },
+          g = { "Debug GoTo" },
+          l = { "Debug Step Into" },
+          h = { "Debug Step Out" },
+          k = { "Debug Step Up" },
+          j = { "Debug Step Down" },
+          r = { "Toggle Debug REPL" },
+          D = { "Disconnect Debugger" },
+          Q = { "Clear All Breakpoints" },
+        },
       },
       ["<M-d>"] = { "Start/Terminate Debugger Session" },
-    }, { prefix = "<leader>" })
+    }
   end)
 end
 

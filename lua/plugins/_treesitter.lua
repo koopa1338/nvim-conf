@@ -93,9 +93,9 @@ M.config = function()
             c = { "Peek outer class" },
             s = { "Peek outer scope" },
           },
-          ["<M-s>"] = { "Swap with next parameter" },
+          ["<M-s>"] = { "Swap with previous parameter" },
         },
-        ["<M-s>"] = { "Swap with previous parameter" },
+        ["<M-s>"] = { "Swap with next parameter" },
       }
     end)
   end)
