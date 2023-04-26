@@ -32,6 +32,7 @@ M.config = function()
       },
     }
     -- FIXME: license snippets don't get added if we choose `all` filetype here
+    -- issue: https://github.com/rafamadriz/friendly-snippets/issues/282
     ls.filetype_extend("markdown", { "license" }) -- includes all license snippets
   end)
 end

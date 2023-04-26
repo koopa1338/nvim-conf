@@ -11,7 +11,7 @@ M.get_null_ls_sources = function()
   if M.ls then
     local custom_sources = {}
     L("user_settings", function(settings)
-      custom_sources = L("user_settings").lsp_sources(M.ls)
+      custom_sources = settings.lsp_sources(M.ls)
     end)
     for k, v in pairs(custom_sources) do
       if v.custom then
