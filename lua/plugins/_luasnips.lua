@@ -16,6 +16,8 @@ M.config = function()
       history = true,
       delete_check_events = "TextChanged",
     }
+    -- FIXME: license snippets don't get added if we choose `all` filetype here
+    ls.filetype_extend("markdown", { "license" }) -- includes all license snippets
 
     -- some shorthands...
     local snip = ls.snippet
