@@ -5,6 +5,7 @@ local M = {
     config = function()
       -- get friendly-snippets to work with LuaSnip
       L("luasnip.loaders.from_vscode").lazy_load()
+      L("luasnip.loaders.from_lua").lazy_load()
     end,
   },
   event = "VeryLazy",
@@ -12,45 +13,26 @@ local M = {
 
 M.config = function()
   L("luasnip", function(ls)
+    local signs = L("signs").signs
+    local types = L "luasnip.util.types"
     ls.config.setup {
       history = true,
       delete_check_events = "TextChanged",
+      ext_opts = {
+        [types.choiceNode] = {
+          active = {
+            virt_text = { { signs.SnipChoice.icon, signs.SnipChoice.hl } },
+          },
+        },
+        [types.insertNode] = {
+          active = {
+            virt_text = { { signs.SnipInsert.icon, signs.SnipInsert.hl } },
+          },
+        },
+      },
     }
     -- FIXME: license snippets don't get added if we choose `all` filetype here
     ls.filetype_extend("markdown", { "license" }) -- includes all license snippets
-
-    -- some shorthands...
-    local snip = ls.snippet
-    local node = ls.snippet_node
-    local text = ls.text_node
-    local insert = ls.insert_node
-    local func = ls.function_node
-    local choice = ls.choice_node
-    local dynamicn = ls.dynamic_node
-
-    ls.add_snippets(nil, {
-      rust = {
-        snip({
-          trig = "tmod",
-          namr = "test mod",
-          dscr = "create mod for tests",
-        }, {
-          text "#[cfg(test)]",
-          text { "", "mod test {" },
-          text { "", "\tuse super::*;" },
-          text { "", "" },
-          text { "", "\t" },
-          insert(0),
-          text { "", "}" },
-        }),
-      },
-      python = {
-        snip("pybang", {
-          text { "#!/usr/bin/env python", "" },
-          insert(0),
-        }),
-      },
-    })
   end)
 end
 

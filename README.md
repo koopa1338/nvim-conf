@@ -39,3 +39,26 @@ custom options or didn't install the server via mason you have to add it to
 For custom settings see `plugin/user_settings.lua.example`.
 Color settings can be done via `lua/colors.lua`,
 if not present colors fallback to a default theme
+
+### Snippets
+
+To add your own snippets add a lua file named after the filetype in `luasnippts/`.
+For example a simple rust snippet would go into `luasnippets/rust.lua`:
+
+```lua
+return {
+  s({
+    trig = "tmod",
+    namr = "test mod",
+    dscr = "create mod for tests",
+  }, {
+    t "#[cfg(test)]",
+    t { "", "mod test {" },
+    t { "", "\tuse super::*;" },
+    t { "", "" },
+    t { "", "\t" },
+    i(0),
+    t { "", "}" },
+  }),
+}
+```

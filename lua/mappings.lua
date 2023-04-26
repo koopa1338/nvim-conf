@@ -35,8 +35,8 @@ Map("i", "<C-s>", "<Esc><cmd>w<CR>", {})
 Map("t", "<Esc><Esc>", "<C-\\><C-n>", {})
 
 -- movement
-Map({ "n", "v" }, "j", "gj", {})
-Map({ "n", "v" }, "k", "gk", {})
+Map({ "n", "x" }, "j", "gj", {})
+Map({ "n", "x" }, "k", "gk", {})
 Map({ "n", "v" }, "H", "^", {})
 Map({ "n", "v" }, "L", "$", {})
 

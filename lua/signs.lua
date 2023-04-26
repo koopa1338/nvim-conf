@@ -120,6 +120,14 @@ M.signs = {
     icon = "",
     hl = "NeoTreeModified",
   },
+  SnipChoice = {
+    icon = "",
+    hl = "Conditional",
+  },
+  SnipInsert = {
+    icon = "",
+    hl = "Visual",
+  },
 }
 
 M.setup = function()
