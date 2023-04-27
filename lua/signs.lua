@@ -3,7 +3,7 @@ local M = {}
 
 M.signs = {
   DiagnosticSignError = {
-    icon = "",
+    icon = "",
     texthl = "DiagnosticSignError",
   },
   DiagnosticSignWarn = {
@@ -19,15 +19,15 @@ M.signs = {
     texthl = "DiagnosticSignHint",
   },
   DapBreakpoint = {
-    icon = "",
+    icon = "ﴫ",
     texthl = "DiagnosticSignError",
   },
   DapBreakpointCondition = {
-    icon = "",
+    icon = "",
     texthl = "DiagnosticSignWarn",
   },
   DapLogPoint = {
-    icon = "",
+    icon = "",
     texthl = "DiagnosticSignInfo",
   },
   DapCurrentFrame = {
@@ -65,7 +65,7 @@ M.signs = {
   },
   GitSignsLineColUntracked = {
     hl = "GitSingsAdd",
-    icon = "",
+    icon = "",
     numhl = "GitSignsAddNr",
     linehl = "GitSignsNrAddLn",
   },
@@ -77,7 +77,7 @@ M.signs = {
   },
   GitSignsLineColUnstaged = {
     hl = "GitSingsAdd",
-    icon = "ﳺ",
+    icon = "",
     numhl = "GitSignsAddNr",
     linehl = "GitSignsNrAddLn",
   },
@@ -121,11 +121,11 @@ M.signs = {
     hl = "NeoTreeModified",
   },
   SnipChoice = {
-    icon = "",
+    icon = "ﯟ",
     hl = "Conditional",
   },
   SnipInsert = {
-    icon = "",
+    icon = "",
     hl = "Visual",
   },
 }
