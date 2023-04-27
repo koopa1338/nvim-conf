@@ -3,11 +3,27 @@ local M = {
   dependencies = {
     "jose-elias-alvarez/null-ls.nvim",
     "nvim-lua/plenary.nvim",
+    {
+      "williamboman/mason.nvim",
+      dependencies = {
+        "williamboman/mason-lspconfig",
+        {
+          "jay-babu/mason-null-ls.nvim",
+          event = { "BufReadPre", "BufNewFile" },
+          dependencies = {
+            "jose-elias-alvarez/null-ls.nvim",
+          },
+        },
+      },
+      event = "VeryLazy",
+    },
   },
   event = "VeryLazy",
 }
 
 M.config = function()
+  L("plugins.lsp.mason").setup()
+  L("plugins.lsp.nullls").setup()
   L("lspconfig", function(nvim_lsp)
     local bt = vim.g.border_type
     -- lsp config
@@ -24,11 +40,22 @@ M.config = function()
     })
 
     L("lsp_utils", function(lsp_utils)
+      local cmp_lsp = L("cmp_lsp")
+      L("mason-lspconfig", function(masonlsp)
+        masonlsp.setup_handlers({
+        function (server_name)
+            local config = {
+              on_attach = lsp_utils.on_attach,
+              capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
+            }
+            nvim_lsp[server_name].setup(config)
+        end,
+        })
+      end)
+
       for server, config in pairs(lsp_utils.servers(nvim_lsp)) do
         config.on_attach = lsp_utils.on_attach
-        L("cmp_lsp", function(cmp_lsp)
-          config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
-        end)
+        config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
         nvim_lsp[server].setup(config)
       end
     end)
