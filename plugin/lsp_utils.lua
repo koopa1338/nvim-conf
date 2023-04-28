@@ -1,4 +1,5 @@
 local proto, log_lvl = vim.lsp.protocol, vim.lsp.levels
+local settings = L "user_settings"
 local unsupported_title = "LSP Provider not supported"
 local M = {}
 
@@ -9,6 +10,10 @@ M.get_runtime_path = function()
   table.insert(runtime_path, "plugin/?.lua")
   table.insert(runtime_path, "plugin/?/init.lua")
   return runtime_path
+end
+
+local cmd_available = function(cmd)
+  return vim.fn.executable(cmd) == 1
 end
 
 M.get_lsp_capabilities = function(cmp_lsp)
@@ -27,9 +32,9 @@ end
 
 M.servers = function(nvim_lsp)
   local servers = {}
-  L("user_settings", function(settings)
+  if settings ~= nil then
     servers = settings.lsp_servers(nvim_lsp)
-  end)
+  end
   return servers
 end
 
@@ -250,6 +255,37 @@ M.on_attach = function(client, bufnr)
   Map("n", "<leader>lk", function()
     vim.diagnostic.goto_prev { float = float_opts }
   end, { silent = true, buffer = bufnr, desc = "Jump to Previous Diagnostic" })
+end
+
+M.get_null_ls_sources = function(null_ls)
+  local sources = {}
+  local custom_sources = {}
+  if settings ~= nil then
+    custom_sources = settings.lsp_sources(null_ls)
+  end
+  for k, v in pairs(custom_sources) do
+    if v.custom then
+      local cond = v.config.condition
+      if v.external_cmd and cond ~= nil then
+        v.config.condition = cond and cmd_available(v.external_cmd)
+      end
+      null_ls.register(v.config)
+    else
+      local src = null_ls.builtins[v.type][k]
+      if v.with then
+        src = src.with(v.with)
+      end
+      if v.external_cmd then
+        if cmd_available(k) then
+          table.insert(sources, src)
+        end
+      else
+        table.insert(sources, src)
+      end
+    end
+  end
+
+  return sources
 end
 
 return M
