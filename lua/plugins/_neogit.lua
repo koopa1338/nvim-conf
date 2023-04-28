@@ -23,6 +23,12 @@ M.config = function()
     integrations = {
       diffview = true,
     },
+    popup = {
+      kind = "floating",
+    },
+    commit_popup = {
+      kind = "vsplit",
+    },
   }
 
   L("which-key", function(wk)
