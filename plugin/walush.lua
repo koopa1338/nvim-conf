@@ -58,7 +58,7 @@ L("lush", function(lush)
       LineNr { fg = xres.color7, bg = xres.color0 },
       LineNrAbove { LineNr },
       LineNrBelow { LineNr },
-      CursorLineNr { fg = xres.color15, bg = xres.color6, gui = "bold" },
+      CursorLineNr { fg = xres.color15, bg = xres.color8.lighten(2.5), gui = "bold" },
       Type { fg = xres.color13, bg = xres.bg, gui = "bold" },
       Question { Type },
       StatusLine { fg = xres.color15, bg = xres.color8, gui = "bold" },
@@ -182,6 +182,9 @@ L("lush", function(lush)
       diffNewFile { fg = DiffAdd.bg.lighten(20) }, -- diffNewFile    xxx links to diffFile
       diffIndexLine { PreProc }, -- diffIndexLine  xxx links to PreProc
       diffComment { Comment }, -- diffComment    xxx links to Comment
+
+      -- TODO: add other diffview highlight groups
+      DiffviewFilePanelCounter { fg = xres.color3, bg = xres.None, gui = "bold"},
 
       -- Gitsigns
       GitSignsDelete { fg = diffOldFile.fg.lighten(30) }, -- GitSignsDelete           xxx links to DiffDelete
