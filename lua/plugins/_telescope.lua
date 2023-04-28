@@ -6,6 +6,7 @@ local M = {
     "nvim-telescope/telescope-ui-select.nvim",
     "LukasPietzschmann/telescope-tabs",
     "rcarriga/nvim-notify",
+    "nvim-telescope/telescope-dap.nvim",
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
@@ -173,6 +174,7 @@ M.config = function()
     telescope.load_extension "fzf"
     telescope.load_extension "notify"
     telescope.load_extension "ui-select"
+    telescope.load_extension "dap"
     L("telescope-tabs", function(tt)
       tt.setup()
       Map("n", "<leader>ft", tt.list_tabs, { silent = true, desc = "Find Tabs" })

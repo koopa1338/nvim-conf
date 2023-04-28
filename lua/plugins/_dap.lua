@@ -57,9 +57,12 @@ M.config = function()
   end)
 
   Map("n", "<leader>gdb", dap.toggle_breakpoint, { silent = true, desc = "Toggle Debug Breakpoint" })
-  Map("n", "<leader>gds", function()
-    dapui.float_element("breakpoints", { enter = true })
-  end, { silent = true, desc = "Show Debug Breakpoints" })
+  Map(
+    "n",
+    "<leader>gds",
+    "<cmd>Telescope dap list_breakpoints layout_strategy=horizontal<CR>",
+    { silent = true, desc = "Show Debug Breakpoints" }
+  )
   Map("n", "<leader>gdc", function()
     vim.ui.input({ prompt = "Breakpoint condition: " }, function(input)
       dap.set_breakpoint(input)
@@ -77,7 +80,7 @@ M.config = function()
     if dap.session() then
       dap.terminate()
     else
-      dap.continue()
+      vim.cmd "Telescope dap configurations theme=dropdown layout_strategy=horizontal"
     end
   end, { silent = true, desc = "Start/Terminate Debugger Session" })
   Map("n", "<leader>gdp", dap.pause, { silent = true, desc = "Pause Debugger" })
