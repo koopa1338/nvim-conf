@@ -23,7 +23,6 @@ local M = {
 
 M.config = function()
   L("plugins.lsp.mason").setup()
-  L("plugins.lsp.nullls").setup()
   L("lspconfig", function(nvim_lsp)
     local bt = vim.g.border_type
     -- lsp config
@@ -95,6 +94,8 @@ M.config = function()
       }, { prefix = "<leader>" })
     end)
   end)
+
+  L("plugins.lsp.nullls").setup()
 end
 
 return M
