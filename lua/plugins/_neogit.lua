@@ -29,6 +29,13 @@ M.config = function()
     commit_popup = {
       kind = "vsplit",
     },
+    mappings = {
+      status = {
+        ["o"] = "Toggle",
+        ["P"] = "PullPopup",
+        ["p"] = "PushPopup",
+      },
+    },
   }
 
   L("which-key", function(wk)
