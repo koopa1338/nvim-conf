@@ -5,6 +5,7 @@
 (function_modifiers"unsafe" @keyword (#set! conceal ""))
 ;; delimiter
 ((function_item "->" @punctuation.delimiter) (#set! conceal ""))
+((function_signature_item "->" @punctuation.delimiter) (#set! conceal ""))
 ((match_arm "=>" @punctuation.delimiter) (#set! conceal ""))
 ;; operator
 ((binary_expression operator: "!=" @operator) (#set! conceal "≠"))
