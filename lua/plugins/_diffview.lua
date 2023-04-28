@@ -108,6 +108,7 @@ M.config = function()
         ["f"] = actions.toggle_flatten_dirs, -- Flatten empty subdirectories in tree listing style.
         ["<leader>e"] = actions.focus_files,
         ["<leader>b"] = actions.toggle_files,
+        ["q"] = "<cmd>DiffviewClose<CR>",
       },
       file_history_panel = {
         ["g!"] = actions.options, -- Open the option panel
@@ -127,6 +128,7 @@ M.config = function()
         ["<C-w>gf"] = actions.goto_file_tab,
         ["<leader>e"] = actions.focus_files,
         ["<leader>b"] = actions.toggle_files,
+        ["q"] = "<cmd>DiffviewClose<CR>",
       },
       option_panel = {
         ["<tab>"] = actions.select_entry,
