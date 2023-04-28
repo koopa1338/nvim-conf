@@ -184,7 +184,7 @@ L("lush", function(lush)
       diffComment { Comment }, -- diffComment    xxx links to Comment
 
       -- TODO: add other diffview highlight groups
-      DiffviewFilePanelCounter { fg = xres.color3, bg = xres.None, gui = "bold"},
+      DiffviewFilePanelCounter { fg = xres.color3, bg = xres.None, gui = "bold" },
 
       -- Gitsigns
       GitSignsDelete { fg = diffOldFile.fg.lighten(30) }, -- GitSignsDelete           xxx links to DiffDelete
