@@ -12,6 +12,7 @@ local blacklist = {
   "dapui_console",
   "dap-repl",
   "alpha",
+  "TelescopePrompt",
 }
 
 local numbertoggle = api.nvim_create_augroup("NumberToggle", { clear = true })
