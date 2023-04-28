@@ -58,7 +58,15 @@ M.config = function()
       return ""
     end
 
+    local c = L "colors"
     sl.setup {
+      mode_colors = {
+        n = c.color10,
+        i = c.color9,
+        c = c.color11,
+        v = c.color4,
+        V = c.color12,
+      },
       sections = {
         left = {
           "-mode",
