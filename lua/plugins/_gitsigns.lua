@@ -41,11 +41,11 @@ M.config = function()
       },
     }
 
-    Map("n", "<leader>gB", function()
+    Map("n", "<leader>gb", function()
       gitsigns.blame_line { full = true }
     end, { silent = true })
-    Map("n", "<leader>gb", gitsigns.toggle_current_line_blame, { silent = true })
-    Map("n", "<leader>gd", gitsigns.preview_hunk, { silent = true })
+    Map("n", "<leader>gib", gitsigns.toggle_current_line_blame, { silent = true })
+    Map("n", "<leader>gid", gitsigns.preview_hunk, { silent = true })
     Map("n", "<leader>g-", gitsigns.undo_stage_hunk, { silent = true })
     Map("n", "<leader>g+", gitsigns.stage_hunk, { silent = true })
     Map("n", "<leader>gu", gitsigns.reset_hunk, { silent = true })
@@ -53,10 +53,10 @@ M.config = function()
     L("which-key", function(wk)
       wk.register({
         g = {
-          b = { "Toggle Current Line Blame" },
-          d = { "Preview Hunk" },
+          ["ib"] = { "Toggle Current Line Blame" },
+          ["id"] = { "Preview Hunk" },
           u = { "Reset Hunk" },
-          B = { "Toggle Line Blame" },
+          b = { "Toggle Line Blame" },
           ["+"] = { "Stage Hunk" },
           ["-"] = { "Undo Stage Hunk" },
         },

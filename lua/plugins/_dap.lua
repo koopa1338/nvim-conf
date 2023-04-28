@@ -56,22 +56,22 @@ M.config = function()
     dap.configurations = settings.dap.configurations
   end)
 
-  Map("n", "<leader>Db", dap.toggle_breakpoint, { silent = true, desc = "Toggle Debug Breakpoint" })
-  Map("n", "<leader>DB", function()
+  Map("n", "<leader>gdb", dap.toggle_breakpoint, { silent = true, desc = "Toggle Debug Breakpoint" })
+  Map("n", "<leader>gds", function()
     dapui.float_element("breakpoints", { enter = true })
   end, { silent = true, desc = "Show Debug Breakpoints" })
-  Map("n", "<leader>Dc", function()
+  Map("n", "<leader>gdc", function()
     vim.ui.input({ prompt = "Breakpoint condition: " }, function(input)
       dap.set_breakpoint(input)
     end)
   end, { silent = true, desc = "Set Debug Breakpoint Condition" })
-  Map("n", "<leader>Dm", function()
+  Map("n", "<leader>gdm", function()
     vim.ui.input({ prompt = "Log Point message: " }, function(input)
       dap.set_breakpoint(nil, nil, input)
     end)
   end, { silent = true, desc = "Set Debug Log Point Message" })
 
-  Map("n", "<leader>DQ", dap.clear_breakpoints, { silent = true, desc = "Clear All Breakpoints" })
+  Map("n", "<leader>gdD", dap.clear_breakpoints, { silent = true, desc = "Clear All Breakpoints" })
 
   Map("n", "<M-d>", function()
     if dap.session() then
@@ -80,48 +80,48 @@ M.config = function()
       dap.continue()
     end
   end, { silent = true, desc = "Start/Terminate Debugger Session" })
-  Map("n", "<leader>Dp", dap.pause, { silent = true, desc = "Pause Debugger" })
+  Map("n", "<leader>gdp", dap.pause, { silent = true, desc = "Pause Debugger" })
 
-  Map("n", "<leader>Ds", function()
+  Map("n", "<leader>gdS", function()
     dapui.float_element("stacks", { enter = true })
   end, { silent = true, desc = "Show Debug Stacks" })
-  Map("n", "<leader>Dt", function()
+  Map("n", "<leader>gdT", function()
     dapui.float_element("console", { enter = true })
   end, { silent = true, desc = "Show Debug Console" })
 
-  Map("n", "<leader>Do", dap.step_over, { silent = true, desc = "Debug Step Over" })
-  Map("n", "<leader>Dg", dap.run_to_cursor, { silent = true, desc = "Debug GoTo" })
+  Map("n", "<leader>gdo", dap.step_over, { silent = true, desc = "Debug Step Over" })
+  Map("n", "<leader>gd.", dap.run_to_cursor, { silent = true, desc = "Debug GoTo" })
 
-  Map("n", "<leader>Dl", dap.step_into, { silent = true, desc = "Debug Step Into" })
-  Map("n", "<leader>Dh", dap.step_out, { silent = true, desc = "Debug Step Out" })
+  Map("n", "<leader>gdl", dap.step_into, { silent = true, desc = "Debug Step Into" })
+  Map("n", "<leader>gdh", dap.step_out, { silent = true, desc = "Debug Step Out" })
 
-  Map("n", "<leader>Dk", dap.up, { silent = true, desc = "Debug Step Up" })
-  Map("n", "<leader>Dj", dap.down, { silent = true, desc = "Debug Step Down" })
+  Map("n", "<leader>gdk", dap.up, { silent = true, desc = "Debug Step Up" })
+  Map("n", "<leader>gdj", dap.down, { silent = true, desc = "Debug Step Down" })
 
-  Map("n", "<leader>Dr", dap.repl.toggle, { silent = true, desc = "Toggle Debug REPL" })
-  Map("n", "<leader>DD", dap.disconnect, { silent = true, desc = "Disconnect Debugger" })
+  Map("n", "<leader>gdR", dap.repl.toggle, { silent = true, desc = "Toggle Debug REPL" })
+  Map("n", "<leader>gdQ", dap.disconnect, { silent = true, desc = "Disconnect Debugger" })
 
   L("which-key", function(wk)
     wk.register {
       ["<leader>"] = {
-        D = {
+        ["gd"] = {
           name = "+Debug",
           b = { "Toggle Debug Breakpoint" },
-          B = { "Show Debug Breakpoints" },
+          s = { "Show Debug Breakpoints" },
           c = { "Set Debug Breakpoint Condition" },
           m = { "Set Debug Log Point Message" },
           p = { "Pause Debugger" },
-          s = { "Show Debug Stacks" },
-          t = { "Show Debug Console" },
+          S = { "Show Debug Stacks" },
+          T = { "Show Debug Console" },
           o = { "Debug Step Over" },
-          g = { "Debug GoTo" },
+          ["."] = { "Debug GoTo" },
           l = { "Debug Step Into" },
           h = { "Debug Step Out" },
           k = { "Debug Step Up" },
           j = { "Debug Step Down" },
-          r = { "Toggle Debug REPL" },
-          D = { "Disconnect Debugger" },
-          Q = { "Clear All Breakpoints" },
+          R = { "Toggle Debug REPL" },
+          Q = { "Disconnect Debugger" },
+          D = { "Clear All Breakpoints" },
         },
       },
       ["<M-d>"] = { "Start/Terminate Debugger Session" },
