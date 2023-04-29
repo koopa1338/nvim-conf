@@ -191,6 +191,15 @@ M.config = function()
     Map("n", "<leader>fr", "<cmd>Telescope live_grep<CR>", { silent = true, desc = "Find Live Grep" })
     Map("n", "<leader>f*", "<cmd>Telescope grep_string<CR>", { silent = true, desc = "Grep String" })
     Map("v", "<leader>f*", grep_selection, { silent = true, desc = "Grep String (preselection)" })
+    Map("n", "<leader>fG", function()
+      vim.ui.input({
+        prompt = "Grep over seachterm",
+      }, function(input)
+        if input ~= nil and input:len() > 0 then
+          builtin.grep_string { search = input }
+        end
+      end)
+    end, { silent = true, desc = "Grep String (input)" })
     Map("n", "<leader>fR", "<cmd>Telescope registers<CR>", { silent = true, desc = "Find Registers" })
     Map("n", "<leader>bb", "<cmd>Telescope buffers<CR>", { silent = true, desc = "Show open Buffers" })
     Map(
