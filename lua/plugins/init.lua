@@ -31,7 +31,16 @@ return {
   { "rktjmp/lush.nvim" },
   {
     "alvarosevilla95/luatab.nvim",
-    config = true,
+    config = function()
+      L("luatab", function(luatab)
+        local signs = L("signs").signs
+        luatab.setup {
+          modified = function(bufnr)
+            return vim.fn.getbufvar(bufnr, "&modified") == 1 and signs.Modified.icon .. " " or ""
+          end,
+        }
+      end)
+    end,
     event = "VeryLazy",
   },
   { "kyazdani42/nvim-web-devicons" },
