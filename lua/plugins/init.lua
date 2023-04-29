@@ -46,11 +46,7 @@ return {
   { "kyazdani42/nvim-web-devicons" },
   {
     "petertriho/nvim-scrollbar",
-    config = function()
-      L("scrollbar", function(scrollbar)
-        scrollbar.setup()
-      end)
-    end,
+    config = true,
   },
 
   {
