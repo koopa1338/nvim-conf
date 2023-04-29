@@ -44,7 +44,6 @@ return {
     end,
   },
 
-  -- { "junegunn/gv.vim" },
   {
     "kristijanhusak/vim-dadbod-ui",
     event = "VeryLazy",
@@ -54,8 +53,8 @@ return {
   },
 
   -- utils
-  { "jghauser/mkdir.nvim", event = "VeryLazy" },
   { "gelguy/wilder.nvim", event = "VeryLazy" },
   { "romgrk/fzy-lua-native", event = "VeryLazy" },
   { "uga-rosa/ccc.nvim", event = "VeryLazy" }, -- color picker
+  { "mbbill/undotree", cmd = "UndotreeToggle" },
 }
