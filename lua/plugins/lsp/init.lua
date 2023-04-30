@@ -13,6 +13,9 @@ local M = {
           dependencies = {
             "jose-elias-alvarez/null-ls.nvim",
           },
+          config = function()
+            L("plugins.lsp.nullls").setup()
+          end
         },
       },
       event = "VeryLazy",
@@ -94,8 +97,6 @@ M.config = function()
       }, { prefix = "<leader>" })
     end)
   end)
-
-  L("plugins.lsp.nullls").setup()
 end
 
 return M
