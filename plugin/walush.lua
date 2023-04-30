@@ -13,7 +13,9 @@ L("lush", function(lush)
   end
   xres.none = "NONE"
 
-  walush = lush(function()
+  walush = lush(function(injected_functions)
+    -- you probably want to alias it locally
+    local sym = injected_functions.sym
     return {
 
       -- git
@@ -682,6 +684,10 @@ L("lush", function(lush)
       ContextVt { NonText },
 
       NeoTreeFloatTitle { FloatTitle },
+
+      -- tree sitter
+      sym "@comment" { fg = xres.bg.lighten(40), bg = xres.none },
+      sym "@punctuation" { fg = xres.color15.darken(10), bg = xres.none },
     }
   end)
 
