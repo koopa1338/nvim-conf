@@ -108,10 +108,16 @@ M.config = function()
         },
         mappings = {
           i = {
+            ["<C-R>"] = actions.cycle_history_next,
+            ["<C-r>"] = actions.cycle_history_prev,
             ["<C-j>"] = actions.move_selection_next,
             ["<C-k>"] = actions.move_selection_previous,
-            ["<M-q>"] = actions.smart_send_to_qflist,
-            ["<S-M-q>"] = actions.smart_send_to_loclist,
+            ["<C-u>"] = actions.results_scrolling_up,
+            ["<C-d>"] = actions.results_scrolling_down,
+            ["<PageUp>"] = actions.preview_scrolling_up,
+            ["<PageDown>"] = actions.preview_scrolling_down,
+            ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            ["<M-q>"] = actions.smart_send_to_loclist + actions.open_loclist,
           },
         },
         selection_strategy = "reset",
