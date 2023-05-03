@@ -127,13 +127,13 @@ local provider_mapping = {
         vim.lsp.buf.code_action {
           context = {
             only = {
-              "source",
+              "quickfix",
             },
             diagnostics = {},
           },
         }
       end,
-      desc = "Select Code Actions",
+      desc = "Select Code Actions (quickfix)",
       error = "LSP does not support code actions",
       buffer = true,
     },
