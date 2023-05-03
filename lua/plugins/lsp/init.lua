@@ -15,7 +15,7 @@ local M = {
           },
           config = function()
             L("plugins.lsp.nullls").setup()
-          end
+          end,
         },
       },
       event = "VeryLazy",
