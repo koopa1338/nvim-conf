@@ -1,6 +1,4 @@
 return {
-  { "mrjones2014/legendary.nvim", cmd = "Legendary" },
-
   -- movement and search
   { "markonm/traces.vim", event = "VeryLazy" },
 
@@ -9,7 +7,7 @@ return {
   {
     "windwp/nvim-autopairs",
     config = true,
-    event = "InsertEnter"
+    event = "InsertEnter",
   },
   { "godlygeek/tabular", cmd = "Tabularize" },
 
@@ -60,13 +58,21 @@ return {
       "DB",
       "DBUI",
       "DBUIToggle",
-    }
+    },
   },
 
   -- utils
-  { "gelguy/wilder.nvim", event = "VeryLazy" },
   { "romgrk/fzy-lua-native", event = "VeryLazy" },
-  { "uga-rosa/ccc.nvim", event = "VeryLazy" }, -- color picker
+  {
+    -- color picker
+    "uga-rosa/ccc.nvim",
+    cmd = {
+      "CccConvert",
+      "CccHighlighterEnable",
+      "CccHighlighterToggle",
+      "CccPick",
+    },
+  },
   { "mbbill/undotree", cmd = "UndotreeToggle" },
   { "kevinhwang91/nvim-bqf", ft = { "qf" } },
 }
