@@ -13,9 +13,6 @@ local M = {
           dependencies = {
             "jose-elias-alvarez/null-ls.nvim",
           },
-          config = function()
-            L("plugins.lsp.nullls").setup()
-          end,
         },
       },
       event = "VeryLazy",
@@ -25,7 +22,6 @@ local M = {
 }
 
 M.config = function()
-  L("plugins.lsp.mason").setup()
   L("lspconfig", function(nvim_lsp)
     local bt = vim.g.border_type
     -- lsp config
@@ -97,6 +93,11 @@ M.config = function()
       }, { prefix = "<leader>" })
     end)
   end)
+
+  -- NOTE: this has to be after the lsp config so null ls action
+  -- take higher priority then lsp (e.g. formatting)
+  L("plugins.lsp.mason").setup()
+  L("plugins.lsp.nullls").setup()
 end
 
 return M

@@ -9,6 +9,16 @@ M.setup = function()
         on_attach = lsp_utils.on_attach,
       }
     end)
+
+    -- this has to be after null ls setup so null ls has
+    -- higher priority regarding configured sources
+    L("mason-null-ls", function(mnl)
+      mnl.setup {
+        ensure_installed = {},
+        automatic_installation = false,
+        handlers = {},
+      }
+    end)
   end)
 end
 

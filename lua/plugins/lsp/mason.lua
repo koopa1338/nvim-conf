@@ -16,11 +16,6 @@ M.setup = function()
       "lua_ls",
     },
   }
-  L("mason-null-ls").setup {
-    ensure_installed = {},
-    automatic_installation = false,
-    handlers = {},
-  }
 end
 
 return M
