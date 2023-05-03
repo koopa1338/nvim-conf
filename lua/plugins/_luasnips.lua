@@ -4,7 +4,7 @@ local M = {
     "rafamadriz/friendly-snippets",
     config = function()
       -- get friendly-snippets to work with LuaSnip
-      L("luasnip.loaders.from_vscode").lazy_load()
+      L("luasnip.loaders.from_vscode").load()
       L("luasnip.loaders.from_lua").lazy_load()
     end,
   },
@@ -31,9 +31,7 @@ M.config = function()
         },
       },
     }
-    -- FIXME: license snippets don't get added if we choose `all` filetype here
-    -- issue: https://github.com/rafamadriz/friendly-snippets/issues/282
-    ls.filetype_extend("markdown", { "license" }) -- includes all license snippets
+    ls.filetype_extend("all", { "license" }) -- includes all license snippets
   end)
 end
 
