@@ -62,4 +62,5 @@ return {
   { "romgrk/fzy-lua-native", event = "VeryLazy" },
   { "uga-rosa/ccc.nvim", event = "VeryLazy" }, -- color picker
   { "mbbill/undotree", cmd = "UndotreeToggle" },
+  { "kevinhwang91/nvim-bqf", ft = { "qf" } },
 }
