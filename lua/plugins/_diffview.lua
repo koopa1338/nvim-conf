@@ -1,6 +1,12 @@
 local M = {
   "sindrets/diffview.nvim",
-  cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+  cmd = {
+    "DiffviewOpen",
+    "DiffviewFileHistory",
+    "DiffviewFocusFiles",
+    "DiffveiewLog",
+    "DiffviewRefresh",
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
   },

@@ -2,10 +2,10 @@ local M = {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    "haringsrob/nvim_context_vt",
     "nvim-lua/popup.nvim",
     "windwp/nvim-ts-autotag",
   },
+  event = "BufReadPre",
 }
 
 M.config = function()

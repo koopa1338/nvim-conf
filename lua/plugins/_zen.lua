@@ -1,4 +1,10 @@
-local M = { "Pocco81/TrueZen.nvim", event = "VeryLazy" }
+local M = {
+  "Pocco81/TrueZen.nvim",
+  cmd = {
+    "TZFocus",
+    "TZAtaraxis",
+  },
+}
 
 M.config = function()
   L("true-zen", function(zen)

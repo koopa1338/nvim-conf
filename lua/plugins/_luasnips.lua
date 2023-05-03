@@ -8,7 +8,7 @@ local M = {
       L("luasnip.loaders.from_lua").lazy_load()
     end,
   },
-  event = "VeryLazy",
+  event = "InsertEnter",
 }
 
 M.config = function()

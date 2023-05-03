@@ -1,4 +1,4 @@
-local M = { "axieax/urlview.nvim", event = "VeryLazy" }
+local M = { "axieax/urlview.nvim", cmd = "UrlView" }
 
 M.config = function()
   L("urlview", function(urlview)

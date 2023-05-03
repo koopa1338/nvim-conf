@@ -1,4 +1,4 @@
-local fg = Colors_or_default().fg
+local fg = Colors_or_default().fg or "#cccccc"
 
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
@@ -19,13 +19,20 @@ local M = {
             },
           },
           -- TODO: PR for makeing highlightgroups work
-          other_win_hl_color = fg or "#cccccc",
+          other_win_hl_color = fg,
         }
       end,
     },
   },
+  cmd = {
+    "NeoTreeRevealToggle",
+    "NeoTreeFloatToggle",
+  },
+  keys = {
+    { "<C-n>", "<cmd>NeoTreeRevealToggle<CR>", silent = true, desc = "Toggle Neo Tree" },
+    { "<M-C-n>", "<cmd>NeoTreeRevealToggle<CR>", silent = true, desc = "Toggle Neo Tree Floating Mode" },
+  },
 }
-
 M.config = function()
   L("neo-tree", function(tree)
     local signs = L("signs").signs
@@ -171,9 +178,6 @@ M.config = function()
         },
       },
     }
-    Map("n", "<C-n>", "<cmd>NeoTreeRevealToggle<CR>", { silent = true, desc = "Toggle Neo Tree" })
-    Map("n", "<M-C-n>", "<cmd>NeoTreeFloatToggle<CR>", { silent = true, desc = "Toggle Neo Tree Floating Mode" })
-
     L("which-key", function(wk)
       wk.register {
         ["<C-n>"] = { "Toggle NvimTree" },

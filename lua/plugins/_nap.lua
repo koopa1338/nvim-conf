@@ -1,6 +1,7 @@
 local M = {
   "liangxianzhe/nap.nvim",
   config = true,
+  event = "VeryLazy",
 }
 
 M.opts = {

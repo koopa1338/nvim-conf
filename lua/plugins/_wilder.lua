@@ -1,4 +1,4 @@
-local M = { "gelguy/wilder.nvim", event = "VeryLazy" }
+local M = { "gelguy/wilder.nvim", event = "CmdlineEnter" }
 
 M.config = function()
   L("wilder", function(wilder)

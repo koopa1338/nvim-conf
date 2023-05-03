@@ -1,5 +1,5 @@
 return {
-  { "mrjones2014/legendary.nvim", event = "VeryLazy" },
+  { "mrjones2014/legendary.nvim", cmd = "Legendary" },
 
   -- movement and search
   { "markonm/traces.vim", event = "VeryLazy" },
@@ -9,8 +9,9 @@ return {
   {
     "windwp/nvim-autopairs",
     config = true,
+    event = "InsertEnter"
   },
-  { "godlygeek/tabular", event = "VeryLazy" },
+  { "godlygeek/tabular", cmd = "Tabularize" },
 
   -- syntax and languages
   { "lervag/vimtex", ft = { "tex" } },
@@ -41,20 +42,25 @@ return {
         }
       end)
     end,
-    event = "VeryLazy",
+    event = "BufReadPre",
   },
   { "kyazdani42/nvim-web-devicons" },
   {
     "petertriho/nvim-scrollbar",
     config = true,
+    event = "BufReadPost",
   },
 
   {
     "kristijanhusak/vim-dadbod-ui",
-    event = "VeryLazy",
     dependencies = {
       "tpope/vim-dadbod",
     },
+    cmd = {
+      "DB",
+      "DBUI",
+      "DBUIToggle",
+    }
   },
 
   -- utils

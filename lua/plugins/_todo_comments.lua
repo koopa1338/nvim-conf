@@ -1,6 +1,6 @@
 local M = {
   "folke/todo-comments.nvim",
-  event = "VeryLazy",
+  event = "BufReadPost",
   dependencies = {
     "nvim-lua/telescope.nvim",
   },

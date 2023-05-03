@@ -11,13 +11,6 @@ L("signs", function(signs)
   signs.setup()
 end)
 L "lazy_init"
-L("lazy", function(lazy)
-  local opts = L "lazy_opts" or {}
-  lazy.setup("plugins", opts)
-end)
-
--- set colorscheme
-L "walush"
 
 if vim.version().minor >= 8 then
   -- only use filetype.lua, see https://neovim.io/news/2022/04 section filetype
@@ -127,5 +120,8 @@ L "mappings"
 L("user_settings", function(settings)
   settings.setup()
 end)
--- cache that can be used by plugins to save global state
-g.plugin_cache = {}
+
+L("lazy", function(lazy)
+  local opts = L "lazy_opts" or {}
+  lazy.setup("plugins", opts)
+end)

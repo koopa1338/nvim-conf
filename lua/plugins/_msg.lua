@@ -1,4 +1,4 @@
-local M = { "AckslD/messages.nvim", event = "VeryLazy" }
+local M = { "AckslD/messages.nvim", cmd = "Messages" }
 
 M.config = function()
   L("messages", function(msg)
