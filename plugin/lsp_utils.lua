@@ -271,16 +271,19 @@ M.get_null_ls_sources = function(null_ls)
       null_ls.register(v.config)
     else
       local src = null_ls.builtins[v.type][k]
+      if not src then
+        goto continue
+      end
+
       if v.with then
         src = src.with(v.with)
       end
-      if v.external_cmd then
-        if cmd_available(k) then
-          table.insert(sources, src)
-        end
-      else
+
+      if v.external_cmd and cmd_available(k) or true then
         table.insert(sources, src)
       end
+
+      ::continue::
     end
   end
 
