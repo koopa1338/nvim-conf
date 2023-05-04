@@ -1,9 +1,9 @@
 return {
   -- movement and search
-  { "markonm/traces.vim", event = "VeryLazy" },
+  { "markonm/traces.vim", event = "BufReadPost" },
 
   -- text objects and motions
-  { "wellle/targets.vim", event = "VeryLazy" },
+  { "wellle/targets.vim", event = "BufReadPost" },
   {
     "windwp/nvim-autopairs",
     config = true,
@@ -32,10 +32,9 @@ return {
     "alvarosevilla95/luatab.nvim",
     config = function()
       L("luatab", function(luatab)
-        local signs = L("signs").signs
         luatab.setup {
           modified = function(bufnr)
-            return vim.fn.getbufvar(bufnr, "&modified") == 1 and signs.Modified.icon .. " " or ""
+            return vim.fn.getbufvar(bufnr, "&modified") == 1 and Get_sign_def("Modified").icon .. " " or ""
           end,
         }
       end)
