@@ -37,8 +37,8 @@ Map("t", "<Esc><Esc>", "<C-\\><C-n>", {})
 -- movement
 Map({ "n", "x" }, "j", "gj", {})
 Map({ "n", "x" }, "k", "gk", {})
-Map({ "n", "v" }, "H", "^", {})
-Map({ "n", "v" }, "L", "$", {})
+Map({ "n", "x" }, "H", "^", {})
+Map({ "n", "x" }, "L", "$", {})
 
 -- Reselect visual block after indent
 Map("v", "<", "<gv", { desc = "Increase Indent Visual Block" })
