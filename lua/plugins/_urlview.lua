@@ -1,4 +1,7 @@
-local M = { "axieax/urlview.nvim", cmd = "UrlView" }
+local M = {
+  "axieax/urlview.nvim",
+  event = "BufReadPost",
+}
 
 M.config = function()
   L("urlview", function(urlview)
@@ -14,7 +17,6 @@ M.config = function()
       end)
     end, { silent = true, desc = "Show URLs of File" })
     Map("n", "<leader>uj", "<cmd>UrlView jira<CR>", { silent = true, desc = "Show Jira URLs" })
-    Map("n", "<leader>up", "<cmd>UrlView packer<CR>", { silent = true, desc = "Show Packer URLs" })
 
     L("which-key", function(wk)
       wk.register({
@@ -22,7 +24,6 @@ M.config = function()
           name = "+urlview",
           f = { "Show URLs of File" },
           j = { "Show Jira URLs" },
-          p = { "Show Packer URLs" },
           u = { "Show local URLs" },
         },
       }, { prefix = "<leader>" })
