@@ -9,20 +9,25 @@ M.opts = {
   prev_prefix = "<M-p>",
   next_repeat = "<M-i>",
   prev_repeat = "<M-o>",
-  operator = {
+  operators = {
     ["g"] = {
       next = {
         command = function()
-          require("gitsigns").next_hunk { preview = true }
+          L("gitsigns").next_hunk { preview = true }
         end,
         desc = "Next diff",
       },
       prev = {
         command = function()
-          require("gitsigns").prev_hunk { preview = true }
+          L("gitsigns").prev_hunk { preview = true }
         end,
         desc = "Prev diff",
       },
+    },
+    ["D"] = {
+      next = { command = vim.diagnostic.goto_next, desc = "Next diagnostic" },
+      prev = { command = vim.diagnostic.goto_prev, desc = "Prev diagnostic" },
+      mode = { "n", "v", "o" },
     },
   },
 }
