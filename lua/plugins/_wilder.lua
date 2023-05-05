@@ -28,7 +28,7 @@ M.config = function()
           accent = wilder.make_hl(
             "WilderAccent",
             "Pmenu",
-            { { a = true }, { a = true }, { foreground = Get_theme_hl("Special").fg, bold = true } }
+            { { a = true }, { a = true }, { foreground = Get_theme_hl("Special").foreground, bold = true } }
           ),
         },
         left = { " ", wilder.popupmenu_devicons() },

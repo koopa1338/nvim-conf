@@ -694,30 +694,19 @@ L("lush", function(lush)
   end)
 
   lush(walush)
-
-  return walush
 end)
 
 Get_theme_hl = function(name)
-  local hl_group = {}
-  L("lush", function(lush)
-    L("walush", function(walush)
-      local tmp = walush[name]
-      if tmp then
-        for _, key in pairs { "fg", "bg" } do
-          local value = tmp[key]
-          if value ~= nil and value ~= "NONE" then
-            hl_group[key] = tostring(value)
-          else
-            hl_group[key] = value
-          end
-        end
-        hl_group["gui"] = tmp["gui"]
-      end
-    end)
-  end)
-
-  return hl_group
+  local ok, hl = pcall(vim.api.nvim_get_hl_by_name, name, true)
+  if not ok then
+    return
+  end
+  for _, key in pairs { "foreground", "background", "special" } do
+    if hl[key] then
+      hl[key] = string.format("#%06x", hl[key])
+    end
+  end
+  return hl
 end
 
 return walush
