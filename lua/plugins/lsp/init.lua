@@ -15,10 +15,9 @@ local M = {
           },
         },
       },
-      event = "VeryLazy",
     },
   },
-  event = "VeryLazy",
+  event = { "BufReadPre", "BufNewFile" },
 }
 
 M.config = function()
