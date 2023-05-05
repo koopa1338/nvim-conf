@@ -128,7 +128,7 @@ L("lush", function(lush)
       SpellLocal { bg = xres.color8, gui = "undercurl" }, -- SpellLocal           xxx ctermbg=14 gui=undercurl guisp=Cyan
       CursorColumn {}, -- CursorColumn         xxx ctermbg=242 guibg=Grey40
       CursorLine { bg = xres.color0 }, -- CursorLine           xxx ctermbg=0 guibg=Grey40
-      ColorColumn { bg = xres.color1 }, -- ColorColumn          xxx ctermbg=1 guibg=DarkRed
+      ColorColumn { fg = xres.none, bg = xres.color1 }, -- ColorColumn          xxx ctermbg=1 guibg=DarkRed
       NormalNC {}, -- NormalNC             xxx cleared
       MsgArea {}, -- MsgArea              xxx cleared
       RedrawDebugNormal { gui = "reverse" }, -- RedrawDebugNormal    xxx cterm=reverse gui=reverse
@@ -684,6 +684,8 @@ L("lush", function(lush)
       ContextVt { NonText },
 
       NeoTreeFloatTitle { FloatTitle },
+
+      NeogitCommitViewHeader { fg = xres.color9, bg = xres.color8, gui = "bold" },
 
       -- tree sitter
       sym "@comment" { fg = xres.bg.lighten(40), bg = xres.none },
