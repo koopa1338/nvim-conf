@@ -1,6 +1,7 @@
 local M = {
   "goolord/alpha-nvim",
   dependencies = { "kyazdani42/nvim-web-devicons" },
+  event = "VimEnter",
 }
 
 M.config = function()
