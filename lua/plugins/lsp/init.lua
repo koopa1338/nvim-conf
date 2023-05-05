@@ -18,6 +18,7 @@ local M = {
     },
   },
   event = { "BufReadPre", "BufNewFile" },
+  cmd = "Mason",
 }
 
 M.config = function()
