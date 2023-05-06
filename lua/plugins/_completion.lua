@@ -91,8 +91,8 @@ M.config = function()
     },
     mapping = {
       ["<C-c>"] = cmp.mapping.close(),
-      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-      ["<C-f>"] = cmp.mapping.scroll_docs(4),
+      ["<M-k>"] = cmp.mapping.scroll_docs(-4),
+      ["<M-j>"] = cmp.mapping.scroll_docs(4),
       ["<M-s>"] = cmp.mapping.complete {
         config = {
           sources = {
@@ -129,7 +129,7 @@ M.config = function()
         "s",
       }),
       -- navigate snippet positions
-      ["<M-j>"] = cmp.mapping(function(fallback)
+      ["<C-f>"] = cmp.mapping(function(fallback)
         if luasnip.expand_or_locally_jumpable() then
           luasnip.expand_or_jump()
         elseif has_words_before() then
@@ -138,27 +138,30 @@ M.config = function()
           fallback()
         end
       end, {
+        "n",
         "i",
         "s",
       }),
-      ["<M-k>"] = cmp.mapping(function(fallback)
+      ["<C-b>"] = cmp.mapping(function(fallback)
         if luasnip.jumpable(-1) then
           luasnip.jump(-1)
         else
           fallback()
         end
       end, {
+        "n",
         "i",
         "s",
       }),
       -- toggle choices of choice nodes
-      ["<C-e>"] = cmp.mapping(function(fallback)
+      ["<C-y>"] = cmp.mapping(function(fallback)
         if luasnip.choice_active() then
           luasnip.change_choice(1)
         else
           fallback()
         end
       end, {
+        "n",
         "i",
         "s",
       }),
