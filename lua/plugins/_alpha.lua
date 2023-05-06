@@ -9,6 +9,7 @@ M.config = function()
   local dashboard = L "alpha.themes.dashboard"
 
   -- Set header
+  ---@diagnostic disable: need-check-nil
   dashboard.section.header.val = {
     "   ⢕⢕⢕⢕⢕⠅⢗⢕⠕⣠⠄⣗⢕⢕⠕⢕⢕⢕⠕⢠⣿⠐⢕⢕⢕⠑⢕⢕⠵⢕    ",
     "   ⢕⢕⢕⢕⠁⢜⠕⢁⣴⣿⡇⢓⢕⢵⢐⢕⢕⠕⢁⣾⢿⣧⠑⢕⢕⠄⢑⢕⠅⢕    ",

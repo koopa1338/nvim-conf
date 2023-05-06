@@ -8,7 +8,7 @@ M.config = function()
         vim.api.nvim_buf_set_option(buf, "filetype", "msgfloat")
         return vim.api.nvim_open_win(buf, true, opts)
       end,
-      buffer_opts = function(lines)
+      buffer_opts = function(_)
         local win_height = vim.o.lines - vim.o.cmdheight - 2 -- Add margin for status and buffer line
         local win_width = vim.o.columns
         local height = math.floor(win_height * 0.9)

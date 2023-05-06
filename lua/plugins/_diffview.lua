@@ -20,6 +20,7 @@ M.config = function()
   local diffview = L "diffview"
   local actions = L "diffview.actions"
   local signs = L("signs").signs
+  ---@diagnostic disable: need-check-nil
   diffview.setup {
     diff_binaries = false, -- Show diffs for binaries
     enhanced_diff_hl = true, -- See ':h diffview-config-enhanced_diff_hl'

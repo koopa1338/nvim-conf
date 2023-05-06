@@ -49,6 +49,7 @@ M.config = function()
     Variable = "",
   }
 
+  ---@diagnostic disable: need-check-nil
   cmp.setup {
     snippet = {
       expand = function(args)

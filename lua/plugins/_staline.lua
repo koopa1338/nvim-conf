@@ -59,6 +59,7 @@ M.config = function()
     end
 
     local c = L "colors"
+    ---@diagnostic disable: need-check-nil
     sl.setup {
       mode_colors = {
         n = c.color10,

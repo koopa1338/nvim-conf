@@ -11,6 +11,7 @@ M.config = function()
   local dapui = L "dapui"
   local signs = L("signs").signs
   -- setting up debugger ui
+  ---@diagnostic disable: need-check-nil
   dapui.setup {
     layouts = {
       {
