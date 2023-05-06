@@ -138,7 +138,6 @@ M.config = function()
           fallback()
         end
       end, {
-        "n",
         "i",
         "s",
       }),
@@ -149,7 +148,6 @@ M.config = function()
           fallback()
         end
       end, {
-        "n",
         "i",
         "s",
       }),
@@ -161,7 +159,6 @@ M.config = function()
           fallback()
         end
       end, {
-        "n",
         "i",
         "s",
       }),
