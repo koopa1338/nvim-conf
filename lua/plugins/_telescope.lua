@@ -83,11 +83,12 @@ M.config = function()
         layout_strategy = "flex",
         borderchars = border_chars(vim.g.border_type),
         layout_config = {
-          prompt_position = "top",
           horizontal = {
+            prompt_position = "top",
             preview_width = 0.6,
           },
           vertical = {
+            prompt_position = "bottom",
             preview_height = 0.5,
           },
         },
@@ -121,7 +122,7 @@ M.config = function()
           },
         },
         selection_strategy = "reset",
-        sorting_strategy = "descending",
+        sorting_strategy = "ascending",
         scroll_strategy = "cycle",
         prompt_prefix = Get_sign_def("Search").text .. " ",
       },
@@ -130,7 +131,14 @@ M.config = function()
           theme = "ivy",
         },
         buffers = {
+          sort_mru = true,
+          ignore_current_buffer = true,
           theme = "ivy",
+          mappings = {
+            i = {
+              ["<c-x>"] = "delete_buffer",
+            },
+          },
         },
         registers = {
           theme = "ivy",
@@ -139,9 +147,6 @@ M.config = function()
           layout_strategy = "vertical",
         },
         loclist = {
-          layout_strategy = "vertical",
-        },
-        notify = {
           layout_strategy = "vertical",
         },
         man_pages = {
