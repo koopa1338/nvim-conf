@@ -2,9 +2,9 @@
 
 This repo contains my neovim config used as a submodule in my dotfiles.
 
-![file finder](./assets/screen1.png)
-![lsp installer](./assets/screen2.png)
-![auto completion](./assets/screen3.png)
+![start](./assets/nvim_start.png)
+![file finder](./assets/nvim_telescope.png)
+![auto completion](./assets/nvim_cmp.png)
 
 ## Setup
 
@@ -32,7 +32,7 @@ installs all plugins. After that restart neovim and you should be good to go.
 To install a Language server use the `:Mason` command for the interface or
 install shorthand with `:MasonInstall <language server name>`. If you want
 custom options or didn't install the server via mason you have to add it to
-`lsp.lua` (see `lsp.lua.example`)
+`user_settings.lua` (see [Custom Settings](#custom-settings))
 
 ### Custom settings
 
