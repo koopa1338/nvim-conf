@@ -39,7 +39,6 @@ return {
         }
       end)
     end,
-    event = "BufReadPre",
   },
   { "kyazdani42/nvim-web-devicons" },
   {
