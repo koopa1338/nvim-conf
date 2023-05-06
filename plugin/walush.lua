@@ -27,6 +27,8 @@ L("lush", function(lush)
     xres[name] = hsl(color)
   end
   xres.none = "NONE"
+
+  ---@diagnostic disable: undefined-global, undefined-field
   walush = lush(function(injected_functions)
     -- you probably want to alias it locally
     local sym = injected_functions.sym
