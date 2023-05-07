@@ -9,18 +9,17 @@ local M = {
       "s1n7ax/nvim-window-picker",
       config = true,
       opts = {
-          autoselect_one = true,
-          include_current = false,
-          filter_rules = {
-            bo = {
-              filetype = { "neo-tree", "neo-tree-popup", "notify", "mason" },
-              buftype = { "terminal", "quickfix" },
-            },
+        autoselect_one = true,
+        include_current = false,
+        filter_rules = {
+          bo = {
+            filetype = { "neo-tree", "neo-tree-popup", "notify", "mason" },
+            buftype = { "terminal", "quickfix" },
           },
-          -- TODO: PR for makeing highlightgroups work
-          other_win_hl_color = fg,
-
-      }
+        },
+        -- TODO: PR for makeing highlightgroups work
+        other_win_hl_color = fg,
+      },
     },
   },
   cmd = {
