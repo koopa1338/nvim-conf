@@ -4,6 +4,10 @@ local M = {
     "TZFocus",
     "TZAtaraxis",
   },
+  keys = {
+    { "<leader>z", "<cmd>TZFocus<CR>", silent = true, desc = "Maximize current Window" },
+    { "<leader>Z", "<cmd>TZAtaraxis<CR>", silent = true, desc = "Focus Time" },
+  },
 }
 
 M.config = function()
@@ -20,9 +24,6 @@ M.config = function()
         },
       },
     }
-
-    Map("n", "<Leader>z", "<cmd>TZFocus<CR>", { silent = true, desc = "Maximize current Window" })
-    Map("n", "<Leader>Z", "<cmd>TZAtaraxis<CR>", { silent = true, desc = "Focus Time" })
 
     L("which-key", function(wk)
       wk.register({
