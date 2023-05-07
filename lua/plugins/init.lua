@@ -34,7 +34,7 @@ return {
       L("luatab", function(luatab)
         luatab.setup {
           modified = function(bufnr)
-            return vim.fn.getbufvar(bufnr, "&modified") == 1 and Get_sign_def("Modified").icon .. " " or ""
+            return vim.fn.getbufvar(bufnr, "&modified") == 1 and Get_sign_def("Modified").text .. " " or ""
           end,
         }
       end)
