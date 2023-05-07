@@ -1,7 +1,5 @@
 local M = {
   "nvim-lua/telescope.nvim",
-  branch = "0.1.x",
-  -- event = "VeryLazy",
   dependencies = {
     "nvim-telescope/telescope-ui-select.nvim",
     "LukasPietzschmann/telescope-tabs",
