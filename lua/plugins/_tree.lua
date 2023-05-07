@@ -2,14 +2,13 @@ local fg = Colors_or_default().fg or "#cccccc"
 
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
-  branch = "v2.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     {
       "s1n7ax/nvim-window-picker",
-      config = function()
-        require("window-picker").setup {
+      config = true,
+      opts = {
           autoselect_one = true,
           include_current = false,
           filter_rules = {
@@ -20,8 +19,8 @@ local M = {
           },
           -- TODO: PR for makeing highlightgroups work
           other_win_hl_color = fg,
-        }
-      end,
+
+      }
     },
   },
   cmd = {
