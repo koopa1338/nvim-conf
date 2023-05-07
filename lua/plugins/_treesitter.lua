@@ -5,6 +5,14 @@ local M = {
     "nvim-lua/popup.nvim",
     "windwp/nvim-ts-autotag",
   },
+  cmd = {
+    "TSUpdate",
+    "TSInstallFromGrammar",
+    "TSInstallInfo",
+    "TSInstallSync",
+    "TSModuleInfo",
+    "TSConfigInfo",
+  },
   event = { "BufReadPost", "BufNewFile" },
 }
 
