@@ -39,6 +39,7 @@ return {
         }
       end)
     end,
+    event = { "TabEnter", "TabNew" },
   },
   { "kyazdani42/nvim-web-devicons" },
   {
