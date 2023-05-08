@@ -87,7 +87,9 @@ M.config = function()
     },
     experimental = {
       native_menu = false,
-      ghost_text = true,
+      ghost_text = {
+        hl_group = "Comment",
+      },
     },
     mapping = {
       ["<C-c>"] = cmp.mapping.close(),
