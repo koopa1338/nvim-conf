@@ -5,23 +5,6 @@ local M = {
     "MunifTanjim/nui.nvim",
     {
       "s1n7ax/nvim-window-picker",
-      config = function()
-        L("nvim-window-picker", function(picker)
-          local fg = Colors_or_default().fg or "#cccccc"
-          picker.setup {
-            autoselect_one = true,
-            include_current = false,
-            filter_rules = {
-              bo = {
-                filetype = { "neo-tree", "neo-tree-popup", "notify", "mason" },
-                buftype = { "terminal", "quickfix" },
-              },
-            },
-            -- TODO: PR for makeing highlightgroups work
-            other_win_hl_color = fg,
-          }
-        end)
-      end,
     },
   },
   cmd = {
@@ -34,6 +17,23 @@ local M = {
   },
 }
 M.config = function()
+  -- this has to be setup before neo tree
+  L("nvim-window-picker", function(picker)
+    local fg = Colors_or_default().fg or "#cccccc"
+    picker.setup {
+      autoselect_one = true,
+      include_current = false,
+      filter_rules = {
+        bo = {
+          filetype = { "neo-tree", "neo-tree-popup", "notify", "mason" },
+          buftype = { "terminal", "quickfix" },
+        },
+      },
+      -- TODO: PR for makeing highlightgroups work
+      other_win_hl_color = fg,
+    }
+  end)
+
   L("neo-tree", function(tree)
     local signs = L("signs").signs
     tree.setup {
