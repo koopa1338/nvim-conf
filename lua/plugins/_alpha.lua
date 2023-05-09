@@ -1,5 +1,8 @@
 local M = {
   "goolord/alpha-nvim",
+  -- issue with wilder (padding and cursor move aucmd)
+  -- https://github.com/goolord/alpha-nvim/issues/210
+  commit = "89eaa18",
   dependencies = { "kyazdani42/nvim-web-devicons" },
   event = "VimEnter",
 }
