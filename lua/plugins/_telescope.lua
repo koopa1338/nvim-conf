@@ -96,7 +96,7 @@ local config = {
           prompt = "Grep over seachterm",
         }, function(input)
           if input ~= nil and input:len() > 0 then
-            M.builtin.grep_string { search = input }
+            M.deps.builtin.grep_string { search = input }
           end
         end)
       end,
