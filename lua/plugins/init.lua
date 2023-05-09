@@ -14,11 +14,6 @@ return {
   -- syntax and languages
   { "lervag/vimtex", ft = { "tex" } },
   {
-    "saecki/crates.nvim",
-    event = "BufRead Cargo.toml",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  {
     "iamcco/markdown-preview.nvim",
     build = function()
       vim.fn["mkdp#util#install"]()
