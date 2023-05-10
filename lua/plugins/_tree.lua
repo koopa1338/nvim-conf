@@ -3,9 +3,7 @@ local M = {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
-    {
-      "s1n7ax/nvim-window-picker",
-    },
+    "s1n7ax/nvim-window-picker",
   },
   cmd = {
     "NeoTreeRevealToggle",
@@ -18,7 +16,7 @@ local M = {
 }
 M.config = function()
   -- this has to be setup before neo tree
-  L("nvim-window-picker", function(picker)
+  L("window-picker", function(picker)
     local fg = Colors_or_default().fg or "#cccccc"
     picker.setup {
       autoselect_one = true,

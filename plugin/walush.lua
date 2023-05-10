@@ -16,7 +16,7 @@ Get_theme_hl = function(name)
   return hl
 end
 
-local xres = Colors_or_default()
+local xres = table.clone(Colors_or_default())
 xres.diffgreen = "#002800"
 xres.diffred = "#3f0000"
 xres.diffyellow = "#3f3f00"
