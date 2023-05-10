@@ -9,13 +9,13 @@ local border_chars = function(border_type)
   return border_chars
 end
 
-local M = {
-  deps = {
-    builtin = {},
-    tabs = {},
-    notify = {},
-  },
+local deps = {
+  builtin = {},
+  tabs = {},
+  notify = {},
 }
+
+local M = {}
 
 local grep_selection = function()
   local start_table = vim.fn.getpos "."
@@ -96,7 +96,7 @@ local config = {
           prompt = "Grep over seachterm",
         }, function(input)
           if input ~= nil and input:len() > 0 then
-            M.deps.builtin.grep_string { search = input }
+            deps.builtin.grep_string { search = input }
           end
         end)
       end,
@@ -177,8 +177,8 @@ local config = {
     {
       "<leader><leader>N",
       function()
-        if M.deps.notify then
-          M.deps.notify.dismiss()
+        if deps.notify then
+          deps.notify.dismiss()
         end
       end,
       silent = true,
@@ -187,8 +187,8 @@ local config = {
     {
       "<leader>ft",
       function()
-        if M.deps.tabs then
-          M.deps.tabs.list_tabs()
+        if deps.tabs then
+          deps.tabs.list_tabs()
         end
       end,
       silent = true,
@@ -207,7 +207,7 @@ end
 
 M.config = function()
   L("telescope", function(telescope)
-    M.deps.builtin = require "telescope.builtin"
+    deps.builtin = require "telescope.builtin"
 
     local actions = require "telescope.actions"
     local previewers = require "telescope.previewers"
@@ -311,8 +311,8 @@ M.config = function()
     telescope.load_extension "ui-select"
     telescope.load_extension "dap"
     L("telescope-tabs", function(tt)
-      M.deps.tabs = tt
-      M.deps.tabs.setup()
+      deps.tabs = tt
+      deps.tabs.setup()
     end)
 
     L("which-key", function(wk)
@@ -357,6 +357,7 @@ M.config = function()
           N = { "Dismiss Notification" },
         },
       }, { prefix = "<leader>" })
+        deps.notify = notify
     end)
   end)
 end
