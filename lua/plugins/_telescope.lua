@@ -346,18 +346,15 @@ M.config = function()
           T = { "Resume Last Finder" },
         },
       }, { prefix = "<leader>" })
-    end)
-  end)
 
-  L("notify", function(notify)
-    M.deps.notify = notify
-    L("which-key", function(wk)
-      wk.register({
-        ["<leader>"] = {
-          N = { "Dismiss Notification" },
-        },
-      }, { prefix = "<leader>" })
+      L("notify", function(notify)
         deps.notify = notify
+        wk.register({
+          ["<leader>"] = {
+            N = { "Dismiss Notification" },
+          },
+        }, { prefix = "<leader>" })
+      end)
     end)
   end)
 end
