@@ -2,7 +2,7 @@ local api, bo, wo, o = vim.api, vim.bo, vim.wo, vim.opt
 
 local blacklist = {
   "DiffviewFiles",
-  "NvimTree",
+  "neo-tree",
   "DressingInput",
   "help",
   "dapui_breakpoints",
