@@ -65,7 +65,7 @@ L("plenary.reload", function(reloader)
   end
 end)
 
-function table.clone(orig)
+function table.clone(orig, seen)
   seen = seen or {}
   if orig == nil then
     return nil
@@ -80,9 +80,9 @@ function table.clone(orig)
     seen[orig] = no
 
     for k, v in next, orig, nil do
-      no[deepcopy(k, seen)] = deepcopy(v, seen)
+      no[table.clone(k, seen)] = table.clone(v, seen)
     end
-    setmetatable(no, deepcopy(getmetatable(orig), seen))
+    setmetatable(no, table.clone(getmetatable(orig), seen))
   else -- number, string, boolean, etc
     no = orig
   end
