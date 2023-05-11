@@ -66,17 +66,27 @@ L("plenary.reload", function(reloader)
 end)
 
 function table.clone(orig)
-  local orig_type = type(orig)
-  local copy
-  if orig_type == "table" then
-    copy = {}
-    for orig_key, orig_value in pairs(orig) do
-      copy[orig_key] = orig_value
-    end
-  else
-    copy = orig
+  seen = seen or {}
+  if orig == nil then
+    return nil
   end
-  return copy
+  if seen[orig] then
+    return seen[orig]
+  end
+
+  local no
+  if type(orig) == "table" then
+    no = {}
+    seen[orig] = no
+
+    for k, v in next, orig, nil do
+      no[deepcopy(k, seen)] = deepcopy(v, seen)
+    end
+    setmetatable(no, deepcopy(getmetatable(orig), seen))
+  else -- number, string, boolean, etc
+    no = orig
+  end
+  return no
 end
 
 Colors_or_default = function()
