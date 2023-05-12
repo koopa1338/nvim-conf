@@ -262,7 +262,7 @@ M.config = function()
         selection_strategy = "reset",
         sorting_strategy = "ascending",
         scroll_strategy = "cycle",
-        prompt_prefix = Get_sign_def("Search").text .. " ",
+        prompt_prefix = " " .. Get_sign_def("Search").text,
       },
       pickers = {
         marks = {
