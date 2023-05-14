@@ -673,6 +673,7 @@ L("lush", function(lush)
 
       -- tree sitter
       sym "@comment" { fg = xres.bg.lighten(40), bg = xres.none },
+      sym "@comment.documentation" { Special },
       sym "@punctuation" { fg = xres.color15.darken(10), bg = xres.none },
     }
   end)
