@@ -268,6 +268,9 @@ M.config = function()
         sorting_strategy = "ascending",
         scroll_strategy = "cycle",
         prompt_prefix = " " .. Get_sign_def("Search").text,
+        selection_caret = " " .. Get_sign_def("Selected").text .. "  ",
+        entry_prefix = "     ",
+        multi_icon = " " .. Get_sign_def("Multi_Select").text,
       },
       pickers = {
         marks = {

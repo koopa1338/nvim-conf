@@ -128,6 +128,12 @@ M.signs = {
     icon = "",
     hl = "Visual",
   },
+  Selected = {
+    icon = "",
+  },
+  Multi_Select = {
+    icon = "",
+  },
 }
 
 M.setup = function()

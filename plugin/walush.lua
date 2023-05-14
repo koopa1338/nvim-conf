@@ -380,6 +380,7 @@ L("lush", function(lush)
       TelescopeSelection { fg = xres.color7, bg = xres.bg.lighten(5) },
       TelescopeSelectionCaret { fg = Special.fg, bg = TelescopeSelection.bg },
       TelescopeMultiSelection { Constant },
+      TelescopeMultiIcon { TelescopeMultiSelection },
       TelescopeNormal { NormalFloat },
       TelescopePreviewNormal { NormalFloat },
       TelescopeBorder { FloatBorder },
