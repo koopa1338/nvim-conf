@@ -377,7 +377,7 @@ L("lush", function(lush)
       NvimTreeLspDiagnosticsHint { DiagnosticHint },
 
       -- Telescope
-      TelescopeSelection { fg = xres.color7, bg = xres.bg.lighten(5) },
+      TelescopeSelection { fg = xres.color15, bg = xres.bg.lighten(5) },
       TelescopeSelectionCaret { fg = Special.fg, bg = TelescopeSelection.bg },
       TelescopeMultiSelection { Constant },
       TelescopeMultiIcon { TelescopeMultiSelection },
@@ -409,6 +409,7 @@ L("lush", function(lush)
       TelescopePreviewMessage { TelescopePreviewNormal },
       TelescopePreviewMessageFillchar { TelescopePreviewMessage },
       TelescopeResultsClass { Function },
+      TelescopeResultsNormal { fg = xres.color7 },
       TelescopeResultsConstant { Constant },
       TelescopeResultsField { Function },
       TelescopeResultsFunction { Function },
