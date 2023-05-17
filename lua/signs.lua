@@ -27,7 +27,7 @@ M.signs = {
     texthl = "DiagnosticSignWarn",
   },
   DapLogPoint = {
-    icon = "󰌕",
+    icon = "",
     texthl = "DiagnosticSignInfo",
   },
   DapCurrentFrame = {

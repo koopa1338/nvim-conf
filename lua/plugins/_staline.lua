@@ -69,12 +69,12 @@ M.config = function()
         V = c.color12,
       },
       mode_icons = {
-        n = "󰋜 ",
-        i = "󰏫 ",
-        c = " ",
-        v = "󰈈 ",
-        V = "󰈈 ",
-        [""] = "󰈈 ",
+        n = "󰋜",
+        i = "󰏫",
+        c = "",
+        v = "󰈈",
+        V = "󰈈",
+        [""] = "󰈈",
       },
       lsp_symbols = {
         Error = Get_sign_def("DiagnosticSignError").text .. " ",
