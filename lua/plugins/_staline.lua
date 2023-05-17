@@ -68,6 +68,27 @@ M.config = function()
         v = c.color4,
         V = c.color12,
       },
+      mode_icons = {
+        n = "󰋜 ",
+        i = "󰏫 ",
+        c = " ",
+        v = "󰈈 ",
+        V = "󰈈 ",
+        [""] = "󰈈 ",
+      },
+      lsp_symbols = {
+        Error = Get_sign_def("DiagnosticSignError").text .. " ",
+        Info = Get_sign_def("DiagnosticSignInfo").text .. " ",
+        Warn = Get_sign_def("DiagnosticSignWarn").text .. " ",
+        Hint = Get_sign_def("DiagnosticSignHint").text .. " ",
+      },
+      special_table = {
+        help = { "Help", "󱓷 " },
+        qf = { "QuickFix", " " },
+        alpha = { "Alpha", " " },
+        Jaq = { "Jaq", " " },
+        Fm = { "Fm", " " },
+      },
       sections = {
         left = {
           "-mode",
@@ -110,6 +131,7 @@ M.config = function()
         -- line_column = "[%l:%c] 並%p%% ",
         font_active = "bold",
         -- bg = line_hl.bg
+        mod_symbol = " " .. Get_sign_def("Modified").text .. " ",
       },
     }
   end)

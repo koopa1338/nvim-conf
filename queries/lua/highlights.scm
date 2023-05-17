@@ -1,5 +1,5 @@
 ;; inherits: lua
-((function_definition "function" @keyword) (#set! conceal ""))
+((function_definition "function" @keyword) (#set! conceal "󰊕"))
 ((binary_expression "~=" @operator) (#set! conceal "≠"))
 ((binary_expression ">=" @operator) (#set! conceal "≥"))
 ((binary_expression "<=" @operator) (#set! conceal "≤"))
