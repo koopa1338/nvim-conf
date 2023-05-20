@@ -12,7 +12,6 @@ end
 local deps = {
   builtin = {},
   tabs = {},
-  notify = {},
 }
 
 local M = {}
@@ -177,8 +176,8 @@ local config = {
     {
       "<leader><leader>N",
       function()
-        if deps.notify then
-          deps.notify.dismiss()
+        if vim.notify then
+          vim.notify.dismiss()
         end
       end,
       silent = true,
@@ -355,14 +354,11 @@ M.config = function()
         },
       }, { prefix = "<leader>" })
 
-      L("notify", function(notify)
-        deps.notify = notify
-        wk.register({
-          ["<leader>"] = {
-            N = { "Dismiss Notification" },
-          },
-        }, { prefix = "<leader>" })
-      end)
+      wk.register({
+        ["<leader>"] = {
+          N = { "Dismiss Notification" },
+        },
+      }, { prefix = "<leader>" })
     end)
   end)
 end
