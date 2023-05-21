@@ -39,12 +39,13 @@ M.config = function()
 
     L("lsp_utils", function(lsp_utils)
       local cmp_lsp = L "cmp_lsp"
+      local capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
       L("mason-lspconfig", function(masonlsp)
         masonlsp.setup_handlers {
           function(server_name)
             local config = {
               on_attach = lsp_utils.on_attach,
-              capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp),
+              capabilities = capabilities
             }
             nvim_lsp[server_name].setup(config)
           end,
@@ -53,7 +54,7 @@ M.config = function()
 
       for server, config in pairs(lsp_utils.servers(nvim_lsp)) do
         config.on_attach = lsp_utils.on_attach
-        config.capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp)
+        config.capabilities = capabilities
         nvim_lsp[server].setup(config)
       end
     end)
