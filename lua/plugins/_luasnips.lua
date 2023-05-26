@@ -9,6 +9,7 @@ local M = {
     end,
   },
   event = "InsertEnter",
+  build = "make install_jsregexp",
 }
 
 M.config = function()
