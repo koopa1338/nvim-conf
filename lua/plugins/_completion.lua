@@ -85,12 +85,6 @@ M.config = function()
         max_width = 200,
       },
     },
-    experimental = {
-      native_menu = false,
-      -- ghost_text = {
-      --   hl_group = "Comment",
-      -- },
-    },
     mapping = {
       ["<C-c>"] = cmp.mapping.close(),
       ["<M-k>"] = cmp.mapping.scroll_docs(-4),
