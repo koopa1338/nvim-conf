@@ -16,13 +16,11 @@ local cmd_available = function(cmd)
 end
 
 M.get_lsp_capabilities = function(cmp_lsp)
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  -- nvim-cmp supports additional completion capabilities
   if cmp_lsp then
-    capabilities = cmp_lsp.default_capabilites()
+    return cmp_lsp.default_capabilites()
   end
 
-  return capabilities
+  return vim.lsp.protocol.make_client_capabilities()
 end
 
 local notify_unsupported_lsp = function(message, title)
