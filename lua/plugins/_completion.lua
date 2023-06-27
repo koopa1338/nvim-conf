@@ -104,7 +104,7 @@ M.config = function()
         select = false,
       },
       -- navigate completion menu
-      ["<C-y>"] = cmp.mapping(function(fallback)
+      ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
         else
@@ -114,7 +114,7 @@ M.config = function()
         "i",
         "s",
       }),
-      ["<C-p>"] = cmp.mapping(function(fallback)
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         else
@@ -148,7 +148,7 @@ M.config = function()
         "s",
       }),
       -- toggle choices of choice nodes
-      ["<Tab>"] = cmp.mapping(function(fallback)
+      ["<C-y>"] = cmp.mapping(function(fallback)
         if luasnip.choice_active() then
           luasnip.change_choice(1)
         else
