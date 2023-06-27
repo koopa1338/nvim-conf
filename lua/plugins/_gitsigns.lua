@@ -44,19 +44,6 @@ M.config = function()
     Map("n", "<leader>g-", gitsigns.undo_stage_hunk, { silent = true })
     Map("n", "<leader>g+", gitsigns.stage_hunk, { silent = true })
     Map("n", "<leader>gu", gitsigns.reset_hunk, { silent = true })
-
-    L("which-key", function(wk)
-      wk.register({
-        g = {
-          ["ib"] = { "Toggle Current Line Blame" },
-          ["id"] = { "Preview Hunk" },
-          u = { "Reset Hunk" },
-          b = { "Toggle Line Blame" },
-          ["+"] = { "Stage Hunk" },
-          ["-"] = { "Undo Stage Hunk" },
-        },
-      }, { prefix = "<leader>" })
-    end)
   end)
 end
 

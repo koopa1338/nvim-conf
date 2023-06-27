@@ -11,8 +11,8 @@ local M = {
     "nvim-lua/plenary.nvim",
   },
   keys = {
-    { "<leader>vdd", ":DiffviewOpen<CR>", desc = "Show Diff View" },
-    { "<leader>vdh", ":DiffviewFileHistory<CR>", desc = "Show Diff History" },
+    { "<leader>vd", ":DiffviewOpen<CR>", desc = "Show Diff View" },
+    { "<leader>vh", ":DiffviewFileHistory<CR>", desc = "Show Diff History" },
   },
 }
 
@@ -142,16 +142,6 @@ M.config = function()
       },
     },
   }
-
-  L("which-key", function(wk)
-    wk.register({
-      ["vd"] = {
-        name = "+Diffview",
-        d = { "Show Diff View" },
-        h = { "Show Diff History" },
-      },
-    }, { prefix = "<leader>" })
-  end)
 end
 
 return M

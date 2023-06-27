@@ -60,39 +60,6 @@ M.config = function()
     end)
 
     L("lspconfig.ui.windows").default_options.border = bt
-
-    L("which-key", function(wk)
-      wk.register({
-        l = {
-          name = "+language",
-          c = {
-            name = "+code",
-            a = { "Select Code Actions" },
-            i = { "Show Incoming Calls (quickfix)" },
-            o = { "Show Outgoing Calls (quickfix)" },
-          },
-          d = { "Jump to Definition" },
-          f = { "Format File" },
-          j = { "Jump to Next Diagnostic" },
-          k = { "Jump to Previous Diagnostic" },
-          l = { "Line Diagnostics" },
-          r = { "Rename under Cursor" },
-          s = { "Show Signature Help" },
-          t = {
-            name = "+finder",
-            d = { "Show Diagnostics (Current Buffer)" },
-            i = { "Show Implementations" },
-            r = { "Show References" },
-            s = { "Show Document Symbols" },
-            D = { "Show Diagnostics" },
-            S = { "Show Workspace Symbols" },
-          },
-          D = { "Show Declaration" },
-          T = { "Show Type Definition" },
-        },
-        K = { "Show Documentation" },
-      }, { prefix = "<leader>" })
-    end)
   end)
 
   -- NOTE: this has to be after the lsp config so null ls action

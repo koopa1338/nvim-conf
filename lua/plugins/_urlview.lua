@@ -17,17 +17,6 @@ M.config = function()
       end)
     end, { silent = true, desc = "Show URLs of File" })
     Map("n", "<leader>uj", "<cmd>UrlView jira<CR>", { silent = true, desc = "Show Jira URLs" })
-
-    L("which-key", function(wk)
-      wk.register({
-        u = {
-          name = "+urlview",
-          f = { "Show URLs of File" },
-          j = { "Show Jira URLs" },
-          u = { "Show local URLs" },
-        },
-      }, { prefix = "<leader>" })
-    end)
   end)
 end
 

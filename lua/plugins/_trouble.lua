@@ -29,17 +29,6 @@ M.config = function()
       { silent = true, desc = "Show workspace diagnostics" }
     )
     Map("n", "<leader>Tr", "<cmd>TroubleRefresh<CR>", { silent = true, desc = "Refresh diagnostic window" })
-
-    L("which-key", function(wk)
-      wk.register({
-        T = {
-          name = "+Diagnostics",
-          t = { "Show document diagnostics" },
-          T = { "Show workspace diagnostics" },
-          r = { "Refresh diagnostic window" },
-        },
-      }, { prefix = "<leader>" })
-    end)
   end)
 end
 

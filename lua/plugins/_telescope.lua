@@ -321,45 +321,6 @@ M.config = function()
       deps.tabs = tt
       deps.tabs.setup()
     end)
-
-    L("which-key", function(wk)
-      wk.register({
-        b = {
-          b = { "Show open Buffers" },
-        },
-        f = {
-          name = "+finder",
-          ["*"] = { "Grep String" },
-          b = { "Fuzzy Find current Buffer" },
-          e = { "Find Treesitter Symbols" },
-          f = { "Find Files" },
-          g = { "Find Git Files" },
-          m = { "Find Marks" },
-          r = { "Find Live Grep" },
-          R = { "Find Registers" },
-        },
-        F = {
-          name = "+finder",
-          F = { "Find Files (Hidden + Ignored)" },
-        },
-        ["<leader>"] = {
-          name = "+more",
-          l = { "Show Location List" },
-          n = { "Show Notifications" },
-          q = { "Show Quickfix" },
-          H = { "Show Help Tags" },
-          K = { "Show Keymaps" },
-          M = { "Show Man Pages" },
-          T = { "Resume Last Finder" },
-        },
-      }, { prefix = "<leader>" })
-
-      wk.register({
-        ["<leader>"] = {
-          N = { "Dismiss Notification" },
-        },
-      }, { prefix = "<leader>" })
-    end)
   end)
 end
 

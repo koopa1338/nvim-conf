@@ -104,33 +104,6 @@ M.config = function()
 
   Map("n", "<leader>gdR", dap.repl.toggle, { silent = true, desc = "Toggle Debug REPL" })
   Map("n", "<leader>gdQ", dap.disconnect, { silent = true, desc = "Disconnect Debugger" })
-
-  L("which-key", function(wk)
-    wk.register {
-      ["<leader>"] = {
-        ["gd"] = {
-          name = "+Debug",
-          b = { "Toggle Debug Breakpoint" },
-          s = { "Show Debug Breakpoints" },
-          c = { "Set Debug Breakpoint Condition" },
-          m = { "Set Debug Log Point Message" },
-          p = { "Pause Debugger" },
-          S = { "Show Debug Stacks" },
-          T = { "Show Debug Console" },
-          o = { "Debug Step Over" },
-          ["."] = { "Debug GoTo" },
-          l = { "Debug Step Into" },
-          h = { "Debug Step Out" },
-          k = { "Debug Step Up" },
-          j = { "Debug Step Down" },
-          R = { "Toggle Debug REPL" },
-          Q = { "Disconnect Debugger" },
-          D = { "Clear All Breakpoints" },
-        },
-      },
-      ["<M-d>"] = { "Start/Terminate Debugger Session" },
-    }
-  end)
 end
 
 return M

@@ -24,13 +24,6 @@ M.config = function()
         },
       },
     }
-
-    L("which-key", function(wk)
-      wk.register({
-        z = { "Maximize current Window" },
-        Z = { "Focus Time" },
-      }, { prefix = "<leader>" })
-    end)
   end)
 end
 

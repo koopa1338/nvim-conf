@@ -92,21 +92,6 @@ M.config = function()
         },
       },
     }
-
-    L("which-key", function(wk)
-      wk.register {
-        ["<leader>"] = {
-          p = {
-            name = "+peek",
-            f = { "Peek outer function" },
-            c = { "Peek outer class" },
-            s = { "Peek outer scope" },
-          },
-          ["<M-s>"] = { "Swap with previous parameter" },
-        },
-        ["<M-s>"] = { "Swap with next parameter" },
-      }
-    end)
   end)
 end
 

@@ -176,12 +176,6 @@ M.config = function()
         },
       },
     }
-    L("which-key", function(wk)
-      wk.register {
-        ["<C-n>"] = { "Toggle NvimTree" },
-        ["<M-C-n>"] = { "Toggle NvimTree Floating Mode" },
-      }
-    end)
   end)
 end
 

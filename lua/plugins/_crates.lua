@@ -44,24 +44,6 @@ M.config = function()
 
     Map("n", "<leader>cR", crates.open_repository, { silent = true, buffer = true, desc = "Open repository" })
     Map("n", "<leader>cD", crates.open_documentation, { silent = true, buffer = true, desc = "Open documentation" })
-
-    L("which-key", function(wk)
-      wk.register({
-        c = {
-          name = "+crates",
-          r = { "Reload crates" },
-          p = { "Open crate info popup" },
-          v = { "Open crate version popup" },
-          f = { "Open crate feature popup" },
-          u = { "Update crate(s)" },
-          a = { "Update all crates" },
-          U = { "Upgrade crate(s)" },
-          A = { "Upgrade all crates" },
-          R = { " Open repository" },
-          D = { " Open documentation" },
-        },
-      }, { prefix = "<leader>" })
-    end)
   end)
 end
 

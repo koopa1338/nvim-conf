@@ -37,14 +37,6 @@ M.config = function()
       },
     },
   }
-
-  L("which-key", function(wk)
-    wk.register({
-      g = {
-        N = { "Open Neogit UI" },
-      },
-    }, { prefix = "<leader>" })
-  end)
 end
 
 return M
