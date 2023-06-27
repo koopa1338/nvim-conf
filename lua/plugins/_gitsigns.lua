@@ -16,11 +16,6 @@ M.config = function()
       },
       numhl = true,
       linehl = false,
-      keymaps = {
-        -- Default keymap options
-        noremap = true,
-        buffer = true,
-      },
       watch_gitdir = {
         interval = 1000,
       },
