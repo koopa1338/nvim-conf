@@ -1,7 +1,4 @@
 return {
-  -- movement and search
-  { "markonm/traces.vim", event = "BufReadPost" },
-
   -- text objects and motions
   { "wellle/targets.vim", event = "BufReadPost" },
   {
