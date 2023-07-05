@@ -677,6 +677,10 @@ L("lush", function(lush)
       sym "@comment" { fg = xres.bg.lighten(40), bg = xres.none },
       sym "@comment.documentation" { Special },
       sym "@punctuation" { fg = xres.color15.darken(10), bg = xres.none },
+      sym "@field" { fg = Identifier.fg.ro(15).darken(20), bg = xres.none },
+      sym "@lsp.type.property" { fg = Identifier.fg.lighten(50), bg = xres.none },
+      sym "@lsp.type.struct" { fg = Type.fg, bg = xres.none, gui = "bold" },
+      sym "@lsp.type.interface" { fg = Constant.fg.ro(20).lighten(40), bg = xres.none, gui = "bold" },
     }
   end)
 
