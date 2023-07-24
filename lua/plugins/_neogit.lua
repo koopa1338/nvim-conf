@@ -34,6 +34,7 @@ M.config = function()
         ["o"] = "Toggle",
         ["P"] = "PullPopup",
         ["p"] = "PushPopup",
+        ["<tab>"] = "",
       },
     },
   }
