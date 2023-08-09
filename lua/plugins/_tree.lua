@@ -27,8 +27,8 @@ M.config = function()
           buftype = { "terminal", "quickfix" },
         },
       },
-      -- TODO: PR for makeing highlightgroups work
-      other_win_hl_color = fg,
+      -- FIXME: this causes errors, highlights are ignored currently
+      -- other_win_hl_color = fg, 
     }
   end)
 
