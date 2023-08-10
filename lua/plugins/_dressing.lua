@@ -9,7 +9,6 @@ M.opts = {
     enabled = true,
     default_prompt = "➤ ",
     insert_only = false,
-    anchor = "SW",
     relative = "cursor",
     border = vim.g.border_type,
     prefer_width = 50,
@@ -19,6 +18,7 @@ M.opts = {
     },
     override = function(conf)
       conf.row = 4
+      conf.anchor = "SW"
       return conf
     end,
   },
