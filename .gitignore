@@ -3,3 +3,4 @@ plugin/user_settings.lua
 undodir/*
 lazy-lock.json
 luasnippets/*
+nvim.version
