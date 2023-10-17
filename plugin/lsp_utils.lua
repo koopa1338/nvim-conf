@@ -56,6 +56,7 @@ local provider_mapping = {
       mode = "n",
       keys = "<leader>lD",
       callback = vim.lsp.buf.declaration,
+      method = "textDocument/declaration",
       desc = "Show Declaration",
       error = "LSP does not support jump to declaration",
       buffer = true,
@@ -66,6 +67,7 @@ local provider_mapping = {
       mode = "n",
       keys = "<leader>ld",
       callback = vim.lsp.buf.definition,
+      method = "textDocument/definition",
       desc = "Jump to Definition",
       error = "LSP does not support jump to defenition",
       buffer = true,
@@ -76,6 +78,7 @@ local provider_mapping = {
       mode = "n",
       keys = "<leader>lT",
       callback = vim.lsp.buf.type_definition,
+      method = "textDocument/typeDefinition",
       desc = "Show Type Definition",
       error = "LSP does not support show document type definition",
       buffer = true,
@@ -86,6 +89,7 @@ local provider_mapping = {
       mode = "n",
       keys = "<leader>lr",
       callback = vim.lsp.buf.rename,
+      method = "textDocument/rename",
       desc = "Rename under Cursor",
       error = "LSP does not support show rename",
       buffer = true,
@@ -102,6 +106,7 @@ local provider_mapping = {
           vim.lsp.buf.formatting()
         end
       end,
+      method = "textDocument/formatting",
       desc = "Format File",
       error = "LSP does not support formatting",
       buffer = true,
@@ -112,6 +117,7 @@ local provider_mapping = {
       mode = "n",
       keys = "<leader>ls",
       callback = vim.lsp.buf.signature_help,
+      method = "textDocument/signatureHelp",
       desc = "Show Signature Help",
       error = "LSP does not support signature help",
       buffer = true,
@@ -131,6 +137,7 @@ local provider_mapping = {
           },
         }
       end,
+      method = "textDocument/codeAction",
       desc = "Select Code Actions (quickfix)",
       error = "LSP does not support code actions",
       buffer = true,
@@ -139,6 +146,7 @@ local provider_mapping = {
       mode = { "n", "v" },
       keys = "<leader>lca",
       callback = vim.lsp.buf.code_action,
+      method = "textDocument/codeAction",
       desc = "Select Code Actions",
       error = "LSP does not support code actions",
       buffer = true,
@@ -149,6 +157,7 @@ local provider_mapping = {
       mode = "n",
       keys = "K",
       callback = vim.lsp.buf.hover,
+      method = "textDocument/hover",
       desc = "Show Hover Information",
       error = "LSP does not support hover information",
       buffer = true,
@@ -159,6 +168,7 @@ local provider_mapping = {
       mode = "n",
       keys = "<leader>lts",
       callback = "<cmd>Telescope lsp_document_symbols<CR>",
+      method = "textDocument/documentSymbol",
       desc = "Show Document Symbols",
       error = "LSP does not support showing document symbols",
       buffer = false,
@@ -169,6 +179,7 @@ local provider_mapping = {
       mode = "n",
       keys = "<leader>ltS",
       callback = "<cmd>Telescope lsp_workspace_symbols<CR>",
+      method = "workspace/symbol",
       desc = "Show Workspace Symbols",
       error = "LSP does not support showing workspace symbols",
       buffer = false,
@@ -179,6 +190,7 @@ local provider_mapping = {
       mode = "n",
       keys = "<leader>ltr",
       callback = "<cmd>Telescope lsp_references<CR>",
+      method = "textDocument/references",
       desc = "Show References",
       error = "LSP does not support showing references",
       buffer = false,
@@ -189,24 +201,38 @@ local provider_mapping = {
       mode = "n",
       keys = "<leader>lti",
       callback = "<cmd>Telescope lsp_implementations<CR>",
+      method = "textDocument/declaration",
       desc = "Show Implementations",
       error = "LSP does not support showing implementations",
       buffer = false,
     },
   },
+  inlayHintProvider = {
+    {
+      mode = "n",
+      keys = "<leader>lI",
+      callback = function()
+        vim.lsp.inlay_hint(0)
+      end,
+      method = "textDocument/inlayHint",
+      desc = "Toggle inlay hints",
+      error = "LSP does not support inlay hints",
+      buffer = false,
+    },
+  },
 }
 
-local map_providers = function(capabilities, bufnr)
+local map_providers = function(client, bufnr)
   for provider, mappings in pairs(provider_mapping) do
-    if capabilities[provider] then
-      for _, map in ipairs(mappings) do
+    for _, map in ipairs(mappings) do
+      if client.supports_method(map.method) then
         local opts = { silent = true, desc = map.desc }
         if map.buffer then
           opts.buffer = bufnr
         end
         Map(map.mode, map.keys, map.callback, opts)
+        M.supported[provider] = true
       end
-      M.supported[provider] = true
     end
   end
 end
@@ -225,10 +251,9 @@ local map_unsupported = function()
 end
 
 M.on_attach = function(client, bufnr)
-  local capabilities = client.server_capabilities
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-  map_providers(capabilities, bufnr)
+  map_providers(client, bufnr)
   map_unsupported()
   Map(
     "n",
