@@ -1,5 +1,5 @@
 -- globals
-local g, cmd, fn, o, og = vim.g, vim.cmd, vim.fn, vim.opt, vim.opt_global
+local g, cmd, fn, o, og, wo = vim.g, vim.cmd, vim.fn, vim.opt, vim.opt_global, vim.wo
 g.mousehide = true
 og.termguicolors = true
 g.mapleader = " "
@@ -94,6 +94,7 @@ o.linebreak = true
 o.breakindent = true
 o.breakindentopt = { shift = "2" }
 o.conceallevel = 2 -- for ligatures, toggle with keymap
+wo.foldtext = 'v:lua.vim.treesitter.foldtext()'
 
 -- Plugin settings
 
