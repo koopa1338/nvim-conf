@@ -64,12 +64,14 @@ local config = {
     "LukasPietzschmann/telescope-tabs",
     "rcarriga/nvim-notify",
     "nvim-telescope/telescope-dap.nvim",
+    "nvim-telescope/telescope-symbols.nvim",
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
       cond = vim.fn.executable "make" == 1,
     },
   },
+  cmd = "Telescope",
   keys = {
     { "<leader>fg", "<cmd>Telescope git_files<CR>", silent = true, desc = "Find Git Files" },
     { "<leader>ff", "<cmd>Telescope fd hidden=true<CR>", silent = true, desc = "Find Files" },
