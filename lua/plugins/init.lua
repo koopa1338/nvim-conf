@@ -54,6 +54,7 @@ return {
 
   -- utils
   { "romgrk/fzy-lua-native", event = "VeryLazy" },
+  { "sQVe/sort.nvim", config = true, event = "VeryLazy" },
   {
     -- color picker
     "uga-rosa/ccc.nvim",
