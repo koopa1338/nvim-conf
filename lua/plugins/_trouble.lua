@@ -2,6 +2,26 @@ local M = {
   "folke/trouble.nvim",
   dependencies = "kyazdani42/nvim-web-devicons",
   cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
+  keys = {
+    {
+      "<leader>Tt",
+      "<cmd>Trouble<CR>",
+      silent = true,
+      desc = "Show workspace diagnostics",
+    },
+    {
+      "<leader>TT",
+      "<cmd>Trouble document_diagnostics<CR>",
+      silent = true,
+      desc = "Show document diagnostics",
+    },
+    {
+      "<leader>Tr",
+      "<cmd>TroubleRefresh<CR>",
+      silent = true,
+      desc = "Refresh diagnostic window",
+    },
+  },
 }
 
 M.config = function()
@@ -20,15 +40,6 @@ M.config = function()
         jump_close = { "<cr>", "<tab>" },
       },
     }
-
-    Map("n", "<leader>Tt", "<cmd>Trouble<CR>", { silent = true, desc = "Show document diagnostics" })
-    Map(
-      "n",
-      "<leader>TT",
-      "<cmd>Trouble document_diagnostics<CR>",
-      { silent = true, desc = "Show workspace diagnostics" }
-    )
-    Map("n", "<leader>Tr", "<cmd>TroubleRefresh<CR>", { silent = true, desc = "Refresh diagnostic window" })
   end)
 end
 
