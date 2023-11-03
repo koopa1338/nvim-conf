@@ -32,9 +32,11 @@ M.config = function()
     mappings = {
       status = {
         ["o"] = "Toggle",
+        ["<tab>"] = false,
+      },
+      popup = {
         ["P"] = "PullPopup",
         ["p"] = "PushPopup",
-        ["<tab>"] = false,
       },
     },
   }
