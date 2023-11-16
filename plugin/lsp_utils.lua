@@ -212,7 +212,8 @@ local provider_mapping = {
       mode = "n",
       keys = "<leader>lI",
       callback = function()
-        vim.lsp.inlay_hint(0)
+        local state = vim.lsp.inlay_hint.is_enabled()
+        vim.lsp.inlay_hint.enable(0, not state)
       end,
       method = "textDocument/inlayHint",
       desc = "Toggle inlay hints",
