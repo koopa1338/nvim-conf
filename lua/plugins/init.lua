@@ -40,18 +40,6 @@ return {
     event = "BufReadPost",
   },
 
-  {
-    "kristijanhusak/vim-dadbod-ui",
-    dependencies = {
-      "tpope/vim-dadbod",
-    },
-    cmd = {
-      "DB",
-      "DBUI",
-      "DBUIToggle",
-    },
-  },
-
   -- utils
   { "romgrk/fzy-lua-native", event = "VeryLazy" },
   { "sQVe/sort.nvim", config = true, event = "VeryLazy" },
