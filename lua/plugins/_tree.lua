@@ -28,7 +28,7 @@ M.config = function()
         },
       },
       -- FIXME: this causes errors, highlights are ignored currently
-      -- other_win_hl_color = fg, 
+      -- other_win_hl_color = fg,
     }
   end)
 

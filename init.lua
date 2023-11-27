@@ -94,7 +94,7 @@ o.linebreak = true
 o.breakindent = true
 o.breakindentopt = { shift = "2" }
 o.conceallevel = 2 -- for ligatures, toggle with keymap
-wo.foldtext = 'v:lua.vim.treesitter.foldtext()'
+wo.foldtext = "v:lua.vim.treesitter.foldtext()"
 
 -- Plugin settings
 

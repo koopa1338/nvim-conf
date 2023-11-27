@@ -45,7 +45,7 @@ M.config = function()
           function(server_name)
             local config = {
               on_attach = lsp_utils.on_attach,
-              capabilities = capabilities
+              capabilities = capabilities,
             }
             nvim_lsp[server_name].setup(config)
           end,
