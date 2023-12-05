@@ -94,9 +94,9 @@ end
 -- ██║     ╚════██║██╔═══╝     ╚════██║██║   ██║██║   ██║██╔══██╗██║     ██╔══╝  ╚════██║
 -- ███████╗███████║██║         ███████║╚██████╔╝╚██████╔╝██║  ██║╚██████╗███████╗███████║
 -- ╚══════╝╚══════╝╚═╝         ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚══════╝╚══════╝
-M.lsp_sources = function(null_ls)
+M.lsp_sources = function(none_ls)
   local sources = {}
-  if null_ls then
+  if none_ls then
     sources = {
       black = {
         custom = false,

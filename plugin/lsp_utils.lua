@@ -280,11 +280,11 @@ M.on_attach = function(client, bufnr)
   end, { silent = true, buffer = bufnr, desc = "Jump to Previous Diagnostic" })
 end
 
-M.get_null_ls_sources = function(null_ls)
+M.get_none_ls_sources = function(none_ls)
   local sources = {}
   local custom_sources = {}
   if settings ~= nil then
-    custom_sources = settings.lsp_sources(null_ls)
+    custom_sources = settings.lsp_sources(none_ls)
   end
   for k, v in pairs(custom_sources) do
     if v.custom then
@@ -292,9 +292,9 @@ M.get_null_ls_sources = function(null_ls)
       if v.external_cmd and cond ~= nil then
         v.config.condition = cond and cmd_available(v.external_cmd)
       end
-      null_ls.register(v.config)
+      none_ls.register(v.config)
     else
-      local src = null_ls.builtins[v.type][k]
+      local src = none_ls.builtins[v.type][k]
       if not src then
         goto continue
       end

@@ -1,7 +1,7 @@
 local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     "nvim-lua/plenary.nvim",
     {
       "williamboman/mason.nvim",
@@ -11,7 +11,7 @@ local M = {
           "jay-babu/mason-null-ls.nvim",
           event = { "BufReadPre", "BufNewFile" },
           dependencies = {
-            "jose-elias-alvarez/null-ls.nvim",
+            "nvimtools/none-ls.nvim",
           },
         },
       },
@@ -62,10 +62,10 @@ M.config = function()
     L("lspconfig.ui.windows").default_options.border = bt
   end)
 
-  -- NOTE: this has to be after the lsp config so null ls action
+  -- NOTE: this has to be after the lsp config so none ls action
   -- take higher priority then lsp (e.g. formatting)
   L("plugins.lsp.mason").setup()
-  L("plugins.lsp.nullls").setup()
+  L("plugins.lsp.nonels").setup()
 end
 
 return M
