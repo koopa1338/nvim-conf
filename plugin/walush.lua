@@ -19,7 +19,6 @@ end
 local xres = table.clone(Colors_or_default())
 xres.diffgreen = "#002800"
 xres.diffred = "#3f0000"
-xres.diffyellow = "#3f3f00"
 
 L("lush", function(lush)
   local hsl = lush.hsl
@@ -36,7 +35,7 @@ L("lush", function(lush)
       -- git
       DiffAdd { fg = xres.None, bg = xres.diffgreen },
       DiffDelete { fg = xres.None, bg = xres.diffred },
-      DiffChange { fg = xres.None, bg = xres.diffyellow },
+      DiffChange { fg = xres.None, bg = DiffAdd.bg.ro(60) },
       DiffText { fg = xres.None, bg = DiffAdd.bg.lighten(2.5) },
 
       -- Diagnostics
