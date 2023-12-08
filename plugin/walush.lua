@@ -19,6 +19,7 @@ end
 local xres = table.clone(Colors_or_default())
 xres.diffgreen = "#002800"
 xres.diffred = "#3f0000"
+xres.yellow = "#3f3f00"
 
 L("lush", function(lush)
   local hsl = lush.hsl
@@ -40,7 +41,7 @@ L("lush", function(lush)
 
       -- Diagnostics
       DiagnosticError { fg = DiffDelete.bg.lighten(35) },
-      DiagnosticWarn { fg = DiffChange.bg.lighten(35) },
+      DiagnosticWarn { fg = xres.yellow.lighten(35) },
       DiagnosticWarning { DiagnosticWarn },
       DiagnosticInfo { fg = xres.color15, bg = xres.bg.lighten(15) },
       DiagnosticHint { fg = xres.color7 },
@@ -205,7 +206,7 @@ L("lush", function(lush)
       GitSignsDeleteNr { fg = GitSignsDelete.fg },
       GitSignsAdd { fg = diffNewFile.fg.lighten(15) },
       GitSignsAddNr { fg = GitSignsAdd.fg },
-      GitSignsChange { fg = DiffChange.bg.lighten(30) },
+      GitSignsChange { fg = DiffAdd.bg.ro(30).lighten(30) },
       GitSignsChangeNr { fg = GitSignsChange.fg },
       GitSignsCurrentLineBlame { fg = NonText.fg.lighten(10) },
 
