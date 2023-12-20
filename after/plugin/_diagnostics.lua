@@ -8,7 +8,7 @@ vim.diagnostic.config {
       signs.DiagnosticSignInfo.icon,
       signs.DiagnosticSignHint.icon,
     },
-    linehl = {
+    numhl = {
       signs.DiagnosticSignError.texthl,
       signs.DiagnosticSignWarn.texthl,
       signs.DiagnosticSignInfo.texthl,
