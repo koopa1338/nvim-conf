@@ -1,4 +1,20 @@
+local signs = require("signs").signs
+
 vim.diagnostic.config {
+  signs = {
+    text = {
+      signs.DiagnosticSignError.icon,
+      signs.DiagnosticSignWarn.icon,
+      signs.DiagnosticSignInfo.icon,
+      signs.DiagnosticSignHint.icon,
+    },
+    linehl = {
+      signs.DiagnosticSignError.texthl,
+      signs.DiagnosticSignWarn.texthl,
+      signs.DiagnosticSignInfo.texthl,
+      signs.DiagnosticSignHint.texthl,
+    },
+  },
   virtual_text = {
     source = "if_many",
     spacing = 5,
@@ -6,6 +22,7 @@ vim.diagnostic.config {
   underline = false,
   float = { border = vim.g.border_type },
   severity_sort = true,
+  update_on_insert = true,
 }
 
 local ns = vim.api.nvim_create_namespace "severe-diagnostics"
