@@ -54,5 +54,4 @@ return {
     },
   },
   { "mbbill/undotree", cmd = "UndotreeToggle" },
-  { "kevinhwang91/nvim-bqf", ft = { "qf" } },
 }

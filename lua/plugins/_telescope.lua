@@ -143,9 +143,9 @@ local config = {
       silent = true,
       desc = "Show Global Diagnostics",
     },
-    { "<leader><leader>q", "<cmd>Telescope quickfix<CR>", silent = true, desc = "Show Quickfix" },
+    { "<leader><leader>Q", "<cmd>Telescope quickfix<CR>", silent = true, desc = "Show Quickfix" },
     {
-      "<leader><leader>l",
+      "<leader><leader>L",
       "<cmd>Telescope loclist<CR>",
       silent = true,
       desc = "Show Location List",

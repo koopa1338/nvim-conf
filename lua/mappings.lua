@@ -68,6 +68,9 @@ Map("n", "gO", "O<Esc>", {})
 
 Map({ "n", "v", "i" }, "<F1>", "<nop>", { silent = true })
 
+Map({ "n" }, "<leader><leader>q", "<cmd>copen<CR>", { silent = true, desc = "Open qf list"})
+Map({ "n" }, "<leader><leader>l", "<cmd>lopen<CR>", { silent = true, desc = "Open loc list"})
+
 -- settings
 Map("n", "<leader>sl", function()
   if vim.o.conceallevel > 0 then

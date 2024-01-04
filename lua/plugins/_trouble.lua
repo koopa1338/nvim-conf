@@ -4,19 +4,19 @@ local M = {
   cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
   keys = {
     {
-      "<leader>Tt",
+      "<leader>tw",
       "<cmd>Trouble<CR>",
       silent = true,
       desc = "Show workspace diagnostics",
     },
     {
-      "<leader>TT",
+      "<leader>td",
       "<cmd>Trouble document_diagnostics<CR>",
       silent = true,
       desc = "Show document diagnostics",
     },
     {
-      "<leader>Tr",
+      "<leader>tr",
       "<cmd>TroubleRefresh<CR>",
       silent = true,
       desc = "Refresh diagnostic window",
