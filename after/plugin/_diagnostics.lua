@@ -22,7 +22,6 @@ vim.diagnostic.config {
   underline = false,
   float = { border = vim.g.border_type },
   severity_sort = true,
-  update_on_insert = true,
 }
 
 local ns = vim.api.nvim_create_namespace "severe-diagnostics"
