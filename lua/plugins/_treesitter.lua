@@ -12,23 +12,20 @@ M.config = function()
   L("nvim-treesitter.configs", function(config)
     config.setup {
       auto_install = true,
+      -- installed by default: lua, query, vimdoc, vim, c, python, bash, markdown, markdown_inline
       ensure_installed = {
-        "lua",
         "rust",
         "html",
         "css",
         "scss",
         "json",
         "typescript",
-        "c",
         "cpp",
         "cmake",
         "diff",
         "dockerfile",
-        "python",
         "toml",
         "make",
-        "markdown",
       },
       highlight = { enable = true },
       incremental_selection = {
