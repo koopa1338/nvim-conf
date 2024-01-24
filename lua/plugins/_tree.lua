@@ -17,7 +17,6 @@ local M = {
 M.config = function()
   -- this has to be setup before neo tree
   L("window-picker", function(picker)
-    local fg = Colors_or_default().fg or "#cccccc"
     picker.setup {
       autoselect_one = true,
       include_current = false,
@@ -27,8 +26,6 @@ M.config = function()
           buftype = { "terminal", "quickfix" },
         },
       },
-      -- FIXME: this causes errors, highlights are ignored currently
-      -- other_win_hl_color = fg,
     }
   end)
 
