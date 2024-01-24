@@ -690,6 +690,9 @@ L("lush", function(lush)
       DapUIStepOverNC { DapUIStepIntoNC },
       DapUIStepOver { DapUIStepOverNC },
 
+      WindowPickerStatusLine { bg = StatusLine.bg.lighten(10) },
+      WindowPickerStatusLineNC { bg = StatusLineNC.bg.lighten(10) },
+
       -- tree sitter
       sym "@comment" { fg = xres.bg.lighten(40), bg = xres.none },
       sym "@comment.documentation" { Special },
