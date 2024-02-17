@@ -6,7 +6,7 @@ local M = {
 
 M.config = function()
   L("crates", function(crates)
-    crates.setup { popup = { border = vim.g.border_type } }
+    crates.setup { popup = { autofocus = true, border = vim.g.border_type } }
 
     Map("n", "<leader>cr", crates.reload, { silent = true, buffer = true, desc = "Reload crates" })
     Map("n", "<leader>cp", crates.show_popup, { silent = true, buffer = true, desc = "Open crate info popup" })
