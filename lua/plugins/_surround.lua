@@ -1,4 +1,4 @@
-local M = { "kylechui/nvim-surround", event = "BufReadPre" }
+local M = { "kylechui/nvim-surround", event = "VimEnter" }
 
 M.config = function()
   L("nvim-surround", function(surround)
