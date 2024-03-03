@@ -46,10 +46,23 @@ M.config = function()
         folder_statuses = "only_folded", -- One of 'never', 'only_folded' or 'always'.
       },
     },
+    view = {
+      default = {
+        winbar_info = false,
+      },
+      merge_tool = {
+        layout = "diff3_mixed",
+        disable_diagnostics = true,
+        winbar_info = true,
+      },
+      file_history = {
+        winbar_info = false,
+      },
+    },
     file_history_panel = {
       win_config = {
         position = "bottom",
-        height = 15,
+        height = 18,
       },
       log_options = {
         git = {
