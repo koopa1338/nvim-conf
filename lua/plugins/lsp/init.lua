@@ -16,6 +16,7 @@ local M = {
         },
       },
     },
+    { "j-hui/fidget.nvim", config = true },
   },
   event = { "BufReadPre", "BufNewFile" },
   cmd = "Mason",

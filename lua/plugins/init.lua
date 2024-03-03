@@ -35,6 +35,12 @@ return {
   },
   { "kyazdani42/nvim-web-devicons" },
   {
+    "folke/todo-comments.nvim",
+    event = "VimEnter",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = { signs = false },
+  },
+  {
     "petertriho/nvim-scrollbar",
     config = true,
     event = "BufReadPost",
