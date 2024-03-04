@@ -1,4 +1,4 @@
-Map("n", "<Esc>", "<cmd>nohl<CR>", { silent = true })
+Map("n", "<Esc>", "<cmd>nohl<CR>", { silent = true, desc = "Remove search hl" })
 Map("n", "<C-c>", "<Esc>", { silent = true })
 
 -- buffers
@@ -9,9 +9,11 @@ Map("n", "<leader>BD", "<cmd>.+,$bdelete<CR>", { silent = true, desc = "Delete a
 Map("n", "<leader>bw", "<cmd>bwipeout<CR>", { silent = true, desc = "Wipeout current Buffer" })
 Map("n", "<leader>bW", "<cmd>%bwipeout<CR>", { silent = true, desc = "Wipeout all other Buffers" })
 Map("n", "<leader>BW", "<cmd>.+,$bwipeout<CR>", { silent = true, desc = "Wipe all other Buffers" })
-Map("n", "<leader>bmm", "<cmd>bmodified<CR>", { silent = true, desc = "" })
-Map("n", "<leader>bmx", "<cmd>sbmodified<CR>", { silent = true, desc = "" })
-Map("n", "<leader>bmv", "<cmd>vertical sbmodified<CR>", { silent = true, desc = "" })
+Map("n", "<leader>bmm", "<cmd>bmodified<CR>", { silent = true, desc = "Open next modified buffer" })
+Map("n", "<leader>bmx", "<cmd>sbmodified<CR>",
+  { silent = true, desc = "Open next modified buffer in a horizontal split" })
+Map("n", "<leader>bmv", "<cmd>vertical sbmodified<CR>",
+  { silent = true, desc = "Open next modified buffer in a vertical split" })
 
 -- windows
 Map("n", "<leader>wo", "<cmd>only<CR>", { silent = true, desc = "Close all other Windows" })
@@ -30,15 +32,15 @@ Map("n", "<leader><C-k>", "<cmd>wincmd K<CR>", { silent = true, desc = "Move Win
 Map("n", "<leader><C-h>", "<cmd>wincmd H<CR>", { silent = true, desc = "Move Window Left" })
 Map("n", "<leader><C-l>", "<cmd>wincmd L<CR>", { silent = true, desc = "Move Window Right" })
 
-Map("n", "<C-s>", "<cmd>w<CR>", {})
-Map("i", "<C-s>", "<Esc><cmd>w<CR>", {})
-Map("t", "<Esc><Esc>", "<C-\\><C-n>", {})
+Map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save the current buffer" })
+Map("i", "<C-s>", "<Esc><cmd>w<CR>", { desc = "Save the current buffer" })
+Map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Get into normal mode in a terminal buffer" })
 
 -- movement
 Map({ "n", "x" }, "j", "gj", {})
 Map({ "n", "x" }, "k", "gk", {})
-Map({ "n", "x" }, "H", "^", {})
-Map({ "n", "x" }, "L", "$", {})
+Map({ "n", "x" }, "H", "^", { desc = "Go to the first none space character of the line" })
+Map({ "n", "x" }, "L", "$", { desc = "Go to the last none space character of the line" })
 
 -- Reselect visual block after indent
 Map("v", "<", "<gv", { desc = "Increase Indent Visual Block" })
@@ -46,25 +48,25 @@ Map("v", ">", ">gv", { desc = "Decrease Indent Visual Block" })
 
 -- search for multiple words seperated by |
 -- Example /\vtest|live highlights test and live
-Map("n", "g/", "/\\v", {})
+Map("n", "g/", "/\\v", { desc = "Search with very magic option" })
 
 -- yank and paste mappings
 Map("v", "p", '"_dP', {})
 Map("n", "gp", '"+p', {})
 Map("v", "gp", '"_d"+P', {})
 
-Map("n", "gP", '"+P', {})
-Map({ "n", "v" }, "gy", '"+y', {})
-Map("n", "gY", '"+y$', {})
-Map("n", "Y", "y$", {})
+Map("n", "gP", '"+P', { desc = "Paste before current position from system clipboard" })
+Map({ "n", "v" }, "gy", '"+y', { desc = "Copy into system clipboard" })
+Map("n", "gY", '"+y$', { desc = "Copy from current position to the end of the line into system clipboard" })
+Map("n", "Y", "y$", { desc = "Copy from current position to the end of the line" })
 
-Map("n", "<leader><leader>m", "<cmd>Messages<CR>", { silent = true, desc = "Messenger" })
+Map("n", "<leader><leader>m", "<cmd>Messages<CR>", { silent = true, desc = "Open Messages" })
 
 -- editing
 -- <C-H> is <C-BS>, see: https://vi.stackexchange.com/questions/16139/s-bs-and-c-bs-mappings-not-working
 Map("i", "<C-H>", "<C-W>", {})
-Map("n", "go", "o<Esc>", {})
-Map("n", "gO", "O<Esc>", {})
+Map("n", "go", "o<Esc>", { desc = "add new line without leaving normal mode" })
+Map("n", "gO", "O<Esc>", { desc = "add new line above without leaving normal mode" })
 
 Map({ "n", "v", "i" }, "<F1>", "<nop>", { silent = true })
 
@@ -78,4 +80,4 @@ Map("n", "<leader>sl", function()
   else
     vim.o.conceallevel = 2
   end
-end, { silent = true })
+end, { silent = true, desc = "Toggle conceallevel for ligatures" })
