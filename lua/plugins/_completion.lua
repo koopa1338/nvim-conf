@@ -51,6 +51,7 @@ M.config = function()
 
   ---@diagnostic disable: need-check-nil
   cmp.setup {
+    preselect = cmp.PreselectMode.None,
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
@@ -96,12 +97,12 @@ M.config = function()
           },
         },
       },
-      ["<C-k>"] = cmp.mapping.complete {
+      ["<C-Space>"] = cmp.mapping.complete {
         reason = cmp.ContextReason.Auto,
       },
-      ["<cr>"] = cmp.mapping.confirm {
+      ["<C-y>"] = cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Insert,
-        select = false,
+        select = true,
       },
       -- navigate completion menu
       ["<Tab>"] = cmp.mapping(function(fallback)
@@ -148,7 +149,7 @@ M.config = function()
         "s",
       }),
       -- toggle choices of choice nodes
-      ["<C-y>"] = cmp.mapping(function(fallback)
+      ["<C-k>"] = cmp.mapping(function(fallback)
         if luasnip.choice_active() then
           luasnip.change_choice(1)
         else
