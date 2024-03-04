@@ -53,7 +53,7 @@ M.config = function()
   cmp.setup {
     preselect = cmp.PreselectMode.None,
     completion = {
-      completeopt = "menu,menuone,noinsert,noselect"
+      completeopt = "menu,menuone,noinsert,noselect",
     },
     snippet = {
       expand = function(args)
