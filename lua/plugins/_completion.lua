@@ -100,7 +100,7 @@ M.config = function()
           },
         },
       },
-      ["<C-Space>"] = cmp.mapping.complete {
+      ["<C-CR>"] = cmp.mapping.complete {
         reason = cmp.ContextReason.Auto,
       },
       ["<C-y>"] = cmp.mapping.confirm {
