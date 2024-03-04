@@ -1,11 +1,5 @@
 return {
   -- text objects and motions
-  { "wellle/targets.vim", event = "BufReadPost" },
-  {
-    "windwp/nvim-autopairs",
-    config = true,
-    event = "InsertEnter",
-  },
   { "godlygeek/tabular", cmd = "Tabularize" },
 
   -- syntax and languages

@@ -693,6 +693,13 @@ L("lush", function(lush)
       WindowPickerStatusLine { bg = StatusLine.bg.lighten(10) },
       WindowPickerStatusLineNC { bg = StatusLineNC.bg.lighten(10) },
 
+      MiniStatuslineModeNormal { bg = xres.color9, fg = xres.bg, gui = "bold" },
+      MiniStatuslineModeInsert { bg = xres.color10, fg = xres.bg, gui = "bold" },
+      MiniStatuslineModeVisual { bg = xres.color11, fg = xres.bg, gui = "bold" },
+      MiniStatuslineModeReplace { bg = xres.color12, fg = xres.bg, gui = "bold" },
+      MiniStatuslineModeCommand { bg = MiniStatuslineModeNormal.bg.darken(10), fg = xres.bg, gui = "bold" },
+      MiniStatuslineModeOther { bg = MiniStatuslineModeCommand.bg, fg = MiniStatuslineModeCommand.fg, gui = "bold" },
+
       -- tree sitter
       sym "@comment" { fg = xres.bg.lighten(40), bg = xres.none },
       sym "@comment.documentation" { Special },

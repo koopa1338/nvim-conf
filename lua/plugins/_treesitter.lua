@@ -35,7 +35,7 @@ M.config = function()
           init_selection = "<M-w>", -- maps in normal mode to init the node/scope selection
           scope_incremental = "<M-w>", -- increment to the upper scope (as defined in locals.scm)
           node_incremental = "<M-n>", -- increment to the upper named parent
-          node_decremental = "<M-d>", -- decrement to the previous node
+          node_decremental = "<M-p>", -- decrement to the previous node
         },
       },
       indent = { enable = true },
