@@ -52,6 +52,9 @@ M.config = function()
   ---@diagnostic disable: need-check-nil
   cmp.setup {
     preselect = cmp.PreselectMode.None,
+    completion = {
+      completeopt = "menu,menuone,noinsert,noselect"
+    },
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)

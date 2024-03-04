@@ -73,7 +73,7 @@ o.smartcase = true
 o.wildmenu = true
 o.wildmode = { longest = "full", "full" }
 o.wildoptions = "pum"
-o.completeopt = { "menuone", "noinsert", "noselect" }
+-- o.completeopt = { "menuone", "noinsert", "noselect" }
 o.cpoptions:append "n"
 o.infercase = false
 o.shortmess:append "c"
