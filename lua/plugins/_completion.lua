@@ -108,8 +108,8 @@ M.config = function()
         select = true,
       },
       -- navigate completion menu
-      ["<C-n>"] = cmp.mapping.select_next_item(),
-      ["<C-p>"] = cmp.mapping.select_prev_item(),
+      ["<C-j>"] = cmp.mapping.select_next_item(),
+      ["<C-k>"] = cmp.mapping.select_prev_item(),
       -- navigate snippet positions
       ["<C-l>"] = cmp.mapping(function(fallback)
         if luasnip.expand_or_locally_jumpable() then
@@ -134,7 +134,7 @@ M.config = function()
         "s",
       }),
       -- toggle choices of choice nodes
-      ["<C-k>"] = cmp.mapping(function(fallback)
+      ["<C-n>"] = cmp.mapping(function(fallback)
         if luasnip.choice_active() then
           luasnip.change_choice(1)
         else
