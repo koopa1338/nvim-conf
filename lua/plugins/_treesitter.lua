@@ -5,7 +5,7 @@ local M = {
     "nvim-lua/popup.nvim",
     "windwp/nvim-ts-autotag",
   },
-  event = { "VimEnter" },
+  event = "VeryLazy",
 }
 
 M.config = function()
