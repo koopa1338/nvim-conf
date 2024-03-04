@@ -57,53 +57,53 @@ M.config = function()
     dap.configurations = settings.dap.configurations
   end)
 
-  Map("n", "<leader>gdb", dap.toggle_breakpoint, { silent = true, desc = "Toggle Debug Breakpoint" })
+  Map("n", "<M-d>b", dap.toggle_breakpoint, { silent = true, desc = "Toggle Debug Breakpoint" })
   Map(
     "n",
-    "<leader>gds",
+    "<M-d><M-l>",
     "<cmd>Telescope dap list_breakpoints layout_strategy=horizontal<CR>",
     { silent = true, desc = "Show Debug Breakpoints" }
   )
-  Map("n", "<leader>gdc", function()
+  Map("n", "<M-d>c", function()
     vim.ui.input({ prompt = "Breakpoint condition: " }, function(input)
       dap.set_breakpoint(input)
     end)
   end, { silent = true, desc = "Set Debug Breakpoint Condition" })
-  Map("n", "<leader>gdm", function()
+  Map("n", "<M-d>m", function()
     vim.ui.input({ prompt = "Log Point message: " }, function(input)
       dap.set_breakpoint(nil, nil, input)
     end)
   end, { silent = true, desc = "Set Debug Log Point Message" })
 
-  Map("n", "<leader>gdD", dap.clear_breakpoints, { silent = true, desc = "Clear All Breakpoints" })
+  Map("n", "<M-d>C", dap.clear_breakpoints, { silent = true, desc = "Clear All Breakpoints" })
 
-  Map("n", "<M-d>", function()
+  Map("n", "<M-d>s", function()
     if dap.session() then
       dap.terminate()
     else
       vim.cmd "Telescope dap configurations theme=dropdown layout_strategy=horizontal"
     end
   end, { silent = true, desc = "Start/Terminate Debugger Session" })
-  Map("n", "<leader>gdp", dap.pause, { silent = true, desc = "Pause Debugger" })
+  Map("n", "<M-d>p", dap.pause, { silent = true, desc = "Pause Debugger" })
 
-  Map("n", "<leader>gdS", function()
+  Map("n", "<M-d>S", function()
     dapui.float_element("stacks", { enter = true })
   end, { silent = true, desc = "Show Debug Stacks" })
-  Map("n", "<leader>gdT", function()
+  Map("n", "<M-d>T", function()
     dapui.float_element("console", { enter = true })
   end, { silent = true, desc = "Show Debug Console" })
 
-  Map("n", "<leader>gdo", dap.step_over, { silent = true, desc = "Debug Step Over" })
-  Map("n", "<leader>gd.", dap.run_to_cursor, { silent = true, desc = "Debug GoTo" })
+  Map("n", "<M-d>o", dap.step_over, { silent = true, desc = "Debug Step Over" })
+  Map("n", "<M-d>;", dap.run_to_cursor, { silent = true, desc = "Debug GoTo" })
 
-  Map("n", "<leader>gdl", dap.step_into, { silent = true, desc = "Debug Step Into" })
-  Map("n", "<leader>gdh", dap.step_out, { silent = true, desc = "Debug Step Out" })
+  Map("n", "<M-d>l", dap.step_into, { silent = true, desc = "Debug Step Into" })
+  Map("n", "<M-d>h", dap.step_out, { silent = true, desc = "Debug Step Out" })
 
-  Map("n", "<leader>gdk", dap.up, { silent = true, desc = "Debug Step Up" })
-  Map("n", "<leader>gdj", dap.down, { silent = true, desc = "Debug Step Down" })
+  Map("n", "<M-d>k", dap.up, { silent = true, desc = "Debug Step Up" })
+  Map("n", "<M-d>j", dap.down, { silent = true, desc = "Debug Step Down" })
 
-  Map("n", "<leader>gdR", dap.repl.toggle, { silent = true, desc = "Toggle Debug REPL" })
-  Map("n", "<leader>gdQ", dap.disconnect, { silent = true, desc = "Disconnect Debugger" })
+  Map("n", "<M-d>R", dap.repl.toggle, { silent = true, desc = "Toggle Debug REPL" })
+  Map("n", "<M-d>Q", dap.disconnect, { silent = true, desc = "Disconnect Debugger" })
 end
 
 return M
