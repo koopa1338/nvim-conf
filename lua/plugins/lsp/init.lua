@@ -17,6 +17,7 @@ local M = {
       },
     },
     { "j-hui/fidget.nvim", config = true },
+    { "folke/neodev.nvim", config = true, ft = "lua" },
   },
   event = { "BufReadPre", "BufNewFile" },
   cmd = "Mason",
