@@ -1,6 +1,6 @@
 local M = {
   "haringsrob/nvim_context_vt",
-  event = "BufReadPre",
+  event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   config = true,
 }
 

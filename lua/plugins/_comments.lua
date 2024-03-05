@@ -1,6 +1,6 @@
 local M = {
   "numToStr/Comment.nvim",
-  event = "BufReadPre",
+  event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   config = true,
 }
 
