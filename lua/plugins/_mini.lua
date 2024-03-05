@@ -1,6 +1,6 @@
 local M = {
   "echasnovski/mini.nvim",
-  event = "BufReadPost",
+  event = "VimEnter",
 }
 
 M.config = function()
