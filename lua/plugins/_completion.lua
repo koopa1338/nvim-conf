@@ -111,34 +111,28 @@ M.config = function()
       ["<C-j>"] = cmp.mapping.select_next_item(),
       ["<C-k>"] = cmp.mapping.select_prev_item(),
       -- navigate snippet positions
-      ["<C-l>"] = cmp.mapping(function(fallback)
+      ["<C-l>"] = cmp.mapping(function()
         if luasnip.expand_or_locally_jumpable() then
           luasnip.expand_or_jump()
         elseif has_words_before() then
           cmp.complete()
-        else
-          fallback()
         end
       end, {
         "i",
         "s",
       }),
-      ["<C-h>"] = cmp.mapping(function(fallback)
+      ["<C-h>"] = cmp.mapping(function()
         if luasnip.locally_jumpable(-1) then
           luasnip.jump(-1)
-        else
-          fallback()
         end
       end, {
         "i",
         "s",
       }),
       -- toggle choices of choice nodes
-      ["<C-n>"] = cmp.mapping(function(fallback)
+      ["<C-n>"] = cmp.mapping(function()
         if luasnip.choice_active() then
           luasnip.change_choice(1)
-        else
-          fallback()
         end
       end, {
         "i",
