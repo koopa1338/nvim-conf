@@ -60,15 +60,6 @@ M.config = function()
         select = {
           enable = true,
           lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-          keymaps = {
-            -- You can use the capture groups defined in textobjects.scm
-            ["af"] = { query = "@function.outer", desc = "Around function" },
-            ["if"] = { query = "@function.inner", desc = "Inside function" },
-            ["ac"] = { query = "@class.outer", desc = "Around class" },
-            ["ic"] = { query = "@class.inner", desc = "Inside class" },
-            ["as"] = { query = "@block.outer", desc = "Around scope" },
-            ["is"] = { query = "@block.inner", desc = "Inside scope" },
-          },
         },
         swap = {
           enable = true,

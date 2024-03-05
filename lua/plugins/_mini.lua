@@ -8,18 +8,22 @@ M.config = function()
     mp.setup()
   end)
 
-  L("mini.surround", function(surround)
-    surround.setup()
-  end)
-
   L("mini.ai", function(ai)
+    local spec_treesitter = ai.gen_spec.treesitter
     ai.setup {
       custom_textobjects = {
-        f = false,
+        f = spec_treesitter { a = "@function.outer", i = "@function.inner" },
+        c = spec_treesitter { a = "@class.outer", i = "@class.inner" },
+        s = spec_treesitter { a = "@block.outer", i = "@block.inner" },
       },
       n_lines = 500,
+      search_method = "cover",
       silent = true,
     }
+  end)
+
+  L("mini.surround", function(surround)
+    surround.setup()
   end)
 
   L("mini.bracketed", function(bracketed)
