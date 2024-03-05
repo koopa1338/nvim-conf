@@ -117,7 +117,7 @@ local config = {
       desc = "Show open Buffers",
     },
     {
-      "<leader>fb",
+      "<leader>f/",
       "<cmd>Telescope current_buffer_fuzzy_find<CR>",
       silent = true,
       desc = "Fuzzy Find current Buffer",
@@ -274,6 +274,10 @@ M.config = function()
         multi_icon = " " .. Get_sign_def("Multi_Select").text,
       },
       pickers = {
+        current_buffer_fuzzy_find = {
+          theme = "dropdown",
+          previewer = false,
+        },
         marks = {
           theme = "ivy",
         },
