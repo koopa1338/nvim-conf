@@ -18,6 +18,7 @@ M.config = function()
         f = false,
       },
       n_lines = 500,
+      silent = true,
     }
   end)
 
