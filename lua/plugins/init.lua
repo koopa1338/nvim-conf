@@ -27,10 +27,9 @@ return {
     end,
     event = { "TabEnter", "TabNew" },
   },
-  { "kyazdani42/nvim-web-devicons" },
   {
     "folke/todo-comments.nvim",
-    event = "VeryLazy",
+    event = "BufReadPost",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { signs = false },
   },
@@ -42,7 +41,7 @@ return {
 
   -- utils
   { "romgrk/fzy-lua-native", event = "VeryLazy" },
-  { "sQVe/sort.nvim", config = true, event = "VeryLazy" },
+  { "sQVe/sort.nvim", config = true, event = "BufReadPost" },
   {
     -- color picker
     "uga-rosa/ccc.nvim",
