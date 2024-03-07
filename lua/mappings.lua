@@ -10,10 +10,18 @@ Map("n", "<leader>bw", "<cmd>bwipeout<CR>", { silent = true, desc = "Wipeout cur
 Map("n", "<leader>bW", "<cmd>%bwipeout<CR>", { silent = true, desc = "Wipeout all other Buffers" })
 Map("n", "<leader>BW", "<cmd>.+,$bwipeout<CR>", { silent = true, desc = "Wipe all other Buffers" })
 Map("n", "<leader>bmm", "<cmd>bmodified<CR>", { silent = true, desc = "Open next modified buffer" })
-Map("n", "<leader>bmx", "<cmd>sbmodified<CR>",
-  { silent = true, desc = "Open next modified buffer in a horizontal split" })
-Map("n", "<leader>bmv", "<cmd>vertical sbmodified<CR>",
-  { silent = true, desc = "Open next modified buffer in a vertical split" })
+Map(
+  "n",
+  "<leader>bmx",
+  "<cmd>sbmodified<CR>",
+  { silent = true, desc = "Open next modified buffer in a horizontal split" }
+)
+Map(
+  "n",
+  "<leader>bmv",
+  "<cmd>vertical sbmodified<CR>",
+  { silent = true, desc = "Open next modified buffer in a vertical split" }
+)
 
 -- windows
 Map("n", "<leader>wo", "<cmd>only<CR>", { silent = true, desc = "Close all other Windows" })
