@@ -23,7 +23,20 @@ M.config = function()
   end)
 
   L("mini.surround", function(surround)
-    surround.setup()
+    surround.setup {
+      mappings = {
+        add = "ysa",
+        delete = "ysd",
+        find = "ysf",
+        find_left = "ysF",
+        highlight = "ysh",
+        replace = "ysr",
+        update_n_lines = "ysn",
+        suffix_last = "l",
+        suffix_next = "n",
+      },
+      n_lines = 500,
+    }
   end)
 
   L("mini.bracketed", function(bracketed)
