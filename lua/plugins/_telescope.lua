@@ -151,10 +151,16 @@ local config = {
       desc = "Show Location List",
     },
     {
-      "<leader><leader>n",
+      "<leader>fn",
       "<cmd>Telescope notify<CR>",
       silent = true,
       desc = "Show Notifications",
+    },
+    {
+      "<leader><leader>n",
+      "<cmd>Telescope find_files cwd=" .. vim.fn.stdpath "config" .. "<CR>",
+      silent = true,
+      desc = "Show Neovim config files",
     },
     {
       "<leader><leader>M",

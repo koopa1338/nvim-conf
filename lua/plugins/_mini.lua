@@ -25,13 +25,13 @@ M.config = function()
   L("mini.surround", function(surround)
     surround.setup {
       mappings = {
-        add = "ysa",
-        delete = "ysd",
-        find = "ysf",
-        find_left = "ysF",
-        highlight = "ysh",
-        replace = "ysr",
-        update_n_lines = "ysn",
+        add = "<leader>sa",
+        delete = "<leader>sd",
+        find = "<leader>sf",
+        find_left = "<leader>sF",
+        highlight = "<leader>sh",
+        replace = "<leader>sr",
+        update_n_lines = "<leader>sn",
         suffix_last = "l",
         suffix_next = "n",
       },
