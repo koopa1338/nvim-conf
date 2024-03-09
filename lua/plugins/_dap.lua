@@ -1,6 +1,6 @@
 local M = {
   "rcarriga/nvim-dap-ui",
-  event = "VeryLazy",
+  event = "BufReadPost",
   dependencies = {
     "mfussenegger/nvim-dap",
   },
