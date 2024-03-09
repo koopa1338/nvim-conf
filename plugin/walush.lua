@@ -11,13 +11,13 @@ Get_theme_hl = function(name)
   return hl
 end
 
-local xres = table.clone(Colors_or_default())
-xres.diffgreen = "#002800"
-xres.diffred = "#3f0000"
-xres.yellow = "#3f3f00"
-
 L("lush", function(lush)
   local hsl = lush.hsl
+  local xres = table.clone(Colors_or_default())
+  xres.diffgreen = "#002800"
+  xres.diffred = "#3f0000"
+  xres.yellow = "#3f3f00"
+
   for name, color in pairs(xres) do
     xres[name] = hsl(color)
   end
@@ -423,26 +423,12 @@ L("lush", function(lush)
       sym "@comment.documentation" { Special },
       sym "@punctuation" { fg = xres.color15.darken(10), bg = xres.none },
       sym "@variable.field" { fg = Identifier.fg.ro(15).darken(20), bg = xres.none },
-      sym "@string" { String },
-      sym "@character" { Character },
-      sym "@function" { Function },
       sym "@function.builtin" { Function, gui = "italic" },
       sym "@constructor" { Function, gui = "bold" },
-      sym "@operator" { Operator },
-      sym "@keyword" { Keyword },
-      sym "@label" { Label },
-      sym "@number" { Number },
-      sym "@variable" { Identifier },
-      sym "@property" { Identifier },
-      sym "@tag" { Tag },
-      sym "@module" { fg = Structure.fg.lighten(10), bg = xres.none },
       sym "@lsp.type.property" { fg = Identifier.fg.lighten(50), bg = xres.none },
       sym "@lsp.type.class" { fg = Structure.fg, bg = xres.none, gui = "bold" },
       sym "@lsp.type.struct" { fg = Type.fg, bg = xres.none, gui = "bold" },
       sym "@lsp.type.interface" { fg = Constant.fg.ro(20).lighten(40), bg = xres.none, gui = "bold" },
-      sym "@lsp.type.typeParameter" { Typedef },
-      sym "@lsp.type.enum" { Structure },
-      sym "@lsp.type.enumMember" { Constant },
 
       -- cmp completion
       CmpItemMenu { fg = Title.fg, bg = xres.none, gui = "italic" },
@@ -452,25 +438,25 @@ L("lush", function(lush)
       CmpItemKindClass { bg = xres.none, fg = sym("@lsp.type.class").fg, gui = "bold" },
       CmpItemKindStruct { bg = xres.none, fg = sym("@lsp.type.struct").fg, gui = "bold" },
       CmpItemKindEnum { bg = xres.none, fg = sym("@lsp.type.struct").fg, gui = "bold" },
-      CmpItemKindEnumMember { bg = xres.none, fg = sym("@lsp.type.enumMember").fg, gui = "bold" },
+      CmpItemKindEnumMember { bg = xres.none, fg = Constant.fg, gui = "bold" },
       CmpItemKindInterface { bg = xres.none, fg = sym("@lsp.type.interface").fg, gui = "bold" },
-      CmpItemKindModule { bg = xres.none, fg = sym("@module").fg, gui = "bold" },
-      CmpItemKindText { bg = xres.none, fg = sym("@string").fg, gui = "bold" },
-      CmpItemKindColor { bg = xres.none, fg = sym("@tag").fg, gui = "bold" },
-      CmpItemKindKeyword { bg = xres.none, fg = sym("@keyword").fg, gui = "bold" },
+      CmpItemKindModule { bg = xres.none, fg = Structure.fg.lighten(10), gui = "bold" },
+      CmpItemKindText { bg = xres.none, fg = String.fg, gui = "bold" },
+      CmpItemKindColor { bg = xres.none, fg = Tag.fg, gui = "bold" },
+      CmpItemKindKeyword { bg = xres.none, fg = Keyword.fg, gui = "bold" },
       CmpItemKindMethod { bg = xres.none, fg = sym("@function.builtin").fg, gui = "bold" },
       CmpItemKindConstructor { bg = xres.none, fg = sym("@constructor").fg, gui = "bold" },
-      CmpItemKindFunction { bg = xres.none, fg = sym("@function").fg, gui = "bold" },
-      CmpItemKindOperator { bg = xres.none, fg = sym("@operator").fg, gui = "bold" },
-      CmpItemKindReference { bg = xres.none, fg = sym("@label").fg, gui = "bold" },
+      CmpItemKindFunction { bg = xres.none, fg = Function.fg, gui = "bold" },
+      CmpItemKindOperator { bg = xres.none, fg = Operator.fg, gui = "bold" },
+      CmpItemKindReference { bg = xres.none, fg = Label.fg, gui = "bold" },
       CmpItemKindSnippet { bg = xres.none, fg = SpecialKey.fg, gui = "bold" },
       CmpItemKindField { bg = xres.none, fg = sym("@variable.field").fg, gui = "bold" },
-      CmpItemKindProperty { bg = xres.none, fg = sym("@property").fg, gui = "bold" },
-      CmpItemKindUnit { bg = xres.none, fg = sym("@function").fg, gui = "bold" },
-      CmpItemKindValue { bg = xres.none, fg = sym("@number").fg, gui = "bold" },
-      CmpItemKindVariable { bg = xres.none, fg = sym("@variable").fg, gui = "bold" },
-      CmpItemKindConstant { bg = xres.none, fg = sym("@constant").fg, gui = "bold" },
-      CmpItemKindTypeParameter { bg = xres.none, fg = sym("@lsp.type.typeParameter").fg, gui = "bold" },
+      CmpItemKindProperty { bg = xres.none, fg = sym("@lsp.type.property").fg, gui = "bold" },
+      CmpItemKindUnit { bg = xres.none, fg = Function.fg, gui = "bold" },
+      CmpItemKindValue { bg = xres.none, fg = Number.fg, gui = "bold" },
+      CmpItemKindVariable { bg = xres.none, fg = Identifier.fg, gui = "bold" },
+      CmpItemKindConstant { bg = xres.none, fg = Constant.fg, gui = "bold" },
+      CmpItemKindTypeParameter { bg = xres.none, fg = Typedef.fg, gui = "bold" },
 
       ContextVt { NonText },
       NeoTreeFloatTitle { FloatTitle },
