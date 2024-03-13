@@ -152,7 +152,7 @@ L("lush", function(lush)
       Float { fg = xres.color12 },
       Identifier { fg = xres.color12 },
       Exception { fg = xres.color10, bg = xres.color0 },
-      Typedef { fg = xres.color10, bg = xres.color8 },
+      Typedef { fg = xres.color10, bg = xres.color0, gui = "bold" },
       MatchParen { fg = xres.color12, bg = xres.color8 },
       Underlined { fg = xres.color12, gui = "underline" },
       Ignore { fg = xres.color0.lighten(15) },
