@@ -217,6 +217,7 @@ M.config = function()
     deps.builtin = require "telescope.builtin"
 
     local actions = require "telescope.actions"
+    local layout_actions = require "telescope.actions.layout"
     local previewers = require "telescope.previewers"
     local themes = require "telescope.themes"
 
@@ -254,21 +255,21 @@ M.config = function()
         },
         mappings = {
           i = {
-            ["<C-R>"] = actions.cycle_history_next,
-            ["<C-r>"] = actions.cycle_history_prev,
+            ["<C-r>"] = actions.insert_original_cword,
             ["<C-j>"] = actions.move_selection_next,
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-n>"] = actions.move_selection_better,
             ["<C-p>"] = actions.move_selection_worse,
-            ["<c-u>"] = actions.preview_scrolling_up,
-            ["<c-d>"] = actions.preview_scrolling_down,
-            ["<c-b>"] = actions.results_scrolling_up,
-            ["<c-f>"] = actions.results_scrolling_down,
+            ["<C-u>"] = actions.preview_scrolling_up,
+            ["<C-d>"] = actions.preview_scrolling_down,
+            ["<C-b>"] = actions.results_scrolling_up,
+            ["<C-f>"] = actions.results_scrolling_down,
             ["<C-a>"] = actions.toggle_all,
             ["<PageUp>"] = actions.preview_scrolling_up,
             ["<PageDown>"] = actions.preview_scrolling_down,
             ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
             ["<M-q>"] = actions.smart_send_to_loclist + actions.open_loclist,
+            ["<M-p>"] = layout_actions.toggle_preview,
           },
         },
         selection_strategy = "reset",
