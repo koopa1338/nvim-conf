@@ -212,8 +212,7 @@ local provider_mapping = {
       mode = "n",
       keys = "<leader>lI",
       callback = function()
-        local state = vim.lsp.inlay_hint.is_enabled()
-        vim.lsp.inlay_hint.enable(0, not state)
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { bufnr = 0 })
       end,
       method = "textDocument/inlayHint",
       desc = "Toggle inlay hints",
@@ -252,8 +251,6 @@ local map_unsupported = function()
 end
 
 M.on_attach = function(client, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
   map_providers(client, bufnr)
   map_unsupported()
   Map(
@@ -273,10 +270,10 @@ M.on_attach = function(client, bufnr)
     vim.diagnostic.open_float(float_opts)
   end, { silent = true, buffer = bufnr, desc = "Line Diagnostics" })
   Map("n", "<leader>lj", function()
-    vim.diagnostic.goto_next { float = float_opts }
+    vim.diagnostic.goto_next { float = float_opts, severity = vim.diagnostic.severity.WARN }
   end, { silent = true, buffer = bufnr, desc = "Jump to Next Diagnostic" })
   Map("n", "<leader>lk", function()
-    vim.diagnostic.goto_prev { float = float_opts }
+    vim.diagnostic.goto_prev { float = float_opts, severity = vim.diagnostic.severity.WARN }
   end, { silent = true, buffer = bufnr, desc = "Jump to Previous Diagnostic" })
 end
 
