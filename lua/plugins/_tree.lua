@@ -11,7 +11,7 @@ local M = {
   },
   keys = {
     { "<C-n>", "<cmd>NeoTreeRevealToggle<CR>", silent = true, desc = "Toggle Neo Tree" },
-    { "<M-C-n>", "<cmd>NeoTreeRevealToggle<CR>", silent = true, desc = "Toggle Neo Tree Floating Mode" },
+    { "<M-C-n>", "<cmd>NeoTreeFloatToggle<CR>", silent = true, desc = "Toggle Neo Tree Floating Mode" },
   },
 }
 M.config = function()
