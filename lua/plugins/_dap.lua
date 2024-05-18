@@ -4,6 +4,7 @@ local M = {
   dependencies = {
     "mfussenegger/nvim-dap",
     "nvim-neotest/nvim-nio",
+    "theHamsta/nvim-dap-virtual-text",
   },
 }
 
@@ -62,6 +63,10 @@ M.config = function()
       L("user_settings", function(settings)
         dap.adapters = settings.dap.adapters
         dap.configurations = settings.dap.configurations
+      end)
+
+      L("nvim-dap-virtual-text", function(dap_v)
+        dap_v.setup {}
       end)
 
       Map("n", "<M-d>b", dap.toggle_breakpoint, { silent = true, desc = "Toggle Debug Breakpoint" })
