@@ -89,6 +89,10 @@ M.config = function()
 
       Map("n", "<M-d>C", dap.clear_breakpoints, { silent = true, desc = "Clear All Breakpoints" })
 
+      Map("n", "<Space>?", function()
+        dapui.eval(nil, { enter = true })
+      end, { silent = true, desc = "Display value under cursor"})
+
       Map("n", "<F12>", function()
         if dap.session() then
           dap.terminate()
