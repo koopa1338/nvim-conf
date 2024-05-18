@@ -6,6 +6,14 @@ local M = {
     "hrsh7th/cmp-nvim-lsp",
     "saadparwaiz1/cmp_luasnip",
     "onsails/lspkind-nvim",
+    {
+      "MattiasMTS/cmp-dbee",
+      dependencies = {
+        { "kndndrj/nvim-dbee" }
+      },
+      ft = "sql", -- optional but good to have
+
+    },
   },
   event = "InsertEnter",
 }
@@ -66,11 +74,12 @@ M.config = function()
       { name = "buffer" },
       { name = "path" },
       { name = "crates" },
+      { name = "cmp-dbee" },
     },
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        local kind = lspkind.cmp_format { symbol_map = cmp_kinds }(entry, vim_item)
+        local kind = lspkind.cmp_format { symbol_map = cmp_kinds } (entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = false })
         kind.kind = " " .. strings[1] .. " "
         kind.menu = "    (" .. strings[2] .. ")"
