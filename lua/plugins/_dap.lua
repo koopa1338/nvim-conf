@@ -89,26 +89,27 @@ M.config = function()
 
       Map("n", "<M-d>C", dap.clear_breakpoints, { silent = true, desc = "Clear All Breakpoints" })
 
-      Map("n", "<M-d>s", function()
+      Map("n", "<F12>", function()
         if dap.session() then
           dap.terminate()
         else
           vim.cmd "Telescope dap configurations theme=dropdown layout_strategy=horizontal"
         end
       end, { silent = true, desc = "Start/Terminate Debugger Session" })
-      Map("n", "<M-d>p", dap.pause, { silent = true, desc = "Pause Debugger" })
+      Map("n", "<F11>", dap.pause, { silent = true, desc = "Pause Debugger" })
 
-      Map("n", "<M-d>o", dap.step_over, { silent = true, desc = "Debug Step Over" })
-      Map("n", "<M-d>;", dap.run_to_cursor, { silent = true, desc = "Debug GoTo" })
+      Map("n", "<F5>", dap.step_over, { silent = true, desc = "Debug Step Over" })
+      Map("n", "<F4>", dap.run_to_cursor, { silent = true, desc = "Debug GoTo" })
 
-      Map("n", "<M-d>l", dap.step_into, { silent = true, desc = "Debug Step Into" })
-      Map("n", "<M-d>h", dap.step_out, { silent = true, desc = "Debug Step Out" })
+      Map("n", "<F6>", dap.step_into, { silent = true, desc = "Debug Step Into" })
+      Map("n", "<F7>", dap.step_out, { silent = true, desc = "Debug Step Out" })
 
       Map("n", "<M-d>k", dap.up, { silent = true, desc = "Debug Step Up" })
       Map("n", "<M-d>j", dap.down, { silent = true, desc = "Debug Step Down" })
 
-      Map("n", "<M-d>R", dap.repl.toggle, { silent = true, desc = "Toggle Debug REPL" })
-      Map("n", "<M-d>Q", dap.disconnect, { silent = true, desc = "Disconnect Debugger" })
+      Map("n", "<F1>", dap.restart, { silent = true, desc = "Restart Debugger" })
+      Map("n", "<M-d>r", dap.repl.toggle, { silent = true, desc = "Toggle Debug REPL" })
+      Map("n", "<M-d>q", dap.disconnect, { silent = true, desc = "Disconnect Debugger" })
     end)
   end)
 end
