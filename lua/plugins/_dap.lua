@@ -16,8 +16,9 @@ M.config = function()
       layouts = {
         {
           elements = {
-            { id = "scopes", size = 0.5 },
-            { id = "watches", size = 0.5 },
+            { id = "scopes", size = 0.4 },
+            { id = "watches", size = 0.3 },
+            { id = "stacks", size = 0.3 },
           },
           size = 50,
           position = "left",
