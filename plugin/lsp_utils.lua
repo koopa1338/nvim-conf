@@ -55,7 +55,9 @@ local provider_mapping = {
     {
       mode = "n",
       keys = "<leader>lD",
-      callback = vim.lsp.buf.declaration,
+      callback = function()
+        vim.lsp.buf.declaration { loclist = true }
+      end,
       method = "textDocument/declaration",
       desc = "Show Declaration",
       error = "LSP does not support jump to declaration",
@@ -66,7 +68,9 @@ local provider_mapping = {
     {
       mode = "n",
       keys = "<leader>ld",
-      callback = vim.lsp.buf.definition,
+      callback = function()
+        vim.lsp.buf.definition { loclist = true }
+      end,
       method = "textDocument/definition",
       desc = "Jump to Definition",
       error = "LSP does not support jump to defenition",
@@ -77,7 +81,9 @@ local provider_mapping = {
     {
       mode = "n",
       keys = "<leader>lT",
-      callback = vim.lsp.buf.type_definition,
+      callback = function()
+        vim.lsp.buf.type_definition { loclist = true }
+      end,
       method = "textDocument/typeDefinition",
       desc = "Show Type Definition",
       error = "LSP does not support show document type definition",
@@ -212,7 +218,7 @@ local provider_mapping = {
       mode = "n",
       keys = "<leader>lI",
       callback = function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { bufnr = 0 })
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
       end,
       method = "textDocument/inlayHint",
       desc = "Toggle inlay hints",
