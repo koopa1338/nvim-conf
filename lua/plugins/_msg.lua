@@ -5,7 +5,7 @@ M.config = function()
     msg.setup {
       prepare_buffer = function(opts)
         local buf = vim.api.nvim_create_buf(false, true)
-        vim.api.nvim_buf_set_option(buf, "filetype", "msgfloat")
+        vim.api.nvim_set_option_value("filetype", "msgfloat", { buf = buf })
         return vim.api.nvim_open_win(buf, true, opts)
       end,
       buffer_opts = function(_)
@@ -26,7 +26,7 @@ M.config = function()
       end,
       post_open_float = function(_)
         local buf = vim.api.nvim_get_current_buf()
-        vim.api.nvim_buf_set_option(buf, "modifiable", false)
+        vim.api.nvim_set_option_value("modifiable", false, { buf = buf })
       end,
     }
 
