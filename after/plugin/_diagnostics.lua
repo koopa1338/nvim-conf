@@ -17,7 +17,7 @@ vim.diagnostic.config {
   },
   virtual_text = {
     source = "if_many",
-    spacing = 5,
+    spacing = 3,
   },
   underline = false,
   float = { border = vim.g.border_type },
