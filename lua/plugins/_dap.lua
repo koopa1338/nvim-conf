@@ -92,7 +92,7 @@ M.config = function()
 
       Map("n", "<Space>?", function()
         dapui.eval(nil, { enter = true })
-      end, { silent = true, desc = "Display value under cursor"})
+      end, { silent = true, desc = "Display value under cursor" })
 
       Map("n", "<F12>", function()
         if dap.session() then
