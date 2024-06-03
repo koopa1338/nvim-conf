@@ -276,10 +276,10 @@ M.on_attach = function(client, bufnr)
     vim.diagnostic.open_float(float_opts)
   end, { silent = true, buffer = bufnr, desc = "Line Diagnostics" })
   Map("n", "<leader>lj", function()
-    vim.diagnostic.goto_next { float = float_opts, severity = vim.diagnostic.severity.WARN }
+    vim.diagnostic.goto_next { float = float_opts, severity = { min = vim.diagnostic.severity.WARN } }
   end, { silent = true, buffer = bufnr, desc = "Jump to Next Diagnostic" })
   Map("n", "<leader>lk", function()
-    vim.diagnostic.goto_prev { float = float_opts, severity = vim.diagnostic.severity.WARN }
+    vim.diagnostic.goto_prev { float = float_opts, severity = { min = vim.diagnostic.severity.WARN } }
   end, { silent = true, buffer = bufnr, desc = "Jump to Previous Diagnostic" })
 end
 
