@@ -45,8 +45,7 @@ local filter_diagnostics = function(diagnostics)
 end
 
 vim.diagnostic.handlers.signs = {
-  show = function(_, bufnr, _, opts)
-    local diagnostics = vim.diagnostic.get(bufnr)
+  show = function(_, bufnr, diagnostics, opts)
     local fd = filter_diagnostics(diagnostics)
     orig_signs_handler.show(ns, bufnr, fd, opts)
   end,
