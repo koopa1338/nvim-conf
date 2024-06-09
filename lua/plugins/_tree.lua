@@ -22,7 +22,7 @@ M.config = function()
       include_current = false,
       filter_rules = {
         bo = {
-          filetype = { "neo-tree", "neo-tree-popup", "notify", "mason" },
+          filetype = { "neo-tree", "neo-tree-popup", "notify", "mason", "fidget" },
           buftype = { "terminal", "quickfix" },
         },
       },

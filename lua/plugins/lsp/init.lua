@@ -16,7 +16,18 @@ local M = {
         },
       },
     },
-    { "j-hui/fidget.nvim", config = true },
+    {
+      "j-hui/fidget.nvim",
+      opts = {
+        notification = {
+          window = {
+            border = vim.g.border_type,
+            border_hl = "FloatBorder",
+            winblend = 0,
+          },
+        },
+      },
+    },
     { "folke/neodev.nvim", config = true, ft = "lua" },
   },
   event = { "BufReadPre" },
