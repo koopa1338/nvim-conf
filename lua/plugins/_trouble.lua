@@ -4,22 +4,24 @@ local M = {
   cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
   keys = {
     {
-      "<leader>tw",
-      "<cmd>Trouble<CR>",
+      "<leader>to",
+      function()
+        local tr = require "trouble"
+        if tr.is_open() then
+          tr.close()
+        else
+          vim.api.nvim_command "Trouble"
+        end
+      end,
+      -- "<cmd>Trouble<CR>",
       silent = true,
-      desc = "Show workspace diagnostics",
-    },
-    {
-      "<leader>td",
-      "<cmd>Trouble document_diagnostics<CR>",
-      silent = true,
-      desc = "Show document diagnostics",
+      desc = "Open trouble selection or close if open",
     },
     {
       "<leader>tr",
       "<cmd>TroubleRefresh<CR>",
       silent = true,
-      desc = "Refresh diagnostic window",
+      desc = "Refresh trouble window",
     },
   },
 }
@@ -32,12 +34,14 @@ M.config = function()
       auto_close = true,
       use_diagnostic_signs = true,
       height = 15,
-      padding = false,
-      fold_open = Get_sign_def("FoldOpen").icon,
-      fold_closed = Get_sign_def("FoldClosed").icon,
-      action_keys = {
-        jump = "o",
-        jump_close = { "<cr>", "<tab>" },
+      icons = {
+        fold_open = Get_sign_def("FoldOpen").icon,
+        fold_closed = Get_sign_def("FoldClosed").icon,
+      },
+      keys = {
+        o = "jump",
+        ["<cr>"] = "jump_close",
+        ["<tab>"] = "jump_close",
       },
     }
   end)
