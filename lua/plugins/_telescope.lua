@@ -201,6 +201,8 @@ local config = {
       silent = true,
       desc = "Find Tabs",
     },
+    { "<leader>for", "<cmd>ObsidianSearch<CR>", silent = true, desc = "Find in Obsidian Notes" },
+    { "<leader>foo", "<cmd>ObsidianQuickSwitch<CR>", silent = true, desc = "Find Obsidian Notes" },
   },
 }
 
