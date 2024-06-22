@@ -36,50 +36,34 @@ M.signs = {
   GitSignsLineColAdd = {
     hl = "GitSingsAdd",
     icon = "",
-    numhl = "GitSignsAddNr",
-    linehl = "GitSignsNrAddLn",
   },
   GitSignsLineColTopdelete = {
     hl = "GitSignsDelete",
     icon = "",
-    numhl = "GitSignsDeleteNr",
-    linehl = "GitSignsDeleteLn",
   },
   GitSignsLineColDelete = {
     hl = "GitSignsDelete",
     icon = "",
-    numhl = "GitSignsDeleteNr",
-    linehl = "GitSignsDeleteLn",
   },
   GitSignsLineColChange = {
     hl = "GitSignsChange",
     icon = "",
-    numhl = "GitSignsChangeNr",
-    linehl = "GitSignsChangeLn",
   },
   GitSignsLineColChangedelete = {
     hl = "GitSignsChange",
     icon = "",
-    numhl = "GitSignsChangeNr",
-    linehl = "GitSignsChangeLn",
   },
   GitSignsLineColUntracked = {
     hl = "GitSingsAdd",
     icon = "",
-    numhl = "GitSignsAddNr",
-    linehl = "GitSignsNrAddLn",
   },
   GitSignsLineColUnmerged = {
     hl = "GitSingsChange",
     icon = "",
-    numhl = "GitSignsChangeNr",
-    linehl = "GitSignsChangeLn",
   },
   GitSignsLineColUnstaged = {
     hl = "GitSingsAdd",
     icon = "󰙴",
-    numhl = "GitSignsAddNr",
-    linehl = "GitSignsNrAddLn",
   },
   GitSignsIgnored = {
     icon = "",

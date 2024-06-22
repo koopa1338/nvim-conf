@@ -21,6 +21,7 @@ M.config = function()
       hung = { signs.FoldClosed.icon, signs.FoldOpen.icon },
     },
     integrations = {
+      telescope = true,
       diffview = true,
     },
     popup = {
@@ -32,7 +33,7 @@ M.config = function()
     mappings = {
       status = {
         ["o"] = "Toggle",
-        ["<tab>"] = false,
+        ["<tab>"] = "OpenTree",
       },
       popup = {
         ["P"] = "PullPopup",

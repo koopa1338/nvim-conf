@@ -202,6 +202,11 @@ L("lush", function(lush)
       GitSignsChangeNr { fg = GitSignsChange.fg },
       GitSignsCurrentLineBlame { fg = NonText.fg.lighten(10) },
 
+      GitSignsDeleteNr = { GitSignsDeleteNr },
+      GitSignsUntrackedNr = { GitSignsAddNr },
+      GitSignsTopdeleteNr = { GitSignsDeleteNr },
+      GitSignsChangedeleteNr = { GitSignsChangeNr },
+
       -- Nvim groups
       NvimString { String },
       NvimStringBody { NvimString },

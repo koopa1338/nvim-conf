@@ -4,15 +4,16 @@ local M = {
 }
 
 M.config = function()
+  local signs = L("signs").signs
   L("gitsigns", function(gitsigns)
     gitsigns.setup {
       signs = {
-        add = Get_sign_def "GitSignsLineColAdd",
-        change = Get_sign_def "GitSignsLineColChange",
-        delete = Get_sign_def "GitSignsLineColDelete",
-        topdelete = Get_sign_def "GitSignsLineColTopdelete",
-        changedelete = Get_sign_def "GitSignsLineColChangedelete",
-        untracked = Get_sign_def "GitSignsLineColUntracked",
+        add = { text = signs.GitSignsLineColAdd.icon },
+        change = { text = signs.GitSignsLineColChange.icon },
+        delete = { text = signs.GitSignsLineColDelete.icon },
+        topdelete = { text = signs.GitSignsLineColTopdelete.icon },
+        changedelete = { text = signs.GitSignsLineColChangedelete.icon },
+        untracked = { text = signs.GitSignsLineColUntracked.icon },
       },
       numhl = true,
       linehl = false,
@@ -29,7 +30,7 @@ M.config = function()
       update_debounce = 100,
       status_formatter = nil, -- Use default
       diff_opts = {
-        internal = true, -- If luajit is present
+        internal = true,      -- If luajit is present
       },
       preview_config = {
         border = vim.g.border_type,
