@@ -40,7 +40,7 @@ M.config = function()
       note_id_func = function(title)
         local result = tostring(os.date("%Y-%m-%d_%H-%M", os.time()))
         if title ~= nil then
-          result = result .. "-" .. title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+          result = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower() .. "-" .. result
         end
         return result
       end,
