@@ -11,7 +11,6 @@ return {
         "matchit",
         "matchparen",
         "netrwPlugin",
-        "tohtml",
         "tutor",
       },
     },

@@ -43,6 +43,10 @@ M.config = function()
     bracketed.setup()
   end)
 
+  L("mini.comment", function(comment)
+    comment.setup()
+  end)
+
   L("mini.statusline", function(sl)
     sl.setup()
   end)
