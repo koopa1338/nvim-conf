@@ -12,12 +12,6 @@ L("signs", function(signs)
 end)
 L "lazy_init"
 
-if vim.version().minor >= 8 then
-  -- only use filetype.lua, see https://neovim.io/news/2022/04 section filetype
-  g.do_filetype_lua = true
-  g.did_load_filetypes = false
-end
-
 -- encoding
 og.encoding = "utf-8"
 og.fileencoding = "utf-8"
@@ -73,7 +67,6 @@ o.smartcase = true
 o.wildmenu = true
 o.wildmode = { longest = "full", "full" }
 o.wildoptions = "pum"
--- o.completeopt = { "menuone", "noinsert", "noselect" }
 o.cpoptions:append "n"
 o.infercase = false
 o.shortmess:append "c"
@@ -98,17 +91,8 @@ wo.foldtext = "v:lua.vim.treesitter.foldtext()"
 
 -- Plugin settings
 
--- disable netrw
--- this prevents spelllang files from being downloaded, see issue https://github.com/neovim/neovim/issues/7189
--- We can disable netrw at least in the nvim tree plugin itself.
--- g.loaded_netrw = 1
--- g.loaded_netrwPlugin = 1
-
 -- tex falvor
 g.tex_flavor = "latex"
-
--- luasnip
-g.snippets = "luasnip"
 
 -- whichkey
 g.whichkey = true
@@ -116,6 +100,11 @@ g.whichkey = true
 if fn.has "windows" then
   o.fillchars = { vert = "┃", eob = "￭", diff = "╱" }
 end
+
+-- command abbreviations
+vim.cmd [[cabbrev yfn   :let @+ = expand("%:t")]]
+vim.cmd [[cabbrev yfp   :let @+ = expand("%:p")]]
+vim.cmd [[cabbrev yrp   :let @+ = expand("%")]]
 
 L "mappings"
 L("user_settings", function(settings)

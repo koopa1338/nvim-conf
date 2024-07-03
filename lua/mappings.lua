@@ -71,8 +71,6 @@ Map("n", "Y", "y$", { desc = "Copy from current position to the end of the line"
 Map("n", "<leader><leader>m", "<cmd>Messages<CR>", { silent = true, desc = "Open Messages" })
 
 -- editing
--- <C-H> is <C-BS>, see: https://vi.stackexchange.com/questions/16139/s-bs-and-c-bs-mappings-not-working
-Map("i", "<C-H>", "<C-W>", {})
 Map("n", "go", "o<Esc>", { desc = "add new line without leaving normal mode" })
 Map("n", "gO", "O<Esc>", { desc = "add new line above without leaving normal mode" })
 
@@ -89,8 +87,3 @@ Map("n", "<leader><leader>sl", function()
     vim.o.conceallevel = 2
   end
 end, { silent = true, desc = "Toggle conceallevel for ligatures" })
-
--- command abbreviations
-vim.cmd [[cabbrev yfn   :let @+ = expand("%:t")]]
-vim.cmd [[cabbrev yfp   :let @+ = expand("%:p")]]
-vim.cmd [[cabbrev yrp   :let @+ = expand("%")]]
