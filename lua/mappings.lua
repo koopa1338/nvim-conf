@@ -89,3 +89,8 @@ Map("n", "<leader><leader>sl", function()
     vim.o.conceallevel = 2
   end
 end, { silent = true, desc = "Toggle conceallevel for ligatures" })
+
+-- command abbreviations
+vim.cmd [[cabbrev yfn   :let @+ = expand("%:t")]]
+vim.cmd [[cabbrev yfp   :let @+ = expand("%:p")]]
+vim.cmd [[cabbrev yrp   :let @+ = expand("%")]]
