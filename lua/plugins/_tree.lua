@@ -156,7 +156,7 @@ M.config = function()
             ["."] = "set_root",
             ["H"] = "toggle_hidden",
             ["f"] = "filter_on_submit",
-            ["<c-x>"] = "clear_filter",
+            ["<m-x>"] = "clear_filter",
             ["D"] = "noop",
             ["/"] = "fuzzy_finder_directory",
           },

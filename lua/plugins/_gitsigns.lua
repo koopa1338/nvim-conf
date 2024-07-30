@@ -5,16 +5,21 @@ local M = {
 
 M.config = function()
   local signs = L("signs").signs
+  local gitsigns_icon = {
+    add = { text = signs.GitSignsLineColAdd.icon },
+    change = { text = signs.GitSignsLineColChange.icon },
+    delete = { text = signs.GitSignsLineColDelete.icon },
+    topdelete = { text = signs.GitSignsLineColTopdelete.icon },
+    changedelete = { text = signs.GitSignsLineColChangedelete.icon },
+    untracked = { text = signs.GitSignsLineColUntracked.icon },
+  }
+
   L("gitsigns", function(gitsigns)
     gitsigns.setup {
-      signs = {
-        add = { text = signs.GitSignsLineColAdd.icon },
-        change = { text = signs.GitSignsLineColChange.icon },
-        delete = { text = signs.GitSignsLineColDelete.icon },
-        topdelete = { text = signs.GitSignsLineColTopdelete.icon },
-        changedelete = { text = signs.GitSignsLineColChangedelete.icon },
-        untracked = { text = signs.GitSignsLineColUntracked.icon },
-      },
+      signs = gitsigns_icon,
+      signs_staged = gitsigns_icon,
+      signs_staged_enable = true,
+      word_diff = true,
       numhl = true,
       linehl = false,
       watch_gitdir = {
