@@ -60,7 +60,7 @@ L("lush", function(lush)
       -- General
       SpecialKey { fg = xres.color13, bg = xres.color0 },
       TermCursor { gui = "reverse" },
-      NonText { fg = xres.bg.lighten(20), bg = xres.None },
+      NonText { fg = xres.bg.lighten(40), bg = xres.None },
       EndOfBuffer { NonText },
       Directory { fg = xres.color11, bg = xres.bg },
       ErrorMsg { fg = xres.color0, bg = xres.color9 },
