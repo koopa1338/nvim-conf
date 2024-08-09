@@ -87,3 +87,12 @@ Map("n", "<leader><leader>sl", function()
     vim.o.conceallevel = 2
   end
 end, { silent = true, desc = "Toggle conceallevel for ligatures" })
+
+Map("n", "<leader>gx", function()
+  local file = vim.fn.expand "%:p"
+  if file ~= "" then
+    vim.ui.open(file)
+  else
+    vim.notify("Current buffer is has no related file", vim.log.levels.ERROR, { title = "Not a File" })
+  end
+end, { silent = true, desc = "Open current file with xdg-open" })
