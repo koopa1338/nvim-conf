@@ -79,8 +79,6 @@ o.expandtab = true
 o.tabstop = 4
 o.softtabstop = 4
 o.joinspaces = false
-o.splitright = true
-o.splitbelow = true
 o.laststatus = 2
 o.comments = { sl = "/*", mb = "*", elx = "*/" }
 o.linebreak = true
