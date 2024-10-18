@@ -51,6 +51,16 @@ return {
       "CccHighlighterToggle",
       "CccPick",
     },
+    config = function()
+      L("ccc", function(ccc)
+        ccc.setup {
+          highlighter = {
+            auto_enable = false,
+            lsp = true,
+          },
+        }
+      end)
+    end,
   },
   { "mbbill/undotree", cmd = "UndotreeToggle" },
 }
