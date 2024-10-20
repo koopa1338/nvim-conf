@@ -54,6 +54,7 @@ M.config = function()
       local cmp_lsp = L "cmp_lsp"
       local config = {
         on_attach = lsp_utils.on_attach,
+        on_init = lsp_utils.on_init,
         capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp),
       }
       L("mason-lspconfig", function(masonlsp)
@@ -65,6 +66,7 @@ M.config = function()
       end)
 
       for server, conf in pairs(lsp_utils.servers(nvim_lsp)) do
+        conf.on_init = config.on_init
         conf.on_attach = config.on_attach
         conf.capabilities = config.capabilities
         nvim_lsp[server].setup(conf)
