@@ -256,11 +256,8 @@ local map_unsupported = function()
   end
 end
 
+---@diagnostic disable-next-line: unused-local
 M.on_init = function(client)
-  -- FIXME: this disables semantic tokens because some language server trigger an error (e.g. typst_lsp)
-  if client.server_capabilities then
-    client.server_capabilities.semanticTokensProvider = false
-  end
 end
 
 M.on_attach = function(client, bufnr)

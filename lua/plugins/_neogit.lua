@@ -13,7 +13,6 @@ local M = {
 M.config = function()
   local signs = L("signs").signs
   L("neogit").setup {
-    disable_commit_confirmation = true,
     disable_builtin_notifications = true,
     signs = {
       section = { signs.FoldClosed.icon, signs.FoldOpen.icon },
