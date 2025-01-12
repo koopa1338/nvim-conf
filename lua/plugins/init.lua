@@ -3,7 +3,7 @@ return {
   { "godlygeek/tabular", cmd = "Tabularize" },
 
   -- syntax and languages
-  { "lervag/vimtex", ft = { "tex" } },
+  { "lervag/vimtex",     ft = { "tex" } },
   {
     "iamcco/markdown-preview.nvim",
     build = function()
@@ -41,7 +41,11 @@ return {
 
   -- utils
   { "romgrk/fzy-lua-native", event = "VeryLazy" },
-  { "sQVe/sort.nvim", config = true, event = "BufReadPost" },
+  {
+    "sQVe/sort.nvim",
+    config = true,
+    event = "BufReadPost"
+  },
   {
     -- color picker
     "uga-rosa/ccc.nvim",
