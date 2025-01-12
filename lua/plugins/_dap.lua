@@ -70,39 +70,39 @@ M.config = function()
         dap_v.setup {}
       end)
 
-      Map("n", "<F1>b", dap.toggle_breakpoint, { silent = true, desc = "Toggle Debug Breakpoint" })
+      Map("n", "<leader>dd", dap.toggle_breakpoint, { silent = true, desc = "Toggle Debug Breakpoint" })
       Map(
         "n",
-        "<F1><M-l>",
+        "<leader>d]",
         "<cmd>Telescope dap list_breakpoints layout_strategy=horizontal<CR>",
         { silent = true, desc = "Show Debug Breakpoints" }
       )
-      Map("n", "<F1>c", function()
+      Map("n", "<leader>di", function()
         vim.ui.input({ prompt = "Breakpoint condition: " }, function(input)
           dap.set_breakpoint(input)
         end)
       end, { silent = true, desc = "Set Debug Breakpoint Condition" })
-      Map("n", "<F1>m", function()
+      Map("n", "<leader>dm", function()
         vim.ui.input({ prompt = "Log Point message: " }, function(input)
           dap.set_breakpoint(nil, nil, input)
         end)
       end, { silent = true, desc = "Set Debug Log Point Message" })
 
-      Map("n", "<F1><M-c>", dap.clear_breakpoints, { silent = true, desc = "Clear All Breakpoints" })
+      Map("n", "<leader>DD", dap.clear_breakpoints, { silent = true, desc = "Clear All Breakpoints" })
 
-      Map("n", "<Space>?", function()
+      Map("n", "<leader>?", function()
         dapui.eval(nil, { enter = true })
       end, { silent = true, desc = "Display value under cursor" })
 
-      Map("n", "<F4>", dap.run_to_cursor, { silent = true, desc = "Debug GoTo" })
-      Map("n", "<F5>", dap.step_over, { silent = true, desc = "Debug Step Over" })
+      Map("n", "<leader>d>c", dap.run_to_cursor, { silent = true, desc = "Debug GoTo" })
+      Map("n", "<leader>dj", dap.step_over, { silent = true, desc = "Debug Step Over" })
 
-      Map("n", "<F6>", dap.step_into, { silent = true, desc = "Debug Step Into" })
-      Map("n", "<F7>", dap.step_out, { silent = true, desc = "Debug Step Out" })
+      Map("n", "<leader>dl", dap.step_into, { silent = true, desc = "Debug Step Into" })
+      Map("n", "<leader>dk", dap.step_out, { silent = true, desc = "Debug Step Out" })
 
-      Map("n", "<F11>", dap.pause, { silent = true, desc = "Pause Debugger" })
+      Map("n", "<leader>dp", dap.pause, { silent = true, desc = "Pause Debugger" })
 
-      Map("n", "<F12>", function()
+      Map("n", "<leader>dr", function()
         if dap.session() then
           vim.ui.select({ "Terminate", "Restart", "Disconnect" }, { prompt = "Session Actions" }, function(choice)
             if choice == "Terminate" then
