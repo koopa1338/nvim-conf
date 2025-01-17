@@ -67,4 +67,10 @@ return {
     end,
   },
   { "mbbill/undotree", cmd = "UndotreeToggle" },
+  {
+    "nvzone/typr",
+    cmd = "TyprStats",
+    dependencies = "nvzone/volt",
+    opts = {},
+  },
 }

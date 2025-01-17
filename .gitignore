@@ -4,3 +4,4 @@ undodir/*
 lazy-lock.json
 luasnippets/*
 nvim.version
+typrstats
