@@ -50,10 +50,6 @@ api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter" }, {
   end,
 })
 
-api.nvim_create_autocmd({ "VimResized" }, {
-  command = "wincmd =",
-})
-
 -- workaround for alacritty bug
 api.nvim_create_autocmd({ "VimEnter" }, {
   command = "wincmd +",
@@ -119,6 +115,7 @@ api.nvim_create_autocmd({ "FileType" }, {
   group = format_options,
   pattern = "*",
   callback = function()
+    ---@diagnostic disable-next-line: missing-fields
     vim.opt.formatoptions = {
       a = false, -- Auto formatting is BAD.
       t = false, -- Don't auto format my code. I got linters for that.
@@ -143,6 +140,16 @@ api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave" }, {
     else
       o.laststatus = 2
     end
+  end,
+})
+
+local resize_events = api.nvim_create_augroup("ResizeEvents", { clear = true })
+api.nvim_create_autocmd({ "VimResized" }, {
+  group = resize_events,
+  callback = function()
+    local current_tab = api.nvim_get_current_tabpage()
+    vim.cmd [[tabdo wincmd =]]
+    api.nvim_set_current_tabpage(current_tab)
   end,
 })
 
