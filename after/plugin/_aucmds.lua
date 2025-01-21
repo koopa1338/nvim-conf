@@ -153,6 +153,19 @@ api.nvim_create_autocmd({ "VimResized" }, {
   end,
 })
 
+
+-- Don't hide the statusline when switching to cmd mode.
+local cmd_line = vim.api.nvim_create_augroup("CmdLine", { clear = true })
+api.nvim_create_autocmd('CmdlineEnter', {
+    group = cmd_line,
+    command = ':set cmdheight=1',
+})
+
+api.nvim_create_autocmd('CmdlineLeave', {
+    group = cmd_line,
+    command = ':set cmdheight=0',
+})
+
 L("user_settings", function(settings)
   settings.autocommands()
 end)
