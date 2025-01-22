@@ -101,9 +101,9 @@ if fn.has "windows" then
 end
 
 -- command abbreviations
-vim.cmd [[cabbrev yfn   :let @+ = expand("%:t")]]
-vim.cmd [[cabbrev yfp   :let @+ = expand("%:p")]]
-vim.cmd [[cabbrev yrp   :let @+ = expand("%")]]
+vim.cmd [[cabbrev yfn   let @+ = expand("%:t")]]
+vim.cmd [[cabbrev yfp   let @+ = expand("%:p")]]
+vim.cmd [[cabbrev yrp   let @+ = expand("%")]]
 
 L "mappings"
 L("user_settings", function(settings)
