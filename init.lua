@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 -- globals
 local g, cmd, fn, o, og, wo = vim.g, vim.cmd, vim.fn, vim.opt, vim.opt_global, vim.wo
 g.mousehide = true
