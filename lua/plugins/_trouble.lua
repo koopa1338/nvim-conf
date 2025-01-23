@@ -1,27 +1,47 @@
+local toggle_mode = function(mode)
+  L("trouble", function(tr)
+    if tr.is_open(mode) then
+      tr.close(mode)
+    else
+      tr.open(mode)
+    end
+  end)
+end
+
 local M = {
   "folke/trouble.nvim",
   dependencies = "kyazdani42/nvim-web-devicons",
-  cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
+  cmd = { "Trouble" },
   keys = {
     {
-      "<leader>to",
-      function()
-        local tr = require "trouble"
-        if tr.is_open() then
-          tr.close()
-        else
-          vim.api.nvim_command "Trouble"
-        end
-      end,
-      -- "<cmd>Trouble<CR>",
+      "<leader>tto",
+      "<cmd>Trouble<cr>",
       silent = true,
       desc = "Open trouble selection or close if open",
     },
     {
-      "<leader>tr",
-      "<cmd>TroubleRefresh<CR>",
+      "<leader>ttr",
+      function()
+        toggle_mode("lsp_references")
+      end,
       silent = true,
-      desc = "Refresh trouble window",
+      desc = "Open lsp references with trouble",
+    },
+    {
+      "<leader>tts",
+      function()
+        toggle_mode("lsp_document_symbols")
+      end,
+      silent = true,
+      desc = "Open lsp document symbols with trouble",
+    },
+    {
+      "<leader>ttS",
+      function()
+        toggle_mode("symbols")
+      end,
+      silent = true,
+      desc = "Open trouble symbols",
     },
   },
 }
@@ -42,6 +62,24 @@ M.config = function()
         o = "jump",
         ["<cr>"] = "jump_close",
         ["<tab>"] = "jump_close",
+      },
+      modes = {
+        lsp_document_symbols = {
+          win = {
+            type = "split",
+            relative = "win",
+            position = "right",
+            size = 0.4,
+          },
+        },
+        symbols = {
+          win = {
+            type = "split",
+            relative = "win",
+            position = "right",
+            size = 0.3,
+          },
+        },
       },
     }
   end)
