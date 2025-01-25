@@ -10,7 +10,10 @@ end
 
 local M = {
   "folke/trouble.nvim",
-  dependencies = "kyazdani42/nvim-web-devicons",
+  dependencies = {
+    "kyazdani42/nvim-web-devicons",
+    "folke/todo-comments.nvim", -- for todo comments to search for
+  },
   cmd = { "Trouble" },
   keys = {
     {
@@ -22,7 +25,7 @@ local M = {
     {
       "<leader>ttr",
       function()
-        toggle_mode("lsp_references")
+        toggle_mode "lsp_references"
       end,
       silent = true,
       desc = "Open lsp references with trouble",
@@ -30,7 +33,7 @@ local M = {
     {
       "<leader>tts",
       function()
-        toggle_mode("lsp_document_symbols")
+        toggle_mode "lsp_document_symbols"
       end,
       silent = true,
       desc = "Open lsp document symbols with trouble",
@@ -38,7 +41,7 @@ local M = {
     {
       "<leader>ttS",
       function()
-        toggle_mode("symbols")
+        toggle_mode "symbols"
       end,
       silent = true,
       desc = "Open trouble symbols",
@@ -52,6 +55,7 @@ M.config = function()
       auto_preview = false,
       auto_fold = false,
       auto_close = true,
+      focus = true,
       use_diagnostic_signs = true,
       height = 15,
       icons = {
