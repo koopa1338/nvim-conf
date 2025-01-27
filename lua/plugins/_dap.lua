@@ -41,22 +41,24 @@ M.config = function()
       },
     }
 
-    Map("n", "<M-d>S", function()
+    Map("n", "<leader>ds", function()
       dapui.float_element("stacks", { enter = true })
     end, { silent = true, desc = "Show Debug Stacks" })
-    Map("n", "<M-d>T", function()
+    Map("n", "<leader>dt", function()
       dapui.float_element("console", { enter = true })
     end, { silent = true, desc = "Show Debug Console" })
 
     L("dap", function(dap)
-      -- open dapui when start debugging
-      dap.listeners.after.event_initialized["dapui_config"] = function()
+      dap.listeners.before.attach.dapui_config = function()
         dapui.open()
       end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
         dapui.close()
       end
-      dap.listeners.before.event_exited["dapui_config"] = function()
+      dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
       end
 
