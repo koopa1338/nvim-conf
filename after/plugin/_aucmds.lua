@@ -165,7 +165,3 @@ api.nvim_create_autocmd('CmdlineLeave', {
     group = cmd_line,
     command = ':set cmdheight=0',
 })
-
-L("user_settings", function(settings)
-  settings.autocommands()
-end)

@@ -61,9 +61,9 @@ M.config = function()
       end
 
       -- load debugger adapters and configurations
-      L("user_settings", function(settings)
-        dap.adapters = settings.dap.adapters
-        dap.configurations = settings.dap.configurations
+      L("dap_settings", function(conf)
+        dap.adapters = conf.adapters
+        dap.configurations = conf.configurations
       end)
 
       L("nvim-dap-virtual-text", function(dap_v)

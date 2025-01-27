@@ -42,6 +42,9 @@ o.path:append "**"
 o.undodir = fn.expand "~/.config/nvim/undodir"
 o.undofile = true
 o.inccommand = "split"
+o.list = true
+o.listchars = { trail = "", tab = " " }
+
 
 -- More natural splitting
 o.splitbelow = true
@@ -52,6 +55,7 @@ o.swapfile = false
 o.spelllang = { "de_de", "en_us" }
 o.backup = false
 o.writebackup = false
+o.timeout = false
 
 -- line numbers
 o.rnu = true
@@ -88,13 +92,14 @@ o.breakindentopt = { shift = "2" }
 o.conceallevel = 2 -- for ligatures, toggle with keymap
 wo.foldtext = "v:lua.vim.treesitter.foldtext()"
 
+g.loaded_node_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
+
 -- Plugin settings
 
 -- tex falvor
 g.tex_flavor = "latex"
-
--- whichkey
-g.whichkey = true
 
 if fn.has "windows" then
   o.fillchars = { vert = "┃", eob = "￭", diff = "╱" }
@@ -106,11 +111,9 @@ vim.cmd [[cabbrev yfp   let @+ = expand("%:p")]]
 vim.cmd [[cabbrev yrp   let @+ = expand("%")]]
 
 L "mappings"
-L("user_settings", function(settings)
-  settings.setup()
-end)
 
 L("lazy", function(lazy)
   local opts = L "lazy_opts" or {}
   lazy.setup("plugins", opts)
 end)
+

@@ -73,4 +73,10 @@ return {
     dependencies = "nvzone/volt",
     opts = {},
   },
+
+  -- fun plugins
+  {
+    "eandrju/cellular-automaton.nvim",
+    cmd = "CellularAutomaton",
+  },
 }

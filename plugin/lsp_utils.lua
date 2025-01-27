@@ -1,4 +1,4 @@
-local settings = L "user_settings"
+local settings = L "lsp_settings"
 local M = {}
 
 M.get_runtime_path = function()
