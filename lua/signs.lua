@@ -141,4 +141,12 @@ Get_sign_def = function(name)
   return {}
 end
 
+M.debug_symbols = {
+  binary = "󰅬",
+  test = "󰤑",
+  module = "",
+  func = "󰊕",
+  build = "",
+}
+
 return M

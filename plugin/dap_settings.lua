@@ -1,4 +1,5 @@
 local M = {}
+local sym = L"signs".debug_symbols
 
 M.adapters = {
   lldb = {
@@ -28,20 +29,20 @@ M.configurations = {
               local is_binary = vim.list_contains(artifact.target.crate_types, "bin")
               local type
               if is_binary then
-                type = "bin"
+                type = sym.binary
               else
-                type = "lib"
+                type = sym.module
               end
               local is_build_script = vim.list_contains(artifact.target.kind, "custom-build")
               local is_test = artifact.profile.test
               if is_build_script then
-                type = "build-script"
+                type = sym.build
               end
               if is_test then
                 if not is_binary then
-                  type = "lib-test"
+                  type = sym.module .. sym.test
                 else
-                  type = "test"
+                  type = sym.test
                 end
               end
               if (is_binary or not is_binary and is_test) and artifact.executable ~= vim.NIL then
@@ -65,7 +66,7 @@ M.configurations = {
                   vim.ui.select(executables, {
                     prompt = "Select build artifact",
                     format_item = function(item)
-                      return "[" .. item.type .. "] " .. item.path
+                      return item.type .. " " .. item.path
                     end,
                   }, function(choice)
                     if choice then
