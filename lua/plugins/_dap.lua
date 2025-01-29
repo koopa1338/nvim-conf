@@ -44,12 +44,19 @@ M.config = function()
       },
     }
 
-    Map("n", "<leader>ds", function()
-      dapui.float_element("stacks", { enter = true })
-    end, { silent = true, desc = "Show Debug Stacks" })
-    Map("n", "<leader>dt", function()
-      dapui.float_element("console", { enter = true })
-    end, { silent = true, desc = "Show Debug Console" })
+    Map("n", "<leader>df", function()
+      vim.ui.select({ "Stacks", "Console", "Scopes", "Breakpoints" }, {
+        prompt = "Select to open:",
+      }, function(choice)
+        local current = vim.api.nvim_get_current_win()
+        local win_conf = vim.api.nvim_win_get_config(current)
+        dapui.float_element(string.lower(choice), {
+          width = math.floor(0.8 * win_conf.width),
+          height = math.floor(0.8 * win_conf.height),
+          enter = true,
+        })
+      end)
+    end, { silent = true, desc = "Open dapui element in floag" })
 
     L("dap", function(dap)
       dap.listeners.before.attach.dapui_config = function()
