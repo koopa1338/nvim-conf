@@ -1,6 +1,7 @@
 ;; inherits: rust
 ;; keywords
 ((function_item "fn" @keyword) (#set! conceal "󰊕"))
+((function_signature_item "fn" @keyword) (#set! conceal "󰊕"))
 (unsafe_block"unsafe" @keyword (#set! conceal ""))
 (function_modifiers"unsafe" @keyword (#set! conceal ""))
 ;; delimiter
