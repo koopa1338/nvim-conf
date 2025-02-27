@@ -193,18 +193,19 @@ local M = {
       -- set to 'none' to disable the 'default' preset
       preset = "default",
 
-      ["<Up>"] = { "select_prev", "fallback" },
-      ["<Down>"] = { "select_next", "fallback" },
+      ["<C-k>"] = { "select_prev", "fallback" },
+      ["<C-j>"] = { "select_next", "fallback" },
 
       -- disable a keymap from the preset
-      ["<C-e>"] = {},
+      ["<C-l>"] = { "snippet_forward" },
+      ["<C-h>"] = { "snippet_backward" },
 
       -- show with a list of providers
-      ["<C-space>"] = {
-        function(cmp)
-          cmp.show { providers = { "snippets" } }
-        end,
-      },
+      -- ["<C-space>"] = {
+      --   function(cmp)
+      --     cmp.show { providers = { "snippets" } }
+      --   end,
+      -- },
     },
 
     appearance = {
