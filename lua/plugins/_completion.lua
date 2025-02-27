@@ -191,16 +191,20 @@ local M = {
     -- See the full "keymap" documentation for information on defining your own keymap.
     keymap = {
       -- set to 'none' to disable the 'default' preset
-      preset = 'default',
+      preset = "default",
 
-      ['<Up>'] = { 'select_prev', 'fallback' },
-      ['<Down>'] = { 'select_next', 'fallback' },
+      ["<Up>"] = { "select_prev", "fallback" },
+      ["<Down>"] = { "select_next", "fallback" },
 
       -- disable a keymap from the preset
-      ['<C-e>'] = {},
+      ["<C-e>"] = {},
 
       -- show with a list of providers
-      ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
+      ["<C-space>"] = {
+        function(cmp)
+          cmp.show { providers = { "snippets" } }
+        end,
+      },
     },
 
     appearance = {
@@ -220,6 +224,7 @@ local M = {
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
+    snippets = { preset = "luasnip" },
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
     },
