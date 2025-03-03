@@ -241,7 +241,7 @@ M.config = function()
           },
         },
         file_ignore_patterns = {
-          ".git/",
+          "%.git/",
           "node_modules/",
           ".cache",
           "%.o",
