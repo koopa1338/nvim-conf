@@ -21,8 +21,8 @@ M.config = function()
       },
       result = {
         mappings = {
-          page_next = { key = "<C-n>", mode = "n" },
-          page_prev = { key = "<C-p>", mode = "n" },
+          { key = "<C-n>", mode = "n", action = "page_next" },
+          { key = "<C-p>", mode = "n", action = "page_prev" },
         },
       },
       ui = {
