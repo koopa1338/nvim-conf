@@ -3,7 +3,10 @@ local M = {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
-    "s1n7ax/nvim-window-picker",
+    {
+      "MarcusGrass/nvim_winpick",
+      config = true,
+    },
   },
   cmd = {
     "NeoTreeRevealToggle",
@@ -15,20 +18,7 @@ local M = {
   },
 }
 M.config = function()
-  -- this has to be setup before neo tree
-  L("window-picker", function(picker)
-    picker.setup {
-      autoselect_one = true,
-      include_current = false,
-      filter_rules = {
-        bo = {
-          filetype = { "neo-tree", "neo-tree-popup", "notify", "mason", "fidget" },
-          buftype = { "terminal", "quickfix" },
-        },
-      },
-    }
-  end)
-
+  local wp = require "nvim_winpick"
   L("neo-tree", function(tree)
     local signs = L("signs").signs
     tree.setup {
@@ -101,14 +91,36 @@ M.config = function()
           },
           ["<2-LeftMouse>"] = "open",
           ["<cr>"] = "open",
-          ["o"] = "open_with_window_picker",
+          ["o"] = function(state)
+            local node = state.tree:get_node()
+            if node.type == "file" then
+              local window = wp.pick_open_over { path = node.path }
+              if window == nil then
+                state.commands.open(state)
+              end
+            else
+              state.commands.open(state)
+            end
+          end,
+          ["O"] = function(state)
+            local node = state.tree:get_node()
+            if node.type == "file" then
+              wp.pick_win_relative { path = node.path }
+            end
+          end,
           ["<esc>"] = "revert_preview",
           ["P"] = { "toggle_preview", config = { use_float = true } },
           ["l"] = "focus_preview",
           ["S"] = "open_split",
           ["s"] = "open_vsplit",
-          ["<C-x>"] = "split_with_window_picker",
-          ["<C-v>"] = "vsplit_with_window_picker",
+          ["<C-x>"] = function(state)
+            local node = state.tree:get_node()
+            wp.pick_open_split { path = node.path, vertical = false }
+          end,
+          ["<C-v>"] = function(state)
+            local node = state.tree:get_node()
+            wp.pick_open_split { path = node.path, vertical = true }
+          end,
           ["t"] = "open_tabnew",
           ["C"] = "close_node",
           ["z"] = "close_all_nodes",
