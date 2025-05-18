@@ -58,10 +58,12 @@ M.config = function()
         capabilities = lsp_utils.get_lsp_capabilities(cmp_lsp),
       }
       L("mason-lspconfig", function(masonlsp)
-        masonlsp.setup_handlers {
-          function(server_name)
-            nvim_lsp[server_name].setup(config)
-          end,
+        masonlsp.setup {
+          handlers = {
+            function(server_name)
+              nvim_lsp[server_name].setup(config)
+            end,
+          },
         }
       end)
 

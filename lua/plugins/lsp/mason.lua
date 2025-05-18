@@ -15,6 +15,7 @@ M.setup = function()
     ensure_installed = {
       "lua_ls",
     },
+    automatic_enable = false,
   }
 end
 
