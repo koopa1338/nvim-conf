@@ -60,7 +60,8 @@ L("lush", function(lush)
       -- General
       SpecialKey { fg = xres.color13, bg = xres.color0 },
       TermCursor { gui = "reverse" },
-      NonText { fg = xres.bg.lighten(40), bg = xres.None },
+      Comment { fg = xres.color4, bg = xres.color0 },
+      NonText { fg = Comment.fg.lighten(10), bg = xres.None },
       EndOfBuffer { NonText },
       Directory { fg = xres.color11, bg = xres.bg },
       ErrorMsg { fg = xres.color0, bg = xres.color9 },
@@ -75,7 +76,6 @@ L("lush", function(lush)
       Question { Type },
       StatusLine { fg = xres.color15, bg = xres.color8, gui = "bold" },
       StatusLineNC { fg = xres.color15, bg = xres.color8 },
-      Comment { fg = xres.color4, bg = xres.color0 },
       SignColumn { fg = xres.color12, bg = xres.none },
       VertSplit { fg = xres.color0, bg = xres.color8, gui = "reverse" },
       Title { fg = xres.fg.lighten(25), bg = xres.bg },
