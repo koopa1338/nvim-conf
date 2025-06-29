@@ -117,3 +117,4 @@ L("lazy", function(lazy)
   lazy.setup("plugins", opts)
 end)
 
+L "lsp_setup"
