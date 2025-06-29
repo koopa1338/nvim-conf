@@ -20,7 +20,6 @@ vim.diagnostic.config {
     spacing = 3,
   },
   underline = false,
-  float = { border = vim.g.border_type },
   severity_sort = true,
 }
 

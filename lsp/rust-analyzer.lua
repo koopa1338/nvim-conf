@@ -1,6 +1,6 @@
 return {
   cmd = { "rust-analyzer" },
-  filetypes = {"rs"},
+  filetypes = { "rust" },
   root_markers = {
     "Cargo.toml",
     "rust-project.json",

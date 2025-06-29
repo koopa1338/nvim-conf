@@ -219,7 +219,7 @@ local provider_mapping = {
   },
 }
 
-local map_providers = function(client, bufnr)
+M.map_providers = function(client, bufnr)
   for provider, mappings in pairs(provider_mapping) do
     for _, map in ipairs(mappings) do
       if client.supports_method(map.method) then
@@ -234,7 +234,7 @@ local map_providers = function(client, bufnr)
   end
 end
 
-local map_unsupported = function()
+M.map_unsupported = function()
   for provider, supported in pairs(M.supported) do
     if not supported then
       local prov = provider_mapping[provider]
