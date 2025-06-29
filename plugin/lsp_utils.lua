@@ -113,7 +113,11 @@ local provider_mapping = {
     {
       mode = "n",
       keys = "<leader>ls",
-      callback = vim.lsp.buf.signature_help,
+      callback = function()
+        vim.lsp.buf.signature_help {
+          border = vim.g.border_type,
+        }
+      end,
       method = "textDocument/signatureHelp",
       desc = "Show Signature Help",
       error = "LSP does not support signature help",
@@ -153,7 +157,11 @@ local provider_mapping = {
     {
       mode = "n",
       keys = "K",
-      callback = vim.lsp.buf.hover,
+      callback = function()
+        vim.lsp.buf.hover {
+          border = vim.g.border_type,
+        }
+      end,
       method = "textDocument/hover",
       desc = "Show Hover Information",
       error = "LSP does not support hover information",

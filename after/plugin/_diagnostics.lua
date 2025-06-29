@@ -19,6 +19,9 @@ vim.diagnostic.config {
     source = "if_many",
     spacing = 3,
   },
+  float = {
+    border = vim.g.border_type,
+  },
   underline = false,
   severity_sort = true,
 }
