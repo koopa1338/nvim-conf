@@ -1,4 +1,3 @@
-local settings = L "lsp_settings"
 local M = {}
 
 M.get_runtime_path = function()
@@ -25,14 +24,6 @@ end
 
 local notify_unsupported_lsp = function(message, title)
   vim.notify(message, vim.log.levels.INFO, { title = title or "LSP Provider not supported" })
-end
-
-M.servers = function(nvim_lsp)
-  local servers = {}
-  if settings ~= nil then
-    servers = settings.lsp_servers(nvim_lsp)
-  end
-  return servers
 end
 
 M.supported = {
@@ -285,40 +276,6 @@ M.on_attach = function(client, bufnr)
   Map("n", "<leader>lk", function()
     vim.diagnostic.goto_prev { float = float_opts, severity = { min = vim.diagnostic.severity.WARN } }
   end, { silent = true, buffer = bufnr, desc = "Jump to Previous Diagnostic" })
-end
-
-M.get_none_ls_sources = function(none_ls)
-  local sources = {}
-  local custom_sources = {}
-  if settings ~= nil then
-    custom_sources = settings.lsp_sources(none_ls)
-  end
-  for k, v in pairs(custom_sources) do
-    if v.custom then
-      local cond = v.config.condition
-      if v.external_cmd and cond ~= nil then
-        v.config.condition = cond and cmd_available(v.external_cmd)
-      end
-      none_ls.register(v.config)
-    else
-      local src = none_ls.builtins[v.type][k]
-      if not src then
-        goto continue
-      end
-
-      if v.with then
-        src = src.with(v.with)
-      end
-
-      if v.external_cmd and cmd_available(k) or true then
-        table.insert(sources, src)
-      end
-
-      ::continue::
-    end
-  end
-
-  return sources
 end
 
 return M

@@ -1,4 +1,7 @@
-local M = {}
+local M = {
+  "mason-org/mason.nvim",
+  opts = {},
+}
 
 M.setup = function()
   L("mason").setup {
@@ -10,12 +13,6 @@ M.setup = function()
         package_uninstalled = "",
       },
     },
-  }
-  L("mason-lspconfig").setup {
-    ensure_installed = {
-      "lua_ls",
-    },
-    automatic_enable = false,
   }
 end
 
