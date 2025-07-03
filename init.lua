@@ -24,7 +24,6 @@ cmd [[
 ]]
 
 o.timeout = true
-o.ttimeout = false
 o.backspace = { "indent", "eol", "start" }
 o.showmatch = true
 o.showmode = false
@@ -55,7 +54,6 @@ o.swapfile = false
 o.spelllang = { "de_de", "en_us" }
 o.backup = false
 o.writebackup = false
-o.timeout = false
 
 -- line numbers
 o.rnu = true
