@@ -27,8 +27,7 @@ M.config = function()
     dashboard.button("e", "  New file", "<cmd>enew<CR>"),
     dashboard.button("1", "󰚰  Plugins", "<cmd>Lazy<CR>"),
     dashboard.button("2", "󰚰  Update Treesitter", "<cmd>TSUpdate<CR>"),
-    -- currently bugged, this opens mason on vim enter
-    -- dashboard.button("3", "󱃲  Mason", "<cmd>Mason<CR>"),
+    dashboard.button("3", "󱃲  Mason", "<cmd>Mason<CR>"),
     dashboard.button("4", "✙  Check", "<cmd>checkhealth<CR>"),
     dashboard.button("q", "󰅚  Quit NVIM", "<cmd>qa<CR>"),
   }
