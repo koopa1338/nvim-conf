@@ -1,6 +1,6 @@
 local M = {
   "mason-org/mason-lspconfig.nvim",
-  opts = { automatic_enable = true },
+  opts = { automatic_enable = false },
   event = "BufReadPre",
   dependencies = {
     {

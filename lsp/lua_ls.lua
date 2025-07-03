@@ -1,3 +1,14 @@
+local get_runtime_path = function()
+  local runtime_path = vim.split(package.path, ";")
+  return vim.tbl_extend("keep", runtime_path,
+    { "?/?.lua",
+      "lua/?.lua",
+      "lua/?/init.lua",
+      "plugin/?.lua",
+      "plugin/?/init.lua",
+    })
+end
+
 return {
   cmd = { "lua-language-server" },
   root_markers = {
@@ -9,14 +20,14 @@ return {
     "selene.toml",
     "selene.yml",
     ".git",
-    vim.uv.cwd(),   -- equivalent of `single_file_mode` in lspconfig
+    vim.uv.cwd(), -- equivalent of `single_file_mode` in lspconfig
   },
   filetypes = { "lua" },
   settings = {
     Lua = {
       runtime = {
         version = "LuaJIT",
-        path = L("lsp_utils").get_runtime_path(),
+        path = get_runtime_path(),
       },
       completion = {
         keywordSnippet = "Disable",
@@ -27,8 +38,8 @@ return {
         globals = { "vim" },
       },
       workspace = {
-        library = { vim.api.nvim_get_runtime_file("", true) },
+        library = { vim.env.VIMRUNTIME, },
       },
-    },
+    }
   },
 }

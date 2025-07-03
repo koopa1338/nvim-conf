@@ -26,7 +26,7 @@ api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave" }, {
       wo.nu = true
     end
 
-    local relative = vim.api.nvim_win_get_config(0).relative
+    local relative = api.nvim_win_get_config(0).relative
     if relative ~= "" then
       wo.nu = false
       wo.rnu = false
@@ -106,7 +106,7 @@ api.nvim_create_autocmd({ "FileType" }, {
   group = filetypes,
   pattern = { "lua" },
   callback = function()
-    vim.opt.shiftwidth = 2
+    o.shiftwidth = 2
   end,
 })
 
@@ -116,7 +116,7 @@ api.nvim_create_autocmd({ "FileType" }, {
   pattern = "*",
   callback = function()
     ---@diagnostic disable-next-line: missing-fields
-    vim.opt.formatoptions = {
+    o.formatoptions = {
       a = false, -- Auto formatting is BAD.
       t = false, -- Don't auto format my code. I got linters for that.
       c = true, -- In general, I like it when comments respect textwidth
@@ -155,7 +155,7 @@ api.nvim_create_autocmd({ "VimResized" }, {
 
 
 -- Don't hide the statusline when switching to cmd mode.
-local cmd_line = vim.api.nvim_create_augroup("CmdLine", { clear = true })
+local cmd_line = api.nvim_create_augroup("CmdLine", { clear = true })
 api.nvim_create_autocmd('CmdlineEnter', {
     group = cmd_line,
     command = ':set cmdheight=1',

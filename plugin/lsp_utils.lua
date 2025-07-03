@@ -1,19 +1,5 @@
 local M = {}
 
-M.get_runtime_path = function()
-  local runtime_path = vim.split(package.path, ";")
-  table.insert(runtime_path, "?/?.lua")
-  table.insert(runtime_path, "lua/?.lua")
-  table.insert(runtime_path, "lua/?/init.lua")
-  table.insert(runtime_path, "plugin/?.lua")
-  table.insert(runtime_path, "plugin/?/init.lua")
-  return runtime_path
-end
-
-local cmd_available = function(cmd)
-  return vim.fn.executable(cmd) == 1
-end
-
 M.get_lsp_capabilities = function(cmp_lsp)
   if cmp_lsp then
     return cmp_lsp.default_capabilites()
@@ -253,37 +239,6 @@ M.map_unsupported = function()
       end
     end
   end
-end
-
----@diagnostic disable-next-line: unused-local
-M.on_init = function(client)
-end
-
-M.on_attach = function(client, bufnr)
-  map_providers(client, bufnr)
-  map_unsupported()
-  Map(
-    "n",
-    "<leader>lci",
-    vim.lsp.buf.incoming_calls,
-    { silent = true, buffer = bufnr, desc = "Show Incoming Calls (quickfix)" }
-  )
-  Map(
-    "n",
-    "<leader>lco",
-    vim.lsp.buf.outgoing_calls,
-    { silent = true, buffer = bufnr, desc = "Show Outgoing Calls (quickfix)" }
-  )
-  local float_opts = { scope = "l", source = "if_many" }
-  Map("n", "<leader>ll", function()
-    vim.diagnostic.open_float(float_opts)
-  end, { silent = true, buffer = bufnr, desc = "Line Diagnostics" })
-  Map("n", "<leader>lj", function()
-    vim.diagnostic.goto_next { float = float_opts, severity = { min = vim.diagnostic.severity.WARN } }
-  end, { silent = true, buffer = bufnr, desc = "Jump to Next Diagnostic" })
-  Map("n", "<leader>lk", function()
-    vim.diagnostic.goto_prev { float = float_opts, severity = { min = vim.diagnostic.severity.WARN } }
-  end, { silent = true, buffer = bufnr, desc = "Jump to Previous Diagnostic" })
 end
 
 return M

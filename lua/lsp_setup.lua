@@ -1,4 +1,28 @@
+local lsp_files = {}
+local lsp_dir = vim.fn.stdpath("config") .. "/lsp/"
+
+for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
+  -- Read the first line of the file
+  local f = io.open(file, "r")
+  local first_line = f and f:read("*l") or ""
+  if f then
+    f:close()
+  end
+  -- Only include the file if it doesn't start with "-- disable"
+  if not first_line:match("^%-%- disable") then
+    local name = vim.fn.fnamemodify(file, ":t:r")   -- `:t` gets filename, `:r` removes extension
+    table.insert(lsp_files, name)
+  end
+end
+
 require("mason")
+L("mason-lspconfig", function(mlsp)
+  local servers = mlsp.get_installed_servers()
+  lsp_files = vim.tbl_extend("keep", lsp_files, servers)
+  P(lsp_files)
+end)
+
+
 L("lsp_utils", function(lsp_utils)
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
@@ -36,6 +60,8 @@ L("lsp_utils", function(lsp_utils)
   vim.lsp.config("*", {
     capabilities = vim.lsp.protocol.make_client_capabilities(),
   })
+
+  vim.lsp.enable(lsp_files)
 end)
 
 local function restart_lsp(bufnr)
@@ -136,22 +162,3 @@ local function lsp_status()
 end
 
 vim.api.nvim_create_user_command("LspStatus", lsp_status, { desc = "Show detailed LSP status" })
-
-local lsp_files = {}
-local lsp_dir = vim.fn.stdpath("config") .. "/lsp/"
-
-for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
-  -- Read the first line of the file
-  local f = io.open(file, "r")
-  local first_line = f and f:read("*l") or ""
-  if f then
-    f:close()
-  end
-  -- Only include the file if it doesn't start with "-- disable"
-  if not first_line:match("^%-%- disable") then
-    local name = vim.fn.fnamemodify(file, ":t:r") -- `:t` gets filename, `:r` removes extension
-    table.insert(lsp_files, name)
-  end
-end
-
-vim.lsp.enable(lsp_files)
