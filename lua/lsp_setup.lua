@@ -19,7 +19,6 @@ require("mason")
 L("mason-lspconfig", function(mlsp)
   local servers = mlsp.get_installed_servers()
   lsp_files = vim.tbl_extend("keep", lsp_files, servers)
-  P(lsp_files)
 end)
 
 
