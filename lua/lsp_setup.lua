@@ -1,32 +1,33 @@
 local lsp_files = {}
-local lsp_dir = vim.fn.stdpath("config") .. "/lsp/"
+local lsp_dir = vim.fn.stdpath "config" .. "/lsp/"
 
 for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
   -- Read the first line of the file
   local f = io.open(file, "r")
-  local first_line = f and f:read("*l") or ""
+  local first_line = f and f:read "*l" or ""
   if f then
     f:close()
   end
   -- Only include the file if it doesn't start with "-- disable"
-  if not first_line:match("^%-%- disable") then
-    local name = vim.fn.fnamemodify(file, ":t:r")   -- `:t` gets filename, `:r` removes extension
+  if not first_line:match "^%-%- disable" then
+    local name = vim.fn.fnamemodify(file, ":t:r") -- `:t` gets filename, `:r` removes extension
     table.insert(lsp_files, name)
   end
 end
 
-require("mason")
+require "mason"
 L("mason-lspconfig", function(mlsp)
   local servers = mlsp.get_installed_servers()
   lsp_files = vim.tbl_extend("keep", lsp_files, servers)
 end)
 
-
 L("lsp_utils", function(lsp_utils)
-  vim.api.nvim_create_autocmd('LspAttach', {
+  vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
       local client = vim.lsp.get_client_by_id(ev.data.client_id)
-      if not client then return end
+      if not client then
+        return
+      end
       local bufnr = ev.buf
 
       lsp_utils.map_providers(client, bufnr)
@@ -53,7 +54,7 @@ L("lsp_utils", function(lsp_utils)
       Map("n", "<leader>lk", function()
         vim.diagnostic.jump { count = -1, float = true, severity = { min = vim.diagnostic.severity.WARN } }
       end, { silent = true, buffer = bufnr, desc = "Jump to Previous Diagnostic" })
-    end
+    end,
   })
 
   vim.lsp.config("*", {
@@ -67,10 +68,10 @@ local function restart_lsp(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
   local clients
   if vim.lsp.get_clients then
-    clients = vim.lsp.get_clients({ bufnr = bufnr })
+    clients = vim.lsp.get_clients { bufnr = bufnr }
   else
     ---@diagnostic disable-next-line: deprecated
-    clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+    clients = vim.lsp.get_active_clients { bufnr = bufnr }
   end
 
   for _, client in ipairs(clients) do
@@ -78,7 +79,7 @@ local function restart_lsp(bufnr)
   end
 
   vim.defer_fn(function()
-    vim.cmd("edit")
+    vim.cmd "edit"
   end, 100)
 end
 
@@ -87,7 +88,7 @@ vim.api.nvim_create_user_command("LspRestart", function()
 end, {})
 
 vim.api.nvim_create_user_command("LspStop", function(opts)
-  for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+  for _, client in ipairs(vim.lsp.get_clients { bufnr = 0 }) do
     if opts.args == "" or opts.args == client.name then
       client:stop(true)
       vim.notify(client.name .. ": stopped")
@@ -97,7 +98,7 @@ end, {
   desc = "Stop all LSP clients or a specific client attached to the current buffer.",
   nargs = "?",
   complete = function(_, _, _)
-    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    local clients = vim.lsp.get_clients { bufnr = 0 }
     local client_names = {}
     for _, client in ipairs(clients) do
       table.insert(client_names, client.name)
@@ -107,23 +108,22 @@ end, {
 })
 
 vim.api.nvim_create_user_command("LspInfo", function()
-  vim.cmd("silent checkhealth vim.lsp")
+  vim.cmd "silent checkhealth vim.lsp"
 end, {
   desc = "Get all the information about all LSP attached",
 })
 
-
 local function lsp_status()
   local bufnr = vim.api.nvim_get_current_buf()
-  local clients = vim.lsp.get_clients and vim.lsp.get_clients({ bufnr = bufnr })
+  local clients = vim.lsp.get_clients and vim.lsp.get_clients { bufnr = bufnr }
 
   if #clients == 0 then
-    print("󰅚 No LSP clients attached")
+    print "󰅚 No LSP clients attached"
     return
   end
 
   print("󰒋 LSP Status for buffer " .. bufnr .. ":")
-  print("─────────────────────────────────")
+  print "─────────────────────────────────"
 
   for i, client in ipairs(clients) do
     print(string.format("󰌘 Client %d: %s (ID: %d)", i, client.name, client.id))
@@ -156,7 +156,7 @@ local function lsp_status()
     end
 
     print("  Features: " .. table.concat(features, ", "))
-    print("")
+    print ""
   end
 end
 

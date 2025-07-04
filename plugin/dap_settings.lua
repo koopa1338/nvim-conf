@@ -1,5 +1,5 @@
 local M = {}
-local sym = L"signs".debug_symbols
+local sym = L("signs").debug_symbols
 
 M.adapters = {
   lldb = {
@@ -85,7 +85,6 @@ M.configurations = {
       runInTerminal = false,
     },
   },
-
 }
 
 return M

@@ -44,7 +44,6 @@ o.inccommand = "split"
 o.list = true
 o.listchars = { trail = "", tab = " " }
 
-
 -- More natural splitting
 o.splitbelow = true
 o.splitright = true

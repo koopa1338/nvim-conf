@@ -1,8 +1,10 @@
 return {
   cmd = { "gopls" },
-  filetypes = {"go"},
+  filetypes = { "go" },
   root_markers = {
-    "go.work", "go.mod", ".git", vim.uv.cwd(),
-  }
+    "go.work",
+    "go.mod",
+    ".git",
+    vim.uv.cwd(),
+  },
 }
-

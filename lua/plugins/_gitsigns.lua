@@ -35,7 +35,7 @@ M.config = function()
       update_debounce = 100,
       status_formatter = nil, -- Use default
       diff_opts = {
-        internal = true,      -- If luajit is present
+        internal = true, -- If luajit is present
       },
       preview_config = {
         border = vim.g.border_type,

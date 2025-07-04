@@ -13,12 +13,11 @@ local M = {
             package_pending = "➤",
             package_uninstalled = "",
           },
-        }
-      }
+        },
+      },
     },
     "neovim/nvim-lspconfig",
   },
 }
 
 return M
-

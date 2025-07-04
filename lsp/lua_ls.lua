@@ -1,12 +1,10 @@
 local get_runtime_path = function()
   local runtime_path = vim.split(package.path, ";")
-  return vim.tbl_extend("keep", runtime_path,
-    { "?/?.lua",
-      "lua/?.lua",
-      "lua/?/init.lua",
-      "plugin/?.lua",
-      "plugin/?/init.lua",
-    })
+  return vim.tbl_extend(
+    "keep",
+    runtime_path,
+    { "?/?.lua", "lua/?.lua", "lua/?/init.lua", "plugin/?.lua", "plugin/?/init.lua" }
+  )
 end
 
 return {
@@ -38,8 +36,8 @@ return {
         globals = { "vim" },
       },
       workspace = {
-        library = { vim.env.VIMRUNTIME, },
+        library = { vim.env.VIMRUNTIME },
       },
-    }
+    },
   },
 }

@@ -115,7 +115,7 @@ M.config = function()
           ["s"] = "open_vsplit",
           ["<C-x>"] = function(state)
             local node = state.tree:get_node()
-            wp.pick_open_split { path = node.path, vertical = false,  }
+            wp.pick_open_split { path = node.path, vertical = false }
           end,
           ["<C-v>"] = function(state)
             local node = state.tree:get_node()
