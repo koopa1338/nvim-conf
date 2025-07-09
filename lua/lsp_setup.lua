@@ -22,6 +22,23 @@ L("mason-lspconfig", function(mlsp)
 end)
 
 L("lsp_utils", function(lsp_utils)
+  -- register mappings after dynamic registration
+  -- hopefully we can do this later with a lsp-event and autocmd
+  local orig_handler = vim.lsp.handlers["client/registerCapability"]
+  vim.lsp.handlers["client/registerCapability"] = function(err, result, ctx)
+    local orig_result = orig_handler(err, result, ctx)
+    for _, reg in ipairs(result.registrations) do
+      local mapping = lsp_utils.method_mappings[reg.method]
+      if mapping then
+        for _, m in ipairs(mapping) do
+          Map(m.mode, m.keys, m.callback, { silent = true, desc = m.desc })
+        end
+      end
+    end
+
+    return orig_result
+  end
+
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
       local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -31,7 +48,6 @@ L("lsp_utils", function(lsp_utils)
       local bufnr = ev.buf
 
       lsp_utils.map_providers(client, bufnr)
-      lsp_utils.map_unsupported()
       Map(
         "n",
         "<leader>lci",
@@ -58,7 +74,7 @@ L("lsp_utils", function(lsp_utils)
   })
 
   vim.lsp.config("*", {
-    capabilities = vim.lsp.protocol.make_client_capabilities(),
+    capabilities = require('cmp_nvim_lsp').default_capabilities() or vim.lsp.protocol.make_client_capabilities(),
   })
 
   vim.lsp.enable(lsp_files)
