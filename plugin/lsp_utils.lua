@@ -69,15 +69,9 @@ M.method_mappings = {
   },
   ["textDocument/formatting"] = {
     {
-      mode = "n",
+      mode = { "n", "v" },
       keys = "<leader>lf",
-      callback = function()
-        if vim.version().minor >= 8 then
-          vim.lsp.buf.format() -- { async = true }
-        else
-          vim.lsp.buf.formatting()
-        end
-      end,
+      callback = require("conform").format,
       desc = "Format File",
       error = "LSP does not support formatting",
       buffer = true,
