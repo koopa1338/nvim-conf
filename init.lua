@@ -88,6 +88,7 @@ o.breakindent = true
 o.breakindentopt = { shift = "2" }
 o.conceallevel = 2 -- for ligatures, toggle with keymap
 wo.foldtext = "v:lua.vim.treesitter.foldtext()"
+o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 g.loaded_node_provider = 0
 g.loaded_perl_provider = 0
