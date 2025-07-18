@@ -178,17 +178,17 @@ M.method_mappings = {
 
 M.map_providers = function(client, bufnr)
   for method, mappings in pairs(M.method_mappings) do
-    for _, map in ipairs(mappings) do
-      if client.supports_method(method) then
-        local opts = { silent = true, desc = map.desc }
-        if map.buffer then
+    for _, mapping in ipairs(mappings) do
+      if client:supports_method(method, bufnr) then
+        local opts = { silent = true, desc = mapping.desc }
+        if mapping.buffer then
           opts.buffer = bufnr
         end
-        Map(map.mode, map.keys, map.callback, opts)
+        Map(mapping.mode, mapping.keys, mapping.callback, opts)
       else
-        Map(map.mode, map.keys, function()
-          notify_unsupported_lsp(map.error, map.desc)
-        end, { silent = true, desc = map.desc })
+        Map(mapping.mode, mapping.keys, function()
+          notify_unsupported_lsp(mapping.error, mapping.desc)
+        end, { silent = true, desc = mapping.desc })
       end
     end
   end

@@ -1,6 +1,8 @@
 local lsp_files = {}
 local lsp_dir = vim.fn.stdpath "config" .. "/lsp/"
 
+-- local capabilities = require('cmp').get_lsp_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
   -- Read the first line of the file
   local f = io.open(file, "r")
@@ -11,7 +13,9 @@ for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
   -- Only include the file if it doesn't start with "-- disable"
   if not first_line:match "^%-%- disable" then
     local name = vim.fn.fnamemodify(file, ":t:r") -- `:t` gets filename, `:r` removes extension
-    table.insert(lsp_files, name)
+    lsp_files[name] = {
+      capabilities = capabilities
+    }
   end
 end
 
@@ -19,6 +23,13 @@ require "mason"
 L("mason-lspconfig", function(mlsp)
   local servers = mlsp.get_installed_servers()
   lsp_files = vim.tbl_extend("keep", lsp_files, servers)
+  local lsp_files_with_cap = {}
+  for _, server in ipairs(lsp_files) do
+    lsp_files_with_cap[server] = {
+      capabilities = capabilities
+    }
+  end
+  lsp_files = lsp_files_with_cap
 end)
 
 L("lsp_utils", function(lsp_utils)
@@ -74,10 +85,13 @@ L("lsp_utils", function(lsp_utils)
   })
 
   vim.lsp.config("*", {
-    capabilities = require('cmp_nvim_lsp').default_capabilities() or vim.lsp.protocol.make_client_capabilities(),
+    capabilities = capabilities,
   })
 
-  vim.lsp.enable(lsp_files)
+  for name, config in pairs(lsp_files) do
+    vim.lsp.config(name, config)
+    vim.lsp.enable(name)
+  end
 end)
 
 local function restart_lsp(bufnr)
