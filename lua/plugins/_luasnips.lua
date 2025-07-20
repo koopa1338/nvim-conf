@@ -13,6 +13,9 @@ local M = {
 }
 
 M.config = function()
+  Map({ "i", "s" }, "<C-j>", "<Plug>luasnip-next-choice", {})
+  Map({ "i", "s" }, "<C-k>", "<Plug>luasnip-prev-choice", {})
+
   L("luasnip", function(ls)
     local signs = L("signs").signs
     local types = L "luasnip.util.types"
