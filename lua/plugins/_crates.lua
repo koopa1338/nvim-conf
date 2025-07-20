@@ -6,7 +6,32 @@ local M = {
 
 M.config = function()
   L("crates", function(crates)
-    crates.setup { popup = { autofocus = true, border = vim.g.border_type } }
+    crates.setup {
+      popup = { autofocus = true, border = vim.g.border_type },
+      completion = {
+        blink = {
+          use_custom_kind = true,
+          kind_text = {
+            version = "Version",
+            feature = "Feature",
+          },
+          kind_highlight = {
+            version = "BlinkCmpKindVersion",
+            feature = "BlinkCmpKindFeature",
+          },
+          kind_icon = {
+            version = " ",
+            feature = " ",
+          },
+        },
+      },
+      lsp = {
+        enabled = true,
+        actions = true,
+        completion = true,
+        hover = true,
+      },
+    }
 
     Map("n", "<leader>cr", crates.reload, { silent = true, buffer = true, desc = "Reload crates" })
     Map("n", "<leader>cp", crates.show_popup, { silent = true, buffer = true, desc = "Open crate info popup" })
