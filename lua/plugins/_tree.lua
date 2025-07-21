@@ -1,6 +1,6 @@
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.*",
+  version = "v3.*",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
