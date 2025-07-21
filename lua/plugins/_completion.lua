@@ -39,6 +39,8 @@ local M = {
       completion = {
         menu = {
           border = vim.g.border_type,
+          max_height = 15,
+          scrolloff = 0,
           draw = { columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } } },
         },
         documentation = {
@@ -51,7 +53,7 @@ local M = {
       },
       cmdline = {
         enabled = true,
-        keymap = { preset = "cmdline" },
+        keymap = { preset = "inherit" },
         sources = function()
           local type = vim.fn.getcmdtype()
           -- Search forward and backward
