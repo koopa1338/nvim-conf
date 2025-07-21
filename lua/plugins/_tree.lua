@@ -1,5 +1,6 @@
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
+  branch = "v3.*",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
@@ -9,12 +10,11 @@ local M = {
     },
   },
   cmd = {
-    "NeoTreeRevealToggle",
-    "NeoTreeFloatToggle",
+    "NeoTree",
   },
   keys = {
-    { "<C-n>", "<cmd>NeoTreeRevealToggle<CR>", silent = true, desc = "Toggle Neo Tree" },
-    { "<M-C-n>", "<cmd>NeoTreeFloatToggle<CR>", silent = true, desc = "Toggle Neo Tree Floating Mode" },
+    { "<C-n>", "<cmd>Neotree position=left toggle<CR>", silent = true, desc = "Toggle Neo Tree" },
+    { "<M-C-n>", "<cmd>Neotree position=float toggle<CR>", silent = true, desc = "Toggle Neo Tree Floating Mode" },
   },
 }
 M.config = function()
