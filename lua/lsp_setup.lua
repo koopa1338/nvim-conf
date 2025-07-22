@@ -15,12 +15,6 @@ for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
   end
 end
 
-require "mason"
-L("mason-lspconfig", function(mlsp)
-  local servers = mlsp.get_installed_servers()
-  lsp_files = vim.tbl_extend("keep", lsp_files, servers)
-end)
-
 L("lsp_utils", function(lsp_utils)
   -- register mappings after dynamic registration
   -- hopefully we can do this later with a lsp-event and autocmd
@@ -78,6 +72,13 @@ L("lsp_utils", function(lsp_utils)
   vim.lsp.config("*", {
     capabilities = capabilities,
   })
+
+  if next(lsp_files) == nil then
+    L("mason-lspconfig", function(mlsp)
+      local servers = mlsp.get_installed_servers()
+      lsp_files = vim.tbl_extend("keep", lsp_files, servers)
+    end)
+  end
 
   for _, name in ipairs(lsp_files) do
     vim.lsp.enable(name)
