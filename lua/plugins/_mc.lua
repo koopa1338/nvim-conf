@@ -1,13 +1,5 @@
-local M = {
+return {
   "jake-stewart/multicursor.nvim",
-  event = "VimEnter",
-  branch = "1.0",
+  event = "BufReadPre",
+  config = true,
 }
-
-M.config = function()
-  L("multicursor-nvim", function(mc)
-    mc.setup()
-  end)
-end
-
-return M
