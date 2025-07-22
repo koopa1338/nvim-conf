@@ -40,7 +40,7 @@ local M = {
         menu = {
           border = vim.g.border_type,
           max_height = 15,
-          scrolloff = 0,
+          scrolloff = 3, -- we have to set this otherwise the scroll of bugs out
           draw = { columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } } },
         },
         documentation = {
