@@ -2,16 +2,6 @@ return {
   -- text objects and motions
   { "godlygeek/tabular", cmd = "Tabularize" },
 
-  -- syntax and languages
-  { "lervag/vimtex", ft = { "tex" } },
-  {
-    "iamcco/markdown-preview.nvim",
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-    ft = { "markdown" },
-  },
-
   -- theme
   { "rktjmp/lush.nvim" },
   {
