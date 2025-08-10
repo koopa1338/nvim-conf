@@ -1,7 +1,5 @@
 lua/colors.lua
-plugin/user_settings.lua
 undodir/*
 lazy-lock.json
-luasnippets/*
 nvim.version
 typrstats
