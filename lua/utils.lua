@@ -23,16 +23,6 @@ Map = function(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts_or_defaults)
 end
 
-Contains = function(tab, val)
-  for _, value in ipairs(tab) do
-    if value == val then
-      return true
-    end
-  end
-
-  return false
-end
-
 P = function(arg)
   print(vim.inspect(arg))
 
