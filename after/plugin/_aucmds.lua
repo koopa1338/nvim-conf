@@ -15,6 +15,12 @@ local blacklist = {
   "TelescopePrompt",
   "TelescopeResults",
   "fidget",
+  "lazy_backdrop",
+  "lazy",
+  "blink-cmp-menu",
+  "mason",
+  "mason_backdrop",
+  "notify"
 }
 
 local numbertoggle = api.nvim_create_augroup("NumberToggle", { clear = true })
