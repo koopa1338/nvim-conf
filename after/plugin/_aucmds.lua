@@ -13,14 +13,7 @@ local blacklist = {
   "dap-repl",
   "alpha",
   "TelescopePrompt",
-  "TelescopeResults",
-  "fidget",
-  "lazy_backdrop",
-  "lazy",
-  "blink-cmp-menu",
-  "mason",
-  "mason_backdrop",
-  "notify"
+  "notify",
 }
 
 local numbertoggle = api.nvim_create_augroup("NumberToggle", { clear = true })
@@ -29,7 +22,7 @@ api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave" }, {
   callback = function()
     local ft = bo.filetype
     wo.nu = false
-    if not vim.tbl_contains(blacklist, ft) then
+    if not vim.list_contains(blacklist, ft) then
       wo.rnu = true
       wo.nu = true
     end
@@ -48,7 +41,7 @@ api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter" }, {
   callback = function()
     local ft = bo.filetype
     wo.nu = false
-    if not vim.tbl_contains(blacklist, ft) then
+    if not vim.list_contains(blacklist, ft) then
       wo.rnu = false
       wo.nu = true
     end
@@ -143,7 +136,7 @@ api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave" }, {
   group = staline,
   callback = function()
     local ft = bo.filetype
-    if vim.tbl_contains({ "alpha", "NvimTree", "mason" }, ft) then
+    if vim.list_contains({ "alpha", "NvimTree", "mason" }, ft) then
       o.laststatus = 3
     else
       o.laststatus = 2
@@ -173,10 +166,24 @@ api.nvim_create_autocmd("CmdlineLeave", {
   command = ":set cmdheight=0",
 })
 
+local ft_blacklist = vim.list_extend({
+  "TelescopeResults",
+  "lazy_backdrop",
+  "lazy",
+  "fidget",
+  "blink-cmp-menu",
+  "blink-cmp-menu",
+  "blink-cmp-documentation",
+  "blink-cmp-signature",
+  "mason",
+  "mason_backdrop",
+  "msgfloat",
+  "qf",
+}, blacklist)
 api.nvim_create_autocmd({ "FileType" }, {
   callback = function(event)
     local ft = event.match
-    if not vim.tbl_contains(blacklist, ft) then
+    if not vim.list_contains(ft_blacklist, ft) then
       vim.treesitter.start()
     end
   end,
