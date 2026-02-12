@@ -73,12 +73,10 @@ L("lsp_utils", function(lsp_utils)
     capabilities = capabilities,
   })
 
-  if next(lsp_files) == nil then
-    L("mason-lspconfig", function(mlsp)
-      local servers = mlsp.get_installed_servers()
-      lsp_files = vim.tbl_extend("keep", lsp_files, servers)
-    end)
-  end
+  L("mason-lspconfig", function(mlsp)
+    local servers = mlsp.get_installed_servers()
+    lsp_files = vim.tbl_extend("keep", servers, lsp_files)
+  end)
 
   for _, name in ipairs(lsp_files) do
     vim.lsp.enable(name)
