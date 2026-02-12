@@ -75,7 +75,11 @@ L("lsp_utils", function(lsp_utils)
 
   L("mason-lspconfig", function(mlsp)
     local servers = mlsp.get_installed_servers()
-    lsp_files = vim.tbl_extend("keep", servers, lsp_files)
+    for _, name in ipairs(servers) do
+      if not vim.tbl_contains(lsp_files, name) then
+        table.insert(lsp_files, name)
+      end
+    end
   end)
 
   for _, name in ipairs(lsp_files) do
