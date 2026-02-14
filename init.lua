@@ -8,6 +8,7 @@ g.mapleader = " "
 g.border_type = "rounded" -- supported: rounded, single, double
 
 require "utils"
+require "commands"
 L("signs", function(signs)
   signs.setup()
 end)
@@ -102,11 +103,6 @@ g.tex_flavor = "latex"
 if fn.has "windows" then
   o.fillchars = { vert = "┃", eob = "￭", diff = "╱" }
 end
-
--- command abbreviations
-vim.cmd [[cabbrev yfn   let @+ = expand("%:t")]]
-vim.cmd [[cabbrev yfp   let @+ = expand("%:p")]]
-vim.cmd [[cabbrev yrp   let @+ = expand("%")]]
 
 L "mappings"
 
