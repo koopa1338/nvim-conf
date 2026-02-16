@@ -12,8 +12,8 @@ return {
         Map("n", "<M-s>", function()
           swap.swap_next "@parameter.inner"
         end, { silent = true })
-        Map("n", "<leader><M-s>", function()
-          swap.swap_previous "@parameter.outer"
+        Map("n", "<M-S-s>", function()
+          swap.swap_previous "@parameter.inner"
         end, { silent = true })
       end,
     },
