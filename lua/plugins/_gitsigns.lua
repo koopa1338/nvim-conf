@@ -45,6 +45,7 @@ M.config = function()
     Map("n", "<leader>gb", function()
       gitsigns.blame_line { full = true }
     end, { silent = true })
+    Map("n", "<leader>gB", gitsigns.blame, { silent = true })
     Map("n", "<leader>gib", gitsigns.toggle_current_line_blame, { silent = true })
     Map("n", "<leader>gid", gitsigns.preview_hunk, { silent = true })
     Map("n", "<leader>g-", gitsigns.undo_stage_hunk, { silent = true })
