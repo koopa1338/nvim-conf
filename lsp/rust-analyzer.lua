@@ -7,6 +7,13 @@ return {
     ".git",
     vim.uv.cwd(),
   },
+  -- this is vor passing environments to devcontainers
+  container = {
+    env = {
+      CARGO_HOME = vim.env.HOME .. "/.cargo",
+    },
+    cmd = { vim.env.HOME .. "/.cargo/bin/rust-analyzer" },
+  },
   settings = {
     ["rust-analyzer"] = {
       procMacro = {

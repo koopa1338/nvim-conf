@@ -1,5 +1,6 @@
 local lsp_files = {}
 local lsp_dir = vim.fn.stdpath "config" .. "/lsp/"
+local lsp_configs = {}
 
 for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
   -- Read the first line of the file
@@ -12,6 +13,9 @@ for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
   if not first_line:match "^%-%- disable" then
     local name = vim.fn.fnamemodify(file, ":t:r") -- `:t` gets filename, `:r` removes extension
     table.insert(lsp_files, name)
+    lsp_configs[name] = dofile(file)
+
+    vim.lsp.config(name, lsp_configs[name])
   end
 end
 
@@ -110,13 +114,17 @@ vim.api.nvim_create_user_command("LspRestart", function()
   restart_lsp()
 end, {})
 
-vim.api.nvim_create_user_command("LspStop", function(opts)
+local function stop_lsp(opts)
   for _, client in ipairs(vim.lsp.get_clients { bufnr = 0 }) do
     if opts.args == "" or opts.args == client.name then
       client:stop(true)
       vim.notify(client.name .. ": stopped")
     end
   end
+end
+
+vim.api.nvim_create_user_command("LspStop", function(opts)
+  stop_lsp(opts)
 end, {
   desc = "Stop all LSP clients or a specific client attached to the current buffer.",
   nargs = "?",
@@ -183,4 +191,44 @@ local function lsp_status()
   end
 end
 
+local function start_remote(name, container)
+  local cfg = vim.deepcopy(lsp_configs[name])
+  if not cfg then
+    vim.notify("no config found for server " .. name, vim.log.levels.ERROR)
+    return
+  end
+
+  local cmd = { "podman", "exec", "-i" }
+  local lsp_cmd = cfg.cmd[1]
+  if cfg.container then
+    if cfg.container.env then
+      for k, v in pairs(cfg.container.env) do
+        table.insert(cmd, "-e")
+        table.insert(cmd, k .. "=" .. v)
+      end
+    end
+    if cfg.container.cmd then
+      lsp_cmd = cfg.container.cmd[1]
+    end
+  end
+
+  table.insert(cmd, container)
+  table.insert(cmd, lsp_cmd)
+
+  cfg.cmd = cmd
+
+  vim.lsp.config(name .. "_remote", cfg)
+  vim.lsp.enable(name .. "_remote")
+end
+
 vim.api.nvim_create_user_command("LspStatus", lsp_status, { desc = "Show detailed LSP status" })
+
+vim.api.nvim_create_user_command("LspRemote", function(opts)
+  local args = vim.split(opts.args, " ")
+  local name = args[1]
+  local container = args[2]
+
+  stop_lsp(name)
+
+  start_remote(name, container)
+end, { desc = "Show detailed LSP status", nargs = "+" })
