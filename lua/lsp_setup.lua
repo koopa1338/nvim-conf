@@ -191,6 +191,8 @@ local function lsp_status()
   end
 end
 
+vim.api.nvim_create_user_command("LspStatus", lsp_status, { desc = "Show detailed LSP status" })
+
 local function start_remote(name, container)
   local cfg = vim.deepcopy(lsp_configs[name])
   if not cfg then
@@ -220,8 +222,6 @@ local function start_remote(name, container)
   vim.lsp.config(name .. "_remote", cfg)
   vim.lsp.enable(name .. "_remote")
 end
-
-vim.api.nvim_create_user_command("LspStatus", lsp_status, { desc = "Show detailed LSP status" })
 
 vim.api.nvim_create_user_command("LspRemote", function(opts)
   local args = vim.split(opts.args, " ")
