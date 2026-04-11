@@ -23,6 +23,12 @@ Map(
   { silent = true, desc = "Open next modified buffer in a vertical split" }
 )
 
+-- zenter after scrolling multiple lines
+Map("n", "<C-d>", "<C-d>zz", { silent = true })
+Map("n", "<C-u>", "<C-u>zz", { silent = true })
+Map("n", "<C-u>", "<C-f>zz", { silent = true })
+Map("n", "<C-u>", "<C-b>zz", { silent = true })
+
 -- windows
 Map("n", "<leader>wo", "<cmd>only<CR>", { silent = true, desc = "Close all other Windows" })
 Map("n", "<leader>wsh", "<cmd>split<CR>", { silent = true, desc = "Horizontal Split" })
