@@ -13,10 +13,22 @@ local M = {
 }
 
 M.config = function()
-  Map({ "i", "s" }, "<C-j>", "<Plug>luasnip-next-choice", {})
-  Map({ "i", "s" }, "<C-k>", "<Plug>luasnip-prev-choice", {})
-
   L("luasnip", function(ls)
+    Map({ "i", "s" }, "<C-j>", function()
+      if ls.choice_active() then
+        ls.change_choice(1)
+      else
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<CR>", true, false, true), "i", false)
+      end
+    end, {})
+    Map({ "i", "s" }, "<C-k>", function()
+      if ls.choice_active() then
+        ls.change_choice(-1)
+      else
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<CR>", true, false, true), "i", false)
+      end
+    end, {})
+
     local signs = L("signs").signs
     local types = L "luasnip.util.types"
     local extras = L "luasnip.extras"
