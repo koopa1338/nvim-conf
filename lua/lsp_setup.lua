@@ -91,53 +91,6 @@ L("lsp_utils", function(lsp_utils)
   end
 end)
 
-local function restart_lsp(bufnr)
-  bufnr = bufnr or vim.api.nvim_get_current_buf()
-  local clients
-  if vim.lsp.get_clients then
-    clients = vim.lsp.get_clients { bufnr = bufnr }
-  else
-    ---@diagnostic disable-next-line: deprecated
-    clients = vim.lsp.get_active_clients { bufnr = bufnr }
-  end
-
-  for _, client in ipairs(clients) do
-    vim.lsp.stop_client(client.id)
-  end
-
-  vim.defer_fn(function()
-    vim.cmd "edit"
-  end, 100)
-end
-
-vim.api.nvim_create_user_command("LspRestart", function()
-  restart_lsp()
-end, {})
-
-local function stop_lsp(opts)
-  for _, client in ipairs(vim.lsp.get_clients { bufnr = 0 }) do
-    if opts.args == "" or opts.args == client.name then
-      client:stop(true)
-      vim.notify(client.name .. ": stopped")
-    end
-  end
-end
-
-vim.api.nvim_create_user_command("LspStop", function(opts)
-  stop_lsp(opts)
-end, {
-  desc = "Stop all LSP clients or a specific client attached to the current buffer.",
-  nargs = "?",
-  complete = function(_, _, _)
-    local clients = vim.lsp.get_clients { bufnr = 0 }
-    local client_names = {}
-    for _, client in ipairs(clients) do
-      table.insert(client_names, client.name)
-    end
-    return client_names
-  end,
-})
-
 vim.api.nvim_create_user_command("LspInfo", function()
   vim.cmd "silent checkhealth vim.lsp"
 end, {
