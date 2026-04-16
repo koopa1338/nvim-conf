@@ -9,6 +9,9 @@ g.border_type = "rounded" -- supported: rounded, single, double
 
 require "utils"
 require "commands"
+L("vim._core.ui2", function(ui2)
+  ui2.enable({})
+end)
 L("signs", function(signs)
   signs.setup()
 end)
