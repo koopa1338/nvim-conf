@@ -207,6 +207,17 @@ L("lush", function(lush)
       GitSignsTopdeleteNr = { GitSignsDeleteNr },
       GitSignsChangedeleteNr = { GitSignsChangeNr },
 
+      OilGitAdded = { GitSignsAdd },
+      OilGitModified = { GitSignsChange },
+      OilGitModifiedStaged = { GitSignsStagedChange },
+      OilGitModifiedUnstaged = { GitSignsChange },
+      OilGitRenamed = { GitSignsChange },
+      OilGitDeleted = { GitSignsDelete },
+      OilGitCopied = { GitSignsChange },
+      OilGitConflict = { DiagnosticSignError },
+      OilGitUntracked = { GitSignsUntracked },
+      OilGitIgnored = { GitSignsCurrentLineBlame },
+
       -- Nvim groups
       NvimString { String },
       NvimStringBody { NvimString },

@@ -34,7 +34,7 @@ M.signs = {
     icon = "",
   },
   GitSignsLineColAdd = {
-    hl = "GitSingsAdd",
+    hl = "GitSignsAdd",
     icon = "",
   },
   GitSignsLineColTopdelete = {
@@ -54,15 +54,15 @@ M.signs = {
     icon = "",
   },
   GitSignsLineColUntracked = {
-    hl = "GitSingsAdd",
+    hl = "GitSignsAdd",
     icon = "",
   },
   GitSignsLineColUnmerged = {
-    hl = "GitSingsChange",
+    hl = "GitSignsChange",
     icon = "",
   },
   GitSignsLineColUnstaged = {
-    hl = "GitSingsAdd",
+    hl = "GitSignsAdd",
     icon = "󰙴",
   },
   GitSignsIgnored = {
