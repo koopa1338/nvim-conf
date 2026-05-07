@@ -9,18 +9,23 @@
 ---  buffer: bool
 ---  desc: string
 Map = function(mode, lhs, rhs, opts)
-  local opts_or_defaults = {
-    remap = opts.remap or false,
-    silent = opts.silent or false,
-    expr = opts.expr or false,
-    buffer = opts.buffer or false,
-    desc = opts.desc,
-  }
-  if opts.buffer then
-    opts_or_defaults["buffer"] = opts.buffer
+  -- Accept nil opts and preserve any provided options.
+  -- Default sensible values for commonly used boolean fields but keep any
+  -- additional keys the caller may pass (like `buffer`, `desc`, `silent`, etc).
+  opts = opts or {}
+  if opts.silent == nil then
+    opts.silent = false
+  end
+  if opts.remap == nil then
+    opts.remap = false
+  end
+  if opts.expr == nil then
+    opts.expr = false
   end
 
-  vim.keymap.set(mode, lhs, rhs, opts_or_defaults)
+  -- Pass the options straight through to vim.keymap.set; this avoids
+  -- accidentally dropping supported options when new ones are added.
+  vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 P = function(arg)
@@ -30,16 +35,19 @@ P = function(arg)
 end
 
 L = function(module, callback)
-  if pcall(require, module) then
-    local loaded_mod = require(module)
-    if callback then
-      callback(loaded_mod)
-    else
-      return require(module)
-    end
+  -- Try to require the module once. If successful, call callback(module)
+  -- or return the module. Avoid requiring twice and handle errors cleanly.
+  local ok, loaded = pcall(require, module)
+  if not ok then
+    -- Failure to load is silent here (preserving previous behaviour).
+    -- If you want noisy behaviour in development, add vim.notify here.
+    return nil
   end
-
-  return nil
+  if callback then
+    callback(loaded)
+    return nil
+  end
+  return loaded
 end
 
 R = function()

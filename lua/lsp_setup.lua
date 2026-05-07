@@ -3,18 +3,19 @@ local lsp_dir = vim.fn.stdpath "config" .. "/lsp/"
 local lsp_configs = {}
 
 for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
-  -- Read the first line of the file
+  -- Read the first line of the file to allow disabling with a comment flag.
   local f = io.open(file, "r")
   local first_line = f and f:read "*l" or ""
   if f then
     f:close()
   end
-  -- Only include the file if it doesn't start with "-- disable"
   if not first_line:match "^%-%- disable" then
     local name = vim.fn.fnamemodify(file, ":t:r") -- `:t` gets filename, `:r` removes extension
     table.insert(lsp_files, name)
+    -- Keep existing behaviour of loading the config table. This registers the
+    -- server configuration with nvim but we will not enable every server at startup.
+    -- We still call vim.lsp.config so the server is known to nvim.
     lsp_configs[name] = dofile(file)
-
     vim.lsp.config(name, lsp_configs[name])
   end
 end
@@ -78,17 +79,91 @@ L("lsp_utils", function(lsp_utils)
   })
 
   L("mason-lspconfig", function(mlsp)
-    local servers = mlsp.get_installed_servers()
-    for _, name in ipairs(servers) do
+    for _, name in ipairs(mlsp.get_installed_servers()) do
       if not vim.tbl_contains(lsp_files, name) then
         table.insert(lsp_files, name)
       end
     end
   end)
 
-  for _, name in ipairs(lsp_files) do
-    vim.lsp.enable(name)
+local function server_filetypes(name, cfg)
+  -- Return a list of filetypes for a server, trying multiple fallbacks.
+  if cfg and cfg.filetypes then
+    if type(cfg.filetypes) == "string" then
+      return { cfg.filetypes }
+    end
+    return cfg.filetypes
   end
+
+  local ok, registered = pcall(function() return vim.lsp.config(name) end)
+  if ok and registered and registered.filetypes then
+    local fts = registered.filetypes
+    return type(fts) == "string" and { fts } or fts
+  end
+
+  return nil
+end
+
+local function server_matches_filetype(name, cfg, ft)
+  local fts = server_filetypes(name, cfg)
+  if not fts then
+    return false
+  end
+  for _, v in ipairs(fts) do
+    if v == ft then
+      return true
+    end
+  end
+  return false
+end
+
+local function enable_for_buffer(name, bufnr)
+  for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
+    if client.name == name then return end
+  end
+  vim.lsp.enable(name)
+end
+
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "FileType" }, {
+  callback = function(ev)
+    local ft = vim.api.nvim_get_option_value("filetype", { buf = ev.buf })
+    for _, name in ipairs(lsp_files) do
+      if server_matches_filetype(name, lsp_configs[name], ft) then
+        enable_for_buffer(name, ev.buf)
+      end
+    end
+  end,
+})
+
+-- Provide a manual command to enable servers by name (keeps behaviour explicit).
+vim.api.nvim_create_user_command("LspEnable", function(opts)
+  local name = opts.args
+  if name == "" then
+    vim.notify("Usage: :LspEnable <server-name>", vim.log.levels.INFO)
+    return
+  end
+  if not lsp_configs[name] then
+    vim.notify("No server config found for: " .. name, vim.log.levels.ERROR)
+    return
+  end
+  vim.lsp.enable(name)
+end, { nargs = 1, desc = "Enable an LSP server by name" })
+
+-- Restore compatibility: enable any discovered servers at startup. This mirrors
+-- previous behaviour and ensures mason-installed servers (like markdown
+-- servers) are available immediately when opening a file. We wrap in pcall to
+-- avoid hard failures if a server can't be enabled.
+for _, name in ipairs(lsp_files) do
+  pcall(vim.lsp.enable, name)
+end
+
+-- Debug helper: inspect discovered servers and configs
+vim.api.nvim_create_user_command("DebugLspSetup", function()
+  print("lsp_files: " .. vim.inspect(lsp_files))
+  print("lsp_configs keys: " .. vim.inspect(vim.tbl_keys(lsp_configs)))
+  local ok, _ = pcall(require, "mason-lspconfig")
+  print("mason-lspconfig loaded: " .. tostring(ok))
+end, { nargs = 0 })
 end)
 
 vim.api.nvim_create_user_command("LspInfo", function()
