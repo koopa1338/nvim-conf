@@ -67,16 +67,7 @@ M.method_mappings = {
       buffer = true,
     },
   },
-  ["textDocument/formatting"] = {
-    {
-      mode = { "n", "v" },
-      keys = "<leader>lf",
-      callback = require("conform").format,
-      desc = "Format File",
-      error = "LSP does not support formatting",
-      buffer = true,
-    },
-  },
+
   ["textDocument/signatureHelp"] = {
     {
       mode = "n",

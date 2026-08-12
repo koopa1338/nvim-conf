@@ -4,10 +4,17 @@ local g, cmd, fn, o, og, wo = vim.g, vim.cmd, vim.fn, vim.opt, vim.opt_global, v
 g.mousehide = true
 og.termguicolors = true
 g.mapleader = " "
+
 -- global border_type
 g.border_type = "rounded" -- supported: rounded, single, double
 
 require "utils"
+
+-- format file → conform (always, regardless of LSP state)
+Map({ "n", "v" }, "<leader>lf", function()
+  require("conform").format()
+end, { desc = "Format File" })
+
 require "commands"
 L("vim._core.ui2", function(ui2)
   ui2.enable({})
