@@ -16,47 +16,6 @@ local deps = {
 
 local M = {}
 
-local grep_selection = function()
-  local start_table = vim.fn.getpos "."
-  local end_table = vim.fn.getpos "v"
-  local selection = {
-    start_pos = {
-      row = end_table[2] - 1,
-      col = end_table[3] - 1,
-    },
-    end_pos = {
-      row = start_table[2] - 1,
-      col = start_table[3],
-    },
-  }
-
-  if selection.start_pos.row ~= selection.end_pos.row then
-    vim.notify(
-      "Only single line selection are supported for live grep.",
-      vim.log.levels.ERROR,
-      { title = "Invalid selection" }
-    )
-    return
-  end
-
-  local start = selection["start_pos"]
-  local last = selection["end_pos"]
-  if selection.start_pos.col > selection.end_pos.col then
-    local tmp = start
-    start = last
-    last = tmp
-  end
-
-  local search = vim.api.nvim_buf_get_text(0, start.row, start.col, last.row, last.col, {})
-
-  if search then
-    M.deps.builtin.grep_string { search = search[1] }
-    return
-  end
-
-  vim.notify("Search didn't had any result.", vim.log.levels.ERROR, { title = "Invalid selection" })
-end
-
 local config = {
   "nvim-lua/telescope.nvim",
   dependencies = {
@@ -82,28 +41,6 @@ local config = {
       desc = "Find Files (Hidden + Ignored)",
     },
     { "<leader>fr", "<cmd>Telescope live_grep<CR>", silent = true, desc = "Find Live Grep" },
-    { "<leader>f*", "<cmd>Telescope grep_string<CR>", silent = true, desc = "Grep String" },
-    {
-      "<leader>f*",
-      grep_selection,
-      mode = "v",
-      silent = true,
-      desc = "Grep String (preselection)",
-    },
-    {
-      "<leader>fG",
-      function()
-        vim.ui.input({
-          prompt = "Grep over seachterm",
-        }, function(input)
-          if input ~= nil and input:len() > 0 then
-            deps.builtin.grep_string { search = input }
-          end
-        end)
-      end,
-      silent = true,
-      desc = "Grep String (input)",
-    },
     {
       "<leader>fR",
       "<cmd>Telescope registers<CR>",
