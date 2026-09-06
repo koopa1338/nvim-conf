@@ -1,25 +1,5 @@
 return {
   s(
-    {
-      trig = "tmod",
-      name = "test mod",
-      dscr = "create mod for tests",
-    },
-    fmt(
-      [[
-      #[cfg(test)]
-      mod test {{
-          use super::*;
-
-          {}
-      }}
-      ]],
-      {
-        i(0),
-      }
-    )
-  ),
-  s(
     "closure",
     fmt(
       [[
